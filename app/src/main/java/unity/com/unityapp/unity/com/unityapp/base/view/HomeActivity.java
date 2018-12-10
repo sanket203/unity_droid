@@ -25,6 +25,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         AppDi.getActivityComponent(this).inject(this);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
