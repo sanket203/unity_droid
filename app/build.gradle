@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "unity.com.unityapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation "junit:junit:$rootProject.junitVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testImplementation "org.powermock:powermock:$rootProject.powermockVersion"
+    testImplementation "org.powermock:powermock-module-junit4:$rootProject.powermockVersion"
+    testImplementation "org.powermock:powermock-api-mockito:$rootProject.powermockVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+
+    //support libs
+    api "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    api "com.android.support:design:$rootProject.supportLibraryVersion"
+    api "com.android.support:recyclerview-v7:$rootProject.recyclerViewVersion"
+    api "com.android.support:cardview-v7:$rootProject.cardViewVersion"
+
+    //reactive
+    api "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
+    api "com.trello.rxlifecycle2:rxlifecycle:$rootProject.rxlifecycleVersion"
+    api "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.rxlifecycleVersion"
+    api "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxbindingVersion"
+    api "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxpermissionsVersion@aar"
+    api "com.cantrowitz:rxbroadcast:$rootProject.rxbroadcastVersion"
+
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    api "com.squareup.moshi:moshi:$rootProject.moshiVersion"
+    api "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpLoggingVersion"
+    api "com.squareup.okhttp3:okhttp:$rootProject.okHttpLoggingVersion"
+
+    //dagger&butterknife
+    api "com.google.dagger:dagger:$rootProject.daggerVersion"
+    api "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    api "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+    api "org.zakariya.stickyheaders:stickyheaders:$rootProject.stickyHeaderRecyclerViewVersion"
+    implementation "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+}
