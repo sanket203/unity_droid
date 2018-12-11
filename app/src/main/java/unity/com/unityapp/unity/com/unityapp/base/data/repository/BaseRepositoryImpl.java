@@ -1,7 +1,9 @@
 package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 
 import io.reactivex.Observable;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.ResponseDataModel;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RecentProfileRequestEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.domain.model.RecentProfileResponseDataModel;
 import unity.com.unityapp.unity.com.unityapp.base.networking.BaseApi;
 import unity.com.unityapp.unity.com.unityapp.base.networking.NetworkClient;
 
@@ -18,7 +20,7 @@ public class BaseRepositoryImpl implements BaseRepository {
     }
 
     @Override
-    public Observable<ResponseDataModel> getData() {
-        return networkClient.create(BaseApi.class).getData();
+    public Observable<RecentProfileResponseEntity> getData(RecentProfileRequestEntity recentProfileRequestEntity) {
+        return networkClient.create(BaseApi.class).getData(recentProfileRequestEntity);
     }
 }

@@ -26,7 +26,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    public BaseRepository providesAccoountsRepository(NetworkClient networkClient) {
+    public BaseRepository providesBaseRepository(NetworkClient networkClient) {
         return new BaseRepositoryImpl(networkClient);
     }
 

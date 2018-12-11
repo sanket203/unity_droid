@@ -36,7 +36,7 @@ public class NetworkClient {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         OkHttpClient client = builder.build();
 
-        final String baseUrl = "";
+        final String baseUrl = "http://";
 
         final Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(baseUrl)

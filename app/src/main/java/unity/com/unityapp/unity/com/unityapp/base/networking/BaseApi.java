@@ -2,7 +2,8 @@ package unity.com.unityapp.unity.com.unityapp.base.networking;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.ResponseDataModel;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RecentProfileRequestEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 
 /**
  * Created by admin on 10/12/18.
@@ -11,5 +12,5 @@ import unity.com.unityapp.unity.com.unityapp.base.domain.model.ResponseDataModel
 public interface BaseApi {
 
     @GET("/get")
-    Observable<ResponseDataModel> getData();
+    Observable<RecentProfileResponseEntity> getData(RecentProfileRequestEntity recentProfileRequestEntity);
 }
