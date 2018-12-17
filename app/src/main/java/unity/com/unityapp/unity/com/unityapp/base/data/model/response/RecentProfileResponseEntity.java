@@ -10,8 +10,14 @@ import java.util.List;
 
 public class RecentProfileResponseEntity {
 
-    @Json(name = "profiles")
-    List<ProfileResponseEntity> profileResponseEntities;
+    @Json(name = "object")
+    private List<ProfileResponseEntity> profileResponseEntities;
+
+    @Json(name = "status")
+    private String status;
+
+    @Json(name = "message")
+    private String message;
 
     public List<ProfileResponseEntity> getProfileResponseEntities() {
         return profileResponseEntities;
@@ -19,5 +25,21 @@ public class RecentProfileResponseEntity {
 
     public void setProfileResponseEntities(List<ProfileResponseEntity> profileResponseEntities) {
         this.profileResponseEntities = profileResponseEntities;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

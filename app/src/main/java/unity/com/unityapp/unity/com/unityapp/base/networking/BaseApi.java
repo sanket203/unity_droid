@@ -2,7 +2,8 @@ package unity.com.unityapp.unity.com.unityapp.base.networking;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
-import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RecentProfileRequestEntity;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 
 /**
@@ -11,6 +12,9 @@ import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProf
 
 public interface BaseApi {
 
-    @GET("/get")
-    Observable<RecentProfileResponseEntity> getData(RecentProfileRequestEntity recentProfileRequestEntity);
+    @GET("latestProfile/male/{pageId}")
+    Observable<RecentProfileResponseEntity> getRecentProfiles(@Path("pageId") String pageId);
+
+    @GET("latestProfile/male/{pageId}")
+    Observable<RecentProfileResponseEntity> getAddresstakenProfiles(@Path("pageId") String pageId);
 }

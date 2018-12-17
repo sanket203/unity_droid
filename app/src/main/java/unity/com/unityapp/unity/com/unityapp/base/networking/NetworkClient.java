@@ -36,7 +36,7 @@ public class NetworkClient {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         OkHttpClient client = builder.build();
 
-        final String baseUrl = "http://";
+        final String baseUrl = "http://192.168.43.62:8080/bramhanunity/";
 
         final Retrofit.Builder retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(baseUrl)

@@ -1,6 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
-import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileRequestViewModel;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileResponseViewModel;
 
 /**
  * Created by admin on 11/12/18.
@@ -8,5 +8,5 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileReques
 
 public interface ProfileItemClickListner {
 
-    void onItemClick(RecentProfileRequestViewModel recentProfileViewModel);
+    void onItemClick();
 }

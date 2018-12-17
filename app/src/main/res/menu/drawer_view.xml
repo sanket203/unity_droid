@@ -2,20 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/recent_profile"
-            android:icon="@drawable/ic_launcher_background"
-            android:title="Recent profiles" />
+            android:id="@+id/my_profile"
+            android:icon="@mipmap/ic_launcher"
+            android:title="My profile" />
+        <item
+            android:id="@+id/recent_profiles"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Recent Profiles" />
+
         <item
             android:id="@+id/address_taken"
-            android:icon="@drawable/ic_launcher_background"
-            android:title="Address taken" />
+            android:icon="@mipmap/ic_launcher"
+            android:title="Address taken " />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_launcher_background"
-            android:title="Filters" />
+            android:id="@+id/search_filters"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Search filters" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_launcher_background"
+            android:id="@+id/settings"
+            android:icon="@mipmap/ic_launcher"
             android:title="Settings" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Logout" />
+
     </group>
 </menu>

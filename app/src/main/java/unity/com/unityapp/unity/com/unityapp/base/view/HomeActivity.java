@@ -21,7 +21,6 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
-import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileRequestViewModel;
 
 /**
  * Created by admin on 10/12/18.
@@ -44,6 +43,8 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
     private static final String TAG_HOME = "recent_profile";
     private static final String TAG_ADDRESS_TAKEN = "adress_taken";
+    private static final String TAG_MY_PROFILE = "my_profile";
+    private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
 
     private boolean shouldLoadHomeFragOnBackPress = true;
@@ -59,16 +60,14 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setTitle("Recent Profiles");
         mHandler = new Handler();
         setUpNavigationView();
-
         if (savedInstanceState == null) {
-            navItemIndex = 0;
+            navItemIndex = 1;
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
-        //presenter.getData(new RecentProfileRequestDataModel());
-
     }
 
     @Override
@@ -80,7 +79,6 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onResume() {
@@ -96,17 +94,24 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
     @Override
     public void sowData() {
-
     }
 
     private Fragment getHomeFragment() {
         switch (navItemIndex) {
             case 0:
+                MyProfileFragment myProfileFragment = new MyProfileFragment();
+                return myProfileFragment;
+            case 1:
                 RecentProfileFragment recentProfileFragment = new RecentProfileFragment();
                 return recentProfileFragment;
-            case 1:
+            case 2:
                 AddressTakenFragment addressTakenFragment = new AddressTakenFragment();
                 return addressTakenFragment;
+
+            case 4:
+                SettingsFragment settingsFragment = new SettingsFragment();
+                return settingsFragment;
+
             default:
                 return new RecentProfileFragment();
         }
@@ -165,16 +170,28 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
             //Check to see which item was being clicked and perform appropriate action
             switch (menuItem.getItemId()) {
                 //Replacing the main content with ContentFragment Which is our Inbox View;
-                case R.id.recent_profile:
+                case R.id.my_profile:
                     navItemIndex = 0;
+                    CURRENT_TAG = TAG_MY_PROFILE;
+                    toolbar.setTitle("My profile");
+                    break;
+                case R.id.recent_profiles:
+                    navItemIndex = 1;
                     CURRENT_TAG = TAG_HOME;
+                    toolbar.setTitle("Recent profiles");
                     break;
                 case R.id.address_taken:
-                    navItemIndex = 1;
+                    navItemIndex = 2;
                     CURRENT_TAG = TAG_ADDRESS_TAKEN;
+                    toolbar.setTitle("Address taken");
+                    break;
+                case R.id.settings:
+                    navItemIndex = 4;
+                    CURRENT_TAG = TAG_SETTINGS;
+                    toolbar.setTitle("Settings");
                     break;
                 default:
-                    navItemIndex = 0;
+                    navItemIndex = 1;
             }
             //Checking if the item is in checked state or not, if not make it in checked state
             if (menuItem.isChecked()) {
@@ -192,7 +209,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     }
 
     @Override
-    public void onItemClick(RecentProfileRequestViewModel recentProfileViewModel) {
+    public void onItemClick() {
         Intent intent = new Intent(this, RecentProfileDetailsActivity.class);
         startActivity(intent);
     }

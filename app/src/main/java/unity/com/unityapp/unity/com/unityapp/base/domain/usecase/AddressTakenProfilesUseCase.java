@@ -13,13 +13,13 @@ import unity.com.unityapp.unity.com.unityapp.base.domain.model.RecentProfileResp
  * Created by admin on 10/12/18.
  */
 
-public class RecentProfilesUseCase extends UseCase<String, RecentProfileResponseDataModel> {
+public class AddressTakenProfilesUseCase extends UseCase<String, RecentProfileResponseDataModel> {
 
     private final BaseRepository baseRepository;
     private final RecentProfileResponseEntityToDataModelMapper recentProfileResponseEntityToDataModelMapper;
 
     @Inject
-    public RecentProfilesUseCase(UseCaseComposer useCaseComposer, BaseRepository baseRepository, RecentProfileResponseEntityToDataModelMapper recentProfileResponseEntityToDataModelMapper) {
+    public AddressTakenProfilesUseCase(UseCaseComposer useCaseComposer, BaseRepository baseRepository, RecentProfileResponseEntityToDataModelMapper recentProfileResponseEntityToDataModelMapper) {
         super(useCaseComposer);
         this.baseRepository = baseRepository;
         this.recentProfileResponseEntityToDataModelMapper = recentProfileResponseEntityToDataModelMapper;
@@ -27,7 +27,7 @@ public class RecentProfilesUseCase extends UseCase<String, RecentProfileResponse
 
     @Override
     protected Observable<RecentProfileResponseDataModel> createUseCaseObservable(String pageId) {
-        return baseRepository.getRecentProfiles(pageId)
+        return baseRepository.getAddresstakenProfiles(pageId)
                 .map(recentProfileResponseEntityToDataModelMapper::mapToDataModel);
     }
 }

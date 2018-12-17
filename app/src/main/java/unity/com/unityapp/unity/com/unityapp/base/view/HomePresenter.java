@@ -3,7 +3,6 @@ package unity.com.unityapp.unity.com.unityapp.base.view;
 import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.RecentProfileRequestDataModel;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.RecentProfilesUseCase;
 
 /**
@@ -19,8 +18,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
         this.useCase = useCase;
     }
 
-    void getData(RecentProfileRequestDataModel model) {
-        useCase.execute(model).compose(bindToLifecycle()).subscribe(responseDataModel -> {
+    void getData(int model) {
+        useCase.execute("").compose(bindToLifecycle()).subscribe(responseDataModel -> {
             if (view != null) {
                 view.sowData();
             }

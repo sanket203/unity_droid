@@ -1,17 +1,10 @@
-package unity.com.unityapp.unity.com.unityapp.base.domain.model;
+package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 /**
- * Created by admin on 11/12/18.
+ * Created by admin on 16/12/18.
  */
 
-public class ProfileResponseDataModel {
-
-
-    private int id;
-
-
-    private int candidateID;
-
+public class ProfileResponseViewModel {
 
     private String name;
 
@@ -29,28 +22,6 @@ public class ProfileResponseDataModel {
 
 
     private String income;
-
-
-    private String lastLogin;
-
-
-    private int addressCount;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCandidateID() {
-        return candidateID;
-    }
-
-    public void setCandidateID(int candidateID) {
-        this.candidateID = candidateID;
-    }
 
     public String getName() {
         return name;
@@ -98,21 +69,5 @@ public class ProfileResponseDataModel {
 
     public void setIncome(String income) {
         this.income = income;
-    }
-
-    public String getLastLogin() {
-        return lastLogin;
-    }
-
-    public void setLastLogin(String lastLogin) {
-        this.lastLogin = lastLogin;
-    }
-
-    public int getAddressCount() {
-        return addressCount;
-    }
-
-    public void setAddressCount(int addressCount) {
-        this.addressCount = addressCount;
     }
 }
