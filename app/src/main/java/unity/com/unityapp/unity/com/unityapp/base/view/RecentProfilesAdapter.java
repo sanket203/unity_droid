@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -96,14 +99,23 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
         private ProfileItemClickListner listner;
         int itemId;
 
-        @BindView(R2.id.name)
+        @BindView(R2.id.profile_name)
         TextView nameTextView;
 
-        @BindView(R2.id.height)
+        @BindView(R2.id.tv_height)
         TextView heightTextView;
 
-        @BindView(R2.id.salary)
+        @BindView(R2.id.tv_salary)
         TextView salaryTextView;
+
+        @BindView(R2.id.profile_image)
+        ImageView profileImageView;
+
+        @BindView(R2.id.tv_birth_date)
+        TextView birthDateTextView;
+
+        @BindView(R2.id.tv_education)
+        TextView educationTextView;
 
         void steItemId(int itemId) {
             this.itemId = itemId;
@@ -123,8 +135,10 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
 
         public void bind(int position) {
             nameTextView.setText(list.get(position).getName());
-            heightTextView.setText(list.get(position).getHeight());
+            //heightTextView.setText(list.get(position).getHeight());
             salaryTextView.setText(list.get(position).getIncome());
+            educationTextView.setText(list.get(position).getEducation());
+            birthDateTextView.setText(list.get(position).getBirthDate());
         }
     }
 

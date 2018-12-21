@@ -3,29 +3,29 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/my_profile"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/profile_icon"
             android:title="My profile" />
         <item
             android:id="@+id/recent_profiles"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/recent_profile_icon"
             android:title="Recent Profiles" />
 
         <item
             android:id="@+id/address_taken"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/address_icon"
             android:title="Address taken " />
         <item
             android:id="@+id/search_filters"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/search_icon"
             android:title="Search filters" />
         <item
             android:id="@+id/settings"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/settings_icon"
             android:title="Settings" />
 
         <item
             android:id="@+id/logout"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/logout_icon"
             android:title="Logout" />
 
     </group>

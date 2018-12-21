@@ -1,6 +1,10 @@
 package unity.com.unityapp.unity.com.unityapp.base.view.mapper;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -35,7 +39,7 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
                 ) {
 
             ProfileResponseViewModel viewModel = new ProfileResponseViewModel();
-            viewModel.setBirthDate(dataModel.getBirthDate());
+            viewModel.setBirthDate(convertDate(dataModel.getBirthDate()));
             viewModel.setEducation(dataModel.getEducation());
             viewModel.setGender(dataModel.getGender());
             viewModel.setHeight(dataModel.getHeight());
@@ -45,5 +49,19 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
 
         }
         return profileResponseViewModels;
+    }
+
+    String convertDate(String date) {
+        String finalDate = "";
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
+        Date date1;
+        try {
+            date1 = df.parse(date);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            finalDate = sdf.format(date1);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return finalDate;
     }
 }

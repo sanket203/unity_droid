@@ -13,6 +13,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "API_KEY", "\"$apiKey\""
     }
     buildTypes {
         release {
@@ -64,4 +66,5 @@ dependencies {
     api "com.squareup.picasso:picasso:$rootProject.picassoVersion"
     api "org.zakariya.stickyheaders:stickyheaders:$rootProject.stickyHeaderRecyclerViewVersion"
     implementation "org.greenrobot:eventbus:$rootProject.eventbusVersion"
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

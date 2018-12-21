@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import unity.com.unityapp.unity.com.unityapp.base.UseCase;
 import unity.com.unityapp.unity.com.unityapp.base.UseCaseComposer;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.data.mapper.RecentProfileResponseEntityToDataModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.data.repository.BaseRepository;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.RecentProfileResponseDataModel;
@@ -27,7 +28,7 @@ public class RecentProfilesUseCase extends UseCase<String, RecentProfileResponse
 
     @Override
     protected Observable<RecentProfileResponseDataModel> createUseCaseObservable(String pageId) {
-        return baseRepository.getRecentProfiles(pageId)
+        return baseRepository.getRecentProfiles(UserInfo.getUserInfo().getGender(), pageId)
                 .map(recentProfileResponseEntityToDataModelMapper::mapToDataModel);
     }
 }

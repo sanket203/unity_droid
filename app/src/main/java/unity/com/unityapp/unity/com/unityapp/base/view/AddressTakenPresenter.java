@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.AddressTakenProfilesUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.RecentProfileResponseDatamodelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileResponseViewModel;
@@ -24,7 +25,7 @@ public class AddressTakenPresenter extends BasePresenter<AddressTakenView> {
     }
 
     public void getAddresstakenProfiles(int pageNumber) {
-        useCase.execute(String.valueOf(pageNumber))
+        useCase.execute(String.valueOf(UserInfo.getUserInfo().getCandidateId()), String.valueOf(pageNumber))
                 .compose(bindToLifecycle()).subscribe(dataModel -> {
                     if (view != null) {
                         if (dataModel.getStatus().equals(Constants.STATUS_200)) {

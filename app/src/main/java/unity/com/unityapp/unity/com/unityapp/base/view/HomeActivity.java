@@ -11,6 +11,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import butterknife.ButterKnife;
 import unity.com.unityapp.R;
 import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 
 /**
@@ -52,6 +54,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("USE_INFO", String.valueOf(UserInfo.getUserInfo().getCandidateId()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
@@ -59,8 +62,9 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
-        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        actionbar.setHomeAsUpIndicator(R.mipmap.menu_icon);
         actionbar.setTitle("Recent Profiles");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         mHandler = new Handler();
         setUpNavigationView();
         if (savedInstanceState == null) {
