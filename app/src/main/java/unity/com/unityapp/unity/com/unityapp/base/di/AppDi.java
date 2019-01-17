@@ -3,7 +3,6 @@ package unity.com.unityapp.unity.com.unityapp.base.di;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.components.ActivityComponent;
-
 import unity.com.unityapp.unity.com.unityapp.base.di.components.ApplicationComponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.components.DaggerApplicationComponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.components.FragmentComponent;

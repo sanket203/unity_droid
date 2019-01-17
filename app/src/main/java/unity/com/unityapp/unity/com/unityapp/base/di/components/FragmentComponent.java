@@ -3,6 +3,7 @@ package unity.com.unityapp.unity.com.unityapp.base.di.components;
 import dagger.Subcomponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.modules.FragmentModule;
 import unity.com.unityapp.unity.com.unityapp.base.view.AddressTakenFragment;
+import unity.com.unityapp.unity.com.unityapp.base.view.DetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.MyProfileFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.SettingsFragment;
@@ -21,4 +22,6 @@ public interface FragmentComponent {
     void inject(SettingsFragment settingsFragment);
 
     void inject(MyProfileFragment myProfileFragment);
+
+    void inject(DetailsPagerFragment detailsPagerFragment);
 }
