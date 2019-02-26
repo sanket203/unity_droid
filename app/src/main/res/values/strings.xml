@@ -6,6 +6,10 @@
 
     <string name="gender_prompt">select gender</string>
 
+    <string name="spectacle_prompt">Spectacle</string>
+    <string name="blood_group_prompt">Select Blood Group</string>
+
+
 
     <string-array name="marrital_status_list">
         <item>Married</item>
@@ -19,5 +23,21 @@
         <item>Female</item>
         <item>Transgender</item>
 
+    </string-array>
+
+    <string-array name="spectacle">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="blood_group">
+        <item>A(+ve)</item>
+        <item>A(-ve)</item>
+        <item>B(+ve)</item>
+        <item>B(-ve)</item>
+        <item>AB(+ve)</item>
+        <item>AB(-ve)</item>
+        <item>O(+ve)</item>
+        <item>O(-ve)</item>
     </string-array>
 </resources>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:hint="Height"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:hint="Weight"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editComplexion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:hint="Complexion"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+
+            <EditText
+                android:id="@+id/editBodyFoem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:clickable="true"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Body Form"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:minHeight="35dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerSpectacle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/spectacle"
+                        android:padding="10dp"
+                        android:prompt="@string/spectacle_prompt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/editBloodGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/blood_group"
+                        android:padding="10dp"
+                        android:prompt="@string/blood_group_prompt" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/editMedicalSurgery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:clickable="true"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Medical Surgery"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editDisablity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:clickable="true"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Disability"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editOtherRemark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:clickable="true"
+                android:editable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Other Remark"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
+
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/login_btn_shape"
+                android:text="Save"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>
