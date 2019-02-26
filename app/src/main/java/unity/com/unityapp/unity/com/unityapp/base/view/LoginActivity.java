@@ -14,9 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
-import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
-import unity.com.unityapp.unity.com.unityapp.base.BaseView;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 
 /**
@@ -28,13 +26,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Inject
     LoginPresenter presenter;
 
-    @BindView(R2.id.email)
+    @BindView(R.id.email)
     EditText email;
 
-    @BindView(R2.id.password)
+    @BindView(R.id.password)
     EditText password;
 
-    @BindView(R2.id.progress_bar)
+    @BindView(R.id.progress_bar)
     ProgressBar loader;
 
     @Override
@@ -48,7 +46,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     }
 
-    @OnClick(R2.id.btn_login)
+    @OnClick(R.id.btn_login)
     public void onLoginClick() {
         loginAndNavigateToHomeScreen();
         // presenter.loginUser(email.getText().toString(), password.getText().toString());
@@ -76,5 +74,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
             loader.setVisibility(View.GONE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
+    }
+
+    @OnClick(R.id.register_link)
+    public void onRegisterLinkClicked() {
+        navigateToRegistrationScreen();
+    }
+
+    void navigateToRegistrationScreen() {
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
     }
 }

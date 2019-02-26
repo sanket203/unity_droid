@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unity.com.unityapp.R;
-import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.ProfileResponseViewModel;
@@ -36,7 +35,7 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
     RecentProfilesAdapter adapter;
     List<ProfileResponseViewModel> list = new ArrayList<>();
 
-    @BindView(R2.id.recent_profile_rv)
+    @BindView(R.id.recent_profile_rv)
     RecyclerView recyclerView;
     private ProfileItemClickListner itemClickListner;
 
@@ -102,7 +101,7 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
     public void onResume() {
         super.onResume();
         presenter.bind(this);
-        //presenter.getRecentProfiles(0);
+        presenter.getRecentProfiles(0);
     }
 
     @Override

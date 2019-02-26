@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/splash_background">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/splash_background"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/splash_background" />
 
     <ImageView
         android:id="@+id/splash_logo"
@@ -25,8 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/password_layout"
-        android:layout_marginEnd="52dp"
         android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
         android:background="@drawable/login_text_rounded_rectangle"
         android:minHeight="35dp"
 
@@ -58,9 +65,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_login"
-        android:layout_marginEnd="52dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
         android:background="@drawable/login_text_rounded_rectangle"
         android:minHeight="35dp">
 
@@ -88,15 +95,27 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
-        android:layout_marginEnd="52dp"
+        android:layout_above="@id/register_link"
         android:layout_marginStart="52dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="52dp"
         android:background="@drawable/login_btn_shape"
         android:text="Login"
         android:textColor="#ffffff"
         android:textSize="15sp" />
 
-
+    <TextView
+        android:id="@+id/register_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.08"
+        android:text="Don’t have an account? Register"
+        android:textColor="#000000"
+        android:textSize="15sp"/>
 </RelativeLayout>

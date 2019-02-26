@@ -8,6 +8,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.LoginUserResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PersonalDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.StartupDataEntity;
 
@@ -28,4 +29,7 @@ public interface BaseApi {
 
     @POST("matrimony/login")
     Observable<LoginUserResponseEntity> loginUser(@Body LoginUserRequestEntity loginUserRequestEntity);
+
+    @GET("/getPersonalDetails/{candidateId}")
+    Observable<PersonalDetailsResponseEntity> getPersonalDetails(@Path("candidateId") String candidateId);
 }

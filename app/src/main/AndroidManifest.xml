@@ -25,6 +25,10 @@
 
         <activity android:name=".unity.com.unityapp.base.view.LoginActivity" />
 
+        <activity android:name=".unity.com.unityapp.base.view.RegistrationActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditPersonalDetailsActivity" />
+
     </application>
 
 

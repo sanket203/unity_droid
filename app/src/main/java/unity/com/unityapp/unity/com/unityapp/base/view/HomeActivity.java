@@ -19,7 +19,6 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import unity.com.unityapp.R;
-import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
@@ -33,13 +32,13 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     @Inject
     HomePresenter presenter;
 
-    @BindView(R2.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R2.id.drawer_layout)
+    @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
-    @BindView(R2.id.nav_view)
+    @BindView(R.id.nav_view)
     NavigationView navigationView;
     public static int navItemIndex = 0;
 

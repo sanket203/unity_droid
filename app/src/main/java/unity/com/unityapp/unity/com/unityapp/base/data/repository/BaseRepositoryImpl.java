@@ -3,6 +3,7 @@ package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 import io.reactivex.Observable;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.LoginUserResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PersonalDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.StartupDataEntity;
 import unity.com.unityapp.unity.com.unityapp.base.networking.BaseApi;
@@ -38,5 +39,10 @@ public class BaseRepositoryImpl implements BaseRepository {
     @Override
     public Observable<LoginUserResponseEntity> loginUser(LoginUserRequestEntity loginUserRequestEntity) {
         return networkClient.create(BaseApi.class).loginUser(loginUserRequestEntity);
+    }
+
+    @Override
+    public Observable<PersonalDetailsResponseEntity> getPersonalDetails(String candidateId) {
+        return networkClient.create(BaseApi.class).getPersonalDetails(candidateId);
     }
 }

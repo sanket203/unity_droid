@@ -9,15 +9,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
-import unity.com.unityapp.R2;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.ProfileResponseViewModel;
 
 /**
@@ -99,22 +96,22 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
         private ProfileItemClickListner listner;
         int itemId;
 
-        @BindView(R2.id.profile_name)
+        @BindView(R.id.profile_name)
         TextView nameTextView;
 
-        @BindView(R2.id.tv_height)
+        @BindView(R.id.tv_height)
         TextView heightTextView;
 
-        @BindView(R2.id.tv_salary)
+        @BindView(R.id.tv_salary)
         TextView salaryTextView;
 
-        @BindView(R2.id.profile_image)
+        @BindView(R.id.profile_image)
         ImageView profileImageView;
 
-        @BindView(R2.id.tv_birth_date)
+        @BindView(R.id.tv_birth_date)
         TextView birthDateTextView;
 
-        @BindView(R2.id.tv_education)
+        @BindView(R.id.tv_education)
         TextView educationTextView;
 
         void steItemId(int itemId) {
@@ -127,7 +124,7 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick(R2.id.profile_row)
+        @OnClick(R.id.profile_row)
         public void onProfileItemClick() {
             listner.onItemClick();
         }

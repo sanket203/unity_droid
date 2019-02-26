@@ -40,11 +40,10 @@ public class ImagePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         ImageView imageView = new ImageView(context);
-        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         Picasso.get()
                 .load(imageUrlList.get(position))
                 .fit()
-                .centerCrop()
                 .into(imageView);
         container.addView(imageView);
 

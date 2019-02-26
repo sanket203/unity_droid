@@ -3,6 +3,7 @@ package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 import io.reactivex.Observable;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.LoginUserResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PersonalDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.LoginUserResponseDataModel;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.StartupDataEntity;
@@ -21,4 +22,6 @@ public interface BaseRepository {
     Observable<StartupDataEntity> getStartupData(String token);
 
     Observable<LoginUserResponseEntity> loginUser(LoginUserRequestEntity loginUserRequestEntity);
+
+    Observable<PersonalDetailsResponseEntity> getPersonalDetails(String candidateId);
 }

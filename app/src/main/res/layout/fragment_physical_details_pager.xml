@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/details_background_rectangle"
+    android:scrollbars="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:padding="15dp"
+                android:text="Physical Details"
+                android:textColor="#242926"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_weight="0.3"
+                android:text="EDIT"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Height :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="5.6"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Weight :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="60 Kg"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Complexion :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_complexion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="Fair"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Bodyform :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_body_fom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="Slim"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Spectacles :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_spects"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="yes"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Bloog Group :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_blood_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="O(+ve)"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Medical Surgery :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_medical_surgery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="no"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Disability :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_disability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="No"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:padding="15dp"
+                android:text="Other remarks :"
+                android:textColor="#929292"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_other_remarks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="34.3sp"
+                android:text="none"
+                android:textColor="#242926"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
