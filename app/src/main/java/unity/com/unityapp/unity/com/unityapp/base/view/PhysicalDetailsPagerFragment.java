@@ -19,6 +19,7 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsViewModel;
 
 /**
  * Created by admin on 03/01/19.
@@ -32,6 +33,33 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
 
     @BindView(R.id.btn_edit)
     TextView editButton;
+
+    @BindView(R.id.tv_height)
+    TextView tv_height;
+
+    @BindView(R.id.tv_weight)
+    TextView tv_weight;
+
+    @BindView(R.id.tv_complexion)
+    TextView tv_complexion;
+
+    @BindView(R.id.tv_body_fom)
+    TextView tv_body_fom;
+
+    @BindView(R.id.tv_spects)
+    TextView tv_spects;
+
+    @BindView(R.id.tv_blood_group)
+    TextView tv_blood_group;
+
+    @BindView(R.id.tv_medical_surgery)
+    TextView tv_medical_surgery;
+
+    @BindView(R.id.tv_disability)
+    TextView tv_disability;
+
+    @BindView(R.id.tv_other_remarks)
+    TextView tv_other_remarks;
 
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
@@ -58,11 +86,11 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     }
 
     public static PhysicalDetailsPagerFragment newInstance(String candidateId) {
-        PhysicalDetailsPagerFragment personalDetailsPagerFragment = new PhysicalDetailsPagerFragment();
+        PhysicalDetailsPagerFragment physicalDetailsPagerFragment = new PhysicalDetailsPagerFragment();
         Bundle b = new Bundle();
         b.putString("candidateId", candidateId);
-        personalDetailsPagerFragment.setArguments(b);
-        return personalDetailsPagerFragment;
+        physicalDetailsPagerFragment.setArguments(b);
+        return physicalDetailsPagerFragment;
     }
 
     @Override
@@ -70,7 +98,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         super.onResume();
         getCandidateId();
         AppDi.getFragmentComponent(this).inject(this);
-        presenter.getPersonalDetails(candidateId);
+        presenter.getPhysicalDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -98,8 +126,12 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         presenter.unbind();
     }
 
+
     @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
+    public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
+        tv_height.setText(viewModel.getHeight());
+        tv_weight.setText(viewModel.getWeight());
+        tv_weight.setText(viewModel.getWeight());
 
     }
 

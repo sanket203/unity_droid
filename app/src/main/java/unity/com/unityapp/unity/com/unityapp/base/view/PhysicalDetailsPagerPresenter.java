@@ -6,39 +6,39 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
-import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPersonalDetailsUseCase;
-import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsDataModelToViewModelMapper;
-import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPhysicalDetailUseCase;
+import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PhysicalDetailsDataModelToViewModelMapper;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsViewModel;
 
 public class PhysicalDetailsPagerPresenter extends BasePresenter<PhysicalDetailsPagerView> {
 
-    private final GetPersonalDetailsUseCase getPersonalDetailsUseCase;
-    private final PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper;
+    private final GetPhysicalDetailUseCase getPhysicalDetailsUseCase;
+    private final PhysicalDetailsDataModelToViewModelMapper physicalDetailsDataModelToViewModelMapper;
 
     @Inject
 
-    public PhysicalDetailsPagerPresenter(GetPersonalDetailsUseCase getPersonalDetailsUseCase, PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper) {
-        this.getPersonalDetailsUseCase = getPersonalDetailsUseCase;
-        this.personalDetailsDataModelToViewModelMapper = personalDetailsDataModelToViewModelMapper;
+    public PhysicalDetailsPagerPresenter(GetPhysicalDetailUseCase getPhysicalDetailsUseCase, PhysicalDetailsDataModelToViewModelMapper physicalDetailsDataModelToViewModelMapper) {
+        this.getPhysicalDetailsUseCase = getPhysicalDetailsUseCase;
+        this.physicalDetailsDataModelToViewModelMapper = physicalDetailsDataModelToViewModelMapper;
     }
 
-    public void getPersonalDetails(String candidateId) {
+    public void getPhysicalDetails(String candidateId) {
         if (view != null) {
             view.showProgressBar(true);
         }
-        getPersonalDetailsUseCase.execute(candidateId)
-                .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
-            if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
-                PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
+        getPhysicalDetailsUseCase.execute(candidateId)
+                .compose(bindToLifecycle()).subscribe(physicalDetailsResponseDataModel -> {
+            if (physicalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
+                PhysicalDetailsViewModel viewModel = physicalDetailsDataModelToViewModelMapper.mapToViewModel(physicalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgressBar(false);
-                    view.showPersonalDetails(viewModel);
+                    view.showPhysicalDetails(viewModel);
                 }
             } else {
                 if (view != null) {
                     view.showProgressBar(false);
                 }
-                Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                Log.d("ERROR", physicalDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {

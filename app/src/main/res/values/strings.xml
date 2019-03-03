@@ -40,4 +40,36 @@
         <item>O(+ve)</item>
         <item>O(-ve)</item>
     </string-array>
+
+
+    <!--Horoscope-->
+    <string name="caste">Caste</string>
+    <string name="subcaste">Subcaste</string>
+    <string name="shakha">Shakha</string>
+    <string name="upshakha">Upshakha</string>
+    <string name="gotra">Gotra</string>
+    <string name="rashi">Rashi</string>
+    <string name="gana">Gana</string>
+    <string name="nakshatra">Nakshatra</string>
+    <string name="naadi">Naadi</string>
+    <string name="charan">Charan</string>
+    <string name="mangalik">Mangalik</string>
+    <string name="remarks">Remarks</string>
+
+
+    <!--Expectation-->
+    <string name="min_height">Minimum Height</string>
+    <string name="max_height">Maximum Height</string>
+    <string name="min_age">Minimum Age</string>
+    <string name="max_age">Maximum Age</string>
+    <string name="edication">Education</string>
+    <string name="income">Income</string>
+    <string name="working_location">Working Location</string>
+    <string name="other_expectation">Other Expectation</string>
+
+    <!--Contact Details-->
+    <string name="address">Address</string>
+    <string name="contact_number">Contact Number</string>
+    <string name="alternate_number">Alternate Number</string>
+    <string name="email">Email</string>
 </resources>
