@@ -5,6 +5,7 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
+import unity.com.unityapp.unity.com.unityapp.base.Constants;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.LoginUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.LoginRequestViewModelToDatamodelMapper;
@@ -34,17 +35,20 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         useCase.execute(loginRequestViewModelToDatamodelMapper.mapToDataModel(viewModel))
                 .compose(bindToLifecycle())
                 .subscribe(loginUserResponseDataModel -> {
+                    if (loginUserResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
+                        UserInfo.getUserInfo().setCandidateId(loginUserResponseDataModel.getUserResponseDataModel().getCandidateId());
+                        UserInfo.getUserInfo().setFirstName(loginUserResponseDataModel.getUserResponseDataModel().getName());
+                        UserInfo.getUserInfo().setGender(loginUserResponseDataModel.getUserResponseDataModel().getGender());
+                        UserInfo.getUserInfo().setAddressCount(loginUserResponseDataModel.getUserResponseDataModel().getAddressCount());
 
-                    UserInfo.getUserInfo().setCandidateId(loginUserResponseDataModel.getUserResponseDataModel().getCandidateId());
-                    UserInfo.getUserInfo().setFirstName(loginUserResponseDataModel.getUserResponseDataModel().getName());
-                    UserInfo.getUserInfo().setGender(loginUserResponseDataModel.getUserResponseDataModel().getGender());
-                    UserInfo.getUserInfo().setAddressCount(loginUserResponseDataModel.getUserResponseDataModel().getAddressCount());
-
-                    if (view != null) {
+                        if (view != null) {
+                            view.showProgressBar(false);
+                            view.loginAndNavigateToHomeScreen();
+                        }
+                    } else {
                         view.showProgressBar(false);
-                        view.loginAndNavigateToHomeScreen();
+                        Log.d("ERROR", loginUserResponseDataModel.getMessage());
                     }
-
 
                 }, error -> {
                     view.showProgressBar(false);

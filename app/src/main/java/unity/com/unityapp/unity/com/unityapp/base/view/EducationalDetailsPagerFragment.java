@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.EducationalDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -36,6 +37,23 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_degree)
+    TextView degree;
+
+    @BindView(R.id.tv_pass_year)
+    TextView passYear;
+
+    @BindView(R.id.tv_college)
+    TextView college;
+
+    @BindView(R.id.tv_university)
+    TextView university;
+
+    @BindView(R.id.tv_stream)
+    TextView stream;
+
+    @BindView(R.id.tv_remarks)
+    TextView remarks;
 
     private String candidateId;
 
@@ -54,7 +72,6 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
@@ -70,7 +87,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     public void onResume() {
         super.onResume();
         getCandidateId();
-        //   presenter.getPersonalDetails(candidateId);
+        presenter.getEducationDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -99,8 +116,12 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     }
 
     @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
+    public void showEducationDetails(EducationalDetailsViewModel viewModel) {
+        degree.setText(viewModel.getDegree());
+        college.setText(viewModel.getCollege());
+        university.setText(viewModel.getUniversity());
+        stream.setText(viewModel.getStream());
+        remarks.setText(viewModel.getRemarks());
     }
 
     @Override

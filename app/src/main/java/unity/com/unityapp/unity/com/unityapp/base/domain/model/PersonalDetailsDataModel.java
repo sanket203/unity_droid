@@ -4,7 +4,7 @@ import com.squareup.moshi.Json;
 
 public class PersonalDetailsDataModel {
 
-
+    private int candidateId;
     private String firstName;
 
 
@@ -156,5 +156,13 @@ public class PersonalDetailsDataModel {
 
     public void setHobbies(String hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public int getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(int candidateId) {
+        this.candidateId = candidateId;
     }
 }

@@ -7,6 +7,7 @@ package unity.com.unityapp.unity.com.unityapp.base.di.components;
 import dagger.Subcomponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.modules.ActivityModule;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditPersonalDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditPhysicalDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.HomeActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.LoginActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileDetailsActivity;
@@ -27,4 +28,6 @@ public interface ActivityComponent {
     void inject(RegistrationActivity activity);
 
     void inject(EditPersonalDetailsActivity activity);
+
+    void inject(EditPhysicalDetailsActivity activity);
 }

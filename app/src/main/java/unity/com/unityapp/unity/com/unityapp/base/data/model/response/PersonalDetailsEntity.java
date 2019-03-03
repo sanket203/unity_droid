@@ -4,6 +4,9 @@ import com.squareup.moshi.Json;
 
 public class PersonalDetailsEntity {
 
+    @Json(name = "id")
+    private int candidateId;
+
     @Json(name = "firstName")
     private String firstName;
 
@@ -156,5 +159,13 @@ public class PersonalDetailsEntity {
 
     public void setHobbies(String hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public int getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(int candidateId) {
+        this.candidateId = candidateId;
     }
 }

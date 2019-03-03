@@ -43,10 +43,12 @@ public class RecentProfileDetailsActivity extends BaseActivity implements Recent
 
     List<String> imageUrls;
 
+    int candidateId;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        candidateId = getIntent().getIntExtra("candidateID", 0);
         imageUrls = new ArrayList<>();
         imageUrls.add("http://brahmanunityorganization.com/uploads/images/elite_match_couple_images/1528816576676996850IMG-20180604-WA0011.jpg");
         imageUrls.add("http://brahmanunityorganization.com/uploads/images/elite_match_couple_images/1528816559605300813IMG-20180604-WA0008.jpg");
@@ -62,9 +64,8 @@ public class RecentProfileDetailsActivity extends BaseActivity implements Recent
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         imagePagerAdapter = new ImagePagerAdapter(this, imageUrls);
         imagePager.setAdapter(imagePagerAdapter);
-        detailspager.setAdapter(new DetailsPagerAdapter(getSupportFragmentManager(),""));
+        detailspager.setAdapter(new DetailsPagerAdapter(getSupportFragmentManager(), String.valueOf(candidateId)));
         tabLayout.setupWithViewPager(imagePager, true);
-
     }
 
     @OnClick(R.id.left_nav)

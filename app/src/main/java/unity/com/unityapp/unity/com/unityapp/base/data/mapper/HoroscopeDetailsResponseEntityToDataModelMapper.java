@@ -12,7 +12,7 @@ public class HoroscopeDetailsResponseEntityToDataModelMapper {
     public HoroscopeDetailsResponseEntityToDataModelMapper() {
     }
 
-    HoroscopeDetailsResponseDataModel mapToDataModel(HoroscopeDetailsResponseEntity horoscopeDetailsResponseEntity) {
+    public HoroscopeDetailsResponseDataModel mapToDataModel(HoroscopeDetailsResponseEntity horoscopeDetailsResponseEntity) {
         HoroscopeDetailsResponseDataModel horoscopeDetailsResponseDataModel = new HoroscopeDetailsResponseDataModel();
         horoscopeDetailsResponseDataModel.setMessage(horoscopeDetailsResponseEntity.getMessage());
         horoscopeDetailsResponseDataModel.setStatus(horoscopeDetailsResponseEntity.getStatus());

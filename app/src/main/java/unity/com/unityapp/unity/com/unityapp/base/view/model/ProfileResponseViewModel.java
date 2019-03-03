@@ -6,6 +6,8 @@ package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 public class ProfileResponseViewModel {
 
+    private int candidateId;
+
     private String name;
 
 
@@ -69,5 +71,13 @@ public class ProfileResponseViewModel {
 
     public void setIncome(String income) {
         this.income = income;
+    }
+
+    public int getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(int candidateId) {
+        this.candidateId = candidateId;
     }
 }

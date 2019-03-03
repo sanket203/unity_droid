@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.ExpectationsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -36,9 +37,48 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_min_height)
+    TextView minHeight;
+
+    @BindView(R.id.tv_max_height)
+    TextView maxHeight;
+
+    @BindView(R.id.tv_min_age)
+    TextView minAge;
+
+    @BindView(R.id.tv_max_age)
+    TextView maxAge;
+
+    @BindView(R.id.tv_subcaste)
+    TextView subCaste;
+
+    @BindView(R.id.tv_education)
+    TextView education;
+
+    @BindView(R.id.tv_income)
+    TextView income;
+
+    @BindView(R.id.tv_working_location)
+    TextView workingLocation;
+
+    @BindView(R.id.tv_other)
+    TextView otherExpectations;
 
 
     private String candidateId;
+
+    @Override
+    public void showExpectationDetails(ExpectationsViewModel viewModel) {
+        minHeight.setText(viewModel.getMinHeight());
+        maxHeight.setText(viewModel.getMaxHeight());
+        minAge.setText(viewModel.getMinAge());
+        maxAge.setText(viewModel.getMaxAge());
+        subCaste.setText(viewModel.getSubCaste());
+        education.setText(viewModel.getDegree());
+        income.setText(viewModel.getPackageLimit());
+        workingLocation.setText(viewModel.getWorkingLocation());
+        otherExpectations.setText(viewModel.getOther());
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +95,6 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
@@ -71,7 +110,7 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
     public void onResume() {
         super.onResume();
         getCandidateId();
-        //   presenter.getPersonalDetails(candidateId);
+        presenter.getExpectationDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -99,10 +138,6 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
         presenter.unbind();
     }
 
-    @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
-    }
 
     @Override
     public void showProgressBar(boolean isVisible) {

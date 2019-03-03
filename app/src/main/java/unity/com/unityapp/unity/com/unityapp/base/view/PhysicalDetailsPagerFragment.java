@@ -34,43 +34,56 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     @BindView(R.id.btn_edit)
     TextView editButton;
 
-    @BindView(R.id.tv_height)
-    TextView tv_height;
-
-    @BindView(R.id.tv_weight)
-    TextView tv_weight;
-
-    @BindView(R.id.tv_complexion)
-    TextView tv_complexion;
-
-    @BindView(R.id.tv_body_fom)
-    TextView tv_body_fom;
-
-    @BindView(R.id.tv_spects)
-    TextView tv_spects;
-
-    @BindView(R.id.tv_blood_group)
-    TextView tv_blood_group;
-
-    @BindView(R.id.tv_medical_surgery)
-    TextView tv_medical_surgery;
-
-    @BindView(R.id.tv_disability)
-    TextView tv_disability;
-
-    @BindView(R.id.tv_other_remarks)
-    TextView tv_other_remarks;
-
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_height)
+    TextView height;
+
+    @BindView(R.id.tv_weight)
+    TextView weight;
+
+    @BindView(R.id.tv_complexion)
+    TextView complexion;
+
+    @BindView(R.id.tv_body_form)
+    TextView bodyForm;
+
+    @BindView(R.id.tv_spects)
+    TextView spects;
+
+    @BindView(R.id.tv_blood_group)
+    TextView bloodGroup;
+
+    @BindView(R.id.tv_medical_surgery)
+    TextView medicalSurgery;
+
+    @BindView(R.id.tv_disability)
+    TextView disability;
+
+    @BindView(R.id.tv_other_remarks)
+    TextView otherRemarks;
 
     private String candidateId;
 
     @Override
+    public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
+        height.setText(viewModel.getHeight());
+        weight.setText(viewModel.getWeight());
+        complexion.setText(viewModel.getComplexion());
+        bodyForm.setText(viewModel.getBodyform());
+        spects.setText(viewModel.getSpects());
+        bloodGroup.setText(viewModel.getBloodGroup());
+        medicalSurgery.setText(viewModel.getMedicalSurgary());
+        disability.setText(viewModel.getDisability());
+        otherRemarks.setText(viewModel.getOtherRemarks());
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //  presenter.bind(this);
+        AppDi.getFragmentComponent(this).inject(this);
+        presenter.bind(this);
     }
 
     @Nullable
@@ -81,23 +94,21 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
     public static PhysicalDetailsPagerFragment newInstance(String candidateId) {
-        PhysicalDetailsPagerFragment physicalDetailsPagerFragment = new PhysicalDetailsPagerFragment();
+        PhysicalDetailsPagerFragment personalDetailsPagerFragment = new PhysicalDetailsPagerFragment();
         Bundle b = new Bundle();
         b.putString("candidateId", candidateId);
-        physicalDetailsPagerFragment.setArguments(b);
-        return physicalDetailsPagerFragment;
+        personalDetailsPagerFragment.setArguments(b);
+        return personalDetailsPagerFragment;
     }
 
     @Override
     public void onResume() {
         super.onResume();
         getCandidateId();
-        AppDi.getFragmentComponent(this).inject(this);
         presenter.getPhysicalDetails(candidateId);
     }
 
@@ -126,14 +137,6 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         presenter.unbind();
     }
 
-
-    @Override
-    public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
-        tv_height.setText(viewModel.getHeight());
-        tv_weight.setText(viewModel.getWeight());
-        tv_weight.setText(viewModel.getWeight());
-
-    }
 
     @Override
     public void showProgressBar(boolean isVisible) {

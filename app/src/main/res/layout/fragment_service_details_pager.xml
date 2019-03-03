@@ -228,12 +228,12 @@
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="34.3sp"
                 android:padding="15dp"
-                android:text="Eperience :"
+                android:text="Experience :"
                 android:textColor="#929292"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_disability"
+                android:id="@+id/tv_experience"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="34.3sp"
@@ -258,7 +258,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_other_remarks"
+                android:id="@+id/tv_annual_income"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="34.3sp"

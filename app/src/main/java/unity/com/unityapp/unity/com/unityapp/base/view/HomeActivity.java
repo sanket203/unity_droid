@@ -22,6 +22,7 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.ProfileResponseViewModel;
 
 /**
  * Created by admin on 10/12/18.
@@ -212,8 +213,9 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     }
 
     @Override
-    public void onItemClick() {
+    public void onItemClick(ProfileResponseViewModel profileResponseViewModel) {
         Intent intent = new Intent(this, RecentProfileDetailsActivity.class);
+        intent.putExtra("candidateID", profileResponseViewModel.getCandidateId());
         startActivity(intent);
     }
 }

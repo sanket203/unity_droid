@@ -133,7 +133,7 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tv_body_fom"
+                android:id="@+id/tv_mother_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="34.3sp"

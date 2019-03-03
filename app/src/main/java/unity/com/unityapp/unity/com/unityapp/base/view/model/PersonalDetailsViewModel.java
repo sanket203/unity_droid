@@ -1,8 +1,10 @@
 package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
-public class PersonalDetailsViewModel {
+import java.io.Serializable;
 
+public class PersonalDetailsViewModel implements Serializable {
 
+    private int candidateId;
     private String firstName;
 
 
@@ -154,6 +156,36 @@ public class PersonalDetailsViewModel {
 
     public void setHobbies(String hobbies) {
         this.hobbies = hobbies;
+    }
+
+    public int getCandidateId() {
+        return candidateId;
+    }
+
+    public void setCandidateId(int candidateId) {
+        this.candidateId = candidateId;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("PersonalDetailsViewModel{");
+        sb.append("candidateId=").append(candidateId);
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", middleName='").append(middleName).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
+        sb.append(", birthDate='").append(birthDate).append('\'');
+        sb.append(", birthTime='").append(birthTime).append('\'');
+        sb.append(", birthPlace='").append(birthPlace).append('\'');
+        sb.append(", gender='").append(gender).append('\'');
+        sb.append(", mailId='").append(mailId).append('\'');
+        sb.append(", registerBy='").append(registerBy).append('\'');
+        sb.append(", maritalStatus='").append(maritalStatus).append('\'');
+        sb.append(", religion='").append(religion).append('\'');
+        sb.append(", motherTongue='").append(motherTongue).append('\'');
+        sb.append(", aboutMe='").append(aboutMe).append('\'');
+        sb.append(", hobbies='").append(hobbies).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
 

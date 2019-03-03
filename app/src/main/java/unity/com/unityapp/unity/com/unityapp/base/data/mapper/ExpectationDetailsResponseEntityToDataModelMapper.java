@@ -12,7 +12,7 @@ public class ExpectationDetailsResponseEntityToDataModelMapper {
     public ExpectationDetailsResponseEntityToDataModelMapper() {
     }
 
-    ExpectationDetailsResponseDataModel mapToDataModel(ExpectationDetailsResponseEntity expectationDetailsResponseEntity) {
+    public ExpectationDetailsResponseDataModel mapToDataModel(ExpectationDetailsResponseEntity expectationDetailsResponseEntity) {
         ExpectationDetailsResponseDataModel expectationDetailsResponseDataModel = new ExpectationDetailsResponseDataModel();
 
         expectationDetailsResponseDataModel.setMessage(expectationDetailsResponseEntity.getMessage());

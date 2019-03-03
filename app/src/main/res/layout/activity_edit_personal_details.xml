@@ -20,6 +20,13 @@
             app:popupTheme="@style/AppTheme" />
     </android.support.design.widget.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
 
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
@@ -119,21 +126,6 @@
                 android:editable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Birth Time"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Email"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"

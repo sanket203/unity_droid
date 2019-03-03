@@ -6,5 +6,9 @@ import android.support.v4.app.Fragment;
  * Created by admin on 11/12/18.
  */
 
-public class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements BaseView {
+    @Override
+    public void close() {
+
+    }
 }

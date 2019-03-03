@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
  * Created by admin on 10/12/18.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements BaseView {
 
     protected void initToolbar(final Toolbar toolbar, final boolean showNavigationButton, boolean showTitle) {
         setSupportActionBar(toolbar);
@@ -16,5 +16,10 @@ public class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(showNavigationButton);
             getSupportActionBar().setDisplayShowTitleEnabled(showTitle);
         }
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 }

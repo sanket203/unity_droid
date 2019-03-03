@@ -126,7 +126,7 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
 
         @OnClick(R.id.profile_row)
         public void onProfileItemClick() {
-            listner.onItemClick();
+            listner.onItemClick(list.get(getPosition()));
         }
 
 
@@ -135,7 +135,7 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
             //heightTextView.setText(list.get(position).getHeight());
             salaryTextView.setText(list.get(position).getIncome());
             educationTextView.setText(list.get(position).getEducation());
-            birthDateTextView.setText(list.get(position).getBirthDate());
+            //  birthDateTextView.setText(list.get(position).getBirthDate());
         }
     }
 

@@ -43,13 +43,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
         AppDi.getActivityComponent(this).inject(this);
         presenter.bind(this);
 
-
     }
 
     @OnClick(R.id.btn_login)
     public void onLoginClick() {
-        loginAndNavigateToHomeScreen();
-        // presenter.loginUser(email.getText().toString(), password.getText().toString());
+        // loginAndNavigateToHomeScreen();
+        presenter.loginUser(email.getText().toString(), password.getText().toString());
     }
 
     @Override

@@ -2,7 +2,7 @@ package unity.com.unityapp.unity.com.unityapp.base.data.model.response;
 
 import com.squareup.moshi.Json;
 
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.EducationalDetailsEntity;
+import unity.com.unityapp.unity.com.unityapp.base.domain.model.EducationalDetailsDataModel;
 
 public class EducationDetailsResponseEntity {
 
@@ -13,7 +13,7 @@ public class EducationDetailsResponseEntity {
     private String message;
 
     @Json(name = "object")
-    private EducationalDetailsEntity educationalDetailsEntity;
+    private EducationalDetailsDataModel educationalDetailsEntity;
 
     public String getStatus() {
         return status;
@@ -31,11 +31,11 @@ public class EducationDetailsResponseEntity {
         this.message = message;
     }
 
-    public EducationalDetailsEntity getEducationalDetailsEntity() {
+    public EducationalDetailsDataModel getEducationalDetailsEntity() {
         return educationalDetailsEntity;
     }
 
-    public void setEducationalDetailsEntity(EducationalDetailsEntity educationalDetailsEntity) {
+    public void setEducationalDetailsEntity(EducationalDetailsDataModel educationalDetailsEntity) {
         this.educationalDetailsEntity = educationalDetailsEntity;
     }
 }

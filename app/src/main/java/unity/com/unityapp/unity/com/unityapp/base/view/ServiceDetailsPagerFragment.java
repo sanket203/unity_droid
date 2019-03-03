@@ -19,6 +19,7 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.ServiceDetailsViewModel;
 
 /**
  * Created by admin on 03/01/19.
@@ -36,8 +37,48 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_occupation)
+    TextView occupation;
+
+    @BindView(R.id.tv_organization)
+    TextView organization;
+
+    @BindView(R.id.tv_organization_type)
+    TextView organizationType;
+
+    @BindView(R.id.tv_sector)
+    TextView sector;
+
+    @BindView(R.id.tv_working_city)
+    TextView workingCity;
+
+    @BindView(R.id.tv_designation)
+    TextView designation;
+
+    @BindView(R.id.tv_service_status)
+    TextView serviceStatus;
+
+    @BindView(R.id.tv_experience)
+    TextView experience;
+
+    @BindView(R.id.tv_annual_income)
+    TextView annualIncome;
+
 
     private String candidateId;
+
+    @Override
+    public void showServiceDetails(ServiceDetailsViewModel viewModel) {
+        occupation.setText(viewModel.getOccupation());
+        organization.setText(viewModel.getOrganization());
+        organizationType.setText(viewModel.getOrganizationType());
+        sector.setText(viewModel.getSector());
+        workingCity.setText(viewModel.getWorkingCity());
+        designation.setText(viewModel.getDesignation());
+        serviceStatus.setText(viewModel.getServiceStatus());
+        experience.setText(viewModel.getExperience());
+        annualIncome.setText(viewModel.getAnnualIncome());
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +95,6 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
@@ -70,7 +110,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
     public void onResume() {
         super.onResume();
         getCandidateId();
-        // presenter.getPersonalDetails(candidateId);
+        presenter.getServiceDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -95,13 +135,9 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
     @Override
     public void onDestroy() {
         super.onDestroy();
-        // presenter.unbind();
+        presenter.unbind();
     }
 
-    @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
-    }
 
     @Override
     public void showProgressBar(boolean isVisible) {

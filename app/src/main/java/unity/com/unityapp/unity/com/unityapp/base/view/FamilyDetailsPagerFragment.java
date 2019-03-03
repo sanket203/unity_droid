@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.FamilyDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -36,9 +37,44 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_father_name)
+    TextView fatherName;
+
+    @BindView(R.id.tv_father_detail)
+    TextView fatherDetails;
+
+    @BindView(R.id.tv_mother_name)
+    TextView motherName;
+
+    @BindView(R.id.tv_mother_details)
+    TextView motherDetails;
+
+    @BindView(R.id.tv_brothers)
+    TextView brothers;
+
+    @BindView(R.id.tv_sisters)
+    TextView sisters;
+
+    @BindView(R.id.tv_brother_details)
+    TextView brotherDetails;
+
+    @BindView(R.id.tv_sister_details)
+    TextView sisterDetails;
 
 
     private String candidateId;
+
+    @Override
+    public void showFamilyDetails(FamilyDetailsViewModel viewModel) {
+        fatherName.setText(viewModel.getFather());
+        fatherDetails.setText(viewModel.getFatherDescription());
+        motherName.setText(viewModel.getMother());
+        motherDetails.setText(viewModel.getMotherDescription());
+        brothers.setText(viewModel.getBrothers());
+        sisters.setText(viewModel.getSisters());
+        brotherDetails.setText(viewModel.getBrotherDescription());
+        sisterDetails.setText(viewModel.getSisterDescription());
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +107,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
     public void onResume() {
         super.onResume();
         getCandidateId();
-        //   presenter.getPersonalDetails(candidateId);
+        presenter.getFamilyDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -99,10 +135,6 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
         presenter.unbind();
     }
 
-    @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
-    }
 
     @Override
     public void showProgressBar(boolean isVisible) {

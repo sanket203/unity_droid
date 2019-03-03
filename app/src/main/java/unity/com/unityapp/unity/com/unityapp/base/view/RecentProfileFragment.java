@@ -58,21 +58,6 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_list_fragment, container, false);
         ButterKnife.bind(this, view);
-        ProfileResponseViewModel model = new ProfileResponseViewModel();
-        model.setName("Sanket");
-        model.setIncome("5000000");
-        model.setHeight("5.6");
-        model.setEducation("Engineer");
-        model.setBirthDate("21-06-1992");
-        ProfileResponseViewModel model1 = new ProfileResponseViewModel();
-        model1.setName("Sanket");
-        model1.setIncome("5000000");
-        model1.setHeight("5.6");
-        model1.setEducation("Engineer");
-        model1.setBirthDate("21-06-1992");
-        list = new ArrayList<>();
-        list.add(model);
-        list.add(model1);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setItemPrefetchEnabled(false);
         linearLayoutManager.setItemPrefetchEnabled(false);

@@ -1,11 +1,12 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import unity.com.unityapp.unity.com.unityapp.base.BaseView;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.HoroscopeDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 public interface HoroscopeDetailsPagerView extends BaseView {
 
-    void showPersonalDetails(PersonalDetailsViewModel viewModel);
+    void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel);
 
     void showProgressBar(boolean isVisible);
 }

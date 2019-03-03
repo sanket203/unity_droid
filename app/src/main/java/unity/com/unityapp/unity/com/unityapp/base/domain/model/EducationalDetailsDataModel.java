@@ -2,7 +2,7 @@ package unity.com.unityapp.unity.com.unityapp.base.domain.model;
 
 import com.squareup.moshi.Json;
 
-public class EducationalDetailsEntity {
+public class EducationalDetailsDataModel {
 
 
     private int candidateId;

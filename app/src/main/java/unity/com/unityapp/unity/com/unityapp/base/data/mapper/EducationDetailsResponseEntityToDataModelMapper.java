@@ -4,7 +4,7 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.EducationDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.EducationDetailsResponseDataModel;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.EducationalDetailsEntity;
+import unity.com.unityapp.unity.com.unityapp.base.domain.model.EducationalDetailsDataModel;
 
 public class EducationDetailsResponseEntityToDataModelMapper {
 
@@ -12,12 +12,12 @@ public class EducationDetailsResponseEntityToDataModelMapper {
     public EducationDetailsResponseEntityToDataModelMapper() {
     }
 
-    EducationDetailsResponseDataModel mapToDataModel(EducationDetailsResponseEntity educationDetailsResponseEntity) {
+    public EducationDetailsResponseDataModel mapToDataModel(EducationDetailsResponseEntity educationDetailsResponseEntity) {
 
         EducationDetailsResponseDataModel educationDetailsResponseDataModel = new EducationDetailsResponseDataModel();
         educationDetailsResponseDataModel.setMessage(educationDetailsResponseEntity.getMessage());
         educationDetailsResponseDataModel.setStatus(educationDetailsResponseEntity.getStatus());
-        EducationalDetailsEntity educationalDetailsDataModel = new EducationalDetailsEntity();
+        EducationalDetailsDataModel educationalDetailsDataModel = new EducationalDetailsDataModel();
         educationalDetailsDataModel.setCandidateId(educationDetailsResponseEntity.getEducationalDetailsEntity().getCandidateId());
         educationalDetailsDataModel.setCollege(educationDetailsResponseEntity.getEducationalDetailsEntity().getCollege());
         educationalDetailsDataModel.setDegree(educationDetailsResponseEntity.getEducationalDetailsEntity().getDegree());

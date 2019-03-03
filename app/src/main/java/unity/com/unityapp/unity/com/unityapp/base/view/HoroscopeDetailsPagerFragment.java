@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.HoroscopeDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -36,8 +37,58 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    @BindView(R.id.tv_cast)
+    TextView cast;
 
+    @BindView(R.id.tv_subcast)
+    TextView subCast;
+
+    @BindView(R.id.tv_shakha)
+    TextView shakha;
+
+    @BindView(R.id.tv_upshakha)
+    TextView upShakha;
+
+    @BindView(R.id.tv_gotra)
+    TextView gotra;
+
+    @BindView(R.id.tv_rashi)
+    TextView rashi;
+
+    @BindView(R.id.tv_gana)
+    TextView gana;
+
+    @BindView(R.id.tv_nakshatra)
+    TextView nakshatra;
+
+    @BindView(R.id.tv_nadi)
+    TextView naadi;
+
+    @BindView(R.id.tv_charan)
+    TextView charan;
+
+    @BindView(R.id.tv_mangal)
+    TextView mangal;
+
+    @BindView(R.id.tv_remarks)
+    TextView remarks;
     private String candidateId;
+
+    @Override
+    public void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel) {
+        cast.setText(viewModel.getCaste());
+        subCast.setText(viewModel.getSubCaste());
+        shakha.setText(viewModel.getShakha());
+        upShakha.setText(viewModel.getUpshakha());
+        gotra.setText(viewModel.getGotra());
+        rashi.setText(viewModel.getRashi());
+        gana.setText(viewModel.getGana());
+        nakshatra.setText(viewModel.getNakshatra());
+        naadi.setText(viewModel.getNaadi());
+        charan.setText(viewModel.getCharan());
+        mangal.setText(viewModel.getMangal());
+        remarks.setText(viewModel.getRemarks());
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +121,7 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     public void onResume() {
         super.onResume();
         getCandidateId();
-        //   presenter.getPersonalDetails(candidateId);
+        presenter.getHoroscopeDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -98,10 +149,6 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
         presenter.unbind();
     }
 
-    @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
-    }
 
     @Override
     public void showProgressBar(boolean isVisible) {

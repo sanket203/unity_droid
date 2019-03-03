@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
@@ -66,6 +67,8 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
 
     private String candidateId;
 
+    private PersonalDetailsViewModel personalDetailsViewModel;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +84,6 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
@@ -97,7 +99,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
     public void onResume() {
         super.onResume();
         getCandidateId();
-          presenter.getPersonalDetails(candidateId);
+        presenter.getPersonalDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -105,6 +107,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
         if (bundle != null) {
             candidateId = bundle.getString("candidateId");
         }
+
     }
 
 
@@ -116,6 +119,8 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
 
     void navigateToEditPersonalDetailsScreen() {
         Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        intent.putExtra("candidateID", UserInfo.getUserInfo().getCandidateId());
+        intent.putExtra("personalDetailsViewModel", personalDetailsViewModel);
         startActivity(intent);
     }
 
@@ -127,6 +132,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
 
     @Override
     public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
+        this.personalDetailsViewModel = viewModel;
         fullName.setText(viewModel.getFirstName() + " " + viewModel.getLastName());
         birthDate.setText(viewModel.getBirthDate());
         birthTime.setText(viewModel.getBirthTime());

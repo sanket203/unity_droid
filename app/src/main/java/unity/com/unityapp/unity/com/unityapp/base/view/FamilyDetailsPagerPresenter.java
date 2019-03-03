@@ -6,33 +6,36 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetFamilyDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPersonalDetailsUseCase;
+import unity.com.unityapp.unity.com.unityapp.base.view.mapper.FamilyDetailsResponseDataModelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsDataModelToViewModelMapper;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.FamilyDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 public class FamilyDetailsPagerPresenter extends BasePresenter<FamilyDetailsPagerView> {
 
-    private final GetPersonalDetailsUseCase getPersonalDetailsUseCase;
-    private final PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper;
+    private final GetFamilyDetailsUseCase familyDetailsUseCase;
+    private final FamilyDetailsResponseDataModelToViewModelMapper familyDetailsResponseDataModelToViewModelMapper;
 
     @Inject
 
-    public FamilyDetailsPagerPresenter(GetPersonalDetailsUseCase getPersonalDetailsUseCase, PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper) {
-        this.getPersonalDetailsUseCase = getPersonalDetailsUseCase;
-        this.personalDetailsDataModelToViewModelMapper = personalDetailsDataModelToViewModelMapper;
+    public FamilyDetailsPagerPresenter(GetFamilyDetailsUseCase familyDetailsUseCase, FamilyDetailsResponseDataModelToViewModelMapper familyDetailsResponseDataModelToViewModelMapper) {
+        this.familyDetailsUseCase = familyDetailsUseCase;
+        this.familyDetailsResponseDataModelToViewModelMapper = familyDetailsResponseDataModelToViewModelMapper;
     }
 
-    public void getPersonalDetails(String candidateId) {
+    public void getFamilyDetails(String candidateId) {
         if (view != null) {
             view.showProgressBar(true);
         }
-        getPersonalDetailsUseCase.execute(candidateId)
+        familyDetailsUseCase.execute(candidateId)
                 .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
             if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
-                PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
+                FamilyDetailsViewModel viewModel = familyDetailsResponseDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgressBar(false);
-                    view.showPersonalDetails(viewModel);
+                    view.showFamilyDetails(viewModel);
                 }
             } else {
                 if (view != null) {

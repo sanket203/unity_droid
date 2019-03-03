@@ -5,4 +5,6 @@ package unity.com.unityapp.unity.com.unityapp.base;
  */
 
 public interface BaseView {
+
+    void close();
 }

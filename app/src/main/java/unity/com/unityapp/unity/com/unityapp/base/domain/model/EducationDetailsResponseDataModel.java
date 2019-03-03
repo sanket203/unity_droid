@@ -7,7 +7,7 @@ public class EducationDetailsResponseDataModel {
 
     private String message;
 
-    private EducationalDetailsEntity educationalDetailsDataModel;
+    private EducationalDetailsDataModel educationalDetailsDataModel;
 
     public String getStatus() {
         return status;
@@ -25,11 +25,11 @@ public class EducationDetailsResponseDataModel {
         this.message = message;
     }
 
-    public EducationalDetailsEntity getEducationalDetailsDataModel() {
+    public EducationalDetailsDataModel getEducationalDetailsDataModel() {
         return educationalDetailsDataModel;
     }
 
-    public void setEducationalDetailsDataModel(EducationalDetailsEntity educationalDetailsDataModel) {
+    public void setEducationalDetailsDataModel(EducationalDetailsDataModel educationalDetailsDataModel) {
         this.educationalDetailsDataModel = educationalDetailsDataModel;
     }
 }

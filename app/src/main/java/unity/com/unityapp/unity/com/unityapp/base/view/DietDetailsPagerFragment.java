@@ -18,6 +18,7 @@ import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.DietDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -35,6 +36,15 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+
+    @BindView(R.id.tv_diet_type)
+    TextView dietType;
+
+    @BindView(R.id.tv_drink)
+    TextView drink;
+
+    @BindView(R.id.tv_smoke)
+    TextView smoke;
 
 
     private String candidateId;
@@ -54,7 +64,6 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
 
@@ -70,7 +79,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
     public void onResume() {
         super.onResume();
         getCandidateId();
-       // presenter.getPersonalDetails(candidateId);
+        presenter.getDietDetails(candidateId);
     }
 
     private void getCandidateId() {
@@ -79,7 +88,6 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
             candidateId = bundle.getString("candidateId");
         }
     }
-
 
     @OnClick(R.id.btn_edit)
     public void onEditClicked() {
@@ -99,8 +107,10 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
     }
 
     @Override
-    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
-
+    public void showDietDetails(DietDetailsViewModel viewModel) {
+        dietType.setText(viewModel.getDietType());
+        drink.setText(viewModel.getDrink());
+        smoke.setText(viewModel.getSmoke());
     }
 
     @Override

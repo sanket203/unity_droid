@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 
 /**
@@ -86,7 +87,7 @@ public class MyProfileFragment extends BaseFragment implements MyProfileView {
         imagePager.setAdapter(imagePagerAdapter);
         tabLayout.setupWithViewPager(imagePager, true);
 
-        detailspager.setAdapter(new DetailsPagerAdapter(getChildFragmentManager(), ""));
+        detailspager.setAdapter(new DetailsPagerAdapter(getChildFragmentManager(), String.valueOf(UserInfo.getUserInfo().getCandidateId())));
     }
 
     @Override

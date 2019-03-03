@@ -6,33 +6,36 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetEducationDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPersonalDetailsUseCase;
+import unity.com.unityapp.unity.com.unityapp.base.view.mapper.EducationDetailsDataModelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsDataModelToViewModelMapper;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.EducationalDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 public class EducationalDetailsPagerPresenter extends BasePresenter<EducationalDetailsPagerView> {
 
-    private final GetPersonalDetailsUseCase getPersonalDetailsUseCase;
-    private final PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper;
+    private final GetEducationDetailsUseCase getEducationDetailsUseCase;
+    private final EducationDetailsDataModelToViewModelMapper educationDetailsDataModelToViewModelMapper;
 
     @Inject
 
-    public EducationalDetailsPagerPresenter(GetPersonalDetailsUseCase getPersonalDetailsUseCase, PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper) {
-        this.getPersonalDetailsUseCase = getPersonalDetailsUseCase;
-        this.personalDetailsDataModelToViewModelMapper = personalDetailsDataModelToViewModelMapper;
+    public EducationalDetailsPagerPresenter(GetEducationDetailsUseCase getEducationDetailsUseCase, EducationDetailsDataModelToViewModelMapper educationDetailsDataModelToViewModelMapper) {
+        this.getEducationDetailsUseCase = getEducationDetailsUseCase;
+        this.educationDetailsDataModelToViewModelMapper = educationDetailsDataModelToViewModelMapper;
     }
 
-    public void getPersonalDetails(String candidateId) {
+    public void getEducationDetails(String candidateId) {
         if (view != null) {
             view.showProgressBar(true);
         }
-        getPersonalDetailsUseCase.execute(candidateId)
+        getEducationDetailsUseCase.execute(candidateId)
                 .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
             if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
-                PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
+                EducationalDetailsViewModel viewModel = educationDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgressBar(false);
-                    view.showPersonalDetails(viewModel);
+                    view.showEducationDetails(viewModel);
                 }
             } else {
                 if (view != null) {

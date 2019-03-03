@@ -29,6 +29,8 @@
 
         <activity android:name=".unity.com.unityapp.base.view.EditPersonalDetailsActivity" />
 
+        <activity android:name=".unity.com.unityapp.base.view.EditPhysicalDetailsActivity" />
+
     </application>
 
 
