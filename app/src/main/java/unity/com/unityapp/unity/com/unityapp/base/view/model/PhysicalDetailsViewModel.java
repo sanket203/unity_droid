@@ -2,8 +2,10 @@ package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 import com.squareup.moshi.Json;
 
+import java.io.Serializable;
 
-public class PhysicalDetailsViewModel {
+
+public class PhysicalDetailsViewModel implements Serializable {
 
 
     private int id;
@@ -126,4 +128,21 @@ public class PhysicalDetailsViewModel {
         this.otherRemarks = otherRemarks;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("PhysicalDetailsViewModel{");
+        sb.append("id=").append(id);
+        sb.append(", candidateId=").append(candidateId);
+        sb.append(", height='").append(height).append('\'');
+        sb.append(", weight='").append(weight).append('\'');
+        sb.append(", complexion='").append(complexion).append('\'');
+        sb.append(", bodyform='").append(bodyform).append('\'');
+        sb.append(", spects='").append(spects).append('\'');
+        sb.append(", bloodGroup='").append(bloodGroup).append('\'');
+        sb.append(", medicalSurgary='").append(medicalSurgary).append('\'');
+        sb.append(", disability='").append(disability).append('\'');
+        sb.append(", otherRemarks='").append(otherRemarks).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

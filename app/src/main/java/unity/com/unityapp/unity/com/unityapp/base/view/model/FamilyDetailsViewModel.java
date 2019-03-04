@@ -2,8 +2,10 @@ package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 import com.squareup.moshi.Json;
 
+import java.io.Serializable;
 
-public class FamilyDetailsViewModel {
+
+public class FamilyDetailsViewModel implements Serializable {
 
 
     private int id;
@@ -115,4 +117,20 @@ public class FamilyDetailsViewModel {
         this.sisterDescription = sisterDescription;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("FamilyDetailsViewModel{");
+        sb.append("id=").append(id);
+        sb.append(", candidateId=").append(candidateId);
+        sb.append(", father='").append(father).append('\'');
+        sb.append(", fatherDescription='").append(fatherDescription).append('\'');
+        sb.append(", mother='").append(mother).append('\'');
+        sb.append(", motherDescription='").append(motherDescription).append('\'');
+        sb.append(", sisters='").append(sisters).append('\'');
+        sb.append(", sisterDescription='").append(sisterDescription).append('\'');
+        sb.append(", brothers='").append(brothers).append('\'');
+        sb.append(", brotherDescription='").append(brotherDescription).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

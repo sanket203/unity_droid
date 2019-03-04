@@ -63,9 +63,11 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
 
 
     private String candidateId;
+    private FamilyDetailsViewModel familyDetailsViewModel;
 
     @Override
     public void showFamilyDetails(FamilyDetailsViewModel viewModel) {
+        familyDetailsViewModel = viewModel;
         fatherName.setText(viewModel.getFather());
         fatherDetails.setText(viewModel.getFatherDescription());
         motherName.setText(viewModel.getMother());
@@ -120,12 +122,13 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
 
     @OnClick(R.id.btn_edit)
     public void onEditClicked() {
-        // TODO: 02-02-2019 pass personal details data to edit screen
         navigateToEditPersonalDetailsScreen();
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditFamilyDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("familyDetailsViewModel", familyDetailsViewModel);
         startActivity(intent);
     }
 

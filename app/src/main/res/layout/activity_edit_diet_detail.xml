@@ -30,46 +30,54 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <EditText
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+            <Spinner
                 android:id="@+id/editDietType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Diet Type"
+                android:entries="@array/diet_type_spinner"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/EditDrink"
+            <Spinner
+                android:id="@+id/editDrink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Drink"
+                android:entries="@array/yes_no_spinner"
+
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/editSmoke"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Smoke"
+                android:entries="@array/yes_no_spinner"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
@@ -79,10 +87,10 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"
                 android:textColor="#ffffff"

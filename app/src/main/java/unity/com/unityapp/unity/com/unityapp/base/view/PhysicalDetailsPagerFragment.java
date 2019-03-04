@@ -66,8 +66,11 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
 
     private String candidateId;
 
+    private PhysicalDetailsViewModel physicalDetailsViewModel;
+
     @Override
     public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
+        physicalDetailsViewModel = viewModel;
         height.setText(viewModel.getHeight());
         weight.setText(viewModel.getWeight());
         complexion.setText(viewModel.getComplexion());
@@ -123,11 +126,13 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     @OnClick(R.id.btn_edit)
     public void onEditClicked() {
         // TODO: 02-02-2019 pass personal details data to edit screen
-        navigateToEditPersonalDetailsScreen();
+        navigateToEditPhysicalDetailsScreen();
     }
 
-    void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+    void navigateToEditPhysicalDetailsScreen() {
+        Intent intent = new Intent(getContext(), EditPhysicalDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("physicalDetailsViewModel", physicalDetailsViewModel);
         startActivity(intent);
     }
 

@@ -6,12 +6,9 @@ import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
-import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.SavePersonalDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.SavePhysicalDetailsUseCase;
-import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsDataModelToViewModelMapper;
-import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsViewModelToDataModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PhysicalDetailsDataModelToViewModelMapper;
-import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
+import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PhysicalDetailsViewModelToDataModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsViewModel;
 
 public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDetailsView> {
@@ -22,13 +19,13 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
 
     private final PhysicalDetailsViewModelToDataModelMapper physicalDetailsViewModelToDataModelMapper;
 
+    @Inject
     public EditPhysicalDetailsPresenter(SavePhysicalDetailsUseCase savePhysicalDetailsUseCase, PhysicalDetailsDataModelToViewModelMapper physicalDetailsDataModelToViewModelMapper, PhysicalDetailsViewModelToDataModelMapper physicalDetailsViewModelToDataModelMapper) {
         this.savePhysicalDetailsUseCase = savePhysicalDetailsUseCase;
         this.physicalDetailsDataModelToViewModelMapper = physicalDetailsDataModelToViewModelMapper;
         this.physicalDetailsViewModelToDataModelMapper = physicalDetailsViewModelToDataModelMapper;
     }
 
-    @Inject
 
     public void save(PhysicalDetailsViewModel physicalDetailsViewModel) {
         if (view != null) {

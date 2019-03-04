@@ -49,11 +49,14 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     private String candidateId;
 
+    private DietDetailsViewModel dietDetailsViewModel;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppDi.getFragmentComponent(this).inject(this);
         presenter.bind(this);
+
     }
 
     @Nullable
@@ -91,12 +94,14 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     @OnClick(R.id.btn_edit)
     public void onEditClicked() {
-        // TODO: 02-02-2019 pass personal details data to edit screen
+
         navigateToEditPersonalDetailsScreen();
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditDietDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("dietDetailsViewModel", dietDetailsViewModel);
         startActivity(intent);
     }
 
@@ -108,6 +113,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     @Override
     public void showDietDetails(DietDetailsViewModel viewModel) {
+        dietDetailsViewModel = viewModel;
         dietType.setText(viewModel.getDietType());
         drink.setText(viewModel.getDrink());
         smoke.setText(viewModel.getSmoke());

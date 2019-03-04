@@ -73,9 +73,11 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     @BindView(R.id.tv_remarks)
     TextView remarks;
     private String candidateId;
+    private HoroscopeDetailsViewModel horoscopeDetailsViewModel;
 
     @Override
     public void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel) {
+        horoscopeDetailsViewModel = viewModel;
         cast.setText(viewModel.getCaste());
         subCast.setText(viewModel.getSubCaste());
         shakha.setText(viewModel.getShakha());
@@ -139,7 +141,9 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditHoroscopeDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("horoscopeDetailsViewModel", horoscopeDetailsViewModel);
         startActivity(intent);
     }
 

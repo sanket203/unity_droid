@@ -144,14 +144,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/edit_text_rounded_rectangle">
+                    android:layout_weight="0.5">
 
                     <Spinner
                         android:id="@+id/marrital_status"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:entries="@array/marrital_status_list"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:entries="@array/marital_status_list"
                         android:padding="10dp"
                         android:prompt="@string/status_prompt" />
 
@@ -160,16 +160,15 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/edit_text_rounded_rectangle">
+                    android:layout_weight="0.5">
 
                     <Spinner
                         android:id="@+id/gender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_rounded_rectangle"
                         android:entries="@array/gender"
                         android:padding="10dp"
-
                         android:prompt="@string/gender_prompt" />
                 </LinearLayout>
 

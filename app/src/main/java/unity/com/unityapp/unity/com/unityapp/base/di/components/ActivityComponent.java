@@ -6,8 +6,14 @@ package unity.com.unityapp.unity.com.unityapp.base.di.components;
 
 import dagger.Subcomponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.modules.ActivityModule;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditDietDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditEducationDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditExpectationDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditFamilyDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditHoroscopeDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditPersonalDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditPhysicalDetailsActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditServiceDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.HomeActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.LoginActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileDetailsActivity;
@@ -30,4 +36,16 @@ public interface ActivityComponent {
     void inject(EditPersonalDetailsActivity activity);
 
     void inject(EditPhysicalDetailsActivity activity);
+
+    void inject(EditDietDetailsActivity activity);
+
+    void inject(EditFamilyDetailsActivity activity);
+
+    void inject(EditExpectationDetailsActivity activity);
+
+    void inject(EditEducationDetailsActivity activity);
+
+    void inject(EditHoroscopeDetailsActivity activity);
+
+    void inject(EditServiceDetailsActivity activity);
 }

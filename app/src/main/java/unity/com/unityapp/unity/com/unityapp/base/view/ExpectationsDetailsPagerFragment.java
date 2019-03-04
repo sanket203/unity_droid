@@ -67,8 +67,11 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
 
     private String candidateId;
 
+    private ExpectationsViewModel expectationsViewModel;
+
     @Override
     public void showExpectationDetails(ExpectationsViewModel viewModel) {
+        expectationsViewModel = viewModel;
         minHeight.setText(viewModel.getMinHeight());
         maxHeight.setText(viewModel.getMaxHeight());
         minAge.setText(viewModel.getMinAge());
@@ -128,7 +131,9 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditExpectationDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("expectationsViewModel", expectationsViewModel);
         startActivity(intent);
     }
 

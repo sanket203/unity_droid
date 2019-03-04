@@ -30,6 +30,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/editCaste"
                 android:layout_width="match_parent"
@@ -193,7 +200,7 @@
                     android:id="@+id/spinnerSpectacle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/spectacle"
+                    android:entries="@array/yes_no_spinner"
                     android:padding="10dp"
                     android:prompt="@string/mangalik" />
 

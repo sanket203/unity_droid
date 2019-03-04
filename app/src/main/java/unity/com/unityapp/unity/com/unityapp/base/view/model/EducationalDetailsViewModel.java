@@ -1,6 +1,8 @@
 package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
-public class EducationalDetailsViewModel {
+import java.io.Serializable;
+
+public class EducationalDetailsViewModel implements Serializable {
 
 
     private int candidateId;
@@ -79,4 +81,17 @@ public class EducationalDetailsViewModel {
         this.remarks = remarks;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("EducationalDetailsViewModel{");
+        sb.append("candidateId=").append(candidateId);
+        sb.append(", degree='").append(degree).append('\'');
+        sb.append(", passYear='").append(passYear).append('\'');
+        sb.append(", college='").append(college).append('\'');
+        sb.append(", university='").append(university).append('\'');
+        sb.append(", stream='").append(stream).append('\'');
+        sb.append(", remarks='").append(remarks).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

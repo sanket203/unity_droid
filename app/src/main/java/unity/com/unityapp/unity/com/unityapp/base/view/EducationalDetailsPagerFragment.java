@@ -55,6 +55,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     @BindView(R.id.tv_remarks)
     TextView remarks;
 
+    private EducationalDetailsViewModel educationalDetailsViewModel;
     private String candidateId;
 
     @Override
@@ -105,7 +106,9 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditEducationDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("educationalDetailsViewModel", educationalDetailsViewModel);
         startActivity(intent);
     }
 
@@ -117,6 +120,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
 
     @Override
     public void showEducationDetails(EducationalDetailsViewModel viewModel) {
+        educationalDetailsViewModel = viewModel;
         degree.setText(viewModel.getDegree());
         college.setText(viewModel.getCollege());
         university.setText(viewModel.getUniversity());

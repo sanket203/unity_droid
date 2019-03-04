@@ -1,6 +1,8 @@
 package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
-public class ServiceDetailsViewModel {
+import java.io.Serializable;
+
+public class ServiceDetailsViewModel implements Serializable {
 
 
     private int candidateId;
@@ -121,5 +123,23 @@ public class ServiceDetailsViewModel {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ServiceDetailsViewModel{");
+        sb.append("candidateId=").append(candidateId);
+        sb.append(", occupation='").append(occupation).append('\'');
+        sb.append(", organization='").append(organization).append('\'');
+        sb.append(", organizationType='").append(organizationType).append('\'');
+        sb.append(", sector='").append(sector).append('\'');
+        sb.append(", workingCity='").append(workingCity).append('\'');
+        sb.append(", designation='").append(designation).append('\'');
+        sb.append(", serviceStatus='").append(serviceStatus).append('\'');
+        sb.append(", experience='").append(experience).append('\'');
+        sb.append(", annualIncome=").append(annualIncome);
+        sb.append(", address='").append(address).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

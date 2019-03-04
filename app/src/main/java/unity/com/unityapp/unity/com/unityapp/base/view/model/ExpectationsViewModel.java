@@ -2,8 +2,10 @@ package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 import com.squareup.moshi.Json;
 
+import java.io.Serializable;
 
-public class ExpectationsViewModel {
+
+public class ExpectationsViewModel implements Serializable {
 
 
     private int id;
@@ -148,5 +150,23 @@ public class ExpectationsViewModel {
         this.other = other;
     }
 
-
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ExpectationsViewModel{");
+        sb.append("id=").append(id);
+        sb.append(", candidateId=").append(candidateId);
+        sb.append(", minHeight='").append(minHeight).append('\'');
+        sb.append(", maxHeight='").append(maxHeight).append('\'');
+        sb.append(", minAge='").append(minAge).append('\'');
+        sb.append(", maxAge='").append(maxAge).append('\'');
+        sb.append(", subCaste='").append(subCaste).append('\'');
+        sb.append(", degree='").append(degree).append('\'');
+        sb.append(", workingLocation='").append(workingLocation).append('\'');
+        sb.append(", parentsLocation='").append(parentsLocation).append('\'');
+        sb.append(", packageLimit='").append(packageLimit).append('\'');
+        sb.append(", patrikaMatching='").append(patrikaMatching).append('\'');
+        sb.append(", other='").append(other).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

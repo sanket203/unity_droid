@@ -31,6 +31,18 @@
 
         <activity android:name=".unity.com.unityapp.base.view.EditPhysicalDetailsActivity" />
 
+        <activity android:name=".unity.com.unityapp.base.view.EditDietDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditFamilyDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditExpectationDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditEducationDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditServiceDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.EditHoroscopeDetailsActivity" />
+
     </application>
 
 

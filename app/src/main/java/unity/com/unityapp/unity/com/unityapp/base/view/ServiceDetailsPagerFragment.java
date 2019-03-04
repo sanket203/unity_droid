@@ -66,9 +66,11 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
 
 
     private String candidateId;
+    private ServiceDetailsViewModel serviceDetailsViewModel;
 
     @Override
     public void showServiceDetails(ServiceDetailsViewModel viewModel) {
+        serviceDetailsViewModel = viewModel;
         occupation.setText(viewModel.getOccupation());
         organization.setText(viewModel.getOrganization());
         organizationType.setText(viewModel.getOrganizationType());
@@ -123,12 +125,14 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
 
     @OnClick(R.id.btn_edit)
     public void onEditClicked() {
-        // TODO: 02-02-2019 pass personal details data to edit screen
+
         navigateToEditPersonalDetailsScreen();
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditServiceDetailsActivity.class);
+        intent.putExtra("candidateId", candidateId);
+        intent.putExtra("serviceDetailsViewModel", serviceDetailsViewModel);
         startActivity(intent);
     }
 

@@ -1,7 +1,9 @@
 
 package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
-public class HoroscopeDetailsViewModel {
+import java.io.Serializable;
+
+public class HoroscopeDetailsViewModel implements Serializable {
 
 
     private int candidateId;
@@ -147,4 +149,23 @@ public class HoroscopeDetailsViewModel {
         this.upshakha = upshakha;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("HoroscopeDetailsViewModel{");
+        sb.append("candidateId=").append(candidateId);
+        sb.append(", caste='").append(caste).append('\'');
+        sb.append(", subCaste='").append(subCaste).append('\'');
+        sb.append(", shakha='").append(shakha).append('\'');
+        sb.append(", upshakha='").append(upshakha).append('\'');
+        sb.append(", rashi='").append(rashi).append('\'');
+        sb.append(", nakshatra='").append(nakshatra).append('\'');
+        sb.append(", naadi='").append(naadi).append('\'');
+        sb.append(", gana='").append(gana).append('\'');
+        sb.append(", charan='").append(charan).append('\'');
+        sb.append(", gotra='").append(gotra).append('\'');
+        sb.append(", mangal='").append(mangal).append('\'');
+        sb.append(", remarks='").append(remarks).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

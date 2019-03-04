@@ -77,25 +77,33 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     }
 
     private void setData() {
-        aboutMe.setText(personalDetailsViewModel.getAboutMe());
-        birthDate.setText(personalDetailsViewModel.getBirthDate());
-        birthTime.setText(personalDetailsViewModel.getBirthTime());
-        firstName.setText(personalDetailsViewModel.getFirstName());
-        middleName.setText(personalDetailsViewModel.getMiddleName());
-        surName.setText(personalDetailsViewModel.getLastName());
+        if (personalDetailsViewModel != null) {
+            aboutMe.setText(personalDetailsViewModel.getAboutMe());
+            birthDate.setText(personalDetailsViewModel.getBirthDate());
+            birthTime.setText(personalDetailsViewModel.getBirthTime());
+            firstName.setText(personalDetailsViewModel.getFirstName());
+            middleName.setText(personalDetailsViewModel.getMiddleName());
+            surName.setText(personalDetailsViewModel.getLastName());
+        }
     }
 
     private PersonalDetailsViewModel getData() {
         PersonalDetailsViewModel personalDetailsViewModel = new PersonalDetailsViewModel();
         personalDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
-        personalDetailsViewModel.setAboutMe(aboutMe.getText().toString());
-        personalDetailsViewModel.setBirthDate(birthDate.getText().toString());
-        personalDetailsViewModel.setBirthTime(birthTime.getText().toString());
-        personalDetailsViewModel.setFirstName(firstName.getText().toString());
-        personalDetailsViewModel.setMiddleName(middleName.getText().toString());
-        personalDetailsViewModel.setLastName(surName.getText().toString());
-        personalDetailsViewModel.setMaritalStatus(marritalStatus.toString());
-        personalDetailsViewModel.setGender(gender.toString());
+        if (aboutMe.getText() != null)
+            personalDetailsViewModel.setAboutMe(aboutMe.getText().toString());
+        if (birthDate.getText() != null)
+            personalDetailsViewModel.setBirthDate(birthDate.getText().toString());
+        if (birthTime.getText() != null)
+            personalDetailsViewModel.setBirthTime(birthTime.getText().toString());
+        if (firstName.getText() != null)
+            personalDetailsViewModel.setFirstName(firstName.getText().toString());
+        if (middleName.getText() != null)
+            personalDetailsViewModel.setMiddleName(middleName.getText().toString());
+        if (surName.getText() != null)
+            personalDetailsViewModel.setLastName(surName.getText().toString());
+        personalDetailsViewModel.setMaritalStatus(marritalStatus.getSelectedItem().toString());
+        personalDetailsViewModel.setGender(gender.getSelectedItem().toString());
         return personalDetailsViewModel;
     }
 
