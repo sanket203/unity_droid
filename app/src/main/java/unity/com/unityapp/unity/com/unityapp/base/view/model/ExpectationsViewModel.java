@@ -46,6 +46,50 @@ public class ExpectationsViewModel implements Serializable {
     @Json(name = "other")
     private String other;
 
+    @Json(name = "minFeet")
+    private String minFeet;
+
+    @Json(name = "maxFeet")
+    private String maxFeet;
+
+    @Json(name = "maxInch")
+    private String maxInch;
+
+    @Json(name = "minInch")
+    private String minInch;
+
+    public String getMinFeet() {
+        return minFeet;
+    }
+
+    public void setMinFeet(String minFeet) {
+        this.minFeet = minFeet;
+    }
+
+    public String getMaxFeet() {
+        return maxFeet;
+    }
+
+    public void setMaxFeet(String maxFeet) {
+        this.maxFeet = maxFeet;
+    }
+
+    public String getMaxInch() {
+        return maxInch;
+    }
+
+    public void setMaxInch(String maxInch) {
+        this.maxInch = maxInch;
+    }
+
+    public String getMinInch() {
+        return minInch;
+    }
+
+    public void setMinInch(String minInch) {
+        this.minInch = minInch;
+    }
+
     public int getId() {
         return id;
     }

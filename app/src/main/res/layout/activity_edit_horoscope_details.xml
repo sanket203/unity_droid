@@ -37,127 +37,164 @@
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/editCaste"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/caste"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editSubcaste"
+                <Spinner
+                    android:id="@+id/spinnerCaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/caste_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/caste_prompt" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/subcaste"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editShakha"
+                <Spinner
+                    android:id="@+id/spinnerSubcaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/subcaste_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/subcaste_prompt" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/shakha"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editUpshakha"
+                <Spinner
+                    android:id="@+id/spinnerShakha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/shakha_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/shakha_prompt" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/upshakha"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editGotra"
+                <Spinner
+                    android:id="@+id/spinnerUpshakha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/shakha_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/shakha_prompt" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/gotra"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editRashi"
+                <Spinner
+                    android:id="@+id/spinnerGotra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/gotra_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/gotra_prompt" />
+
+            </LinearLayout>
+
+
+           <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/rashi"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editGana"
+                <Spinner
+                    android:id="@+id/spinnerRashi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/rashi_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/rashi_prompt" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/gana"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editNakshatra"
+                <Spinner
+                    android:id="@+id/spinnerGana"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/gana_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/gana_prompt" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/nakshatra"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:layout_weight="0.5"
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-             <EditText
+                <Spinner
+                    android:id="@+id/spinnerNakshatra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/nakshatra_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/nakshatra_prompt" />
+
+            </LinearLayout>
+
+
+            <EditText
                 android:id="@+id/editNaadi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

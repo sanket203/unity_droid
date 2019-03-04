@@ -8,6 +8,15 @@
 
     <string name="spectacle_prompt">Spectacle</string>
     <string name="blood_group_prompt">Select Blood Group</string>
+    <string name="medical_surgery_prompt">Medical Surgery</string>
+    <string name="disability_prompt">Disability</string>
+    <string name="caste_prompt">Caste</string>
+    <string name="shakha_prompt">Shakha</string>
+    <string name="subcaste_prompt">Subcaste</string>
+    <string name="gotra_prompt">Gotra</string>
+    <string name="rashi_prompt">Rashi</string>
+    <string name="gana_prompt">Gana</string>
+    <string name="nakshatra_prompt">Nakshatra</string>
 
 
     <string-array name="marital_status_list">
@@ -32,6 +41,48 @@
     <string-array name="diet_type_spinner">
         <item>Veg</item>
         <item>Non-Veg</item>
+    </string-array>
+
+
+    <string-array name="caste_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="subcaste_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="shakha_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="gotra_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="rashi_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="gana_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="nakshatra_spinner">
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
     </string-array>
 
 
@@ -77,4 +128,6 @@
     <string name="contact_number">Contact Number</string>
     <string name="alternate_number">Alternate Number</string>
     <string name="email">Email</string>
+
+
 </resources>

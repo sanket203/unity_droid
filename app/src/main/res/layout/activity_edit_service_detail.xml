@@ -93,8 +93,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Sector"
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -102,7 +100,7 @@
                 android:textSize="15sp" />
 
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/editWorkingCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,8 +110,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Working City"
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -130,8 +126,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Designation"
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -148,8 +142,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Service Status"
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -166,8 +158,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Experience"
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -184,11 +174,10 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
                 android:hint="Annual Income"
                 android:minHeight="35dp"
                 android:padding="10dp"
+                android:inputType="number"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 

@@ -37,35 +37,105 @@
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/editMinHeight"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/min_height"
+                android:layout_marginEnd="52dp"
                 android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editMaxHeight"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editMaxFeet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Feet"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editMaxInches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Inches"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/max_height"
+                android:layout_marginEnd="52dp"
                 android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editMinFeet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Feet"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editMinInches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Inches"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editMinAge"
@@ -97,20 +167,25 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/editSubcaste"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_weight="0.5"
                 android:layout_marginEnd="52dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/subcaste"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:background="@drawable/edit_text_rounded_rectangle">
+
+                <Spinner
+                    android:id="@+id/spinnerSubcaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:entries="@array/subcaste_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/subcaste_prompt" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editEducation"
@@ -142,7 +217,7 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/editWorkingLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -32,6 +33,36 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
+    @BindView(R.id.editfeet)
+    EditText editFeet;
+
+    @BindView(R.id.editInches)
+    EditText editInches;
+
+    @BindView(R.id.editWeight)
+    EditText editWeight;
+
+    @BindView(R.id.editComplexion)
+    EditText editComplexion;
+
+    @BindView(R.id.editBodyForm)
+    EditText editBodyForm;
+
+    @BindView(R.id.spinnerSpectacle)
+    Spinner spinnerSpectacle;
+
+    @BindView(R.id.editBloodGroup)
+    Spinner editBloodGroup;
+
+    @BindView(R.id.spinnerMedicalSurgery)
+    Spinner spinnerMedicalSurgery;
+
+    @BindView(R.id.spinnerDisability)
+    Spinner spinnerDisability;
+
+    @BindView(R.id.editOtherRemark)
+    EditText editOtherRemark;
+
     private int candidateId;
 
     private PhysicalDetailsViewModel physicalDetailsViewModel;
@@ -46,7 +77,8 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.ic_back);
-        actionbar.setTitle("Edit Personal Details");
+        actionbar.setTitle("Edit Physical Details");
+        candidateId = getIntent().getIntExtra("candidateId", 0);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
@@ -54,11 +86,45 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     }
 
     private void setData() {
-
+        if (physicalDetailsViewModel != null) {
+            editFeet.setText(physicalDetailsViewModel.getFeet());
+            editInches.setText(physicalDetailsViewModel.getInches());
+            editWeight.setText(physicalDetailsViewModel.getWeight());
+            editComplexion.setText(physicalDetailsViewModel.getComplexion());
+            editBodyForm.setText(physicalDetailsViewModel.getBodyform());
+            editOtherRemark.setText(physicalDetailsViewModel.getOtherRemarks());
+        }
     }
 
     private PhysicalDetailsViewModel getData() {
         PhysicalDetailsViewModel physicalDetailsViewModel = new PhysicalDetailsViewModel();
+        physicalDetailsViewModel.setCandidateId(candidateId);
+        if (editFeet.getText() != null){
+            physicalDetailsViewModel.setFeet(editFeet.getText().toString());
+        }
+        if (editInches.getText() != null){
+            physicalDetailsViewModel.setFeet(editInches.getText().toString());
+        }
+        if (editWeight.getText() != null){
+            physicalDetailsViewModel.setFeet(editWeight.getText().toString());
+        }
+        if (editComplexion.getText() != null){
+            physicalDetailsViewModel.setFeet(editComplexion.getText().toString());
+        }
+        if (editBodyForm.getText() != null){
+            physicalDetailsViewModel.setFeet(editBodyForm.getText().toString());
+        }
+        if (editOtherRemark.getText() != null){
+            physicalDetailsViewModel.setFeet(editOtherRemark.getText().toString());
+        }
+        if (editFeet.getText() != null && editInches.getText()!=null){
+            physicalDetailsViewModel.setHeight(editFeet.getText().toString()+editInches.getText().toString());
+        }
+        physicalDetailsViewModel.setSpects(spinnerSpectacle.getSelectedItem().toString());
+        physicalDetailsViewModel.setDisability(spinnerDisability.getSelectedItem().toString());
+        physicalDetailsViewModel.setMedicalSurgary(spinnerMedicalSurgery.getSelectedItem().toString());
+        physicalDetailsViewModel.setBloodGroup(editBloodGroup.getSelectedItem().toString());
+
         return physicalDetailsViewModel;
     }
 
@@ -82,5 +148,6 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             loader.setVisibility(View.GONE);
         }
     }
+
 }
 

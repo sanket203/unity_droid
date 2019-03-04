@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import javax.inject.Inject;
@@ -28,6 +31,39 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
+    @BindView(R.id.editMaxFeet)
+    EditText editMaxFeet;
+
+    @BindView(R.id.editMaxInches)
+    EditText editMaxInches;
+
+    @BindView(R.id.editMinFeet)
+    EditText editMinFeet;
+
+    @BindView(R.id.editMaxInches)
+    EditText getEditMaxInches;
+
+    @BindView(R.id.editMinInches)
+    EditText editMinInches;
+
+    @BindView(R.id.editMinAge)
+    EditText editMinAge;
+
+    @BindView(R.id.editMaxAge)
+    EditText editMaxAge;
+
+    @BindView(R.id.editEducation)
+    EditText editEducation;
+
+    @BindView(R.id.editIncome)
+    EditText editIncome;
+
+    @BindView(R.id.editWorkingLocation)
+    AutoCompleteTextView editWorkingLocation;
+
+    @BindView(R.id.editOtherExp)
+    EditText editOtherExp;
+
     private int candidateId;
 
     private ExpectationsViewModel expectationDetailsViewModel;
@@ -42,20 +78,46 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.ic_back);
-        actionbar.setTitle("Edit Personal Details");
+        actionbar.setTitle("Edit Expectation Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         candidateId = getIntent().getIntExtra("candidateId", 0);
         expectationDetailsViewModel = (ExpectationsViewModel) getIntent().getSerializableExtra("expectationDetailsViewModel");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        editWorkingLocation.setAdapter(adapter);
         setData();
     }
 
     private void setData() {
-
+        if (expectationDetailsViewModel != null) {
+            editMinAge.setText(expectationDetailsViewModel.getMinAge());
+            editMaxAge.setText(expectationDetailsViewModel.getMaxAge());
+            editIncome.setText(expectationDetailsViewModel.getPackageLimit());
+            editEducation.setText(expectationDetailsViewModel.getDegree());
+            editWorkingLocation.setText(expectationDetailsViewModel.getWorkingLocation());
+            editOtherExp.setText(expectationDetailsViewModel.getOther());
+        }
     }
 
     private ExpectationsViewModel getData() {
         ExpectationsViewModel expectationDetailsViewModel = new ExpectationsViewModel();
+        expectationDetailsViewModel.setCandidateId(candidateId);
+        if (editEducation.getText() != null) {
+            expectationDetailsViewModel.setDegree(editEducation.getText().toString());
+            expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
+            expectationDetailsViewModel.setWorkingLocation(editWorkingLocation.getText().toString());
+            expectationDetailsViewModel.setOther(editOtherExp.getText().toString());
+        }
+        if (editIncome.getText() != null) {
+            expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
+        }
+        if (editWorkingLocation.getText() != null) {
+            expectationDetailsViewModel.setWorkingLocation(editWorkingLocation.getText().toString());
+        }
+        if (editOtherExp.getText() != null) {
+            expectationDetailsViewModel.setOther(editOtherExp.getText().toString());
+        }
         return expectationDetailsViewModel;
     }
 
@@ -79,5 +141,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             loader.setVisibility(View.GONE);
         }
     }
+
+    private static final String[] COUNTRIES = new String[]{
+            "Belgium", "France", "Italy", "Germany", "Spain"
+    };
 }
 

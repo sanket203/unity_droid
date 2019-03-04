@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import javax.inject.Inject;
@@ -28,6 +29,30 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
+    @BindView(R.id.editFatherName)
+    EditText editFatherName;
+
+    @BindView(R.id.editFatherDetail)
+    EditText editFatherDetail;
+
+    @BindView(R.id.editMotherName)
+    EditText editMotherName;
+
+    @BindView(R.id.editMotherDetail)
+    EditText editMotherDetail;
+
+    @BindView(R.id.editBrother)
+    EditText editBrother;
+
+    @BindView(R.id.editSister)
+    EditText editSister;
+
+    @BindView(R.id.editBrotherDetail)
+    EditText editBrotherDetail;
+
+    @BindView(R.id.editSisterDetail)
+    EditText editSisterDetail;
+
     private int candidateId;
 
     private FamilyDetailsViewModel familyDetailsViewModel;
@@ -42,7 +67,7 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.ic_back);
-        actionbar.setTitle("Edit Personal Details");
+        actionbar.setTitle("Edit Family Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         candidateId = getIntent().getIntExtra("candidateId", 0);
@@ -51,11 +76,54 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     }
 
     private void setData() {
-
+        if(familyDetailsViewModel!=null)
+        {
+            editFatherName.setText(familyDetailsViewModel.getFather());
+            editFatherDetail.setText(familyDetailsViewModel.getFatherDescription());
+            editMotherName.setText(familyDetailsViewModel.getMother());
+            editMotherName.setText(familyDetailsViewModel.getMotherDescription());
+            editBrother.setText(familyDetailsViewModel.getBrothers());
+            editSister.setText(familyDetailsViewModel.getSisters());
+            editBrotherDetail.setText(familyDetailsViewModel.getBrotherDescription());
+            editSisterDetail.setText(familyDetailsViewModel.getSisterDescription());
+        }
     }
 
     private FamilyDetailsViewModel getData() {
         FamilyDetailsViewModel familyDetailsViewModel = new FamilyDetailsViewModel();
+        familyDetailsViewModel.setCandidateId(candidateId);
+        if(editFatherName.getText()!=null)
+        {
+            familyDetailsViewModel.setFather(editFatherName.getText().toString());
+        }
+        if(editFatherDetail.getText()!=null)
+        {
+            familyDetailsViewModel.setFatherDescription(editFatherDetail.getText().toString());
+        }
+        if(editMotherName.getText()!=null)
+        {
+            familyDetailsViewModel.setMother(editMotherName.getText().toString());
+        }
+        if(editMotherDetail.getText()!=null)
+        {
+            familyDetailsViewModel.setMotherDescription(editMotherDetail.getText().toString());
+        }
+        if(editBrother.getText()!=null)
+        {
+            familyDetailsViewModel.setBrothers(editBrother.getText().toString());
+        }
+        if(editBrotherDetail.getText()!=null)
+        {
+            familyDetailsViewModel.setBrotherDescription(editBrotherDetail.getText().toString());
+        }
+        if(editSister.getText()!=null)
+        {
+            familyDetailsViewModel.setSisters(editSister.getText().toString());
+        }
+        if(editSisterDetail.getText()!=null)
+        {
+            familyDetailsViewModel.setSisterDescription(editSisterDetail.getText().toString());
+        }
         return familyDetailsViewModel;
     }
 

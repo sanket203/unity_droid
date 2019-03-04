@@ -37,21 +37,55 @@
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/editHeight"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Height"
                 android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editfeet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Feet"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:inputType="number"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/editInches"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:hint="Inches"
+                        android:minHeight="35dp"
+                        android:padding="10dp"
+                        android:inputType="number"
+                        android:textColorHint="#b6b6b6"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
             <EditText
                 android:id="@+id/editWeight"
                 android:layout_width="match_parent"
@@ -62,6 +96,7 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="Weight"
+                android:inputType="number"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
@@ -84,7 +119,7 @@
 
 
             <EditText
-                android:id="@+id/editBodyFoem"
+                android:id="@+id/editBodyForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -119,7 +154,7 @@
 
                     <Spinner
                         android:id="@+id/spinnerSpectacle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/yes_no_spinner"
                         android:padding="10dp"
@@ -137,7 +172,7 @@
 
                     <Spinner
                         android:id="@+id/editBloodGroup"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:entries="@array/blood_group"
                         android:padding="10dp"
@@ -147,41 +182,43 @@
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/editMedicalSurgery"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_weight="0.5"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="Medical Surgery"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:background="@drawable/edit_text_rounded_rectangle">
 
-            <EditText
-                android:id="@+id/editDisablity"
+                <Spinner
+                    android:id="@+id/spinnerMedicalSurgery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/medical_surgery_prompt" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_weight="0.5"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:editable="false"
-                android:focusableInTouchMode="false"
-                android:hint="Disability"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+                android:background="@drawable/edit_text_rounded_rectangle">
+
+                <Spinner
+                    android:id="@+id/spinnerDisability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/yes_no_spinner"
+                    android:padding="10dp"
+                    android:prompt="@string/disability_prompt" />
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/editOtherRemark"

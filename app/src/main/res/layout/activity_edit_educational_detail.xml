@@ -64,6 +64,8 @@
                 android:hint="Passing Year"
                 android:minHeight="35dp"
                 android:padding="10dp"
+                android:inputType="number"
+                android:maxLength="4"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 

@@ -40,6 +40,32 @@ public class PhysicalDetailsViewModel implements Serializable {
     @Json(name = "otherRemarks")
     private String otherRemarks;
 
+    @Json(name = "feet")
+    private String feet;
+
+    @Json(name = "inches")
+    private String inches;
+
+    public void setBodyform(String bodyform) {
+        this.bodyform = bodyform;
+    }
+
+    public String getFeet() {
+        return feet;
+    }
+
+    public void setFeet(String feet) {
+        this.feet = feet;
+    }
+
+    public String getInches() {
+        return inches;
+    }
+
+    public void setInches(String inches) {
+        this.inches = inches;
+    }
+
     public int getId() {
         return id;
     }
