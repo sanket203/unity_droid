@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -58,6 +59,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     private int candidateId;
 
     private PersonalDetailsViewModel personalDetailsViewModel;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         actionbar.setTitle("Edit Personal Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         personalDetailsViewModel = (PersonalDetailsViewModel) getIntent().getSerializableExtra("personalDetailsViewModel");
         setData();
     }
@@ -115,7 +118,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -125,6 +128,13 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToEditPhysicalDetailsActivity() {
+        Intent intent = new Intent(this, EditPhysicalDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 }
 

@@ -40,8 +40,6 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.editMinFeet)
     EditText editMinFeet;
 
-    @BindView(R.id.editMaxInches)
-    EditText getEditMaxInches;
 
     @BindView(R.id.editMinInches)
     EditText editMinInches;

@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -66,6 +67,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     private int candidateId;
 
     private PhysicalDetailsViewModel physicalDetailsViewModel;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,6 +83,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         candidateId = getIntent().getIntExtra("candidateId", 0);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
         setData();
     }
@@ -99,26 +102,26 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     private PhysicalDetailsViewModel getData() {
         PhysicalDetailsViewModel physicalDetailsViewModel = new PhysicalDetailsViewModel();
         physicalDetailsViewModel.setCandidateId(candidateId);
-        if (editFeet.getText() != null){
+        if (editFeet.getText() != null) {
             physicalDetailsViewModel.setFeet(editFeet.getText().toString());
         }
-        if (editInches.getText() != null){
+        if (editInches.getText() != null) {
             physicalDetailsViewModel.setFeet(editInches.getText().toString());
         }
-        if (editWeight.getText() != null){
+        if (editWeight.getText() != null) {
             physicalDetailsViewModel.setFeet(editWeight.getText().toString());
         }
-        if (editComplexion.getText() != null){
+        if (editComplexion.getText() != null) {
             physicalDetailsViewModel.setFeet(editComplexion.getText().toString());
         }
-        if (editBodyForm.getText() != null){
+        if (editBodyForm.getText() != null) {
             physicalDetailsViewModel.setFeet(editBodyForm.getText().toString());
         }
-        if (editOtherRemark.getText() != null){
+        if (editOtherRemark.getText() != null) {
             physicalDetailsViewModel.setFeet(editOtherRemark.getText().toString());
         }
-        if (editFeet.getText() != null && editInches.getText()!=null){
-            physicalDetailsViewModel.setHeight(editFeet.getText().toString()+editInches.getText().toString());
+        if (editFeet.getText() != null && editInches.getText() != null) {
+            physicalDetailsViewModel.setHeight(editFeet.getText().toString() + editInches.getText().toString());
         }
         physicalDetailsViewModel.setSpects(spinnerSpectacle.getSelectedItem().toString());
         physicalDetailsViewModel.setDisability(spinnerDisability.getSelectedItem().toString());
@@ -137,7 +140,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -147,6 +150,13 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToEditEducationalDetails() {
+        Intent intent = new Intent(this, EditEducationDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 
 }

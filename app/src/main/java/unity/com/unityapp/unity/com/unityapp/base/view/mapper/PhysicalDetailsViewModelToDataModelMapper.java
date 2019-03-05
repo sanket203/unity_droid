@@ -13,6 +13,16 @@ public class PhysicalDetailsViewModelToDataModelMapper {
 
     public PhysicalDetailsDataModel mapToDataModel(PhysicalDetailsViewModel physicalDetailsViewModel) {
         PhysicalDetailsDataModel physicalDetailsDataModel = new PhysicalDetailsDataModel();
+        physicalDetailsDataModel.setCandidateId(physicalDetailsViewModel.getCandidateId());
+        physicalDetailsDataModel.setHeight(physicalDetailsViewModel.getHeight());
+        physicalDetailsDataModel.setWeight(physicalDetailsViewModel.getWeight());
+        physicalDetailsDataModel.setComplexion(physicalDetailsViewModel.getComplexion());
+        physicalDetailsDataModel.setBodyfom(physicalDetailsViewModel.getBodyform());
+        physicalDetailsDataModel.setSpects(physicalDetailsViewModel.getSpects());
+        physicalDetailsDataModel.setBloodGroup(physicalDetailsViewModel.getBloodGroup());
+        physicalDetailsDataModel.setMedicalSurgary(physicalDetailsViewModel.getMedicalSurgary());
+        physicalDetailsDataModel.setDisability(physicalDetailsViewModel.getDisability());
+        physicalDetailsDataModel.setOtherRemarks(physicalDetailsViewModel.getOtherRemarks());
         return physicalDetailsDataModel;
     }
 }

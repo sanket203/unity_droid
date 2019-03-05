@@ -27,7 +27,7 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
     }
 
 
-    public void save(PhysicalDetailsViewModel physicalDetailsViewModel) {
+    public void save(PhysicalDetailsViewModel physicalDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -37,7 +37,11 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
                 PhysicalDetailsViewModel viewModel = physicalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
-                    view.close();
+                    if (isFromRegistration) {
+                        view.navigateToEditEducationalDetails();
+                    } else {
+                        view.close();
+                    }
                 }
             } else {
                 if (view != null) {

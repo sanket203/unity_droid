@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -31,6 +32,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     private int candidateId;
 
     private HoroscopeDetailsViewModel horoscopeDetailsViewModel;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         candidateId = getIntent().getIntExtra("candidateId", 0);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         horoscopeDetailsViewModel = (HoroscopeDetailsViewModel) getIntent().getSerializableExtra("horoscopeDetailsViewModel");
         setData();
     }
@@ -68,7 +71,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -78,6 +81,13 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToEditDietDetails() {
+        Intent intent = new Intent(this, EditDietDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 }
 

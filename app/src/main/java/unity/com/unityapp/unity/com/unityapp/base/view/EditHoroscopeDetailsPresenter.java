@@ -26,7 +26,7 @@ public class EditHoroscopeDetailsPresenter extends BasePresenter<EditHoroscopeDe
         this.horoscopeDetailsViewModelToDataModelMapper = horoscopeDetailsViewModelToDataModelMapper;
     }
 
-    public void save(HoroscopeDetailsViewModel horoscopeDetailsViewModel) {
+    public void save(HoroscopeDetailsViewModel horoscopeDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -36,7 +36,11 @@ public class EditHoroscopeDetailsPresenter extends BasePresenter<EditHoroscopeDe
                 HoroscopeDetailsViewModel viewModel = horoscopeDetailsDataModelToViewModelMapper.mapToViewModel(horoscopeDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
-                    view.close();
+                    if (isFromRegistration) {
+                        view.navigateToEditDietDetails();
+                    } else {
+                        view.close();
+                    }
                 }
             } else {
                 if (view != null) {

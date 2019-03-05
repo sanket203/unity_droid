@@ -14,6 +14,20 @@ public class ExpectationDetailsRequestDataModelToEntityMapper {
     }
 
     public ExpectationsEntity mapToEntity(ExpectationsDataModel expectationsDataModel) {
-        return null;
+        ExpectationsEntity entity = new ExpectationsEntity();
+
+        entity.setCandidateId(expectationsDataModel.getCandidateId());
+        entity.setMinHeight(expectationsDataModel.getMinHeight());
+        entity.setMaxHeight(expectationsDataModel.getMaxHeight());
+        entity.setMinAge(expectationsDataModel.getMinAge());
+        entity.setMaxAge(expectationsDataModel.getMaxAge());
+        entity.setSubCaste(expectationsDataModel.getSubCaste());
+        entity.setDegree(expectationsDataModel.getDegree());
+        entity.setWorkingLocation(expectationsDataModel.getWorkingLocation());
+        entity.setParentsLocation(expectationsDataModel.getParentsLocation());
+        entity.setPackageLimit(expectationsDataModel.getPackageLimit());
+        entity.setPatrikaMatching(expectationsDataModel.getPatrikaMatching());
+        entity.setOther(expectationsDataModel.getOther());
+        return entity;
     }
 }

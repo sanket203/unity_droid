@@ -58,9 +58,9 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_text_rounded_rectangle"
                         android:hint="Feet"
+                        android:inputType="number"
                         android:minHeight="35dp"
                         android:padding="10dp"
-                        android:inputType="number"
                         android:textColorHint="#b6b6b6"
                         android:textSize="15sp" />
 
@@ -77,15 +77,16 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_text_rounded_rectangle"
                         android:hint="Inches"
+                        android:inputType="number"
                         android:minHeight="35dp"
                         android:padding="10dp"
-                        android:inputType="number"
                         android:textColorHint="#b6b6b6"
                         android:textSize="15sp" />
                 </LinearLayout>
 
 
             </LinearLayout>
+
             <EditText
                 android:id="@+id/editWeight"
                 android:layout_width="match_parent"
@@ -128,7 +129,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Body Form"
                 android:minHeight="35dp"
@@ -185,10 +185,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
+                android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
 
                 <Spinner
@@ -204,10 +204,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
+                android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
 
                 <Spinner
@@ -230,7 +230,6 @@
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Other Remark"
                 android:minHeight="35dp"
