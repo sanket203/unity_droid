@@ -14,6 +14,12 @@ public class DietDetailsRequestDataModelToEntityMapper {
     }
 
     public DietDetailsEntity mapToEntity(DietDetailsDataModel dietDetailsDataModel) {
-        return null;
+        DietDetailsEntity entity = new DietDetailsEntity();
+
+        entity.setCandidateId(dietDetailsDataModel.getCandidateId());
+        entity.setDietType(dietDetailsDataModel.getDietType());
+        entity.setDrink(dietDetailsDataModel.getDrink());
+        entity.setSmoke(dietDetailsDataModel.getSmoke());
+        return entity;
     }
 }

@@ -30,7 +30,7 @@ public class EditDietDetailsPresenter extends BasePresenter<EditDietDetailsView>
         this.dietDetailsViewModelToDataModelMapper = dietDetailsViewModelToDataModelMapper;
     }
 
-    public void save(DietDetailsViewModel dietDetailsViewModel) {
+    public void save(DietDetailsViewModel dietDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -40,6 +40,9 @@ public class EditDietDetailsPresenter extends BasePresenter<EditDietDetailsView>
                 DietDetailsViewModel viewModel = dietDetailsDataModelToViewModelMapper.mapToViewModel(DietDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
+                    if(isFromRegistration){
+                        view.navigateToExpectationDetails();
+                    }
                     view.close();
                 }
             } else {

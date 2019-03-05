@@ -55,22 +55,18 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabel();
             }
-
         };
 
         birthDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 new DatePickerDialog(RegistrationActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -81,7 +77,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-
         birthDate.setText(sdf.format(myCalendar.getTime()));
     }
 
@@ -89,6 +84,11 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     protected void onDestroy() {
         super.onDestroy();
         presenter.unbind();
+    }
+
+    @OnClick(R.id.btn_register)
+    public void onRegisterClicked(){
+       // presenter.register();
     }
 
     @OnClick(R.id.login_link)

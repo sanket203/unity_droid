@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -51,6 +52,7 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
     private int candidateId;
 
     private EducationalDetailsViewModel educationDetailsViewModel;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,14 +67,13 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
         actionbar.setTitle("Edit Educational Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
-        candidateId = getIntent().getIntExtra("candidateId", 0);
-        educationDetailsViewModel = (EducationalDetailsViewModel) getIntent().getSerializableExtra("educationDetailsViewModel");
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
+        educationDetailsViewModel = (EducationalDetailsViewModel) getIntent().getSerializableExtra("educationalDetailsViewModel");
         setData();
     }
 
     private void setData() {
-        if(educationDetailsViewModel!=null)
-        {
+        if (educationDetailsViewModel != null) {
             editDegree.setText(educationDetailsViewModel.getDegree());
             editPassingYear.setText(educationDetailsViewModel.getPassYear());
             editCollege.setText(educationDetailsViewModel.getCollege());
@@ -85,29 +86,23 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     private EducationalDetailsViewModel getData() {
         EducationalDetailsViewModel educationDetailsViewModel = new EducationalDetailsViewModel();
-        educationDetailsViewModel.setCandidateId(candidateId);
-        if(editDegree.getText()!=null)
-        {
+        educationDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
+        if (editDegree.getText() != null) {
             educationDetailsViewModel.setDegree(editDegree.getText().toString());
         }
-        if(editPassingYear.getText()!=null)
-        {
+        if (editPassingYear.getText() != null) {
             educationDetailsViewModel.setDegree(editPassingYear.getText().toString());
         }
-        if(editCollege.getText()!=null)
-        {
+        if (editCollege.getText() != null) {
             educationDetailsViewModel.setDegree(editCollege.getText().toString());
         }
-        if(editUniversity.getText()!=null)
-        {
+        if (editUniversity.getText() != null) {
             educationDetailsViewModel.setDegree(editUniversity.getText().toString());
         }
-        if(editStream.getText()!=null)
-        {
+        if (editStream.getText() != null) {
             educationDetailsViewModel.setDegree(editStream.getText().toString());
         }
-        if(editRemark.getText()!=null)
-        {
+        if (editRemark.getText() != null) {
             educationDetailsViewModel.setDegree(editRemark.getText().toString());
         }
         return educationDetailsViewModel;
@@ -122,7 +117,7 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -132,6 +127,13 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToEditServiceDetails() {
+        Intent intent = new Intent(this, EditServiceDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 }
 

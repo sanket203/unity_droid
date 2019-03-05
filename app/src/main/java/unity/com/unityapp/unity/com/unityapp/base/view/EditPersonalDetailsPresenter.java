@@ -27,7 +27,7 @@ public class EditPersonalDetailsPresenter extends BasePresenter<EditPersonalDeta
         this.personalDetailsViewModelToDataModelMapper = personalDetailsViewModelToDataModelMapper;
     }
 
-    public void save(PersonalDetailsViewModel personalDetailsViewModel) {
+    public void save(PersonalDetailsViewModel personalDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -37,6 +37,9 @@ public class EditPersonalDetailsPresenter extends BasePresenter<EditPersonalDeta
                 PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
+                    if(isFromRegistration){
+                        view.navigateToEditPhysicalDetailsActivity();
+                    }
                     view.close();
                 }
             } else {

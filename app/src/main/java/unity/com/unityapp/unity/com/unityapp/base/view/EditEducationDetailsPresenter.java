@@ -26,7 +26,7 @@ public class EditEducationDetailsPresenter extends BasePresenter<EditEducationDe
         this.educationDetailsViewModelToDataModelMapper = educationDetailsViewModelToDataModelMapper;
     }
 
-    public void save(EducationalDetailsViewModel educationDetailsViewModel) {
+    public void save(EducationalDetailsViewModel educationDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -36,7 +36,11 @@ public class EditEducationDetailsPresenter extends BasePresenter<EditEducationDe
                 EducationalDetailsViewModel viewModel = educationDetailsDataModelToViewModelMapper.mapToViewModel(educationDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
-                    view.close();
+                    if (isFromRegistration) {
+                        view.navigateToEditServiceDetails();
+                    } else {
+                        view.close();
+                    }
                 }
             } else {
                 if (view != null) {

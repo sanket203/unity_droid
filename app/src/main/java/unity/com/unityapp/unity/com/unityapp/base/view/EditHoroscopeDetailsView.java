@@ -4,4 +4,6 @@ import unity.com.unityapp.unity.com.unityapp.base.BaseView;
 
 public interface EditHoroscopeDetailsView extends BaseView {
     void showProgress(boolean showProgress);
+
+    void navigateToEditDietDetails();
 }

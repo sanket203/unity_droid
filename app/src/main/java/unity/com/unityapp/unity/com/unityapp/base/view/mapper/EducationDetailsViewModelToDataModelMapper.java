@@ -12,6 +12,14 @@ public class EducationDetailsViewModelToDataModelMapper {
     }
 
     public EducationalDetailsDataModel mapToDataModel(EducationalDetailsViewModel educationDetailsViewModel) {
-        return null;
+        EducationalDetailsDataModel dataModel = new EducationalDetailsDataModel();
+
+        dataModel.setCandidateId(educationDetailsViewModel.getCandidateId());
+        dataModel.setCollege(educationDetailsViewModel.getCollege());
+        dataModel.setDegree(educationDetailsViewModel.getDegree());
+        dataModel.setPassYear(educationDetailsViewModel.getPassYear());
+        dataModel.setStream(educationDetailsViewModel.getStream());
+        dataModel.setUniversity(educationDetailsViewModel.getUniversity());
+        return dataModel;
     }
 }

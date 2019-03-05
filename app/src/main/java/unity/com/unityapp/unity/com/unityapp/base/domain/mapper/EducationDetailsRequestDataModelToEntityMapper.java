@@ -14,6 +14,14 @@ public class EducationDetailsRequestDataModelToEntityMapper {
     }
 
     public EducationDetailsEntity mapToEntity(EducationalDetailsDataModel educationalDetailsDataModel) {
-        return null;
+        EducationDetailsEntity entity = new EducationDetailsEntity();
+
+        entity.setCandidateId(educationalDetailsDataModel.getCandidateId());
+        entity.setCollege(educationalDetailsDataModel.getCollege());
+        entity.setDegree(educationalDetailsDataModel.getDegree());
+        entity.setPassYear(educationalDetailsDataModel.getPassYear());
+        entity.setStream(educationalDetailsDataModel.getStream());
+        entity.setUniversity(educationalDetailsDataModel.getUniversity());
+        return entity;
     }
 }

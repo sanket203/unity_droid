@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -62,6 +63,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     private int candidateId;
 
     private ServiceDetailsViewModel serviceDetailsViewModel;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +82,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         editWorkingCity.setAdapter(adapter);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         serviceDetailsViewModel = (ServiceDetailsViewModel) getIntent().getSerializableExtra("serviceDetailsViewModel");
         setData();
     }
@@ -141,7 +144,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -151,6 +154,13 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToEditHoroscopeDetails() {
+        Intent intent = new Intent(this, EditHoroscopeDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 
     private static final String[] COUNTRIES = new String[]{

@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -16,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.DietDetailsViewModel;
 
@@ -43,6 +45,8 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     private DietDetailsViewModel dietDetailsViewModel;
 
+    private boolean isFromRegistration;
+
     private void setData() {
         if (dietDetailsViewModel != null) {
             //  editDietType.setText(dietDetailsViewModel.getDietType());
@@ -56,6 +60,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     private DietDetailsViewModel getData() {
         DietDetailsViewModel dietDetailsViewModel = new DietDetailsViewModel();
+        dietDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editDietType.getSelectedItem() != null)
             dietDetailsViewModel.setDietType(editDietType.getSelectedItem().toString());
         if (editDrink.getSelectedItem() != null)
@@ -75,10 +80,10 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.ic_back);
-        actionbar.setTitle("Edit Personal Details");
+        actionbar.setTitle("Edit Diet Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
-        candidateId = getIntent().getIntExtra("candidateId", 0);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         dietDetailsViewModel = (DietDetailsViewModel) getIntent().getSerializableExtra("dietDetailsViewModel");
         setData();
     }
@@ -92,7 +97,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData());
+        presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -102,6 +107,13 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void navigateToExpectationDetails() {
+        Intent intent = new Intent(this, EditExpectationDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 }
 

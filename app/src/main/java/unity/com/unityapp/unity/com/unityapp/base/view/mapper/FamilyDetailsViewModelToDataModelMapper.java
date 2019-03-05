@@ -12,6 +12,16 @@ public class FamilyDetailsViewModelToDataModelMapper {
     }
 
     public FamilyDetailsDataModel mapToDataModel(FamilyDetailsViewModel familyDetailsViewModel) {
-        return null;
+        FamilyDetailsDataModel dataModel = new FamilyDetailsDataModel();
+        dataModel.setCandidateId(familyDetailsViewModel.getCandidateId());
+        dataModel.setFather(familyDetailsViewModel.getFather());
+        dataModel.setFatherDescription(familyDetailsViewModel.getFatherDescription());
+        dataModel.setMother(familyDetailsViewModel.getMother());
+        dataModel.setMotherDescription(familyDetailsViewModel.getMotherDescription());
+        dataModel.setBrothers(familyDetailsViewModel.getBrothers());
+        dataModel.setBrotherDescription(familyDetailsViewModel.getBrotherDescription());
+        dataModel.setSisters(familyDetailsViewModel.getSisters());
+        dataModel.setSisterDescription(familyDetailsViewModel.getSisterDescription());
+        return dataModel;
     }
 }

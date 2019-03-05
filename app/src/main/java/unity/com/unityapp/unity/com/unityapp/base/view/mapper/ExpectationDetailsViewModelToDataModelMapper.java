@@ -12,6 +12,20 @@ public class ExpectationDetailsViewModelToDataModelMapper {
     }
 
     public ExpectationsDataModel mapToDataModel(ExpectationsViewModel expectationDetailsViewModel) {
-        return null;
+        ExpectationsDataModel dataModel = new ExpectationsDataModel();
+
+        dataModel.setCandidateId(expectationDetailsViewModel.getCandidateId());
+        dataModel.setMinHeight(expectationDetailsViewModel.getMinHeight());
+        dataModel.setMaxHeight(expectationDetailsViewModel.getMaxHeight());
+        dataModel.setMinAge(expectationDetailsViewModel.getMinAge());
+        dataModel.setMaxAge(expectationDetailsViewModel.getMaxAge());
+        dataModel.setSubCaste(expectationDetailsViewModel.getSubCaste());
+        dataModel.setDegree(expectationDetailsViewModel.getDegree());
+        dataModel.setWorkingLocation(expectationDetailsViewModel.getWorkingLocation());
+        dataModel.setParentsLocation(expectationDetailsViewModel.getParentsLocation());
+        dataModel.setPackageLimit(expectationDetailsViewModel.getPackageLimit());
+        dataModel.setPatrikaMatching(expectationDetailsViewModel.getPatrikaMatching());
+        dataModel.setOther(expectationDetailsViewModel.getOther());
+        return dataModel;
     }
 }

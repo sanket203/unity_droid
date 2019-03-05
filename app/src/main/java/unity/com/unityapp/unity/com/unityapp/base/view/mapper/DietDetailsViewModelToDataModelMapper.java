@@ -12,6 +12,12 @@ public class DietDetailsViewModelToDataModelMapper {
     }
 
     public DietDetailsDataModel mapToDataModel(DietDetailsViewModel dietDetailsViewModel) {
-        return null;
+        DietDetailsDataModel dataModel = new DietDetailsDataModel();
+
+        dataModel.setCandidateId(dietDetailsViewModel.getCandidateId());
+        dataModel.setDietType(dietDetailsViewModel.getDietType());
+        dataModel.setDrink(dietDetailsViewModel.getDrink());
+        dataModel.setSmoke(dietDetailsViewModel.getSmoke());
+        return dataModel;
     }
 }

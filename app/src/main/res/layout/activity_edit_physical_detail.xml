@@ -87,7 +87,6 @@
 
 
             </LinearLayout>
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -173,7 +172,6 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Body Form"
                 android:minHeight="35dp"
@@ -229,9 +227,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
+		android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
 
@@ -248,9 +246,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
+		 android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="52dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
 
@@ -274,7 +272,6 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
-                android:editable="false"
                 android:focusableInTouchMode="false"
                 android:hint="Other Remark"
                 android:minHeight="35dp"

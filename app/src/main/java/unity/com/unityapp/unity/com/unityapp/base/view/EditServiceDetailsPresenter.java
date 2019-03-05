@@ -26,7 +26,7 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
         this.serviceDetailsViewModelToDataModelMapper = serviceDetailsViewModelToDataModelMapper;
     }
 
-    public void save(ServiceDetailsViewModel serviceDetailsViewModel) {
+    public void save(ServiceDetailsViewModel serviceDetailsViewModel, boolean isFromRegistration) {
         if (view != null) {
             view.showProgress(true);
         }
@@ -36,7 +36,11 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
                 ServiceDetailsViewModel viewModel = serviceDetailsDataModelToViewModelMapper.mapToViewModel(serviceDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
-                    view.close();
+                    if (isFromRegistration) {
+                        view.navigateToEditHoroscopeDetails();
+                    } else {
+                        view.close();
+                    }
                 }
             } else {
                 if (view != null) {
