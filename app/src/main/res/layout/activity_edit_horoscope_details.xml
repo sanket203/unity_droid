@@ -107,7 +107,7 @@
                     android:id="@+id/spinnerUpshakha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/shakha_spinner"
+                    android:entries="@array/upshakha_spinner"
                     android:padding="10dp"
                     android:prompt="@string/shakha_prompt" />
 
@@ -237,7 +237,7 @@
                     android:id="@+id/spinnerSpectacle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:entries="@array/yes_no_spinner"
+                    android:entries="@array/spectacle_spinner"
                     android:padding="10dp"
                     android:prompt="@string/mangalik" />
 

@@ -38,6 +38,18 @@
         <item>No</item>
     </string-array>
 
+   <string-array name="spinner_smoke">
+        <item>Smoke</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+   <string-array name="spinner_drink">
+        <item>Drink(Alcoholic)</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
    <string-array name="disability_spinner">
         <item>Disability</item>
         <item>Yes</item>
@@ -69,6 +81,7 @@
 
     <string-array name="inches_spinner">
         <item>Inches</item>
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -84,48 +97,74 @@
     </string-array>
 
     <string-array name="diet_type_spinner">
+        <item>Diet Type</item>
         <item>Veg</item>
         <item>Non-Veg</item>
     </string-array>
 
 
     <string-array name="caste_spinner">
+        <item>Select Caste</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>
 
 
     <string-array name="subcaste_spinner">
+        <item>Select Subcaste</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>
 
 
     <string-array name="shakha_spinner">
+        <item>Select Shakha</item>
+        <item>Deshsta</item>
+        <item>Deshasta Rugvedi</item>
+    </string-array>
+
+
+    <string-array name="upshakha_spinner">
+        <item>Select Upshakha</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>
 
 
     <string-array name="gotra_spinner">
+        <item>Select Gotra</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>
 
 
     <string-array name="rashi_spinner">
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
+        <item>Select Rashi</item>
+        <item>Aries</item>
+        <item>Taurus</item>
+        <item>Gemini</item>
+        <item>Gemini</item>
+        <item>Cancer</item>
+        <item>Leo</item>
+        <item>Virgo</item>
+        <item>Libra</item>
+        <item>Scorpio</item>
+        <item>Sagittarius</item>
+        <item>Capricon</item>
+        <item>Aquirius</item>
+        <item>Pisces</item>
     </string-array>
 
 
     <string-array name="gana_spinner">
+        <item>Select Gana</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>
 
 
     <string-array name="nakshatra_spinner">
+        <item>Select Nakshatra</item>
         <item>Deshsta</item>
         <item>Deshasta Rugvedi</item>
     </string-array>

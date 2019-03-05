@@ -61,7 +61,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
-                android:entries="@array/yes_no_spinner"
+                android:entries="@array/spinner_drink"
 
                 android:minHeight="35dp"
                 android:padding="10dp"
@@ -77,7 +77,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
-                android:entries="@array/yes_no_spinner"
+                android:entries="@array/spinner_smoke"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
