@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -63,9 +67,14 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @BindView(R.id.editOtherRemark)
     EditText editOtherRemark;
 
+    @BindView(R.id.spinnerFeet)
+    Spinner spinnerFeet;
+
     private int candidateId;
 
     private PhysicalDetailsViewModel physicalDetailsViewModel;
+    String feet="5";
+    int pos;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +91,13 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
+
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.feet_spinner));
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spinnerFeet.setAdapter(aa);
+
+        spinnerFeet.setSelection(pos);
         setData();
     }
 
@@ -93,6 +109,13 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             editComplexion.setText(physicalDetailsViewModel.getComplexion());
             editBodyForm.setText(physicalDetailsViewModel.getBodyform());
             editOtherRemark.setText(physicalDetailsViewModel.getOtherRemarks());
+            for(int i = 0;i<getResources().getStringArray(R.array.feet_spinner).length;i++)
+            {
+                if(getResources().getStringArray(R.array.feet_spinner)[i].equals(feet))
+                {
+                    pos = i;
+                }
+            }
         }
     }
 
