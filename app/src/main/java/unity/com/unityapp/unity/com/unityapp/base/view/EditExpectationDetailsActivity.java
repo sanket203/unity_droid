@@ -65,7 +65,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     private int candidateId;
     int pos;
     private ExpectationsViewModel expectationDetailsViewModel;
-    String minFeet,minInches,maxFeet,maxInches;
+    String minFeet, minInches, maxFeet, maxInches;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,8 +96,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             editEducation.setText(expectationDetailsViewModel.getDegree());
             editWorkingLocation.setText(expectationDetailsViewModel.getWorkingLocation());
             editOtherExp.setText(expectationDetailsViewModel.getOther());
+            setSpinnerValue();
         }
-        setSpinnerValue();
+
     }
 
     private ExpectationsViewModel getData() {
@@ -163,33 +164,30 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
         String minHeight = expectationDetailsViewModel.getMinHeight();
         String[] parts = minHeight.split("'");
-        minFeet = parts[0]; // 004
+        minFeet = parts[0];
         String inches_ = parts[1];
         String[] parts_ = inches_.split("''");
         minInches = parts_[0];
 
-         String maxHeight = expectationDetailsViewModel.getMaxHeight();
-       /* String[] parts = minHeight.split("'");
-        maxFeet = parts[0]; // 004
-        String inches_ = parts[1];
-        String[] parts_ = inches_.split("''");
-        maxInches = parts_[0];*/
+        String maxHeight = expectationDetailsViewModel.getMaxHeight();
+        String[] partsMax = minHeight.split("'");
+        maxFeet = partsMax[0];
+        String inchesMax_ = partsMax[1];
+        String[] partsMax_ = inchesMax_.split("''");
+        maxInches = partsMax_[0];
 
-        if(maxHeight.equals(""))
-        {
+        if (maxHeight.equals("")) {
             spinnerMaxFeet.setSelection(0);
             spinnerMaxInches.setSelection(0);
         }
-        if(minHeight.equals(""))
-        {
+        if (minHeight.equals("")) {
             spinnerMinFeet.setSelection(0);
             spinnerMinInches.setSelection(0);
         }
-     
+
 
         for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.feet_spinner)[i].equals("5")) {
+            if (getResources().getStringArray(R.array.feet_spinner)[i].equals(maxFeet)) {
                 pos = i;
 
             }
@@ -197,7 +195,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         spinnerMaxFeet.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
             //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.feet_spinner)[i].equals("6")) {
+            if (getResources().getStringArray(R.array.feet_spinner)[i].equals(minFeet)) {
                 pos = i;
 
             }
@@ -205,7 +203,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         spinnerMinFeet.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
             //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.inches_spinner)[i].equals("11")) {
+            if (getResources().getStringArray(R.array.inches_spinner)[i].equals(minInches)) {
                 pos = i;
 
             }
@@ -213,7 +211,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         spinnerMinInches.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
             //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.inches_spinner)[i].equals("10")) {
+            if (getResources().getStringArray(R.array.inches_spinner)[i].equals(maxInches)) {
                 pos = i;
 
             }
