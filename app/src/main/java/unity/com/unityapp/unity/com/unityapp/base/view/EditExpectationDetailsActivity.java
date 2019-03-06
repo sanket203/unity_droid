@@ -65,6 +65,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     private int candidateId;
     int pos;
     private ExpectationsViewModel expectationDetailsViewModel;
+    String minFeet,minInches,maxFeet,maxInches;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -158,6 +159,34 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     };
 
     public void setSpinnerValue() {
+
+
+        String minHeight = expectationDetailsViewModel.getMinHeight();
+        String[] parts = minHeight.split("'");
+        minFeet = parts[0]; // 004
+        String inches_ = parts[1];
+        String[] parts_ = inches_.split("''");
+        minInches = parts_[0];
+
+         String maxHeight = expectationDetailsViewModel.getMaxHeight();
+       /* String[] parts = minHeight.split("'");
+        maxFeet = parts[0]; // 004
+        String inches_ = parts[1];
+        String[] parts_ = inches_.split("''");
+        maxInches = parts_[0];*/
+
+        if(maxHeight.equals(""))
+        {
+            spinnerMaxFeet.setSelection(0);
+            spinnerMaxInches.setSelection(0);
+        }
+        if(minHeight.equals(""))
+        {
+            spinnerMinFeet.setSelection(0);
+            spinnerMinInches.setSelection(0);
+        }
+     
+
         for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
             //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
             if (getResources().getStringArray(R.array.feet_spinner)[i].equals("5")) {

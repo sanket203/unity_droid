@@ -83,7 +83,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.ic_back);
-        actionbar.setTitle("Edit Personal Details");
+        actionbar.setTitle("Edit Horoscope Details");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         candidateId = getIntent().getIntExtra("candidateId", 0);
@@ -98,8 +98,9 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
             editCharan.setText(horoscopeDetailsViewModel.getCharan());
             editNaadi.setText(horoscopeDetailsViewModel.getNaadi());
             editRemark.setText(horoscopeDetailsViewModel.getRemarks());
+            setSpinnerValue();
         }
-        setSpinnerValue();
+
     }
 
     private HoroscopeDetailsViewModel getData() {
@@ -173,16 +174,21 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     public void setSpinnerValue() {
         for (int i = 0; i < getResources().getStringArray(R.array.caste_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.caste_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getCaste().equals(""))
+            {
+                pos=0;
+            }
+            else if (getResources().getStringArray(R.array.caste_spinner)[i].equals(horoscopeDetailsViewModel.getCaste())) {
                 pos = i;
-
             }
         }
         spinnerCaste.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.subcaste_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getSubCaste().equals(""))
+            {
+                pos=0;
+            }
+            else if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals(horoscopeDetailsViewModel.getSubCaste())) {
                 pos = i;
 
             }
@@ -190,8 +196,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerSubcaste.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.shakha_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.shakha_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getShakha().equals(""))
+            {
+                pos=0;
+            }
+            if (getResources().getStringArray(R.array.shakha_spinner)[i].equals(horoscopeDetailsViewModel.getShakha())) {
                 pos = i;
 
             }
@@ -199,8 +208,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerShakha.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.upshakha_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.upshakha_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getUpshakha().equals(""))
+            {
+                pos=0;
+            }
+            else if (getResources().getStringArray(R.array.upshakha_spinner)[i].equals(horoscopeDetailsViewModel.getUpshakha())) {
                 pos = i;
 
             }
@@ -208,8 +220,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerUpshakha.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.gotra_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.gotra_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getGotra().equals(""))
+            {
+                pos=0;
+            }
+            if (getResources().getStringArray(R.array.gotra_spinner)[i].equals(horoscopeDetailsViewModel.getGotra())) {
                 pos = i;
 
             }
@@ -217,8 +232,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerGotra.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.gana_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.gana_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getGana().equals(""))
+            {
+                pos=0;
+            }
+            if (getResources().getStringArray(R.array.gana_spinner)[i].equals(horoscopeDetailsViewModel.getGana())) {
                 pos = i;
 
             }
@@ -226,8 +244,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerGana.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.nakshatra_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.nakshatra_spinner)[i].equals("Deshsta")) {
+            if(horoscopeDetailsViewModel.getNakshatra().equals(""))
+            {
+                pos=0;
+            }
+            if (getResources().getStringArray(R.array.nakshatra_spinner)[i].equals(horoscopeDetailsViewModel.getNakshatra())) {
                 pos = i;
 
             }
@@ -235,8 +256,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerNakshatra.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.rashi_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if (getResources().getStringArray(R.array.rashi_spinner)[i].equals("Leo")) {
+            if(horoscopeDetailsViewModel.getRashi().equals(""))
+            {
+                pos=0;
+            }
+            else if (getResources().getStringArray(R.array.rashi_spinner)[i].equals(horoscopeDetailsViewModel.getRashi())) {
                 pos = i;
 
             }
@@ -244,7 +268,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerRashi.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.spectacle_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
+
             if (getResources().getStringArray(R.array.spectacle_spinner)[i].equals("Yes")) {
                 pos = i;
 

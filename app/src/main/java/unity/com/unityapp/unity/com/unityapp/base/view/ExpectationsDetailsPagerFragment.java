@@ -152,4 +152,6 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
             progressBar.setVisibility(View.GONE);
         }
     }
+
+
 }
