@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -72,10 +73,10 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     private int candidateId;
 
     private PhysicalDetailsViewModel physicalDetailsViewModel;
-    String feet="5";
-    String inch="11";
+   // String feet="5";
+  //  String inch="11";
     int pos;
-    int pos_;
+    String feet = "",inches="";
     private boolean isFromRegistration;
 
     @Override
@@ -95,7 +96,6 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
         setData();
-        setSpinnerValue();
     }
 
     private void setData() {
@@ -105,6 +105,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             editComplexion.setText(physicalDetailsViewModel.getComplexion());
             editBodyForm.setText(physicalDetailsViewModel.getBodyform());
             editOtherRemark.setText(physicalDetailsViewModel.getOtherRemarks());
+            setSpinnerValue();
         }
     }
 
@@ -164,10 +165,23 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     public void setSpinnerValue()
     {
+
+        String height = physicalDetailsViewModel.getHeight();
+        String[] parts = height.split("'");
+        feet = parts[0]; // 004
+        String inches_ = parts[1];
+        String[] parts_ = inches_.split("''");
+        inches = parts_[0];
+
+        if(height.equals(""))
+        {
+            spinnerFeet.setSelection(0);
+            spinnerInches.setSelection(0);
+        }
         for(int i = 0;i<getResources().getStringArray(R.array.feet_spinner).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if(getResources().getStringArray(R.array.feet_spinner)[i].equals("5"))
+
+            if(getResources().getStringArray(R.array.feet_spinner)[i].equals(feet))
             {
                 pos = i;
 
@@ -177,8 +191,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
         for(int i = 0;i<getResources().getStringArray(R.array.inches_spinner).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if(getResources().getStringArray(R.array.inches_spinner)[i].equals("11"))
+            if(getResources().getStringArray(R.array.inches_spinner)[i].equals(inches))
             {
                 pos = i;
 
@@ -188,10 +201,14 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
         for(int i = 0;i<getResources().getStringArray(R.array.spectacle_spinner).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if(getResources().getStringArray(R.array.spectacle_spinner)[i].equals("No"))
+            if(physicalDetailsViewModel.getSpects().equals(""))
+            {
+                pos = 0;
+            }
+            else if(getResources().getStringArray(R.array.spectacle_spinner)[i].equals(physicalDetailsViewModel.getSpects()))
             {
                 pos = i;
+
 
             }
         }
@@ -199,8 +216,11 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
         for(int i = 0;i<getResources().getStringArray(R.array.blood_group).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if(getResources().getStringArray(R.array.blood_group)[i].equals("O(+ve)"))
+            if(physicalDetailsViewModel.getBloodGroup().equals(""))
+            {
+                pos = 0;
+            }
+            else if(getResources().getStringArray(R.array.blood_group)[i].equals(physicalDetailsViewModel.getBloodGroup()))
             {
                 pos = i;
 
@@ -210,8 +230,11 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
         for(int i = 0;i<getResources().getStringArray(R.array.medical_surgery_spinner).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if(getResources().getStringArray(R.array.medical_surgery_spinner)[i].equals("No"))
+            if(physicalDetailsViewModel.getMedicalSurgary().equals(""))
+            {
+                pos = 0;
+            }
+            else if(getResources().getStringArray(R.array.medical_surgery_spinner)[i].equals(physicalDetailsViewModel.getMedicalSurgary()))
             {
                 pos = i;
 
@@ -221,8 +244,11 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
         for(int i = 0;i<getResources().getStringArray(R.array.disability_spinner).length;i++)
         {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getInches()))
-            if(getResources().getStringArray(R.array.disability_spinner)[i].equals("No"))
+            if(physicalDetailsViewModel.getDisability().equals(""))
+            {
+                pos = 0;
+            }
+            else if(getResources().getStringArray(R.array.disability_spinner)[i].equals(physicalDetailsViewModel.getDisability()))
             {
                 pos = i;
 

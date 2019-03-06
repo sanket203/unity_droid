@@ -1,14 +1,22 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -60,6 +68,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     private PersonalDetailsViewModel personalDetailsViewModel;
     private boolean isFromRegistration;
+    final Calendar myCalendar = Calendar.getInstance();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +86,56 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         personalDetailsViewModel = (PersonalDetailsViewModel) getIntent().getSerializableExtra("personalDetailsViewModel");
         setData();
+
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+
+        birthDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(EditPersonalDetailsActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        birthTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timepicker();
+            }
+        });
+    }
+
+    private void updateLabel() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        birthDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private void timepicker()
+    {
+        Calendar mcurrentTime = Calendar.getInstance();
+        int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(EditPersonalDetailsActivity.this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                birthTime.setText( selectedHour + ":" + selectedMinute);
+            }
+        }, hour, minute, true);//Yes 24 hour time
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
     }
 
     private void setData() {

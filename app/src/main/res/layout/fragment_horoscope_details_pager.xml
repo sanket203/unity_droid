@@ -10,342 +10,350 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone" />
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
-                android:padding="15dp"
-                android:text="Horoscope Details"
-                android:textColor="#242926"
-                android:textSize="22sp" />
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/btn_edit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|right"
-                android:layout_weight="0.1"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:drawableLeft="@drawable/ic_edit"
-                android:textColor="@color/colorAccent" />
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:padding="15dp"
+                        android:text="Horoscope Details"
+                        android:textColor="#242926"
+                        android:textSize="22sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Cast :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/btn_edit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="0.2"
+                        android:drawableLeft="@drawable/ic_edit"
+                        android:gravity="center"
+                        android:text="EDIT"
+                        android:textColor="@color/colorAccent" />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_cast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Brahmin"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Subcast :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_subcast"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Deshastha"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Shakha :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_shakha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Yajurvedi"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Upashakha :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_upshakha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Kanva"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Gotra :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_gotra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Bharadwaj"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Rashi :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_rashi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Aries (Mesh)"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Gana :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_gana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Manushya"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Nakshatra :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_nakshatra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Ashwini"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Naadi :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_nadi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Adya"
-                android:textColor="#242926"
-                android:textSize="14sp" />
-
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Cast :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_cast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Brahmin"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Charan :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_charan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="First"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Subcast :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_subcast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Deshastha"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Mangal :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_mangal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="No"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Shakha :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tv_shakha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Yajurvedi"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Remarks :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_remarks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="No mangal"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Upashakha :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
+                    <TextView
+                        android:id="@+id/tv_upshakha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Kanva"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Gotra :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_gotra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Bharadwaj"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Rashi :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_rashi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Aries (Mesh)"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Gana :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_gana"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Manushya"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Nakshatra :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_nakshatra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Ashwini"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Naadi :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_nadi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="Adya"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Charan :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_charan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="First"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Mangal :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_mangal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="No"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="Remarks :"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_remarks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:text="No mangal"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

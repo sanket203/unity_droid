@@ -54,9 +54,9 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
                 editDrink.setSelection(0);
             if (dietDetailsViewModel.getDrink().equalsIgnoreCase("Yes"))
                 editSmoke.setSelection(0);*/
-
+            setSpinnerValue();
         }
-        setSpinnerValue();
+
     }
 
     private DietDetailsViewModel getData() {
@@ -117,33 +117,32 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         startActivity(intent);
     }
 
-    public void setSpinnerValue()
-    {
-        for(int i = 0;i<getResources().getStringArray(R.array.diet_type_spinner).length;i++)
-        {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if(getResources().getStringArray(R.array.diet_type_spinner)[i].equals("Veg"))
-            {
+    public void setSpinnerValue() {
+        for (int i = 0; i < getResources().getStringArray(R.array.diet_type_spinner).length; i++) {
+            if (dietDetailsViewModel.getDietType().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.diet_type_spinner)[i].equals(dietDetailsViewModel.getDietType())) {
                 pos = i;
 
             }
         }
         editDietType.setSelection(pos);
-        for(int i = 0;i<getResources().getStringArray(R.array.spinner_drink).length;i++)
-        {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if(getResources().getStringArray(R.array.spinner_drink)[i].equals("No"))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.spinner_drink).length; i++) {
+            if (dietDetailsViewModel.getDrink().equals("")) {
+                pos = 0;
+            }
+            else if (getResources().getStringArray(R.array.spinner_drink)[i].equals(dietDetailsViewModel.getDrink())) {
                 pos = i;
 
             }
         }
         editDrink.setSelection(pos);
-        for(int i = 0;i<getResources().getStringArray(R.array.spinner_smoke).length;i++)
-        {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if(getResources().getStringArray(R.array.spinner_smoke)[i].equals("No"))
+        for (int i = 0; i < getResources().getStringArray(R.array.spinner_smoke).length; i++) {
+            if (dietDetailsViewModel.getSmoke().equals(""))
             {
+                pos = 0;
+            }
+            else if (getResources().getStringArray(R.array.spinner_smoke)[i].equals(dietDetailsViewModel.getSmoke())) {
                 pos = i;
 
             }

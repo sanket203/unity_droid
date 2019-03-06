@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="match_parent"
@@ -19,13 +21,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
+                android:layout_weight="0.8"
                 android:padding="15dp"
                 android:text="Diet Details"
                 android:textColor="#242926"
@@ -36,9 +42,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
+                android:text="EDIT"
                 android:drawableLeft="@drawable/ic_edit"
                 android:textColor="@color/colorAccent" />
         </LinearLayout>
@@ -120,5 +127,7 @@
 
         </LinearLayout>
 
+        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

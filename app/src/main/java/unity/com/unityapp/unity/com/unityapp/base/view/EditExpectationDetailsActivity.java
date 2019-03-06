@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import javax.inject.Inject;
 
@@ -31,18 +32,6 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
-    @BindView(R.id.editMaxFeet)
-    EditText editMaxFeet;
-
-    @BindView(R.id.editMaxInches)
-    EditText editMaxInches;
-
-    @BindView(R.id.editMinFeet)
-    EditText editMinFeet;
-
-    @BindView(R.id.editMinInches)
-    EditText editMinInches;
-
     @BindView(R.id.editMinAge)
     EditText editMinAge;
 
@@ -61,8 +50,20 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.editOtherExp)
     EditText editOtherExp;
 
-    private int candidateId;
+    @BindView(R.id.spinnerMinFeet)
+    Spinner spinnerMinFeet;
 
+    @BindView(R.id.spinnerMaxFeet)
+    Spinner spinnerMaxFeet;
+
+    @BindView(R.id.spinnerMinInches)
+    Spinner spinnerMinInches;
+
+    @BindView(R.id.spinnerMaxInches)
+    Spinner spinnerMaxInches;
+
+    private int candidateId;
+    int pos;
     private ExpectationsViewModel expectationDetailsViewModel;
 
     @Override
@@ -95,6 +96,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             editWorkingLocation.setText(expectationDetailsViewModel.getWorkingLocation());
             editOtherExp.setText(expectationDetailsViewModel.getOther());
         }
+        setSpinnerValue();
     }
 
     private ExpectationsViewModel getData() {
@@ -114,6 +116,18 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         }
         if (editOtherExp.getText() != null) {
             expectationDetailsViewModel.setOther(editOtherExp.getText().toString());
+        }
+        if (spinnerMaxFeet.getSelectedItem() != null) {
+            expectationDetailsViewModel.setMaxFeet(spinnerMaxFeet.getSelectedItem().toString());
+        }
+        if (spinnerMinFeet.getSelectedItem() != null) {
+            expectationDetailsViewModel.setMinFeet(spinnerMinFeet.getSelectedItem().toString());
+        }
+        if (spinnerMinInches.getSelectedItem() != null) {
+            expectationDetailsViewModel.setMinInch(spinnerMinInches.getSelectedItem().toString());
+        }
+        if (spinnerMaxInches.getSelectedItem() != null) {
+            expectationDetailsViewModel.setMaxInch(spinnerMaxInches.getSelectedItem().toString());
         }
         return expectationDetailsViewModel;
     }
@@ -142,5 +156,40 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     private static final String[] COUNTRIES = new String[]{
             "Belgium", "France", "Italy", "Germany", "Spain"
     };
+
+    public void setSpinnerValue() {
+        for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
+            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
+            if (getResources().getStringArray(R.array.feet_spinner)[i].equals("5")) {
+                pos = i;
+
+            }
+        }
+        spinnerMaxFeet.setSelection(pos);
+        for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
+            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
+            if (getResources().getStringArray(R.array.feet_spinner)[i].equals("6")) {
+                pos = i;
+
+            }
+        }
+        spinnerMinFeet.setSelection(pos);
+        for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
+            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
+            if (getResources().getStringArray(R.array.inches_spinner)[i].equals("11")) {
+                pos = i;
+
+            }
+        }
+        spinnerMinInches.setSelection(pos);
+        for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
+            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
+            if (getResources().getStringArray(R.array.inches_spinner)[i].equals("10")) {
+                pos = i;
+
+            }
+        }
+        spinnerMaxInches.setSelection(pos);
+    }
 }
 
