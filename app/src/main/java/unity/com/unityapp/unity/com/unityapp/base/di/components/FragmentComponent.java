@@ -8,6 +8,7 @@ import unity.com.unityapp.unity.com.unityapp.base.view.DietDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.EducationalDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.ExpectationsDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.FamilyDetailsPagerFragment;
+import unity.com.unityapp.unity.com.unityapp.base.view.HomeFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.HoroscopeDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.PersonalDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.MyProfileFragment;
@@ -16,6 +17,7 @@ import unity.com.unityapp.unity.com.unityapp.base.view.PhysicalDetailsPagerPrese
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.ServiceDetailsPagerFragment;
 import unity.com.unityapp.unity.com.unityapp.base.view.SettingsFragment;
+import unity.com.unityapp.unity.com.unityapp.base.view.SuccessStoriesPagerFragment;
 
 /**
  * Created by admin on 11/12/18.
@@ -49,4 +51,8 @@ public interface FragmentComponent {
     void inject(ExpectationsDetailsPagerFragment fragment);
 
     void inject(AddressDetailsPagerFragment fragment);
+
+    void inject(HomeFragment fragment);
+
+    void inject(SuccessStoriesPagerFragment fragment);
 }

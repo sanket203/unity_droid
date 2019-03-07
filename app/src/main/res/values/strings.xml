@@ -214,5 +214,9 @@
     <string name="alternate_number">Alternate Number</string>
     <string name="email">Email</string>
 
+    <string name="about_us">ABOUT US</string>
+    <string name="view_more">VIEW MORE</string>
+    <string name="matching_profile">Matching Profile</string>
+
 
 </resources>

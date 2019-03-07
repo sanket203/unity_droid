@@ -46,6 +46,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     private static final String TAG_HOME = "recent_profile";
     private static final String TAG_ADDRESS_TAKEN = "adress_taken";
     private static final String TAG_MY_PROFILE = "my_profile";
+    private static final String TAG_HOME_FRAGMENT = "home";
     private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
 
@@ -68,7 +69,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         mHandler = new Handler();
         setUpNavigationView();
         if (savedInstanceState == null) {
-            navItemIndex = 1;
+            navItemIndex = 2;
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
@@ -103,12 +104,15 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     private Fragment getHomeFragment() {
         switch (navItemIndex) {
             case 0:
+                HomeFragment homeFragment = new HomeFragment();
+                return homeFragment;
+            case 1:
                 MyProfileFragment myProfileFragment = new MyProfileFragment();
                 return myProfileFragment;
-            case 1:
+            case 2:
                 RecentProfileFragment recentProfileFragment = new RecentProfileFragment();
                 return recentProfileFragment;
-            case 2:
+            case 3:
                 AddressTakenFragment addressTakenFragment = new AddressTakenFragment();
                 return addressTakenFragment;
 
@@ -174,18 +178,23 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
             //Check to see which item was being clicked and perform appropriate action
             switch (menuItem.getItemId()) {
                 //Replacing the main content with ContentFragment Which is our Inbox View;
-                case R.id.my_profile:
+                case R.id.home:
                     navItemIndex = 0;
+                    CURRENT_TAG = TAG_HOME_FRAGMENT;
+                    toolbar.setTitle("Home");
+                    break;
+                case R.id.my_profile:
+                    navItemIndex = 1;
                     CURRENT_TAG = TAG_MY_PROFILE;
                     toolbar.setTitle("My profile");
                     break;
                 case R.id.recent_profiles:
-                    navItemIndex = 1;
+                    navItemIndex = 2;
                     CURRENT_TAG = TAG_HOME;
                     toolbar.setTitle("Recent profiles");
                     break;
                 case R.id.address_taken:
-                    navItemIndex = 2;
+                    navItemIndex = 3;
                     CURRENT_TAG = TAG_ADDRESS_TAKEN;
                     toolbar.setTitle("Address taken");
                     break;
@@ -195,7 +204,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
                     toolbar.setTitle("Settings");
                     break;
                 default:
-                    navItemIndex = 1;
+                    navItemIndex = 2;
             }
             //Checking if the item is in checked state or not, if not make it in checked state
             if (menuItem.isChecked()) {
