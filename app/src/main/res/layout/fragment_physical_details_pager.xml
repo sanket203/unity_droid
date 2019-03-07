@@ -31,26 +31,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="0dp"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
-                        android:padding="15dp"
-                        android:text="Physical Details"
-                        android:textColor="#242926"
-                        android:textSize="22sp" />
+                        android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/btn_edit"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="0.2"
-                        android:drawableLeft="@drawable/ic_edit"
-                        android:text="EDIT"
-                        android:gravity="center"
-                        android:textColor="@color/colorAccent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            android:text="Personal Details"
+                            android:textColor="#242926"
+                            android:textSize="22sp" />
+                        <TextView
+                            android:id="@+id/btn_edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:drawableLeft="@drawable/ic_edit"
+                            android:layout_alignParentRight="true"
+                            android:text="EDIT"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/colorAccent" />
+                    </RelativeLayout>
                 </LinearLayout>
 
                 <LinearLayout
