@@ -47,16 +47,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp">
 
             <EditText
                 android:id="@+id/first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="First Name"
                 android:minHeight="35dp"
@@ -69,9 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="Middle Name"
                 android:minHeight="35dp"
@@ -84,9 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="Surname"
                 android:minHeight="35dp"
@@ -100,9 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
+
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
+
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
                 android:editable="false"
@@ -118,9 +114,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
+
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
+
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:clickable="true"
                 android:editable="false"
@@ -134,9 +130,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
+
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
+
                 android:minHeight="35dp"
                 android:orientation="horizontal">
 
@@ -181,9 +177,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
+
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="About me"
                 android:minHeight="70dp"
@@ -195,9 +190,9 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
+
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="52dp"
+
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"

@@ -1,9 +1,11 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,9 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
 
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
+
+    @BindView(R.id.viewpager)
+    ViewPager viewpager;
 
     @BindView(R.id.details_pager)
     ViewPager detailspager;
@@ -73,6 +78,8 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
         // TODO: 02-02-2019  Write get call for Image urls
 
         super.onResume();
+        viewpager.setAdapter(new CustomPagerAdapter(getActivity()));
+
         presenter.bind(this);
         imageUrls = new ArrayList<>();
         imageUrls.add("http://brahmanunityorganization.com/uploads/images/elite_match_couple_images/1528816576676996850IMG-20180604-WA0011.jpg");
@@ -91,4 +98,70 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
         super.onPause();
         presenter.unbind();
     }
+
+    public class CustomPagerAdapter extends PagerAdapter {
+
+        private Context mContext;
+
+        public CustomPagerAdapter(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup collection, int position) {
+            ModelObject modelObject = ModelObject.values()[position];
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
+            collection.addView(layout);
+            return layout;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup collection, int position, Object view) {
+            collection.removeView((View) view);
+        }
+
+        @Override
+        public int getCount() {
+            return ModelObject.values().length;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            ModelObject customPagerEnum = ModelObject.values()[position];
+            return mContext.getString(customPagerEnum.getTitleResId());
+        }
+
+    }
+
+
+    public enum ModelObject {
+
+        RED(R.layout.recent_profiles_row),
+        BLUE(R.layout.recent_profiles_row),
+        GREEN(R.layout.recent_profiles_row);
+
+        private int mTitleResId;
+        private int mLayoutResId;
+
+        ModelObject(int layoutResId) {
+
+            mLayoutResId = layoutResId;
+        }
+
+        public int getTitleResId() {
+            return mTitleResId;
+        }
+
+        public int getLayoutResId() {
+            return mLayoutResId;
+        }
+
+    }
+
 }

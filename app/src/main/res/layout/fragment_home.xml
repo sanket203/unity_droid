@@ -7,7 +7,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,69 +34,68 @@
                     app:tabGravity="center"
                     app:tabIndicatorHeight="0dp" />
             </FrameLayout>
-            
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/matching_profile"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
-                />
+                android:text="@string/matching_profile" />
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp">
 
                 <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-
-                <android.support.design.widget.TabLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|bottom"
-                    app:tabBackground="@drawable/tab_selecter"
-                    app:tabGravity="center"
-                    app:tabIndicatorHeight="0dp" />
+                    android:layout_height="100dp" />
             </FrameLayout>
-            <RelativeLayout
+
+            <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:fillViewport="true">
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/details_pager"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="30dp" />
+                    android:layout_height="wrap_content">
 
-                <ImageButton
-                    android:id="@+id/left_nav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginEnd="5dp"
-                    android:background="#00FFFFFF"
-                    android:padding="10dp"
-                    app:srcCompat="@drawable/ic_left_chevron" />
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/details_pager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="30dp" />
 
-                <ImageButton
-                    android:id="@+id/right_nav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="5dp"
-                    android:background="#00FFFFFF"
-                    android:padding="10dp"
-                    app:srcCompat="@drawable/ic_right_chevron" />
+                    <ImageButton
+                        android:id="@+id/left_nav"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="5dp"
+                        android:background="#00FFFFFF"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_left_chevron" />
 
-            </RelativeLayout>
+                    <ImageButton
+                        android:id="@+id/right_nav"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="5dp"
+                        android:background="#00FFFFFF"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_right_chevron" />
 
+                </RelativeLayout>
+            </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
     </ScrollView>
 
