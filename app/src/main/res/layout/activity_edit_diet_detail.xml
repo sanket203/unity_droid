@@ -28,7 +28,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp">
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -42,9 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:entries="@array/diet_type_spinner"
                 android:minHeight="35dp"
@@ -57,9 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:entries="@array/spinner_drink"
 
@@ -73,9 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="52dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:entries="@array/spinner_smoke"
                 android:minHeight="35dp"
@@ -87,9 +83,7 @@
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="52dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"

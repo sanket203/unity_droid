@@ -52,6 +52,7 @@
                             android:drawableLeft="@drawable/ic_edit"
                             android:layout_alignParentRight="true"
                             android:text="EDIT"
+                            android:gravity="center_vertical"
                            android:layout_centerInParent="true"
                             android:textColor="@color/colorAccent" />
                     </RelativeLayout>

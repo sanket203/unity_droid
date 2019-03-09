@@ -90,7 +90,9 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
         imagePager.setAdapter(imagePagerAdapter);
         tabLayout.setupWithViewPager(imagePager, true);
 
-        detailspager.setAdapter(new DetailsPagerAdapter(getChildFragmentManager(), String.valueOf(UserInfo.getUserInfo().getCandidateId())));
+        //detailspager.setAdapter(new DetailsPagerAdapter(getChildFragmentManager(), String.valueOf(UserInfo.getUserInfo().getCandidateId())));
+
+        detailspager.setAdapter(new CustomPagerAdapter_(getActivity()));
     }
 
     @Override
@@ -163,5 +165,72 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
         }
 
     }
+
+    public class CustomPagerAdapter_ extends PagerAdapter {
+
+        private Context mContext;
+
+        public CustomPagerAdapter_(Context context) {
+            mContext = context;
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup collection, int position) {
+            ModelObject_ modelObject = ModelObject_.values()[position];
+            LayoutInflater inflater = LayoutInflater.from(mContext);
+            ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
+            collection.addView(layout);
+            return layout;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup collection, int position, Object view) {
+            collection.removeView((View) view);
+        }
+
+        @Override
+        public int getCount() {
+            return ModelObject_.values().length;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            ModelObject_ customPagerEnum = ModelObject_.values()[position];
+            return mContext.getString(customPagerEnum.getTitleResId());
+        }
+
+    }
+
+
+    public enum ModelObject_ {
+
+        RED(R.layout.fragment_stories_detail),
+        BLUE(R.layout.fragment_stories_detail),
+        GREEN(R.layout.fragment_stories_detail);
+
+
+        private int mTitleResId;
+        private int mLayoutResId;
+
+        ModelObject_(int layoutResId) {
+
+            mLayoutResId = layoutResId;
+        }
+
+        public int getTitleResId() {
+            return mTitleResId;
+        }
+
+        public int getLayoutResId() {
+            return mLayoutResId;
+        }
+
+    }
+
 
 }

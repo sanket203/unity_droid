@@ -40,7 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:padding="15dp"
-                            android:text="Personal Details"
+                            android:text="Horoscope Details"
                             android:textColor="#242926"
                             android:textSize="22sp" />
                         <TextView
@@ -51,6 +51,7 @@
                             android:drawableLeft="@drawable/ic_edit"
                             android:layout_alignParentRight="true"
                             android:text="EDIT"
+                            android:gravity="center_vertical"
                             android:layout_centerInParent="true"
                             android:textColor="@color/colorAccent" />
                     </RelativeLayout>

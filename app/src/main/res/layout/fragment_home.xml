@@ -60,17 +60,19 @@
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
+                android:fillViewport="true"
+                android:scrollbars="none">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/details_pager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="30dp" />
+                        android:layout_height="550dp"
+                        android:layout_margin="30dp"
+                        android:scrollbars="none"/>
 
                     <ImageButton
                         android:id="@+id/left_nav"

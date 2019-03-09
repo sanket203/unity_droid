@@ -28,7 +28,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginEnd="52dp"
+            android:layout_marginStart="52dp">
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -40,8 +42,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -59,8 +59,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -78,8 +76,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -97,8 +93,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -117,8 +111,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -137,8 +129,6 @@
            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -157,8 +147,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -177,8 +165,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -199,8 +185,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="@string/naadi"
@@ -214,8 +198,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="@string/charan"
@@ -227,8 +209,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/edit_text_rounded_rectangle">
@@ -248,8 +228,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="@string/remarks"
@@ -263,8 +241,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"
