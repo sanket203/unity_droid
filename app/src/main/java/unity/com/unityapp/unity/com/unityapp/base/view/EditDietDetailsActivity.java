@@ -1,14 +1,19 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -40,6 +45,9 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     @BindView(R.id.editSmoke)
     Spinner editSmoke;
+
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
 
     private int candidateId;
     int pos;
@@ -98,6 +106,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if(validation()==true)
         presenter.save(getData(), isFromRegistration);
     }
 
@@ -148,6 +157,42 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
             }
         }
         editSmoke.setSelection(pos);
+    }
+
+    private boolean validation()
+    {
+        if (editDietType.getSelectedItem().toString().equalsIgnoreCase("") || editDietType.getSelectedItem().toString().equalsIgnoreCase("Diet Type")) {
+            //Toast.makeText(EditDietDetailsActivity.this, "Please mention diet", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention diet");
+            return false;
+        }
+        if (editDrink.getSelectedItem().toString().equalsIgnoreCase("") || editDrink.getSelectedItem().toString().equalsIgnoreCase("Drink(Alcoholic)")) {
+           // Toast.makeText(EditDietDetailsActivity.this, "Please mention drink", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention drink");
+            return false;
+        }
+        if (editSmoke.getSelectedItem().toString().equalsIgnoreCase("") || editSmoke.getSelectedItem().toString().equalsIgnoreCase("Smoke")) {
+          //  Toast.makeText(EditDietDetailsActivity.this, "Please mention smoke", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention smoke");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 

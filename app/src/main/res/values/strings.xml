@@ -20,6 +20,7 @@
 
 
     <string-array name="marital_status_list">
+        <item>Select Marital Status</item>
         <item>Married</item>
         <item>Single</item>
         <item>Divorcee</item>
@@ -27,6 +28,7 @@
     </string-array>
 
     <string-array name="gender">
+        <item>Select Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>

@@ -1,16 +1,21 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,14 +74,17 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @BindView(R.id.editOtherRemark)
     EditText editOtherRemark;
 
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
+
 
     private int candidateId;
 
     private PhysicalDetailsViewModel physicalDetailsViewModel;
-   // String feet="5";
-  //  String inch="11";
+    // String feet="5";
+    //  String inch="11";
     int pos;
-    String feet = "",inches="";
+    String feet = "", inches = "";
     private boolean isFromRegistration;
 
     @Override
@@ -96,6 +104,8 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
         setData();
+
+
     }
 
     private void setData() {
@@ -130,7 +140,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         physicalDetailsViewModel.setDisability(spinnerDisability.getSelectedItem().toString());
         physicalDetailsViewModel.setMedicalSurgary(spinnerMedicalSurgery.getSelectedItem().toString());
         physicalDetailsViewModel.setBloodGroup(editBloodGroup.getSelectedItem().toString());
-        physicalDetailsViewModel.setHeight(spinnerFeet.getSelectedItem().toString()+"'"+spinnerInches.getSelectedItem()+"''");
+        physicalDetailsViewModel.setHeight(spinnerFeet.getSelectedItem().toString() + "'" + spinnerInches.getSelectedItem() + "''");
 
         return physicalDetailsViewModel;
     }
@@ -144,7 +154,8 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -163,8 +174,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         startActivity(intent);
     }
 
-    public void setSpinnerValue()
-    {
+    public void setSpinnerValue() {
 
         String height = physicalDetailsViewModel.getHeight();
         String[] parts = height.split("'");
@@ -173,40 +183,31 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         String[] parts_ = inches_.split("''");
         inches = parts_[0];
 
-        if(height.equals(""))
-        {
+        if (height.equals("")) {
             spinnerFeet.setSelection(0);
             spinnerInches.setSelection(0);
         }
-        for(int i = 0;i<getResources().getStringArray(R.array.feet_spinner).length;i++)
-        {
+        for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
 
-            if(getResources().getStringArray(R.array.feet_spinner)[i].equals(feet))
-            {
+            if (getResources().getStringArray(R.array.feet_spinner)[i].equals(feet)) {
                 pos = i;
 
             }
         }
         spinnerFeet.setSelection(pos);
 
-        for(int i = 0;i<getResources().getStringArray(R.array.inches_spinner).length;i++)
-        {
-            if(getResources().getStringArray(R.array.inches_spinner)[i].equals(inches))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
+            if (getResources().getStringArray(R.array.inches_spinner)[i].equals(inches)) {
                 pos = i;
 
             }
         }
         spinnerInches.setSelection(pos);
 
-        for(int i = 0;i<getResources().getStringArray(R.array.spectacle_spinner).length;i++)
-        {
-            if(physicalDetailsViewModel.getSpects().equals(""))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.spectacle_spinner).length; i++) {
+            if (physicalDetailsViewModel.getSpects().equals("")) {
                 pos = 0;
-            }
-            else if(getResources().getStringArray(R.array.spectacle_spinner)[i].equals(physicalDetailsViewModel.getSpects()))
-            {
+            } else if (getResources().getStringArray(R.array.spectacle_spinner)[i].equals(physicalDetailsViewModel.getSpects())) {
                 pos = i;
 
 
@@ -214,47 +215,85 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         }
         spinnerSpectacle.setSelection(pos);
 
-        for(int i = 0;i<getResources().getStringArray(R.array.blood_group).length;i++)
-        {
-            if(physicalDetailsViewModel.getBloodGroup().equals(""))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.blood_group).length; i++) {
+            if (physicalDetailsViewModel.getBloodGroup().equals("")) {
                 pos = 0;
-            }
-            else if(getResources().getStringArray(R.array.blood_group)[i].equals(physicalDetailsViewModel.getBloodGroup()))
-            {
+            } else if (getResources().getStringArray(R.array.blood_group)[i].equals(physicalDetailsViewModel.getBloodGroup())) {
                 pos = i;
 
             }
         }
         editBloodGroup.setSelection(pos);
 
-        for(int i = 0;i<getResources().getStringArray(R.array.medical_surgery_spinner).length;i++)
-        {
-            if(physicalDetailsViewModel.getMedicalSurgary().equals(""))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.medical_surgery_spinner).length; i++) {
+            if (physicalDetailsViewModel.getMedicalSurgary().equals("")) {
                 pos = 0;
-            }
-            else if(getResources().getStringArray(R.array.medical_surgery_spinner)[i].equals(physicalDetailsViewModel.getMedicalSurgary()))
-            {
+            } else if (getResources().getStringArray(R.array.medical_surgery_spinner)[i].equals(physicalDetailsViewModel.getMedicalSurgary())) {
                 pos = i;
 
             }
         }
         spinnerMedicalSurgery.setSelection(pos);
 
-        for(int i = 0;i<getResources().getStringArray(R.array.disability_spinner).length;i++)
-        {
-            if(physicalDetailsViewModel.getDisability().equals(""))
-            {
+        for (int i = 0; i < getResources().getStringArray(R.array.disability_spinner).length; i++) {
+            if (physicalDetailsViewModel.getDisability().equals("")) {
                 pos = 0;
-            }
-            else if(getResources().getStringArray(R.array.disability_spinner)[i].equals(physicalDetailsViewModel.getDisability()))
-            {
+            } else if (getResources().getStringArray(R.array.disability_spinner)[i].equals(physicalDetailsViewModel.getDisability())) {
                 pos = i;
 
             }
         }
         spinnerDisability.setSelection(pos);
+    }
+
+    private boolean validation() {
+        if (spinnerFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
+           // Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Height in Feet", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Height in Feet");
+            return false;
+        }
+        if (spinnerInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
+           // Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Height in Inches", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Height in Inches");
+            return false;
+        }
+        if (editWeight.getText().toString().equalsIgnoreCase("") || editWeight.getText().toString().equalsIgnoreCase(null)) {
+            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please enter Weight", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please enter Weight");
+            return false;
+        }
+        if (editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("") || editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("Select Blood Group")) {
+            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Blood Group", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Blood Group");
+            return false;
+        }
+        if (spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("Medical Surgery")) {
+            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Medical Surgery", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Medical Surgery");
+            return false;
+        }
+        if (spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("") || spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("Disability")) {
+            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Disability", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Disability");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 
 }

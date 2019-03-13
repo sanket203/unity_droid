@@ -3,8 +3,10 @@ package unity.com.unityapp.unity.com.unityapp.base.view;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
@@ -60,6 +63,9 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @BindView(R.id.about_me)
     EditText aboutMe;
+
+    @BindView(R.id.linearMain)
+    EditText linearMain;
 
     @BindView(R.id.progress_bar)
     ProgressBar loader;
@@ -122,8 +128,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         birthDate.setText(sdf.format(myCalendar.getTime()));
     }
 
-    private void timepicker()
-    {
+    private void timepicker() {
         Calendar mcurrentTime = Calendar.getInstance();
         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
         int minute = mcurrentTime.get(Calendar.MINUTE);
@@ -131,7 +136,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         mTimePicker = new TimePickerDialog(EditPersonalDetailsActivity.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                birthTime.setText( selectedHour + ":" + selectedMinute);
+                birthTime.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);//Yes 24 hour time
         mTimePicker.setTitle("Select Time");
@@ -177,6 +182,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if (validation()==true)
         presenter.save(getData(), isFromRegistration);
     }
 
@@ -194,6 +200,51 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         Intent intent = new Intent(this, EditPhysicalDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    private boolean validation() {
+        if (firstName.getText().toString().equalsIgnoreCase("") || firstName.getText().toString().equalsIgnoreCase(null)) {
+            snackbar(linearMain,"Please enter First Name");
+            return false;
+        }
+        if (middleName.getText().toString().equalsIgnoreCase("") || middleName.getText().toString().equalsIgnoreCase(null)) {
+            snackbar(linearMain,"Please enter Middle Name");
+            return false;
+        }if (surName.getText().toString().equalsIgnoreCase("") || surName.getText().toString().equalsIgnoreCase(null)) {
+            snackbar(linearMain,"Please enter Surname");
+            return false;
+        }if (birthDate.getText().toString().equalsIgnoreCase("") || birthDate.getText().toString().equalsIgnoreCase(null)) {
+            snackbar(linearMain,"Please enter Birthdate");
+            return false;
+        }if (birthTime.getText().toString().equalsIgnoreCase("") || birthTime.getText().toString().equalsIgnoreCase(null)) {
+            snackbar(linearMain,"Please enter Birth Time");
+            return false;
+        }
+        if (marritalStatus.getSelectedItem().toString().equalsIgnoreCase("") || marritalStatus.getSelectedItem().toString().equalsIgnoreCase("Select Marital Status")) {
+            snackbar(linearMain,"Please select Marital Status");
+            return false;
+        }
+        if (gender.getSelectedItem().toString().equalsIgnoreCase("") || gender.getSelectedItem().toString().equalsIgnoreCase("Select Gender")) {
+            snackbar(linearMain,"Please select gender");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view, String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 

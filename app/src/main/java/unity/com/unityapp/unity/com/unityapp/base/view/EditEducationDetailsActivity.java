@@ -1,13 +1,18 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -48,6 +53,9 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     @BindView(R.id.editRemark)
     EditText editRemark;
+
+     @BindView(R.id.linearMain)
+     LinearLayout linearMain;
 
     private int candidateId;
 
@@ -117,6 +125,7 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if(validation()==true)
         presenter.save(getData(), isFromRegistration);
     }
 
@@ -134,6 +143,51 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
         Intent intent = new Intent(this, EditServiceDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    private boolean validation() {
+        if (editDegree.getText().toString().equalsIgnoreCase("") || editDegree.getText().toString().equalsIgnoreCase(null)) {
+          //  Toast.makeText(EditEducationDetailsActivity.this, "Please mention degree", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please enter degree");
+            return false;
+        }
+        if (editPassingYear.getText().toString().equalsIgnoreCase("") || editPassingYear.getText().toString().equalsIgnoreCase("null")) {
+           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter passing year", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please enter passing year");
+            return false;
+        }
+        if (editCollege.getText().toString().equalsIgnoreCase("") || editCollege.getText().toString().equalsIgnoreCase("null")) {
+           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter college", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please enter college");
+            return false;
+        }
+        if (editUniversity.getText().toString().equalsIgnoreCase("") || editUniversity.getText().toString().equalsIgnoreCase("null")) {
+           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter university", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please enter university");
+            return false;
+        }
+        if (editStream.getText().toString().equalsIgnoreCase("") || editStream.getText().toString().equalsIgnoreCase("null")) {
+           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter Stream", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please enter Stream");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 

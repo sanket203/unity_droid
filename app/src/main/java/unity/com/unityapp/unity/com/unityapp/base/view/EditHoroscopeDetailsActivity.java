@@ -1,14 +1,18 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -67,6 +71,9 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.editRemark)
     EditText editRemark;
 
+    @BindView(R.id.linearMain)
+    EditText linearMain;
+
     private int candidateId;
 
     private HoroscopeDetailsViewModel horoscopeDetailsViewModel;
@@ -93,8 +100,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     }
 
     private void setData() {
-        if(horoscopeDetailsViewModel!=null)
-        {
+        if (horoscopeDetailsViewModel != null) {
             editCharan.setText(horoscopeDetailsViewModel.getCharan());
             editNaadi.setText(horoscopeDetailsViewModel.getNaadi());
             editRemark.setText(horoscopeDetailsViewModel.getRemarks());
@@ -138,7 +144,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         if (spinnerGana.getSelectedItem() != null)
             horoscopeDetailsViewModel.setGana(spinnerGana.getSelectedItem().toString());
 
-         if (spinnerNakshatra.getSelectedItem() != null)
+        if (spinnerNakshatra.getSelectedItem() != null)
             horoscopeDetailsViewModel.setNakshatra(spinnerNakshatra.getSelectedItem().toString());
 
         return horoscopeDetailsViewModel;
@@ -153,6 +159,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if(validation()==true)
         presenter.save(getData(), isFromRegistration);
     }
 
@@ -174,21 +181,17 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     public void setSpinnerValue() {
         for (int i = 0; i < getResources().getStringArray(R.array.caste_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getCaste().equals(""))
-            {
-                pos=0;
-            }
-            else if (getResources().getStringArray(R.array.caste_spinner)[i].equals(horoscopeDetailsViewModel.getCaste())) {
+            if (horoscopeDetailsViewModel.getCaste().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.caste_spinner)[i].equals(horoscopeDetailsViewModel.getCaste())) {
                 pos = i;
             }
         }
         spinnerCaste.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.subcaste_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getSubCaste().equals(""))
-            {
-                pos=0;
-            }
-            else if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals(horoscopeDetailsViewModel.getSubCaste())) {
+            if (horoscopeDetailsViewModel.getSubCaste().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals(horoscopeDetailsViewModel.getSubCaste())) {
                 pos = i;
 
             }
@@ -196,9 +199,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerSubcaste.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.shakha_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getShakha().equals(""))
-            {
-                pos=0;
+            if (horoscopeDetailsViewModel.getShakha().equals("")) {
+                pos = 0;
             }
             if (getResources().getStringArray(R.array.shakha_spinner)[i].equals(horoscopeDetailsViewModel.getShakha())) {
                 pos = i;
@@ -208,11 +210,9 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerShakha.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.upshakha_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getUpshakha().equals(""))
-            {
-                pos=0;
-            }
-            else if (getResources().getStringArray(R.array.upshakha_spinner)[i].equals(horoscopeDetailsViewModel.getUpshakha())) {
+            if (horoscopeDetailsViewModel.getUpshakha().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.upshakha_spinner)[i].equals(horoscopeDetailsViewModel.getUpshakha())) {
                 pos = i;
 
             }
@@ -220,9 +220,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerUpshakha.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.gotra_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getGotra().equals(""))
-            {
-                pos=0;
+            if (horoscopeDetailsViewModel.getGotra().equals("")) {
+                pos = 0;
             }
             if (getResources().getStringArray(R.array.gotra_spinner)[i].equals(horoscopeDetailsViewModel.getGotra())) {
                 pos = i;
@@ -232,9 +231,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerGotra.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.gana_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getGana().equals(""))
-            {
-                pos=0;
+            if (horoscopeDetailsViewModel.getGana().equals("")) {
+                pos = 0;
             }
             if (getResources().getStringArray(R.array.gana_spinner)[i].equals(horoscopeDetailsViewModel.getGana())) {
                 pos = i;
@@ -244,9 +242,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerGana.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.nakshatra_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getNakshatra().equals(""))
-            {
-                pos=0;
+            if (horoscopeDetailsViewModel.getNakshatra().equals("")) {
+                pos = 0;
             }
             if (getResources().getStringArray(R.array.nakshatra_spinner)[i].equals(horoscopeDetailsViewModel.getNakshatra())) {
                 pos = i;
@@ -256,11 +253,9 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         spinnerNakshatra.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.rashi_spinner).length; i++) {
-            if(horoscopeDetailsViewModel.getRashi().equals(""))
-            {
-                pos=0;
-            }
-            else if (getResources().getStringArray(R.array.rashi_spinner)[i].equals(horoscopeDetailsViewModel.getRashi())) {
+            if (horoscopeDetailsViewModel.getRashi().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.rashi_spinner)[i].equals(horoscopeDetailsViewModel.getRashi())) {
                 pos = i;
 
             }
@@ -276,6 +271,76 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         }
         spinnerSpectacle.setSelection(pos);
 
+    }
+
+    private boolean validation() {
+        if (spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("Select Caste")) {
+            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select caste", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select caste");
+            return false;
+        }
+        if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select subcaste", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select subcaste");
+            return false;
+        }
+        if (spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("Select Shakha")) {
+            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select shakha", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select shakha");
+            return false;
+        }
+        if (spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("Select Upshakha")) {
+            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select upshakha", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select upshakha");
+            return false;
+        }
+        if (spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("Select Gotra")) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select gotra", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select gotra");
+            return false;
+        }
+        if (spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("") || spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("Select Rashi")) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Rashi", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Rashi");
+            return false;
+        }
+        if (spinnerGana.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGana.getSelectedItem().toString().equalsIgnoreCase("Select Gana")) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Gana", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Gana");
+            return false;
+        }
+        if (spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("Select Nakshatra")) {
+            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Nakshatra", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Nakshatra");
+            return false;
+        }
+        if (editNaadi.getText().toString().equalsIgnoreCase("") || editNaadi.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please mention Naadi", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Naadi");
+            return false;
+        }
+        if (editCharan.getText().toString().equalsIgnoreCase("") || editCharan.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please mention Charan", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Charan");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 

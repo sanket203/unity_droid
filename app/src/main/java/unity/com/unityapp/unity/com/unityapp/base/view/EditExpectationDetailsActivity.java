@@ -1,15 +1,20 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -61,6 +66,12 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     @BindView(R.id.spinnerMaxInches)
     Spinner spinnerMaxInches;
+
+    @BindView(R.id.spinnerSubcaste)
+    Spinner spinnerSubcaste;
+
+     @BindView(R.id.linearMain)
+     LinearLayout linearMain;
 
     private int candidateId;
     int pos;
@@ -143,6 +154,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if(validation()==true)
         presenter.save(getData());
     }
 
@@ -217,6 +229,76 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             }
         }
         spinnerMaxInches.setSelection(pos);
+    }
+
+    private boolean validation() {
+        if (spinnerMinFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMinFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
+         //   Toast.makeText(EditExpectationDetailsActivity.this, "Please select Minimum Height in Feet", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Minimum Height in Feet");
+            return false;
+        }
+        if (spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
+           // Toast.makeText(EditExpectationDetailsActivity.this, "Please select Maximum Height in Feet", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Maximum Height in Feet");
+            return false;
+        }
+        if (spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
+          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please select Minimum Height in Inches", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Minimum Height in Inches");
+            return false;
+        }
+        if (spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
+            //Toast.makeText(EditExpectationDetailsActivity.this, "Please select Maximum Height in Inches", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Minimum Height in Inches");
+            return false;
+        }
+        if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
+          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please select Subcaste", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please select Subcaste");
+            return false;
+        }
+        if (editMinAge.getText().toString().equalsIgnoreCase("") || editMinAge.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Minimum age", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Minimum age");
+            return false;
+        }
+        if (editMaxAge.getText().toString().equalsIgnoreCase("") || editMaxAge.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Maximum age", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Maximum age");
+            return false;
+        }
+        if (editEducation.getText().toString().equalsIgnoreCase("") || editEducation.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Education", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Education");
+            return false;
+        }
+        if (editIncome.getText().toString().equalsIgnoreCase("") || editIncome.getText().toString().equalsIgnoreCase(null)) {
+          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Income", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Income");
+            return false;
+        }
+        if (editWorkingLocation.getText().toString().equalsIgnoreCase("") || editWorkingLocation.getText().toString().equalsIgnoreCase(null)) {
+           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Income", Toast.LENGTH_SHORT).show();
+            snackbar(linearMain,"Please mention Income");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 

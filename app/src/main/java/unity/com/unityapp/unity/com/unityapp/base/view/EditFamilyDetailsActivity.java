@@ -1,12 +1,16 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -52,6 +56,9 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
 
     @BindView(R.id.editSisterDetail)
     EditText editSisterDetail;
+
+    @BindView(R.id.linearMain)
+    EditText linearMain;
 
     private int candidateId;
 
@@ -136,6 +143,7 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
+        if(validation()==true)
         presenter.save(getData());
     }
 
@@ -146,6 +154,51 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    private boolean validation()
+    {
+        if(editFatherName.getText().toString().equalsIgnoreCase("") || editFatherName.getText().toString().equalsIgnoreCase("null"))
+        {
+            //Toast.makeText(EditFamilyDetailsActivity.this, "Please mention father name", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention father name");
+            return false;
+        }
+        if(editMotherName.getText().toString().equalsIgnoreCase("") || editMotherName.getText().toString().equalsIgnoreCase("null"))
+        {
+           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention mother name", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention mother name");
+            return false;
+        }
+        if(editBrother.getText().toString().equalsIgnoreCase("") || editBrother.getText().toString().equalsIgnoreCase("null"))
+        {
+           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention number of brother", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention number of brother");
+            return false;
+        }
+        if(editSister.getText().toString().equalsIgnoreCase("") || editSister.getText().toString().equalsIgnoreCase("null"))
+        {
+           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention number of sister", Toast.LENGTH_SHORT);
+            snackbar(linearMain,"Please mention number of sister");
+            return false;
+        }
+        return true;
+    }
+
+    public void snackbar(View view,String errorMessage) {
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                .setAction("OK", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
     }
 }
 
