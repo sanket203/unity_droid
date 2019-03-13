@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -72,7 +73,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     EditText editRemark;
 
     @BindView(R.id.linearMain)
-    EditText linearMain;
+    LinearLayout linearMain;
 
     private int candidateId;
 

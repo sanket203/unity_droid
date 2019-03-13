@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +59,7 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     EditText editSisterDetail;
 
     @BindView(R.id.linearMain)
-    EditText linearMain;
+    LinearLayout linearMain;
 
     private int candidateId;
 
