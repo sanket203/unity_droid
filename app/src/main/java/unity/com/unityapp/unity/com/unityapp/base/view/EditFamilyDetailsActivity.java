@@ -61,8 +61,32 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
-    private int candidateId;
+    @BindView(R.id.textErrorFatherName)
+    TextView textErrorFatherName;
 
+    @BindView(R.id.textErrorFatherDetail)
+    TextView textErrorFatherDetail;
+
+    @BindView(R.id.textErrorMotherName)
+    TextView textErrorMotherName;
+
+    @BindView(R.id.textErrorMotherDetail)
+    TextView textErrorMotherDetail;
+
+    @BindView(R.id.textErrorBrother)
+    TextView textErrorBrother;
+
+    @BindView(R.id.textErrorSister)
+    TextView textErrorSister;
+
+    @BindView(R.id.textErrorBrotherDetail)
+    TextView textErrorBrotherDetail;
+
+    @BindView(R.id.textErrorSisterDetail)
+    TextView textErrorSisterDetail;
+
+    private int candidateId;
+    int counter = 0;
     private FamilyDetailsViewModel familyDetailsViewModel;
 
     @Override
@@ -157,49 +181,72 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
         }
     }
 
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
+    }
+
     private boolean validation()
     {
         if(editFatherName.getText().toString().equalsIgnoreCase("") || editFatherName.getText().toString().equalsIgnoreCase("null"))
         {
-            //Toast.makeText(EditFamilyDetailsActivity.this, "Please mention father name", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention father name");
+            textErrorFatherName.setVisibility(View.VISIBLE);
+            textErrorFatherName.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorFatherName.setVisibility(View.GONE);}
         if(editMotherName.getText().toString().equalsIgnoreCase("") || editMotherName.getText().toString().equalsIgnoreCase("null"))
         {
-           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention mother name", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention mother name");
+            textErrorMotherName.setVisibility(View.VISIBLE);
+            textErrorMotherName.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorMotherName.setVisibility(View.GONE);}
         if(editBrother.getText().toString().equalsIgnoreCase("") || editBrother.getText().toString().equalsIgnoreCase("null"))
         {
-           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention number of brother", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention number of brother");
+            textErrorBrother.setVisibility(View.VISIBLE);
+            textErrorBrother.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorBrother.setVisibility(View.GONE);}
         if(editSister.getText().toString().equalsIgnoreCase("") || editSister.getText().toString().equalsIgnoreCase("null"))
         {
-           // Toast.makeText(EditFamilyDetailsActivity.this, "Please mention number of sister", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention number of sister");
+            textErrorSister.setVisibility(View.VISIBLE);
+            textErrorSister.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorSister.setVisibility(View.GONE);}
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData());
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 }
 

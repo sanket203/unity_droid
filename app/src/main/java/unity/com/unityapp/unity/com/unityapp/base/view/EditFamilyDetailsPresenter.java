@@ -42,13 +42,15 @@ public class EditFamilyDetailsPresenter extends BasePresenter<EditFamilyDetailsV
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", familyDetailsResponseDataModel.getMessage());
+                //Log.d("ERROR", familyDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(familyDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
             Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

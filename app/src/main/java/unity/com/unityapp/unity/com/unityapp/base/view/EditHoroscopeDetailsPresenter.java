@@ -46,13 +46,15 @@ public class EditHoroscopeDetailsPresenter extends BasePresenter<EditHoroscopeDe
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", horoscopeDetailsResponseDataModel.getMessage());
+               // Log.d("ERROR", horoscopeDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(horoscopeDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
-            Log.d("ERROR", error.getMessage());
+           // Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

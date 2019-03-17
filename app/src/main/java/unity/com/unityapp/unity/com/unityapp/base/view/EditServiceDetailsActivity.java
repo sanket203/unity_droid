@@ -68,10 +68,37 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     @BindView(R.id.editWorkingCity)
     AutoCompleteTextView editWorkingCity;
 
-    private int candidateId;
+    @BindView(R.id.textErrorOccupation)
+    TextView textErrorOccupation;
 
+    @BindView(R.id.textErrorOrganization)
+    TextView textErrorOrganization;
+
+    @BindView(R.id.textErrorOrganizationType)
+    TextView textErrorOrganizationType;
+
+    @BindView(R.id.textErrorSector)
+    TextView textErrorSector;
+
+    @BindView(R.id.textErrorWorkingCity)
+    TextView textErrorWorkingCity;
+
+    @BindView(R.id.textErrorDesignation)
+    TextView textErrorDesignation;
+
+    @BindView(R.id.textErrorServiceStatus)
+    TextView textErrorServiceStatus;
+
+    @BindView(R.id.textErrorExperience)
+    TextView textErrorExperience;
+
+    @BindView(R.id.textErrorAnuualIncome)
+    TextView textErrorAnuualIncome;
+
+    private int candidateId;
     private ServiceDetailsViewModel serviceDetailsViewModel;
     private boolean isFromRegistration;
+    int counter = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -166,6 +193,11 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     }
 
     @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
+    }
+
+    @Override
     public void navigateToEditHoroscopeDetails() {
         Intent intent = new Intent(this, EditHoroscopeDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
@@ -178,57 +210,81 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     private boolean validation() {
         if (editOccupation.getText().toString().equalsIgnoreCase("") || editOccupation.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention occupation", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention occupation");
+            textErrorOccupation.setVisibility(View.VISIBLE);
+            textErrorOccupation.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorOccupation.setVisibility(View.GONE);}
+
         if (editOrganization.getText().toString().equalsIgnoreCase("") || editOrganization.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention organization", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention occupation");
+            textErrorOrganization.setVisibility(View.VISIBLE);
+            textErrorOrganization.setText(getString(R.string.empty_field));
             return false;
+        }else {
+            textErrorOrganization.setVisibility(View.GONE);
         }
         if (editWorkingCity.getText().toString().equalsIgnoreCase("") || editWorkingCity.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention working city", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention working city");
+            textErrorWorkingCity.setVisibility(View.VISIBLE);
+            textErrorWorkingCity.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorWorkingCity.setVisibility(View.GONE);}
         if (editDesignation.getText().toString().equalsIgnoreCase("") || editDesignation.getText().toString().equalsIgnoreCase(null)) {
-          //  Toast.makeText(EditServiceDetailsActivity.this, "Please mention designation", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention designation");
+            textErrorDesignation.setVisibility(View.VISIBLE);
+            textErrorDesignation.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorDesignation.setVisibility(View.GONE);}
         if (editServiceStatus.getText().toString().equalsIgnoreCase("") || editServiceStatus.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention service status", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention service status");
+            textErrorServiceStatus.setVisibility(View.VISIBLE);
+            textErrorServiceStatus.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorServiceStatus.setVisibility(View.GONE);}
         if (editExperience.getText().toString().equalsIgnoreCase("") || editExperience.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention experience", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention experience");
+            textErrorExperience.setVisibility(View.VISIBLE);
+            textErrorExperience.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorExperience.setVisibility(View.GONE);}
         if (editAnnualIncome.getText().toString().equalsIgnoreCase("") || editAnnualIncome.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditServiceDetailsActivity.this, "Please mention annual Income", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention annual Income");
+            textErrorAnuualIncome.setVisibility(View.VISIBLE);
+            textErrorAnuualIncome.setText(getString(R.string.empty_field));
             return false;
+        }else {
+            textErrorAnuualIncome.setVisibility(View.GONE);
         }
         return true;
     }
 
     public void snackbar(View view,String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData(), isFromRegistration);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 }
 

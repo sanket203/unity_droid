@@ -5,8 +5,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,7 +37,7 @@ import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsViewModel;
 
-public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhysicalDetailsView {
+public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhysicalDetailsView{
 
     @Inject
     EditPhysicalDetailsPresenter presenter;
@@ -77,6 +81,29 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
+    @BindView(R.id.textErrorHeight)
+    TextView textErrorHeight;
+
+    @BindView(R.id.textErrorWeight)
+    TextView textErrorWeight;
+
+    @BindView(R.id.textErrorComplexion)
+    TextView textErrorComplexion;
+
+    @BindView(R.id.textErrorBodyform)
+    TextView textErrorBodyform;
+
+    @BindView(R.id.textErrorSpectacles)
+    TextView textErrorSpectacles;
+
+    @BindView(R.id.textErrorBloodGroup)
+    TextView textErrorBloodGroup;
+
+    @BindView(R.id.textErrorMedicalSurgery)
+    TextView textErrorMedicalSurgery;
+
+    @BindView(R.id.textErrorDisability)
+    TextView textErrorDisability;
 
     private int candidateId;
 
@@ -86,6 +113,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     int pos;
     String feet = "", inches = "";
     private boolean isFromRegistration;
+    int counter=0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,7 +132,6 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
         setData();
-
 
     }
 
@@ -155,7 +182,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @OnClick(R.id.btn_save)
     void onSaveClick() {
         if (validation() == true)
-            presenter.save(getData(), isFromRegistration);
+           presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -165,6 +192,11 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     @Override
@@ -248,52 +280,75 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     private boolean validation() {
         if (spinnerFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
-           // Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Height in Feet", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Height in Feet");
+            textErrorHeight.setVisibility(View.VISIBLE);
+            textErrorHeight.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorHeight.setVisibility(View.GONE);}
+
         if (spinnerInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
-           // Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Height in Inches", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Height in Inches");
+            textErrorHeight.setVisibility(View.VISIBLE);
+            textErrorHeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorHeight.setVisibility(View.GONE);}
+
         if (editWeight.getText().toString().equalsIgnoreCase("") || editWeight.getText().toString().equalsIgnoreCase(null)) {
-            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please enter Weight", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please enter Weight");
+            textErrorWeight.setVisibility(View.VISIBLE);
+            textErrorWeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorWeight.setVisibility(View.GONE);}
+
         if (editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("") || editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("Select Blood Group")) {
-            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Blood Group", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Blood Group");
+            textErrorBloodGroup.setVisibility(View.VISIBLE);
+            textErrorBloodGroup.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorBloodGroup.setVisibility(View.GONE);}
+
         if (spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("Medical Surgery")) {
-            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Medical Surgery", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Medical Surgery");
+            textErrorMedicalSurgery.setVisibility(View.VISIBLE);
+            textErrorMedicalSurgery.setText(getString(R.string.empty_field));
             return false;
-        }
+        } else {textErrorMedicalSurgery.setVisibility(View.GONE);}
+
         if (spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("") || spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("Disability")) {
-            //Toast.makeText(EditPhysicalDetailsActivity.this, "Please select Disability", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Disability");
+            textErrorDisability.setVisibility(View.VISIBLE);
+            textErrorDisability.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorDisability.setVisibility(View.GONE);}
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData(), isFromRegistration);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 
 }

@@ -49,6 +49,15 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
+    @BindView(R.id.textErrorDietType)
+    TextView textErrorDietType;
+
+    @BindView(R.id.textErrorDrink)
+    TextView textErrorDrink;
+
+    @BindView(R.id.textErrorSmoke)
+    TextView textErrorSmoke;
+
     private int candidateId;
     int pos;
     private DietDetailsViewModel dietDetailsViewModel;
@@ -120,6 +129,11 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
     }
 
     @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
+    }
+
+    @Override
     public void navigateToExpectationDetails() {
         Intent intent = new Intent(this, EditExpectationDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
@@ -162,20 +176,21 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
     private boolean validation()
     {
         if (editDietType.getSelectedItem().toString().equalsIgnoreCase("") || editDietType.getSelectedItem().toString().equalsIgnoreCase("Diet Type")) {
-            //Toast.makeText(EditDietDetailsActivity.this, "Please mention diet", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention diet");
+            textErrorDietType.setVisibility(View.VISIBLE);
+            textErrorDietType.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorDietType.setVisibility(View.GONE);}
         if (editDrink.getSelectedItem().toString().equalsIgnoreCase("") || editDrink.getSelectedItem().toString().equalsIgnoreCase("Drink(Alcoholic)")) {
-           // Toast.makeText(EditDietDetailsActivity.this, "Please mention drink", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention drink");
+            textErrorDrink.setVisibility(View.VISIBLE);
+            textErrorDrink.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorDrink.setVisibility(View.GONE);}
         if (editSmoke.getSelectedItem().toString().equalsIgnoreCase("") || editSmoke.getSelectedItem().toString().equalsIgnoreCase("Smoke")) {
-          //  Toast.makeText(EditDietDetailsActivity.this, "Please mention smoke", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please mention smoke");
+            textErrorSmoke.setVisibility(View.VISIBLE);
+            textErrorSmoke.setText(getString(R.string.empty_field));
             return false;
         }
+        else {textErrorSmoke.setVisibility(View.GONE);}
         return true;
     }
 

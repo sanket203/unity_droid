@@ -71,8 +71,29 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
-    private int candidateId;
+    @BindView(R.id.textErrorFirstName)
+    TextView textErrorFirstName;
 
+    @BindView(R.id.textErrorMiddleNAme)
+    TextView textErrorMiddleNAme;
+
+    @BindView(R.id.textErrorSurname)
+    TextView textErrorSurname;
+
+    @BindView(R.id.textErrorBirthdate)
+    TextView textErrorBirthdate;
+
+    @BindView(R.id.textErrorBirthTime)
+    TextView textErrorBirthTime;
+
+    @BindView(R.id.textErrorBirthGender)
+    TextView textErrorBirthGender;
+
+    @BindView(R.id.textErrorBirthMarritalStatus)
+    TextView textErrorBirthMarritalStatus;
+
+    private int candidateId;
+    int counter = 0;
     private PersonalDetailsViewModel personalDetailsViewModel;
     private boolean isFromRegistration;
     final Calendar myCalendar = Calendar.getInstance();
@@ -197,6 +218,11 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     }
 
     @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
+    }
+
+    @Override
     public void navigateToEditPhysicalDetailsActivity() {
         Intent intent = new Intent(this, EditPhysicalDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
@@ -205,47 +231,75 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     private boolean validation() {
         if (firstName.getText().toString().equalsIgnoreCase("") || firstName.getText().toString().equalsIgnoreCase(null)) {
-            snackbar(linearMain,"Please enter First Name");
+            textErrorFirstName.setVisibility(View.VISIBLE);
+            textErrorFirstName.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorFirstName.setVisibility(View.GONE);}
         if (middleName.getText().toString().equalsIgnoreCase("") || middleName.getText().toString().equalsIgnoreCase(null)) {
-            snackbar(linearMain,"Please enter Middle Name");
+            textErrorMiddleNAme.setVisibility(View.VISIBLE);
+            textErrorMiddleNAme.setText(getString(R.string.empty_field));
             return false;
-        }if (surName.getText().toString().equalsIgnoreCase("") || surName.getText().toString().equalsIgnoreCase(null)) {
-            snackbar(linearMain,"Please enter Surname");
+        }else {textErrorMiddleNAme.setVisibility(View.GONE);}
+
+        if (surName.getText().toString().equalsIgnoreCase("") || surName.getText().toString().equalsIgnoreCase(null)) {
+            textErrorSurname.setVisibility(View.VISIBLE);
+            textErrorSurname.setText(getString(R.string.empty_field));
             return false;
-        }if (birthDate.getText().toString().equalsIgnoreCase("") || birthDate.getText().toString().equalsIgnoreCase(null)) {
-            snackbar(linearMain,"Please enter Birthdate");
+        }else {textErrorSurname.setVisibility(View.GONE);}
+        if (birthDate.getText().toString().equalsIgnoreCase("") || birthDate.getText().toString().equalsIgnoreCase(null)) {
+            textErrorBirthdate.setVisibility(View.VISIBLE);
+            textErrorBirthdate.setText(getString(R.string.empty_field));
             return false;
-        }if (birthTime.getText().toString().equalsIgnoreCase("") || birthTime.getText().toString().equalsIgnoreCase(null)) {
-            snackbar(linearMain,"Please enter Birth Time");
+        }else {textErrorBirthdate.setVisibility(View.GONE);}
+        if (birthTime.getText().toString().equalsIgnoreCase("") || birthTime.getText().toString().equalsIgnoreCase(null)) {
+            textErrorBirthTime.setVisibility(View.VISIBLE);
+            textErrorBirthTime.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorBirthTime.setVisibility(View.GONE);}
         if (marritalStatus.getSelectedItem().toString().equalsIgnoreCase("") || marritalStatus.getSelectedItem().toString().equalsIgnoreCase("Select Marital Status")) {
-            snackbar(linearMain,"Please select Marital Status");
+            textErrorBirthMarritalStatus.setVisibility(View.VISIBLE);
+            textErrorBirthMarritalStatus.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorBirthMarritalStatus.setVisibility(View.GONE);}
         if (gender.getSelectedItem().toString().equalsIgnoreCase("") || gender.getSelectedItem().toString().equalsIgnoreCase("Select Gender")) {
-            snackbar(linearMain,"Please select gender");
+            textErrorBirthGender.setVisibility(View.VISIBLE);
+            textErrorBirthGender.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorBirthGender.setVisibility(View.GONE);}
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData(), isFromRegistration);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 }
 

@@ -46,13 +46,16 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", serviceDetailsResponseDataModel.getMessage());
+               // Log.d("ERROR", serviceDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(serviceDetailsResponseDataModel.getMessage());
+
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
-            Log.d("ERROR", error.getMessage());
+            //Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

@@ -49,13 +49,15 @@ public class EditDietDetailsPresenter extends BasePresenter<EditDietDetailsView>
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", DietDetailsResponseDataModel.getMessage());
+               // Log.d("ERROR", DietDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(DietDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
-            Log.d("ERROR", error.getMessage());
+            //Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

@@ -53,6 +53,13 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorFatherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/editFatherDetail"
                 android:layout_width="match_parent"
@@ -65,6 +72,14 @@
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textErrorFatherDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
 
             <EditText
                 android:id="@+id/editMotherName"
@@ -79,6 +94,13 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorMotherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/editMotherDetail"
                 android:layout_width="match_parent"
@@ -91,6 +113,13 @@
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textErrorMotherDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/editBrother"
@@ -106,6 +135,13 @@
                 android:textSize="15sp"
                 android:inputType="number"/>
 
+            <TextView
+                android:id="@+id/textErrorBrother"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/editSister"
                 android:layout_width="match_parent"
@@ -118,6 +154,13 @@
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textErrorSister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/editBrotherDetail"
@@ -133,6 +176,13 @@
                 android:textSize="15sp"
                 android:inputType="number"/>
 
+            <TextView
+                android:id="@+id/textErrorBrotherDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/editSisterDetail"
                 android:layout_width="match_parent"
@@ -145,6 +195,13 @@
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textErrorSisterDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_save"

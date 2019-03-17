@@ -1,9 +1,14 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.graphics.Color;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.SavePhysicalDetailsUseCase;
@@ -47,13 +52,17 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                //Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                view.showErrorMessage( personalDetailsResponseDataModel.getMessage());
+
+
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
-            Log.d("ERROR", error.getMessage());
+           // Log.d("ERROR", error.getMessage());
+            view.showErrorMessage( error.getMessage());
         });
     }
 }

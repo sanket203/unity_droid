@@ -219,6 +219,7 @@
     <string name="about_us">ABOUT US</string>
     <string name="view_more">VIEW MORE</string>
     <string name="matching_profile">Matching Profile</string>
+    <string name="empty_field">This field can not be empty </string>
 
 
 </resources>

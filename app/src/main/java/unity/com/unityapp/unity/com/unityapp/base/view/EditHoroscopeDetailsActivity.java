@@ -75,8 +75,41 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
-    private int candidateId;
+    @BindView(R.id.textErrorCaste)
+    TextView textErrorCaste;
 
+    @BindView(R.id.textErrorSubCaste)
+    TextView textErrorSubCaste;
+
+    @BindView(R.id.textErrorShakha)
+    TextView textErrorShakha;
+
+    @BindView(R.id.textErrorUpshakha)
+    TextView textErrorUpshakha;
+
+    @BindView(R.id.textErrorGotra)
+    TextView textErrorGotra;
+
+    @BindView(R.id.textErrorRashi)
+    TextView textErrorRashi;
+
+    @BindView(R.id.textErrorGana)
+    TextView textErrorGana;
+
+    @BindView(R.id.textErrorNakshatra)
+    TextView textErrorNakshatra;
+
+    @BindView(R.id.textErrorNaadi)
+    TextView textErrorNaadi;
+
+    @BindView(R.id.textErrorCharan)
+    TextView textErrorCharan;
+
+    @BindView(R.id.textErrorSpectacles)
+    TextView textErrorSpectacles;
+
+    private int candidateId;
+    int counter = 0;
     private HoroscopeDetailsViewModel horoscopeDetailsViewModel;
     private boolean isFromRegistration;
     int pos;
@@ -171,6 +204,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     @Override
@@ -276,72 +314,89 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     private boolean validation() {
         if (spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("Select Caste")) {
-            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select caste", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select caste");
+            textErrorCaste.setVisibility(View.VISIBLE);
+            textErrorCaste.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorCaste.setVisibility(View.GONE);}
         if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select subcaste", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select subcaste");
+            textErrorSubCaste.setVisibility(View.VISIBLE);
+            textErrorSubCaste.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorSubCaste.setVisibility(View.GONE);}
         if (spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("Select Shakha")) {
-            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select shakha", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select shakha");
+            textErrorShakha.setVisibility(View.VISIBLE);
+            textErrorShakha.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorShakha.setVisibility(View.GONE);}
         if (spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("Select Upshakha")) {
-            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select upshakha", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select upshakha");
+            textErrorUpshakha.setVisibility(View.VISIBLE);
+            textErrorUpshakha.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorUpshakha.setVisibility(View.GONE);}
         if (spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("Select Gotra")) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select gotra", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select gotra");
+            textErrorGotra.setVisibility(View.VISIBLE);
+            textErrorGotra.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorGotra.setVisibility(View.GONE);}
         if (spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("") || spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("Select Rashi")) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Rashi", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Rashi");
+            textErrorRashi.setVisibility(View.VISIBLE);
+            textErrorRashi.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorRashi.setVisibility(View.GONE);}
         if (spinnerGana.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGana.getSelectedItem().toString().equalsIgnoreCase("Select Gana")) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Gana", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Gana");
+            textErrorGana.setVisibility(View.VISIBLE);
+            textErrorGana.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorGana.setVisibility(View.GONE);}
         if (spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("Select Nakshatra")) {
-            //Toast.makeText(EditHoroscopeDetailsActivity.this, "Please select Nakshatra", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Nakshatra");
+            textErrorNakshatra.setVisibility(View.VISIBLE);
+            textErrorNakshatra.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorNakshatra.setVisibility(View.GONE);}
         if (editNaadi.getText().toString().equalsIgnoreCase("") || editNaadi.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please mention Naadi", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Naadi");
+            textErrorNaadi.setVisibility(View.VISIBLE);
+            textErrorNaadi.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorNaadi.setVisibility(View.GONE);}
         if (editCharan.getText().toString().equalsIgnoreCase("") || editCharan.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditHoroscopeDetailsActivity.this, "Please mention Charan", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Charan");
+            textErrorCharan.setVisibility(View.VISIBLE);
+            textErrorCharan.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorCharan.setVisibility(View.GONE);}
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData(), isFromRegistration);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
 }
 

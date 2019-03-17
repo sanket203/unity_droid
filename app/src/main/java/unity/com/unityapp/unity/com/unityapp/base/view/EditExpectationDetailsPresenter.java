@@ -42,13 +42,15 @@ public class EditExpectationDetailsPresenter extends BasePresenter<EditExpectati
                 if (view != null) {
                     view.showProgress(false);
                 }
-                Log.d("ERROR", expectationDetailsResponseDataModel.getMessage());
+              //  Log.d("ERROR", expectationDetailsResponseDataModel.getMessage());
+                view.shoeErrorMessage(expectationDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {
                 view.showProgress(false);
             }
-            Log.d("ERROR", error.getMessage());
+          //  Log.d("ERROR", error.getMessage());
+            view.shoeErrorMessage(error.getMessage());
         });
     }
 }

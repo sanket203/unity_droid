@@ -26,12 +26,282 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp">
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp">
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="Weight"
+                    android:inputType="number"
+                    android:minHeight="35dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="Min Height :" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMinFeet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:entries="@array/feet_spinner"
+                        android:prompt="@string/spectacle_prompt" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMinInches"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:entries="@array/inches_spinner"
+
+                        android:prompt="@string/spectacle_prompt" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textErrorMinHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="Weight"
+                    android:inputType="number"
+                    android:minHeight="35dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:text="max Height :" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMaxFeet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:entries="@array/feet_spinner"
+                        android:prompt="@string/spectacle_prompt" />
+
+                    <Spinner
+                        android:id="@+id/spinnerMaxInches"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:entries="@array/inches_spinner"
+
+                        android:prompt="@string/spectacle_prompt" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textErrorMaxHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editMinAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/min_age"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorMinAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editMaxAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/max_age"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorMaxAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerSubcaste"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_rounded_rectangle"
+                        android:entries="@array/subcaste_spinner"
+                        android:padding="10dp"
+                        android:prompt="@string/subcaste_prompt" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textErrorSubcaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/edication"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+
+                <EditText
+                    android:id="@+id/editIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/income"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/editWorkingLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/working_location"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editOtherExp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/other_expectation"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorOtherExp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/login_btn_shape"
+                    android:text="Save"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -39,200 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
-
-
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Weight"
-                android:inputType="number"
-                android:minHeight="35dp"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center_vertical"
-                    android:text="Min Height :" />
-
-                <Spinner
-                    android:id="@+id/spinnerMinFeet"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:entries="@array/feet_spinner"
-                    android:prompt="@string/spectacle_prompt" />
-
-                <Spinner
-                    android:id="@+id/spinnerMinInches"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:entries="@array/inches_spinner"
-
-                    android:prompt="@string/spectacle_prompt" />
-
-            </LinearLayout>
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Weight"
-                android:inputType="number"
-                android:minHeight="35dp"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:gravity="center_vertical"
-                    android:text="max Height :" />
-
-                <Spinner
-                    android:id="@+id/spinnerMaxFeet"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:entries="@array/feet_spinner"
-                    android:prompt="@string/spectacle_prompt" />
-
-                <Spinner
-                    android:id="@+id/spinnerMaxInches"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:entries="@array/inches_spinner"
-
-                    android:prompt="@string/spectacle_prompt" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/editMinAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/min_age"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editMaxAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/max_age"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle">
-
-                <Spinner
-                    android:id="@+id/spinnerSubcaste"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_rounded_rectangle"
-                    android:entries="@array/subcaste_spinner"
-                    android:padding="10dp"
-                    android:prompt="@string/subcaste_prompt" />
-
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/editEducation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/edication"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editIncome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/income"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <AutoCompleteTextView
-                android:id="@+id/editWorkingLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/working_location"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editOtherExp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="@string/other_expectation"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/login_btn_shape"
-                android:text="Save"
-                android:textColor="#ffffff"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
+        </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
 

@@ -4,6 +4,7 @@ import unity.com.unityapp.unity.com.unityapp.base.BaseView;
 
 public interface EditPersonalDetailsView extends BaseView {
     void showProgress(boolean showProgress);
+    void showErrorMessage(String message);
 
     void navigateToEditPhysicalDetailsActivity();
 }

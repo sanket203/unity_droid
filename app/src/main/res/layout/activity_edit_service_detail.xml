@@ -26,12 +26,226 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp">
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp">
+
+
+
+                <EditText
+                    android:id="@+id/editOccupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="Occupation"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorOccupation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editOrganization"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="Organization"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorOrganization"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editOrganizationType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="Organization Type"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorOrganizationType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editSector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Sector"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/textErrorSector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/editWorkingCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Working City"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorWorkingCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editDesignation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Designation"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorDesignation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editServiceStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Service Status"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorServiceStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Experience"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/editAnnualIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:clickable="true"
+                    android:hint="Annual Income"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:inputType="number"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textErrorAnuualIncome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Please enter in feet"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/login_btn_shape"
+                    android:text="Save"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -39,145 +253,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:visibility="gone" />
-
-            <EditText
-                android:id="@+id/editOccupation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Occupation"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editOrganization"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Organization"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editOrganizationType"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Organization Type"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
+        </RelativeLayout>
 
 
-            <EditText
-                android:id="@+id/editSector"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Sector"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-
-            <AutoCompleteTextView
-                android:id="@+id/editWorkingCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Working City"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editDesignation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Designation"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editServiceStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Service Status"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editExperience"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Experience"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <EditText
-                android:id="@+id/editAnnualIncome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:clickable="true"
-                android:hint="Annual Income"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:inputType="number"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp" />
-
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/login_btn_shape"
-                android:text="Save"
-                android:textColor="#ffffff"
-                android:textSize="15sp" />
-
-        </LinearLayout>
 
 
     </android.support.v4.widget.NestedScrollView>

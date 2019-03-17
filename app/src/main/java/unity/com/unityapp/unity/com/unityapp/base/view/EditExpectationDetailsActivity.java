@@ -70,11 +70,39 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.spinnerSubcaste)
     Spinner spinnerSubcaste;
 
-     @BindView(R.id.linearMain)
-     LinearLayout linearMain;
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
+
+    @BindView(R.id.textErrorMinHeight)
+    TextView textErrorMinHeight;
+
+    @BindView(R.id.textErrorMaxHeight)
+    TextView textErrorMaxHeight;
+
+    @BindView(R.id.textErrorMinAge)
+    TextView textErrorMinAge;
+
+    @BindView(R.id.textErrorMaxAge)
+    TextView textErrorMaxAge;
+
+    @BindView(R.id.textErrorSubcaste)
+    TextView textErrorSubcaste;
+
+    @BindView(R.id.textErrorEducation)
+    TextView textErrorEducation;
+
+    @BindView(R.id.textErrorIncome)
+    TextView textErrorIncome;
+
+    @BindView(R.id.textErrorLocation)
+    TextView textErrorLocation;
+
+    @BindView(R.id.textErrorOtherExp)
+    TextView textErrorOtherExp;
 
     private int candidateId;
     int pos;
+    int counter = 0;
     private ExpectationsViewModel expectationDetailsViewModel;
     String minFeet, minInches, maxFeet, maxInches;
 
@@ -154,8 +182,8 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData());
+        if (validation() == true)
+            presenter.save(getData());
     }
 
     @Override
@@ -165,6 +193,11 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         } else {
             loader.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void shoeErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     private static final String[] COUNTRIES = new String[]{
@@ -233,72 +266,90 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     private boolean validation() {
         if (spinnerMinFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMinFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
-         //   Toast.makeText(EditExpectationDetailsActivity.this, "Please select Minimum Height in Feet", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Minimum Height in Feet");
+            textErrorMinHeight.setVisibility(View.VISIBLE);
+            textErrorMinHeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorMinHeight.setVisibility(View.GONE);}
         if (spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
-           // Toast.makeText(EditExpectationDetailsActivity.this, "Please select Maximum Height in Feet", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Maximum Height in Feet");
+            textErrorMaxHeight.setVisibility(View.VISIBLE);
+            textErrorMaxHeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorMaxHeight.setVisibility(View.GONE);}
         if (spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
-          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please select Minimum Height in Inches", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Minimum Height in Inches");
+            textErrorMinHeight.setVisibility(View.VISIBLE);
+            textErrorMinHeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }else {textErrorMinHeight.setVisibility(View.GONE);}
         if (spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
-            //Toast.makeText(EditExpectationDetailsActivity.this, "Please select Maximum Height in Inches", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Minimum Height in Inches");
+            textErrorMaxHeight.setVisibility(View.VISIBLE);
+            textErrorMaxHeight.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorMaxHeight.setVisibility(View.GONE);}
         if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
-          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please select Subcaste", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please select Subcaste");
+            textErrorSubcaste.setVisibility(View.VISIBLE);
+            textErrorSubcaste.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorSubcaste.setVisibility(View.GONE);}
         if (editMinAge.getText().toString().equalsIgnoreCase("") || editMinAge.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Minimum age", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Minimum age");
+            textErrorMinAge.setVisibility(View.VISIBLE);
+            textErrorMinAge.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorMinAge.setVisibility(View.GONE);}
         if (editMaxAge.getText().toString().equalsIgnoreCase("") || editMaxAge.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Maximum age", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Maximum age");
+            textErrorMaxAge.setVisibility(View.VISIBLE);
+            textErrorMaxAge.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorMaxAge.setVisibility(View.GONE);}
         if (editEducation.getText().toString().equalsIgnoreCase("") || editEducation.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Education", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Education");
+            textErrorEducation.setVisibility(View.VISIBLE);
+            textErrorEducation.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorEducation.setVisibility(View.GONE);}
         if (editIncome.getText().toString().equalsIgnoreCase("") || editIncome.getText().toString().equalsIgnoreCase(null)) {
-          //  Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Income", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Income");
+            textErrorIncome.setVisibility(View.VISIBLE);
+            textErrorIncome.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorIncome.setVisibility(View.GONE);}
         if (editWorkingLocation.getText().toString().equalsIgnoreCase("") || editWorkingLocation.getText().toString().equalsIgnoreCase(null)) {
-           // Toast.makeText(EditExpectationDetailsActivity.this, "Please mention Income", Toast.LENGTH_SHORT).show();
-            snackbar(linearMain,"Please mention Income");
+            textErrorLocation.setVisibility(View.VISIBLE);
+            textErrorLocation.setText(getString(R.string.empty_field));
             return false;
-        }
+        }{textErrorLocation.setVisibility(View.GONE);}
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
-        Snackbar snackbar = Snackbar
-                .make(view, errorMessage, Snackbar.LENGTH_LONG)
-                .setAction("OK", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
-        snackbar.setActionTextColor(Color.BLACK);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundResource(R.drawable.error_message);
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(Color.WHITE);
-        snackbar.show();
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.save(getData());
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
     }
+
 }
 

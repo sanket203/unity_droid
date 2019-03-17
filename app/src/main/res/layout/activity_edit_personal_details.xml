@@ -48,9 +48,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp">
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/first_name"
@@ -65,6 +65,14 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/middle_name"
                 android:layout_width="match_parent"
@@ -77,6 +85,14 @@
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textErrorMiddleNAme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/surname"
@@ -91,6 +107,13 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/birth_date"
@@ -110,6 +133,14 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/birth_time"
                 android:layout_width="match_parent"
@@ -128,6 +159,14 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorBirthTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,33 +179,61 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/marrital_status"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp">
+
+                        <Spinner
+                            android:id="@+id/marrital_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_rounded_rectangle"
+                            android:entries="@array/marital_status_list"
+                            android:padding="10dp"
+                            android:prompt="@string/status_prompt" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textErrorBirthMarritalStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_rounded_rectangle"
-                        android:entries="@array/marital_status_list"
-                        android:padding="10dp"
-                        android:prompt="@string/status_prompt" />
-
+                        android:text="Please enter in feet"
+                        android:textColor="@android:color/holo_red_light"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5">
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
-                    <Spinner
-                        android:id="@+id/gender"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/gender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edit_text_rounded_rectangle"
+                            android:entries="@array/gender"
+                            android:padding="10dp"
+                            android:prompt="@string/gender_prompt" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textErrorBirthGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edit_text_rounded_rectangle"
-                        android:entries="@array/gender"
-                        android:padding="10dp"
-                        android:prompt="@string/gender_prompt" />
+                        android:text="Please enter in feet"
+                        android:textColor="@android:color/holo_red_light"
+                        android:visibility="gone" />
                 </LinearLayout>
 
 
@@ -187,14 +254,23 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
+            <TextView
+                android:id="@+id/textErrorAboutMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please enter in feet"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
+
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="15dp"
-
                 android:layout_marginBottom="20dp"
+
+                android:layout_marginTop="15dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"
                 android:textColor="#ffffff"
