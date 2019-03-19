@@ -1,9 +1,12 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +64,10 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
     @BindView(R.id.tv_sister_details)
     TextView sisterDetails;
 
+    @BindView(R.id.linearMain)
+    NestedScrollView linearMain;
 
+    private int counter = 0 ;
     private String candidateId;
     private FamilyDetailsViewModel familyDetailsViewModel;
 
@@ -76,6 +82,11 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
         sisters.setText(viewModel.getSisters());
         brotherDetails.setText(viewModel.getBrotherDescription());
         sisterDetails.setText(viewModel.getSisterDescription());
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     @Override
@@ -145,6 +156,39 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
             progressBar.setVisibility(View.VISIBLE);
         } else {
             progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.getFamilyDetails(candidateId);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
         }
     }
 }

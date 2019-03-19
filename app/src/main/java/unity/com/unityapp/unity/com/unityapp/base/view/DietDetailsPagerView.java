@@ -6,6 +6,6 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.DietDetailsViewMode
 public interface DietDetailsPagerView extends BaseView {
 
     void showDietDetails(DietDetailsViewModel viewModel);
-
+    void showErrorMessage(String message);
     void showProgressBar(boolean isVisible);
 }

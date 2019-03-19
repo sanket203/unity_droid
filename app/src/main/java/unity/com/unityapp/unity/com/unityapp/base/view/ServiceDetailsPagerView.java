@@ -6,6 +6,6 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.ServiceDetailsViewM
 public interface ServiceDetailsPagerView extends BaseView {
 
     void showServiceDetails(ServiceDetailsViewModel viewModel);
-
+    void showErrorMessage(String message);
     void showProgressBar(boolean isVisible);
 }

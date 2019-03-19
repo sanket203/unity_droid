@@ -41,13 +41,15 @@ public class FamilyDetailsPagerPresenter extends BasePresenter<FamilyDetailsPage
                 if (view != null) {
                     view.showProgressBar(false);
                 }
-                Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+               // Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(personalDetailsResponseDataModel.getMessage());
             }
         }, error -> {
             if (view != null) {
                 view.showProgressBar(false);
             }
-            Log.d("ERROR", error.getMessage());
+            //Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

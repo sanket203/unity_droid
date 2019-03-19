@@ -6,6 +6,6 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsView
 public interface PhysicalDetailsPagerView extends BaseView {
 
     void showPhysicalDetails(PhysicalDetailsViewModel viewModel);
-
+    void showErrorMessage(String message);
     void showProgressBar(boolean isVisible);
 }

@@ -1,9 +1,12 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.NestedScrollView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,9 +67,12 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
     @BindView(R.id.tv_other)
     TextView otherExpectations;
 
+    @BindView(R.id.linearMain)
+    NestedScrollView linearMain;
+
 
     private String candidateId;
-
+    private int counter = 0 ;
     private ExpectationsViewModel expectationsViewModel;
 
     @Override
@@ -81,6 +87,11 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
         income.setText(viewModel.getPackageLimit());
         workingLocation.setText(viewModel.getWorkingLocation());
         otherExpectations.setText(viewModel.getOther());
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     @Override
@@ -153,5 +164,37 @@ public class ExpectationsDetailsPagerFragment extends BaseFragment implements Ex
         }
     }
 
+    public void snackbar(View view, String errorMessage)
+    {
 
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.getExpectationDetails(candidateId);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+        }
+    }
 }

@@ -7,6 +7,6 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsView
 public interface EducationalDetailsPagerView extends BaseView {
 
     void showEducationDetails(EducationalDetailsViewModel viewModel);
-
+    void showErrorMessage(String message);
     void showProgressBar(boolean isVisible);
 }

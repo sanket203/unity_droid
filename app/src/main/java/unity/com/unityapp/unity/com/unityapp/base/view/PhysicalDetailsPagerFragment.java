@@ -1,12 +1,15 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -64,8 +67,11 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     @BindView(R.id.tv_other_remarks)
     TextView otherRemarks;
 
-    private String candidateId;
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
 
+    private String candidateId;
+    private int counter = 0;
     private PhysicalDetailsViewModel physicalDetailsViewModel;
 
     @Override
@@ -80,6 +86,11 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         medicalSurgery.setText(viewModel.getMedicalSurgary());
         disability.setText(viewModel.getDisability());
         otherRemarks.setText(viewModel.getOtherRemarks());
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+        snackbar(linearMain,message);
     }
 
     @Override
@@ -149,6 +160,39 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
             progressBar.setVisibility(View.VISIBLE);
         } else {
             progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    public void snackbar(View view, String errorMessage) {
+
+        if(counter == 3) {
+            Snackbar snackbar = Snackbar
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
+
+        }
+        else
+        {
+            Snackbar snackbar = Snackbar
+                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            counter = counter + 1;
+                            presenter.getPhysicalDetails(candidateId);
+                        }
+                    });
+            snackbar.setActionTextColor(Color.BLACK);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundResource(R.drawable.error_message);
+            TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(Color.WHITE);
+            snackbar.show();
         }
     }
 }

@@ -7,6 +7,6 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsView
 public interface HoroscopeDetailsPagerView extends BaseView {
 
     void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel);
-
+    void showErrorMessage(String message);
     void showProgressBar(boolean isVisible);
 }
