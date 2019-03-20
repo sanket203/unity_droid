@@ -18,19 +18,21 @@ public class ExpectationDetailsResponseEntityToDataModelMapper {
         expectationDetailsResponseDataModel.setMessage(expectationDetailsResponseEntity.getMessage());
         expectationDetailsResponseDataModel.setStatus(expectationDetailsResponseEntity.getStatus());
         ExpectationsDataModel expectationsDataModel = new ExpectationsDataModel();
+        if (expectationDetailsResponseEntity.getExpectationsEntity() != null) {
 
-        expectationsDataModel.setCandidateId(expectationDetailsResponseEntity.getExpectationsEntity().getCandidateId());
-        expectationsDataModel.setMinHeight(expectationDetailsResponseEntity.getExpectationsEntity().getMinHeight());
-        expectationsDataModel.setMaxHeight(expectationDetailsResponseEntity.getExpectationsEntity().getMaxHeight());
-        expectationsDataModel.setMinAge(expectationDetailsResponseEntity.getExpectationsEntity().getMinAge());
-        expectationsDataModel.setMaxAge(expectationDetailsResponseEntity.getExpectationsEntity().getMaxAge());
-        expectationsDataModel.setSubCaste(expectationDetailsResponseEntity.getExpectationsEntity().getSubCaste());
-        expectationsDataModel.setDegree(expectationDetailsResponseEntity.getExpectationsEntity().getDegree());
-        expectationsDataModel.setWorkingLocation(expectationDetailsResponseEntity.getExpectationsEntity().getWorkingLocation());
-        expectationsDataModel.setParentsLocation(expectationDetailsResponseEntity.getExpectationsEntity().getParentsLocation());
-        expectationsDataModel.setPackageLimit(expectationDetailsResponseEntity.getExpectationsEntity().getPackageLimit());
-        expectationsDataModel.setPatrikaMatching(expectationDetailsResponseEntity.getExpectationsEntity().getPatrikaMatching());
-        expectationsDataModel.setOther(expectationDetailsResponseEntity.getExpectationsEntity().getOther());
+            expectationsDataModel.setCandidateId(expectationDetailsResponseEntity.getExpectationsEntity().getCandidateId());
+            expectationsDataModel.setMinHeight(expectationDetailsResponseEntity.getExpectationsEntity().getMinHeight());
+            expectationsDataModel.setMaxHeight(expectationDetailsResponseEntity.getExpectationsEntity().getMaxHeight());
+            expectationsDataModel.setMinAge(expectationDetailsResponseEntity.getExpectationsEntity().getMinAge());
+            expectationsDataModel.setMaxAge(expectationDetailsResponseEntity.getExpectationsEntity().getMaxAge());
+            expectationsDataModel.setSubCaste(expectationDetailsResponseEntity.getExpectationsEntity().getSubCaste());
+            expectationsDataModel.setDegree(expectationDetailsResponseEntity.getExpectationsEntity().getDegree());
+            expectationsDataModel.setWorkingLocation(expectationDetailsResponseEntity.getExpectationsEntity().getWorkingLocation());
+            expectationsDataModel.setParentsLocation(expectationDetailsResponseEntity.getExpectationsEntity().getParentsLocation());
+            expectationsDataModel.setPackageLimit(expectationDetailsResponseEntity.getExpectationsEntity().getPackageLimit());
+            expectationsDataModel.setPatrikaMatching(expectationDetailsResponseEntity.getExpectationsEntity().getPatrikaMatching());
+            expectationsDataModel.setOther(expectationDetailsResponseEntity.getExpectationsEntity().getOther());
+        }
         expectationDetailsResponseDataModel.setExpectationsDataModel(expectationsDataModel);
         return expectationDetailsResponseDataModel;
     }

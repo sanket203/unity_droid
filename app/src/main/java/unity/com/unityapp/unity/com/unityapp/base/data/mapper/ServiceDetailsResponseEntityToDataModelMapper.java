@@ -18,17 +18,19 @@ public class ServiceDetailsResponseEntityToDataModelMapper {
         serviceDetailsResponseDataModel.setMessage(serviceDetailsResponseEntity.getMessage());
         serviceDetailsResponseDataModel.setStatus(serviceDetailsResponseEntity.getStatus());
         ServiceDetailsDataModel serviceDetailsDataModel = new ServiceDetailsDataModel();
-        serviceDetailsDataModel.setAddress(serviceDetailsResponseEntity.getServiceDetailsEntity().getAddress());
-        serviceDetailsDataModel.setAnnualIncome(serviceDetailsResponseEntity.getServiceDetailsEntity().getAnnualIncome());
-        serviceDetailsDataModel.setCandidateId(serviceDetailsResponseEntity.getServiceDetailsEntity().getCandidateId());
-        serviceDetailsDataModel.setDesignation(serviceDetailsResponseEntity.getServiceDetailsEntity().getDesignation());
-        serviceDetailsDataModel.setExperience(serviceDetailsResponseEntity.getServiceDetailsEntity().getExperience());
-        serviceDetailsDataModel.setOccupation(serviceDetailsResponseEntity.getServiceDetailsEntity().getOccupation());
-        serviceDetailsDataModel.setOrganization(serviceDetailsResponseEntity.getServiceDetailsEntity().getOrganization());
-        serviceDetailsDataModel.setSector(serviceDetailsResponseEntity.getServiceDetailsEntity().getSector());
-        serviceDetailsDataModel.setServiceStatus(serviceDetailsResponseEntity.getServiceDetailsEntity().getServiceStatus());
-        serviceDetailsDataModel.setOrganizationType(serviceDetailsResponseEntity.getServiceDetailsEntity().getOrganizationType());
-        serviceDetailsDataModel.setWorkingCity(serviceDetailsResponseEntity.getServiceDetailsEntity().getWorkingCity());
+        if (serviceDetailsResponseEntity.getServiceDetailsEntity() != null) {
+            serviceDetailsDataModel.setAddress(serviceDetailsResponseEntity.getServiceDetailsEntity().getAddress());
+            serviceDetailsDataModel.setAnnualIncome(serviceDetailsResponseEntity.getServiceDetailsEntity().getAnnualIncome());
+            serviceDetailsDataModel.setCandidateId(serviceDetailsResponseEntity.getServiceDetailsEntity().getCandidateId());
+            serviceDetailsDataModel.setDesignation(serviceDetailsResponseEntity.getServiceDetailsEntity().getDesignation());
+            serviceDetailsDataModel.setExperience(serviceDetailsResponseEntity.getServiceDetailsEntity().getExperience());
+            serviceDetailsDataModel.setOccupation(serviceDetailsResponseEntity.getServiceDetailsEntity().getOccupation());
+            serviceDetailsDataModel.setOrganization(serviceDetailsResponseEntity.getServiceDetailsEntity().getOrganization());
+            serviceDetailsDataModel.setSector(serviceDetailsResponseEntity.getServiceDetailsEntity().getSector());
+            serviceDetailsDataModel.setServiceStatus(serviceDetailsResponseEntity.getServiceDetailsEntity().getServiceStatus());
+            serviceDetailsDataModel.setOrganizationType(serviceDetailsResponseEntity.getServiceDetailsEntity().getOrganizationType());
+            serviceDetailsDataModel.setWorkingCity(serviceDetailsResponseEntity.getServiceDetailsEntity().getWorkingCity());
+        }
         serviceDetailsResponseDataModel.setServiceDetailsDataModel(serviceDetailsDataModel);
         return serviceDetailsResponseDataModel;
     }

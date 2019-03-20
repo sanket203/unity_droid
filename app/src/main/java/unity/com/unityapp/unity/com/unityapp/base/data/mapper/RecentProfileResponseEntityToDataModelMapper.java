@@ -31,21 +31,23 @@ public class RecentProfileResponseEntityToDataModelMapper {
 
     private List<ProfileResponseDataModel> getListProfileResponse(List<ProfileResponseEntity> entities) {
         List<ProfileResponseDataModel> profileResponseDataModelList = new ArrayList<>();
-        for (ProfileResponseEntity entity : entities
-                ) {
-            ProfileResponseDataModel dataModel = new ProfileResponseDataModel();
-            dataModel.setAddressCount(entity.getAddressCount());
-            dataModel.setBirthDate(entity.getBirthDate());
-            dataModel.setCandidateID(entity.getCandidateID());
-            dataModel.setId(entity.getId());
-            dataModel.setEducation(entity.getEducation());
-            dataModel.setGender(entity.getGender());
-            dataModel.setHeight(entity.getHeight());
-            dataModel.setIncome(entity.getIncome());
-            dataModel.setLastLogin(entity.getLastLogin());
-            dataModel.setName(entity.getName());
-            profileResponseDataModelList.add(dataModel);
+        if (entities != null) {
+            for (ProfileResponseEntity entity : entities
+            ) {
+                ProfileResponseDataModel dataModel = new ProfileResponseDataModel();
+                dataModel.setAddressCount(entity.getAddressCount());
+                dataModel.setBirthDate(entity.getBirthDate());
+                dataModel.setCandidateID(entity.getCandidateID());
+                dataModel.setId(entity.getId());
+                dataModel.setEducation(entity.getEducation());
+                dataModel.setGender(entity.getGender());
+                dataModel.setHeight(entity.getHeight());
+                dataModel.setIncome(entity.getIncome());
+                dataModel.setLastLogin(entity.getLastLogin());
+                dataModel.setName(entity.getName());
+                profileResponseDataModelList.add(dataModel);
 
+            }
         }
         return profileResponseDataModelList;
     }

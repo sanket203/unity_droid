@@ -40,10 +40,14 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         UserInfo.getUserInfo().setFirstName(loginUserResponseDataModel.getUserResponseDataModel().getName());
                         UserInfo.getUserInfo().setGender(loginUserResponseDataModel.getUserResponseDataModel().getGender());
                         UserInfo.getUserInfo().setAddressCount(loginUserResponseDataModel.getUserResponseDataModel().getAddressCount());
-
+                        UserInfo.getUserInfo().setRegistered(loginUserResponseDataModel.getUserResponseDataModel().getRegistered());
                         if (view != null) {
                             view.showProgressBar(false);
-                            view.loginAndNavigateToHomeScreen();
+                           /* if (loginUserResponseDataModel.getUserResponseDataModel().getRegistered() == null || loginUserResponseDataModel.getUserResponseDataModel().getRegistered().equalsIgnoreCase("NOT_REGISTERED")) {
+                                //   view.navigateToRegistration();
+                            } else {*/
+                                view.loginAndNavigateToHomeScreen();
+                          //  }
                         }
                     } else {
                         view.showProgressBar(false);

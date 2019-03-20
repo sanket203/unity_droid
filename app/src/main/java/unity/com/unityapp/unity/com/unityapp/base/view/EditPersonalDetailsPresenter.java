@@ -37,10 +37,11 @@ public class EditPersonalDetailsPresenter extends BasePresenter<EditPersonalDeta
                 PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgress(false);
-                    if(isFromRegistration){
+                    if (isFromRegistration) {
                         view.navigateToEditPhysicalDetailsActivity();
+                    } else {
+                        view.close();
                     }
-                    view.close();
                 }
             } else {
                 if (view != null) {

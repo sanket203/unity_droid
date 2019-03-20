@@ -148,7 +148,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     private PhysicalDetailsViewModel getData() {
         PhysicalDetailsViewModel physicalDetailsViewModel = new PhysicalDetailsViewModel();
-        physicalDetailsViewModel.setCandidateId(candidateId);
+        physicalDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
 
         if (editWeight.getText() != null) {
             physicalDetailsViewModel.setFeet(editWeight.getText().toString());
@@ -237,7 +237,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         spinnerInches.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.spectacle_spinner).length; i++) {
-            if (physicalDetailsViewModel.getSpects().equals("")) {
+            if (physicalDetailsViewModel.getSpects() == null || physicalDetailsViewModel.getSpects().equals("")) {
                 pos = 0;
             } else if (getResources().getStringArray(R.array.spectacle_spinner)[i].equals(physicalDetailsViewModel.getSpects())) {
                 pos = i;
@@ -248,7 +248,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         spinnerSpectacle.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.blood_group).length; i++) {
-            if (physicalDetailsViewModel.getBloodGroup().equals("")) {
+            if (physicalDetailsViewModel.getSpects() == null || physicalDetailsViewModel.getBloodGroup().equals("")) {
                 pos = 0;
             } else if (getResources().getStringArray(R.array.blood_group)[i].equals(physicalDetailsViewModel.getBloodGroup())) {
                 pos = i;
@@ -258,7 +258,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         editBloodGroup.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.medical_surgery_spinner).length; i++) {
-            if (physicalDetailsViewModel.getMedicalSurgary().equals("")) {
+            if (physicalDetailsViewModel.getSpects() == null || physicalDetailsViewModel.getMedicalSurgary().equals("")) {
                 pos = 0;
             } else if (getResources().getStringArray(R.array.medical_surgery_spinner)[i].equals(physicalDetailsViewModel.getMedicalSurgary())) {
                 pos = i;
@@ -268,7 +268,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         spinnerMedicalSurgery.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.disability_spinner).length; i++) {
-            if (physicalDetailsViewModel.getDisability().equals("")) {
+            if (physicalDetailsViewModel.getSpects() == null || physicalDetailsViewModel.getDisability().equals("")) {
                 pos = 0;
             } else if (getResources().getStringArray(R.array.disability_spinner)[i].equals(physicalDetailsViewModel.getDisability())) {
                 pos = i;

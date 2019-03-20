@@ -15,6 +15,8 @@ public class UserInfo {
     private String anonyMousToken;
     private int candidateId;
     private int addressCount;
+    private String registered;
+
 
 
     public static UserInfo getUserInfo() {
@@ -22,6 +24,18 @@ public class UserInfo {
             userInfo = new UserInfo();
         }
         return userInfo;
+    }
+
+    public static void setUserInfo(UserInfo userInfo) {
+        UserInfo.userInfo = userInfo;
+    }
+
+    public String getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(String registered) {
+        this.registered = registered;
     }
 
     public String getGender() {

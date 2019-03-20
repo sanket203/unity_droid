@@ -47,8 +47,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @OnClick(R.id.btn_login)
     public void onLoginClick() {
-         loginAndNavigateToHomeScreen();
-      // presenter.loginUser(email.getText().toString(), password.getText().toString());
+        // loginAndNavigateToHomeScreen();
+        presenter.loginUser(email.getText().toString(), password.getText().toString());
     }
 
     @Override
@@ -73,6 +73,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
             loader.setVisibility(View.GONE);
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
+    }
+
+    @Override
+    public void navigateToRegistration() {
+        Intent intent = new Intent(this, EditPersonalDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 
     @OnClick(R.id.register_link)

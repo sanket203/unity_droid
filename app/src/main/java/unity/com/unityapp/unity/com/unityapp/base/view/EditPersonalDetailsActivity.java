@@ -145,7 +145,7 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     }
 
     private void updateLabel() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "dd-MM-yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         birthDate.setText(sdf.format(myCalendar.getTime()));
     }

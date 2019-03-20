@@ -29,9 +29,7 @@ public class LoginUserResponseEntityModelToDataModelMapper {
     public UserResponseDataModel setUSerResponseDataModel(UserResponseEntity entity) {
         UserResponseDataModel userResponseDataModel = new UserResponseDataModel();
 
-        if (entity != null)
-
-        {
+        if (entity != null) {
 
             userResponseDataModel.setAddressCount(entity.getAddressCount());
             userResponseDataModel.setBirthDate(entity.getBirthDate());
@@ -42,6 +40,10 @@ public class LoginUserResponseEntityModelToDataModelMapper {
             userResponseDataModel.setIncome(entity.getIncome());
             userResponseDataModel.setLastLogin(entity.getLastLogin());
             userResponseDataModel.setName(entity.getName());
+            userResponseDataModel.setPayment(entity.getPayment());
+            userResponseDataModel.setStatus(entity.getStatus());
+            userResponseDataModel.setTransactionId(entity.getTransactionId());
+            userResponseDataModel.setRegistered(entity.isRegistered());
         }
         return userResponseDataModel;
 

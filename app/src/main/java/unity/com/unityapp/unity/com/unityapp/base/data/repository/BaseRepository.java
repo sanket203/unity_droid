@@ -2,8 +2,8 @@ package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 
 import io.reactivex.Observable;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
-import unity.com.unityapp.unity.com.unityapp.base.data.model.request.PersonalDetailsRequestEntity;
-import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AbroadDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.EducationDetailsEntity;
@@ -22,11 +22,7 @@ import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PhysicalDe
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.RecentProfileResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ServiceDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ServiceDetailsResponseEntity;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.LoginUserResponseDataModel;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.PersonalDetailsResponseDataModel;
 import unity.com.unityapp.unity.com.unityapp.base.domain.model.StartupDataEntity;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.StartupDataModel;
-import unity.com.unityapp.unity.com.unityapp.base.domain.model.request.PersonalDetailsRequestDataModel;
 
 /**
  * Created by admin on 10/12/18.
@@ -45,8 +41,6 @@ public interface BaseRepository {
     Observable<PersonalDetailsResponseEntity> getPersonalDetails(String candidateId);
 
     Observable<EducationDetailsResponseEntity> getEducationDetails(String candidateId);
-
-    Observable<AbroadDetailsResponseEntity> getAbroadDetails(String candidateId);
 
     Observable<DietDetailsResponseEntity> getDietDetails(String candidateId);
 
@@ -75,4 +69,9 @@ public interface BaseRepository {
     Observable<HoroscopeDetailsResponseEntity> saveHoroscopeDetails(HoroscopeDetailsEntity horoscopeDetailsEntity);
 
     Observable<ServiceDetailsResponseEntity> saveServiceDetails(ServiceDetailsEntity serviceDetailsEntity);
+
+    Observable<LoginUserResponseEntity> registerUser(RegisterUserEntity registerUserEntity);
+
+    Observable<ContactDetailsResponseEntity> checkAndGetContactDetails(String candidateId, String profileId, Boolean isAddressExist);
 }
+

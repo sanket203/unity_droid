@@ -2,7 +2,8 @@ package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 
 import io.reactivex.Observable;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
-import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AbroadDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.EducationDetailsEntity;
@@ -65,11 +66,6 @@ public class BaseRepositoryImpl implements BaseRepository {
     @Override
     public Observable<EducationDetailsResponseEntity> getEducationDetails(String candidateId) {
         return networkClient.create(BaseApi.class).getEducationDetails(candidateId);
-    }
-
-    @Override
-    public Observable<AbroadDetailsResponseEntity> getAbroadDetails(String candidateId) {
-        return networkClient.create(BaseApi.class).getAbroadDetails(candidateId);
     }
 
     @Override
@@ -141,5 +137,16 @@ public class BaseRepositoryImpl implements BaseRepository {
     @Override
     public Observable<ServiceDetailsResponseEntity> saveServiceDetails(ServiceDetailsEntity serviceDetailsEntity) {
         return networkClient.create(BaseApi.class).saveServiceDetails(serviceDetailsEntity);
+    }
+
+    @Override
+    public Observable<LoginUserResponseEntity> registerUser(RegisterUserEntity registerUserEntity) {
+        return networkClient.create(BaseApi.class).registerUser(registerUserEntity);
+
+    }
+
+    @Override
+    public Observable<ContactDetailsResponseEntity> checkAndGetContactDetails(String candidateId, String profileId, Boolean isAddressExist) {
+        return networkClient.create(BaseApi.class).checkAndGetContact(candidateId, profileId, isAddressExist);
     }
 }

@@ -19,7 +19,6 @@
         android:layout_margin="20dp"
         android:src="@mipmap/ic_splash_logo" />
 
-
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="match_parent"
@@ -65,7 +64,7 @@
         android:id="@+id/surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/mobile_number"
+        android:layout_above="@+id/birth_date"
         android:layout_gravity="center"
         android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
@@ -77,28 +76,12 @@
         android:textColorHint="#b6b6b6"
         android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/mobile_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/birth_date"
-        android:layout_gravity="center"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="52dp"
-        android:background="@drawable/login_text_rounded_rectangle"
-        android:hint="Mobile Number"
-        android:minHeight="35dp"
-        android:padding="10dp"
-        android:textColorHint="#b6b6b6"
-        android:textSize="15sp" />
-
 
     <EditText
         android:id="@+id/birth_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_register"
+        android:layout_above="@+id/mobile_number"
         android:layout_gravity="center"
         android:layout_marginStart="52dp"
         android:layout_marginTop="10dp"
@@ -113,11 +96,43 @@
         android:textColorHint="#b6b6b6"
         android:textSize="15sp" />
 
+    <EditText
+        android:id="@+id/mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password"
+        android:layout_gravity="center"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/login_text_rounded_rectangle"
+        android:hint="Mobile Number"
+        android:minHeight="35dp"
+        android:padding="10dp"
+        android:textColorHint="#b6b6b6"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_register"
+        android:layout_gravity="center"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="52dp"
+        android:background="@drawable/login_text_rounded_rectangle"
+        android:hint="Password"
+        android:minHeight="35dp"
+        android:padding="10dp"
+        android:textColorHint="#b6b6b6"
+        android:textSize="15sp" />
+
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_above="@+id/login_link"
         android:layout_marginStart="52dp"
         android:layout_marginTop="15dp"
@@ -141,6 +156,5 @@
         android:text="ALready have an account? Login"
         android:textColor="#000000"
         android:textSize="15sp" />
-
 
 </RelativeLayout>

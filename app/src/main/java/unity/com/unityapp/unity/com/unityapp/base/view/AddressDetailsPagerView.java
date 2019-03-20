@@ -8,4 +8,6 @@ public interface AddressDetailsPagerView extends BaseView {
     void showPersonalDetails(PersonalDetailsViewModel viewModel);
 
     void showProgressBar(boolean isVisible);
+
+    void showPopup();
 }

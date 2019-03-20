@@ -5,9 +5,9 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
-import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AbroadDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.EducationDetailsEntity;
@@ -52,9 +52,6 @@ public interface BaseApi {
     @GET("getQualificationDetails/{candidateId}")
     Observable<EducationDetailsResponseEntity> getEducationDetails(@Path("candidateId") String candidateId);
 
-    @GET("getAbroadDetails/{candidateId}")
-    Observable<AbroadDetailsResponseEntity> getAbroadDetails(@Path("candidateId") String candidateId);
-
     @GET("getDietDetails/{candidateId}")
     Observable<DietDetailsResponseEntity> getDietDetails(@Path("candidateId") String candidateId);
 
@@ -96,4 +93,10 @@ public interface BaseApi {
 
     @POST("saveServiceDetails")
     Observable<ServiceDetailsResponseEntity> saveServiceDetails(@Body ServiceDetailsEntity serviceDetailsEntity);
+
+    @POST("checkUser")
+    Observable<LoginUserResponseEntity> registerUser(@Body RegisterUserEntity registerUserEntity);
+
+    @GET("getProfileAddress/{candidateId}/{profileId}/{isAddressTaken}")
+    Observable<ContactDetailsResponseEntity> checkAndGetContact(@Path("candidateId") String candidateId, @Path("profileId") String profileId, @Path("isAddressTaken") Boolean isAddressExist);
 }

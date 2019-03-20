@@ -27,17 +27,27 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileRespon
  * Created by admin on 11/12/18.
  */
 
-public class AddressTakenFragment extends BaseFragment implements AddressTakenView {
+public class AddressTakenFragment extends BaseFragment implements AddressTakenView, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
     @Inject
     AddressTakenPresenter presenter;
 
-    RecentProfilesAdapter adapter;
-    List<ProfileResponseViewModel> list = new ArrayList<>();
+    private RecentProfilesAdapter adapter;
+    private List<ProfileResponseViewModel> list = new ArrayList<>();
 
     @BindView(R.id.recent_profile_rv)
     RecyclerView recyclerView;
+
+    @BindView(R.id.swipeRefresh)
+    android.support.v4.widget.SwipeRefreshLayout swipeRefreshLayout;
     private ProfileItemClickListner itemClickListner;
+
+    private static final int PAGE_START = 1;
+    private int currentPage = PAGE_START;
+    private boolean isLastPage = false;
+    private int totalPage = 10;
+    private boolean isLoading = false;
+    private int itemCount = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -57,28 +67,34 @@ public class AddressTakenFragment extends BaseFragment implements AddressTakenVi
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.profile_list_fragment, container, false);
         ButterKnife.bind(this, view);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setItemPrefetchEnabled(false);
         linearLayoutManager.setItemPrefetchEnabled(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecentProfilesAdapter(list, getActivity(), itemClickListner);
-        adapter.addOnScrollListener(recyclerView);
-        adapter.setLoadMoreProfilesListener(() -> {
-            int pageNumber = getPageNumberTobeFetch();
-            if (pageNumber > 0) {
-                presenter.getAddresstakenProfiles(pageNumber);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
+            @Override
+            protected void loadMoreItems() {
+                isLoading = true;
+                currentPage++;
+                presenter.getAddresstakenProfiles(currentPage);
+            }
+
+
+            @Override
+            public boolean isLastPage() {
+                return isLastPage;
+            }
+
+            @Override
+            public boolean isLoading() {
+                return isLoading;
             }
         });
-        recyclerView.setAdapter(adapter);
-        return view;
-    }
+        swipeRefreshLayout.setOnRefreshListener(this);
 
-    private int getPageNumberTobeFetch() {
-        //Logic to be updated according to backend
-        int pageNo = -1;
-        pageNo = pageNo + 1;
-        return pageNo;
+        return view;
     }
 
     @Override
@@ -86,7 +102,6 @@ public class AddressTakenFragment extends BaseFragment implements AddressTakenVi
         super.onResume();
         presenter.bind(this);
         presenter.getAddresstakenProfiles(0);
-
     }
 
     @Override
@@ -96,14 +111,33 @@ public class AddressTakenFragment extends BaseFragment implements AddressTakenVi
     }
 
     @Override
-    public void showAddresstakenProfiles(RecentProfileResponseViewModel responseViewModel) {
-        list = responseViewModel.getProfileResponseViewModelList();
-        adapter.updateData(responseViewModel.getProfileResponseViewModelList());
+    public void showAddresstakenProfiles(RecentProfileResponseViewModel viewModel) {
+
+        if (currentPage != PAGE_START) adapter.removeLoading();
+        adapter.addAll(viewModel.getProfileResponseViewModelList());
+        swipeRefreshLayout.setRefreshing(false);
+        if (currentPage < totalPage) adapter.addLoading();
+        else isLastPage = true;
+        isLoading = false;
     }
 
     @Override
     public void showError(String message) {
         Log.d("ERROR", message);
+        isLastPage = true;
+        isLoading = false;
+        adapter.removeLoading();
+    }
+
+
+    @Override
+    public void onRefresh() {
+        itemCount = 0;
+        currentPage = PAGE_START;
+        isLastPage = false;
+        adapter.clear();
+        presenter.getAddresstakenProfiles(0);
+
     }
 }
 

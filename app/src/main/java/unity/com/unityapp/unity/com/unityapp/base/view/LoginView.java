@@ -10,4 +10,6 @@ public interface LoginView extends BaseView {
     void loginAndNavigateToHomeScreen();
 
     void showProgressBar(boolean showProgress);
+
+    void navigateToRegistration();
 }

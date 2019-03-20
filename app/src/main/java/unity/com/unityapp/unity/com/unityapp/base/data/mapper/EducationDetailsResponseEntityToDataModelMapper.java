@@ -18,14 +18,18 @@ public class EducationDetailsResponseEntityToDataModelMapper {
         educationDetailsResponseDataModel.setMessage(educationDetailsResponseEntity.getMessage());
         educationDetailsResponseDataModel.setStatus(educationDetailsResponseEntity.getStatus());
         EducationalDetailsDataModel educationalDetailsDataModel = new EducationalDetailsDataModel();
-        educationalDetailsDataModel.setCandidateId(educationDetailsResponseEntity.getEducationalDetailsEntity().getCandidateId());
-        educationalDetailsDataModel.setCollege(educationDetailsResponseEntity.getEducationalDetailsEntity().getCollege());
-        educationalDetailsDataModel.setDegree(educationDetailsResponseEntity.getEducationalDetailsEntity().getDegree());
-        educationalDetailsDataModel.setPassYear(educationDetailsResponseEntity.getEducationalDetailsEntity().getPassYear());
-        educationalDetailsDataModel.setRemarks(educationDetailsResponseEntity.getEducationalDetailsEntity().getRemarks());
-        educationalDetailsDataModel.setStream(educationDetailsResponseEntity.getEducationalDetailsEntity().getStream());
-        educationalDetailsDataModel.setUniversity(educationDetailsResponseEntity.getEducationalDetailsEntity().getUniversity());
+        if (educationDetailsResponseEntity.getEducationalDetailsEntity() != null) {
+            educationalDetailsDataModel.setCandidateId(educationDetailsResponseEntity.getEducationalDetailsEntity().getCandidateId());
+            educationalDetailsDataModel.setCollege(educationDetailsResponseEntity.getEducationalDetailsEntity().getCollege());
+            educationalDetailsDataModel.setDegree(educationDetailsResponseEntity.getEducationalDetailsEntity().getDegree());
+            educationalDetailsDataModel.setPassYear(educationDetailsResponseEntity.getEducationalDetailsEntity().getPassYear());
+            educationalDetailsDataModel.setRemarks(educationDetailsResponseEntity.getEducationalDetailsEntity().getRemarks());
+            educationalDetailsDataModel.setStream(educationDetailsResponseEntity.getEducationalDetailsEntity().getStream());
+            educationalDetailsDataModel.setUniversity(educationDetailsResponseEntity.getEducationalDetailsEntity().getUniversity());
+        }
         educationDetailsResponseDataModel.setEducationalDetailsDataModel(educationalDetailsDataModel);
+
         return educationDetailsResponseDataModel;
+
     }
 }

@@ -1,9 +1,12 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
@@ -36,8 +40,22 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
 
+    AlertDialog.Builder builder;
+
 
     private String candidateId;
+
+    private AddressCommunicator addressCommunicator;
+
+    private boolean isAddressTaken = true;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof AddressCommunicator) {
+            addressCommunicator = (AddressCommunicator) context;
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,8 +72,9 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
-        // TODO: 02-02-2019  Write get call for Personal details
+        builder = new AlertDialog.Builder(getActivity());
         return view;
+
     }
 
     public static AddressDetailsPagerFragment newInstance(String candidateId) {
@@ -70,7 +89,13 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     public void onResume() {
         super.onResume();
         getCandidateId();
-       // presenter.getPersonalDetails(candidateId);
+        isAddressTaken = addressCommunicator.sendData();
+        if (candidateId.equalsIgnoreCase(String.valueOf(UserInfo.getUserInfo().getCandidateId()))) {
+
+        } else {
+            presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, isAddressTaken);
+        }
+
     }
 
     private void getCandidateId() {
@@ -111,4 +136,42 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
             progressBar.setVisibility(View.GONE);
         }
     }
+
+    @Override
+    public void showPopup() {
+        builder.setMessage("Do you want to view contact details of the profile.?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, true);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //  Action for 'NO' Button
+                        dialog.cancel();
+
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("View Contact");
+        alert.show();
+
+    }
+
+   /* @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            getCandidateId();
+            isAddressTaken = addressCommunicator.sendData();
+            if (candidateId.equalsIgnoreCase(String.valueOf(UserInfo.getUserInfo().getCandidateId()))) {
+
+            } else {
+                presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, isAddressTaken);
+            }
+        }
+    }*/
 }

@@ -2,34 +2,34 @@ package unity.com.unityapp.unity.com.unityapp.base.domain.model;
 
 import com.squareup.moshi.Json;
 
-
-public class AddressDetailsDataModel {
-
-
-    private int id;
+public class AddressDataModel {
 
     @Json(name = "candidateId")
     private int candidateId;
 
-    @Json(name = "address")
-    private String address;
-
     @Json(name = "contact")
-    private long contact;
+    private long contactNumber;
 
     @Json(name = "alternateNumber")
     private long alternateNumber;
 
-    public int getId() {
-        return id;
+    @Json(name = "address")
+    private String address;
+
+    public int getCandidateId() {
+        return candidateId;
     }
 
-    public long getContact() {
-        return contact;
+    public void setCandidateId(int candidateId) {
+        this.candidateId = candidateId;
     }
 
-    public void setContact(long contact) {
-        this.contact = contact;
+    public long getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(long contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public long getAlternateNumber() {
@@ -38,18 +38,6 @@ public class AddressDetailsDataModel {
 
     public void setAlternateNumber(long alternateNumber) {
         this.alternateNumber = alternateNumber;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCandidateId() {
-        return candidateId;
-    }
-
-    public void setCandidateId(int candidateId) {
-        this.candidateId = candidateId;
     }
 
     public String getAddress() {

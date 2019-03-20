@@ -1,5 +1,7 @@
 package unity.com.unityapp.unity.com.unityapp.base.domain.model;
 
+import com.squareup.moshi.Json;
+
 /**
  * Created by admin on 20/12/18.
  */
@@ -28,6 +30,59 @@ public class UserResponseDataModel {
     private String lastLogin;
 
     private int addressCount;
+
+    private String registered;
+
+    private String subscriptionDate;
+
+    private String payment;
+
+    private String status;
+
+
+    private String transactionId;
+
+
+    public String getSubscriptionDate() {
+        return subscriptionDate;
+    }
+
+    public void setSubscriptionDate(String subscriptionDate) {
+        this.subscriptionDate = subscriptionDate;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getRegistered() {
+        return registered;
+    }
+
+
+    public void setRegistered(String registered) {
+        this.registered = registered;
+    }
 
     public int getAddressCount() {
         return addressCount;

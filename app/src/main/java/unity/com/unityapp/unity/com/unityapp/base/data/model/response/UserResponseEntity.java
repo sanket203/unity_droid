@@ -8,35 +8,87 @@ import com.squareup.moshi.Json;
 
 public class UserResponseEntity {
 
-    @Json(name = "id")
-    private int id;
-
-    @Json(name = "candidateId")
+    @Json(name="candidateId")
     private int candidateId;
 
-    @Json(name = "name")
+    @Json(name="name")
     private String name;
 
-    @Json(name = "gender")
+    @Json(name="gender")
     private String gender;
 
-    @Json(name = "birthDate")
+    @Json(name="birthDate")
     private String birthDate;
 
-    @Json(name = "height")
+    @Json(name="height")
     private String height;
 
-    @Json(name = "education")
+    @Json(name="education")
     private String education;
 
-    @Json(name = "income")
+    @Json(name="income")
     private int income;
 
-    @Json(name = "lastLogin")
+    @Json(name="lastLogin")
     private String lastLogin;
 
-    @Json(name = "addressCount")
+    @Json(name="addressCount")
     private int addressCount;
+
+    @Json(name="subscriptionDate")
+    private String subscriptionDate;
+
+    @Json(name="payment")
+    private String payment;
+
+    @Json(name="status")
+    private String status;
+
+    @Json(name="transactionId")
+    private String transactionId;
+
+    @Json(name="registered")
+    private String registered;
+
+    public String isRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(String registered) {
+        this.registered = registered;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPayment() {
+        return payment;
+    }
+
+    public void setPayment(String payment) {
+        this.payment = payment;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getSubscriptionDate() {
+        return subscriptionDate;
+    }
+
+    public void setSubscriptionDate(String subscriptionDate) {
+        this.subscriptionDate = subscriptionDate;
+    }
 
     public int getAddressCount() {
         return addressCount;
@@ -46,13 +98,6 @@ public class UserResponseEntity {
         this.addressCount = addressCount;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getCandidateId() {
         return candidateId;
@@ -117,6 +162,7 @@ public class UserResponseEntity {
     public void setLastLogin(String lastLogin) {
         this.lastLogin = lastLogin;
     }
+
 
 
 }

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -133,7 +134,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             editDesignation.setText(serviceDetailsViewModel.getDesignation());
             editServiceStatus.setText(serviceDetailsViewModel.getServiceStatus());
             editExperience.setText(serviceDetailsViewModel.getExperience());
-            editAnnualIncome.setText(serviceDetailsViewModel.getAnnualIncome());
+         //   editAnnualIncome.setText(serviceDetailsViewModel.getAnnualIncome());
         }
     }
 
@@ -165,7 +166,11 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             serviceDetailsViewModel.setExperience(editExperience.getText().toString());
         }
         if (editAnnualIncome.getText() != null) {
-            serviceDetailsViewModel.setAnnualIncome(Integer.parseInt(editAnnualIncome.getText().toString()));
+            try {
+                serviceDetailsViewModel.setAnnualIncome(Integer.parseInt(editAnnualIncome.getText().toString()));
+            } catch (NumberFormatException e) {
+                Log.d("Error", e.getMessage());
+            }
         }
         return serviceDetailsViewModel;
     }

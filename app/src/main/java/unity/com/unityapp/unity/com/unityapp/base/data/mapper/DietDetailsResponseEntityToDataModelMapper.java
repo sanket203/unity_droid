@@ -16,11 +16,14 @@ public class DietDetailsResponseEntityToDataModelMapper {
         dietDetailsResponseDataModel.setMessage(dietDetailsResponseEntity.getMessage());
         dietDetailsResponseDataModel.setStatus(dietDetailsResponseEntity.getStatus());
         DietDetailsDataModel dietDetailsDataModel = new DietDetailsDataModel();
-        dietDetailsDataModel.setCandidateId(dietDetailsResponseEntity.getDietDetailsEntity().getCandidateId());
-        dietDetailsDataModel.setDietType(dietDetailsResponseEntity.getDietDetailsEntity().getDietType());
-        dietDetailsDataModel.setDrink(dietDetailsResponseEntity.getDietDetailsEntity().getDrink());
-        dietDetailsDataModel.setSmoke(dietDetailsResponseEntity.getDietDetailsEntity().getSmoke());
-        dietDetailsResponseDataModel.setDietDetailsDataModel(dietDetailsDataModel);
+        if (dietDetailsResponseEntity.getDietDetailsEntity() != null) {
+            dietDetailsDataModel.setCandidateId(dietDetailsResponseEntity.getDietDetailsEntity().getCandidateId());
+            dietDetailsDataModel.setDietType(dietDetailsResponseEntity.getDietDetailsEntity().getDietType());
+            dietDetailsDataModel.setDrink(dietDetailsResponseEntity.getDietDetailsEntity().getDrink());
+            dietDetailsDataModel.setSmoke(dietDetailsResponseEntity.getDietDetailsEntity().getSmoke());
+        }
+            dietDetailsResponseDataModel.setDietDetailsDataModel(dietDetailsDataModel);
+
 
         return dietDetailsResponseDataModel;
     }

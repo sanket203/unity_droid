@@ -1,38 +1,45 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.CheckAndGetContactDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPersonalDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PersonalDetailsDataModelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 public class AddressDetailsPagerPresenter extends BasePresenter<AddressDetailsPagerView> {
 
-    private final GetPersonalDetailsUseCase getPersonalDetailsUseCase;
-    private final PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper;
+    private final CheckAndGetContactDetailsUseCase useCase;
+
 
     @Inject
-
-    public AddressDetailsPagerPresenter(GetPersonalDetailsUseCase getPersonalDetailsUseCase, PersonalDetailsDataModelToViewModelMapper personalDetailsDataModelToViewModelMapper) {
-        this.getPersonalDetailsUseCase = getPersonalDetailsUseCase;
-        this.personalDetailsDataModelToViewModelMapper = personalDetailsDataModelToViewModelMapper;
+    public AddressDetailsPagerPresenter(CheckAndGetContactDetailsUseCase useCase) {
+        this.useCase = useCase;
     }
 
-    public void getPersonalDetails(String candidateId) {
+
+    public void getContactDetails(String candidateId, String profileId, Boolean isAddressExist) {
         if (view != null) {
             view.showProgressBar(true);
         }
-        getPersonalDetailsUseCase.execute(candidateId)
+        useCase.execute(candidateId, profileId, isAddressExist)
                 .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
             if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
-                PersonalDetailsViewModel viewModel = personalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
                 if (view != null) {
                     view.showProgressBar(false);
-                    view.showPersonalDetails(viewModel);
+                    if (personalDetailsResponseDataModel.getContactDetailsDataModel().getAddressDataModels().size() > 0) {
+                        // TODO: 17-03-2019 write view model binding
+                        // view.showPersonalDetails();
+                    } else {
+                        view.showPopup();
+                    }
                 }
             } else {
                 if (view != null) {
@@ -47,6 +54,8 @@ public class AddressDetailsPagerPresenter extends BasePresenter<AddressDetailsPa
             Log.d("ERROR", error.getMessage());
         });
     }
+
+
 }
 
 

@@ -19,16 +19,20 @@ public class PhysicalDetailsResponseEntityToDataModelMapper {
         physicalDetailsResponseDataModel.setMessage(physicalDetailsResponseEntity.getMessage());
         physicalDetailsResponseDataModel.setStatus(physicalDetailsResponseEntity.getStatus());
         PhysicalDetailsDataModel physicalDetailsDataModel = new PhysicalDetailsDataModel();
-        physicalDetailsDataModel.setCandidateId(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getCandidateId());
-        physicalDetailsDataModel.setHeight(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getHeight());
-        physicalDetailsDataModel.setWeight(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getWeight());
-        physicalDetailsDataModel.setComplexion(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getComplexion());
-        physicalDetailsDataModel.setBodyfom(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getBodyform());
-        physicalDetailsDataModel.setSpects(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getSpects());
-        physicalDetailsDataModel.setBloodGroup(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getBloodGroup());
-        physicalDetailsDataModel.setMedicalSurgary(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getMedicalSurgary());
-        physicalDetailsDataModel.setDisability(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getDisability());
-        physicalDetailsDataModel.setOtherRemarks(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getOtherRemarks());
+        if (physicalDetailsResponseEntity.getPhysicalDetailsEntity() != null) {
+            physicalDetailsDataModel.setCandidateId(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getCandidateId());
+            physicalDetailsDataModel.setHeight(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getHeight());
+            physicalDetailsDataModel.setWeight(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getWeight());
+            physicalDetailsDataModel.setComplexion(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getComplexion());
+            physicalDetailsDataModel.setBodyfom(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getBodyform());
+            physicalDetailsDataModel.setSpects(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getSpects());
+            physicalDetailsDataModel.setBloodGroup(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getBloodGroup());
+            physicalDetailsDataModel.setMedicalSurgary(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getMedicalSurgary());
+            physicalDetailsDataModel.setDisability(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getDisability());
+            physicalDetailsDataModel.setOtherRemarks(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getOtherRemarks());
+        }
+        physicalDetailsResponseDataModel.setPhysicalDetailsDataModel(physicalDetailsDataModel);
+
 
         return physicalDetailsResponseDataModel;
     }

@@ -27,17 +27,27 @@ import unity.com.unityapp.unity.com.unityapp.base.view.model.RecentProfileRespon
  * Created by admin on 11/12/18.
  */
 
-public class RecentProfileFragment extends BaseFragment implements RecentProfileView {
+public class RecentProfileFragment extends BaseFragment implements RecentProfileView, android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener {
 
     @Inject
     RecentProfilePresenter presenter;
 
-    RecentProfilesAdapter adapter;
-    List<ProfileResponseViewModel> list = new ArrayList<>();
+    private RecentProfilesAdapter adapter;
+    private List<ProfileResponseViewModel> list = new ArrayList<>();
 
     @BindView(R.id.recent_profile_rv)
     RecyclerView recyclerView;
+
+    @BindView(R.id.swipeRefresh)
+    android.support.v4.widget.SwipeRefreshLayout swipeRefreshLayout;
     private ProfileItemClickListner itemClickListner;
+
+    private static final int PAGE_START = 1;
+    private int currentPage = PAGE_START;
+    private boolean isLastPage = false;
+    private int totalPage = 10;
+    private boolean isLoading = false;
+    private int itemCount = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -50,7 +60,6 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppDi.getFragmentComponent(this).inject(this);
-
     }
 
     @Override
@@ -63,23 +72,27 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
         linearLayoutManager.setItemPrefetchEnabled(false);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecentProfilesAdapter(list, getActivity(), itemClickListner);
-        adapter.addOnScrollListener(recyclerView);
-        adapter.setLoadMoreProfilesListener(() -> {
-            int pageNumber = getPageNumberTobeFetch();
-            if (pageNumber > 0) {
-                presenter.getRecentProfiles(pageNumber);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
+            @Override
+            protected void loadMoreItems() {
+                isLoading = true;
+                currentPage++;
+                presenter.getRecentProfiles(currentPage);
+            }
+
+            @Override
+            public boolean isLastPage() {
+                return isLastPage;
+            }
+
+            @Override
+            public boolean isLoading() {
+                return isLoading;
             }
         });
-        recyclerView.setAdapter(adapter);
-
+        swipeRefreshLayout.setOnRefreshListener(this);
         return view;
-    }
-
-    private int getPageNumberTobeFetch() {
-        //Logic to be updated according to backend
-        int pageNo = -1;
-        pageNo = pageNo + 1;
-        return pageNo;
     }
 
     @Override
@@ -97,12 +110,30 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
 
     @Override
     public void showRecentProfiles(RecentProfileResponseViewModel viewModel) {
-        list = viewModel.getProfileResponseViewModelList();
-        adapter.updateData(viewModel.getProfileResponseViewModelList());
+        if (currentPage != PAGE_START) adapter.removeLoading();
+        adapter.addAll(viewModel.getProfileResponseViewModelList());
+        swipeRefreshLayout.setRefreshing(false);
+        if (currentPage < totalPage) adapter.addLoading();
+        else isLastPage = true;
+        isLoading = false;
     }
 
     @Override
     public void showError(String message) {
         Log.d("ERROR", message);
+        isLastPage = true;
+        isLoading = false;
+        adapter.removeLoading();
+    }
+
+
+    @Override
+    public void onRefresh() {
+        itemCount = 0;
+        currentPage = PAGE_START;
+        isLastPage = false;
+        adapter.clear();
+        presenter.getRecentProfiles(0);
+
     }
 }

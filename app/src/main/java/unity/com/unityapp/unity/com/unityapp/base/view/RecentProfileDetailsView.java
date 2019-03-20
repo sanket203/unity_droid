@@ -7,4 +7,10 @@ import unity.com.unityapp.unity.com.unityapp.base.BaseView;
  */
 
 public interface RecentProfileDetailsView extends BaseView {
+    void showProgressBar(boolean b);
+
+    void showPopup();
+
+    void navigateToAddressFragment();
+
 }

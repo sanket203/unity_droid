@@ -17,19 +17,21 @@ public class HoroscopeDetailsResponseEntityToDataModelMapper {
         horoscopeDetailsResponseDataModel.setMessage(horoscopeDetailsResponseEntity.getMessage());
         horoscopeDetailsResponseDataModel.setStatus(horoscopeDetailsResponseEntity.getStatus());
         HoroscopeDetailsDataModel horoscopeDetailsDataModel = new HoroscopeDetailsDataModel();
-        horoscopeDetailsDataModel.setCandidateId(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCandidateId());
-        horoscopeDetailsDataModel.setCaste(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCaste());
-        horoscopeDetailsDataModel.setSubCaste(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getSubCaste());
-        horoscopeDetailsDataModel.setShakha(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getShakha());
-        horoscopeDetailsDataModel.setUpshakha(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getUpshakha());
-        horoscopeDetailsDataModel.setRashi(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getRashi());
-        horoscopeDetailsDataModel.setNakshatra(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getNakshatra());
-        horoscopeDetailsDataModel.setNaadi(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getNaadi());
-        horoscopeDetailsDataModel.setGana(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getGana());
-        horoscopeDetailsDataModel.setCharan(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCharan());
-        horoscopeDetailsDataModel.setGotra(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getGotra());
-        horoscopeDetailsDataModel.setMangal(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getMangal());
-        horoscopeDetailsDataModel.setRemarks(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getRemarks());
+        if (horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity() != null) {
+            horoscopeDetailsDataModel.setCandidateId(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCandidateId());
+            horoscopeDetailsDataModel.setCaste(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCaste());
+            horoscopeDetailsDataModel.setSubCaste(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getSubCaste());
+            horoscopeDetailsDataModel.setShakha(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getShakha());
+            horoscopeDetailsDataModel.setUpshakha(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getUpshakha());
+            horoscopeDetailsDataModel.setRashi(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getRashi());
+            horoscopeDetailsDataModel.setNakshatra(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getNakshatra());
+            horoscopeDetailsDataModel.setNaadi(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getNaadi());
+            horoscopeDetailsDataModel.setGana(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getGana());
+            horoscopeDetailsDataModel.setCharan(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getCharan());
+            horoscopeDetailsDataModel.setGotra(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getGotra());
+            horoscopeDetailsDataModel.setMangal(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getMangal());
+            horoscopeDetailsDataModel.setRemarks(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getRemarks());
+        }
         horoscopeDetailsResponseDataModel.setHoroscopeDetailsDataModel(horoscopeDetailsDataModel);
         return horoscopeDetailsResponseDataModel;
     }

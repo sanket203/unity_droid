@@ -40,7 +40,7 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
 
             ProfileResponseViewModel viewModel = new ProfileResponseViewModel();
             viewModel.setCandidateId(dataModel.getCandidateID());
-            // viewModel.setBirthDate(convertDate(dataModel.getBirthDate()));
+            viewModel.setBirthDate(convertDate(dataModel.getBirthDate()));
             viewModel.setEducation(dataModel.getEducation());
             viewModel.setGender(dataModel.getGender());
             viewModel.setHeight(dataModel.getHeight());

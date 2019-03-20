@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,21 +16,20 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.ProfileResponseViewModel;
 
 /**
  * Created by admin on 11/12/18.
  */
 
-public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAdapter.ProfileViewHolder> {
+public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<ProfileResponseViewModel> list;
     private ProfileItemClickListner itemClickListner;
-    private LoadMoreProfilesListener mLoadMoreLottoTicketListener;
-    private int mTotalItemCount;
-    private int mLastVisibleItem;
-    private boolean isLoading;
-    private int mVisibleThreshold = 1;
+    private static final int VIEW_TYPE_LOADING = 0;
+    private static final int VIEW_TYPE_NORMAL = 1;
+    private boolean isLoaderVisible = false;
 
     public RecentProfilesAdapter(List<ProfileResponseViewModel> list, Context activity, ProfileItemClickListner itemClickListner) {
         this.list = list;
@@ -45,42 +45,30 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
     }
 
     @Override
-    public ProfileViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.recent_profiles_row, parent, false);
-        return new ProfileViewHolder(view, itemClickListner);
-
-    }
-
-    public void setLoadMoreProfilesListener(LoadMoreProfilesListener loadMoreLottoTicketListener) {
-        mLoadMoreLottoTicketListener = loadMoreLottoTicketListener;
-    }
-
-    public void addOnScrollListener(RecyclerView profileSView) {
-        final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) profileSView.getLayoutManager();
-        profileSView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                mTotalItemCount = linearLayoutManager.getItemCount();
-                mLastVisibleItem = linearLayoutManager
-                        .findLastVisibleItemPosition();
-                if (!isLoading && mTotalItemCount <= (mLastVisibleItem + mVisibleThreshold)) {
-                    // End has been reached
-                    // Do something
-                    isLoading = true;
-                    if (mLoadMoreLottoTicketListener != null) {
-                        mLoadMoreLottoTicketListener.onLoadMore();
-                    }
-                }
-            }
-        });
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new ProfileViewHolder(
+                        LayoutInflater.from(parent.getContext()).inflate(R.layout.recent_profiles_row, parent, false), itemClickListner);
+            case VIEW_TYPE_LOADING:
+                return new FooterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_loading, parent, false));
+            default:
+                return null;
+        }
     }
 
     @Override
-    public void onBindViewHolder(ProfileViewHolder holder, int position) {
-        holder.steItemId(position);
-        holder.bind(position);
+    public int getItemViewType(int position) {
+        if (isLoaderVisible) {
+            return position == list.size() - 1 ? VIEW_TYPE_LOADING : VIEW_TYPE_NORMAL;
+        } else {
+            return VIEW_TYPE_NORMAL;
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.onBind(position);
     }
 
     @Override
@@ -91,7 +79,52 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
         return 0;
     }
 
-    class ProfileViewHolder extends RecyclerView.ViewHolder {
+    public void addLoading() {
+        isLoaderVisible = true;
+        add(new ProfileResponseViewModel());
+    }
+
+    public void add(ProfileResponseViewModel response) {
+        list.add(response);
+        notifyItemInserted(list.size() - 1);
+    }
+
+    public void addAll(List<ProfileResponseViewModel> postItems) {
+        for (ProfileResponseViewModel response : postItems) {
+            add(response);
+        }
+    }
+
+    ProfileResponseViewModel getItem(int position) {
+        return list.get(position);
+    }
+
+    public void removeLoading() {
+        isLoaderVisible = false;
+        int position = list.size() - 1;
+        ProfileResponseViewModel item = getItem(position);
+        if (item != null) {
+            list.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void clear() {
+        while (getItemCount() > 0) {
+            remove(getItem(0));
+        }
+    }
+
+    private void remove(ProfileResponseViewModel postItems) {
+        int position = list.indexOf(postItems);
+        if (position > -1) {
+            list.remove(position);
+            notifyItemRemoved(position);
+        }
+    }
+
+
+    class ProfileViewHolder extends BaseViewHolder {
 
         private ProfileItemClickListner listner;
         int itemId;
@@ -114,10 +147,6 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
         @BindView(R.id.tv_education)
         TextView educationTextView;
 
-        void steItemId(int itemId) {
-            this.itemId = itemId;
-        }
-
         public ProfileViewHolder(View itemView, ProfileItemClickListner listner) {
             super(itemView);
             this.listner = listner;
@@ -130,16 +159,46 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<RecentProfilesAd
         }
 
 
-        public void bind(int position) {
+        public void onBind(int position) {
             nameTextView.setText(list.get(position).getName());
-            //heightTextView.setText(list.get(position).getHeight());
+            heightTextView.setText(list.get(position).getHeight());
             salaryTextView.setText(list.get(position).getIncome());
             educationTextView.setText(list.get(position).getEducation());
-            //  birthDateTextView.setText(list.get(position).getBirthDate());
+            birthDateTextView.setText(list.get(position).getBirthDate());
+        }
+
+        @Override
+        protected void clear() {
+
+        }
+
+        @Override
+        protected void setItemId(int itemId) {
+            this.itemId = itemId;
         }
     }
 
-    public static interface LoadMoreProfilesListener {
-        void onLoadMore();
+    public class FooterHolder extends BaseViewHolder {
+
+        @BindView(R.id.progressBar)
+        ProgressBar mProgressBar;
+
+
+        FooterHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        @Override
+        protected void clear() {
+
+        }
+
+        @Override
+        protected void setItemId(int itemId) {
+
+        }
+
     }
+
 }

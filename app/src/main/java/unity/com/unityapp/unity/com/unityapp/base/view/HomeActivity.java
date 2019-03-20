@@ -1,6 +1,7 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -8,11 +9,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -52,6 +56,8 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
+    TextView counter;
+    String count = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,6 +94,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     @Override
     protected void onResume() {
         super.onResume();
+        count = String.valueOf(UserInfo.getUserInfo().getAddressCount());
         presenter.bind(this);
     }
 
@@ -121,7 +128,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
                 return settingsFragment;
 
             default:
-                return new RecentProfileFragment();
+                return new HomeFragment();
         }
     }
 
@@ -171,8 +178,10 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     }
 
     private void setUpNavigationView() {
+        count = String.valueOf(UserInfo.getUserInfo().getAddressCount());
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         // This method will trigger on item Click of navigation menu
+
         navigationView.setNavigationItemSelectedListener(menuItem -> {
 
             //Check to see which item was being clicked and perform appropriate action
@@ -218,6 +227,15 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
             return true;
         });
+
+        counter = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                findItem(R.id.address_taken));
+        counter.setGravity(Gravity.CENTER_VERTICAL);
+        counter.setTypeface(null, Typeface.BOLD);
+        counter.setTextColor(getResources().getColor(R.color.colorAccent));
+        counter.setText(count);
+        counter.setGravity(Gravity.CENTER_VERTICAL);
+        counter.setTypeface(null, Typeface.BOLD);
 
     }
 
