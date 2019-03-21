@@ -5,7 +5,7 @@ import com.squareup.moshi.Json;
 
 public class PhysicalDetailsEntity {
 
-
+    @Json(name = "id")
     private int id;
 
     @Json(name = "candidateId")
@@ -20,7 +20,7 @@ public class PhysicalDetailsEntity {
     @Json(name = "complexion")
     private String complexion;
 
-    @Json(name = "bodyForm")
+    @Json(name = "bodyform")
     private String bodyform;
 
     @Json(name = "spects")

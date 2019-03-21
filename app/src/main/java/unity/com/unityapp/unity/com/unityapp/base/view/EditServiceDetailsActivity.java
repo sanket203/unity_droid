@@ -120,9 +120,12 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         editWorkingCity.setAdapter(adapter);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         serviceDetailsViewModel = (ServiceDetailsViewModel) getIntent().getSerializableExtra("serviceDetailsViewModel");
-        setData();
+        if (serviceDetailsViewModel == null) {
+            presenter.getServiceDetails();
+        } else {
+            setData();
+        }
     }
-
 
     private void setData() {
         if (serviceDetailsViewModel != null) {
@@ -134,13 +137,14 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             editDesignation.setText(serviceDetailsViewModel.getDesignation());
             editServiceStatus.setText(serviceDetailsViewModel.getServiceStatus());
             editExperience.setText(serviceDetailsViewModel.getExperience());
-         //   editAnnualIncome.setText(serviceDetailsViewModel.getAnnualIncome());
+            editAnnualIncome.setText(String.valueOf(serviceDetailsViewModel.getAnnualIncome()));
         }
     }
 
     private ServiceDetailsViewModel getData() {
         ServiceDetailsViewModel serviceDetailsViewModel = new ServiceDetailsViewModel();
-        serviceDetailsViewModel.setCandidateId(candidateId);
+        serviceDetailsViewModel.setId(this.serviceDetailsViewModel.getId());
+        serviceDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editOccupation.getText() != null) {
             serviceDetailsViewModel.setOccupation(editOccupation.getText().toString());
         }
@@ -184,8 +188,8 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -199,7 +203,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -207,6 +211,12 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         Intent intent = new Intent(this, EditHoroscopeDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    @Override
+    public void showServiceDetails(ServiceDetailsViewModel viewModel) {
+        serviceDetailsViewModel = viewModel;
+        setData();
     }
 
     private static final String[] COUNTRIES = new String[]{
@@ -218,50 +228,57 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             textErrorOccupation.setVisibility(View.VISIBLE);
             textErrorOccupation.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorOccupation.setVisibility(View.GONE);
         }
-        else {textErrorOccupation.setVisibility(View.GONE);}
 
         if (editOrganization.getText().toString().equalsIgnoreCase("") || editOrganization.getText().toString().equalsIgnoreCase(null)) {
             textErrorOrganization.setVisibility(View.VISIBLE);
             textErrorOrganization.setText(getString(R.string.empty_field));
             return false;
-        }else {
+        } else {
             textErrorOrganization.setVisibility(View.GONE);
         }
         if (editWorkingCity.getText().toString().equalsIgnoreCase("") || editWorkingCity.getText().toString().equalsIgnoreCase(null)) {
             textErrorWorkingCity.setVisibility(View.VISIBLE);
             textErrorWorkingCity.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorWorkingCity.setVisibility(View.GONE);
         }
-        else {textErrorWorkingCity.setVisibility(View.GONE);}
         if (editDesignation.getText().toString().equalsIgnoreCase("") || editDesignation.getText().toString().equalsIgnoreCase(null)) {
             textErrorDesignation.setVisibility(View.VISIBLE);
             textErrorDesignation.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorDesignation.setVisibility(View.GONE);}
+        } else {
+            textErrorDesignation.setVisibility(View.GONE);
+        }
         if (editServiceStatus.getText().toString().equalsIgnoreCase("") || editServiceStatus.getText().toString().equalsIgnoreCase(null)) {
             textErrorServiceStatus.setVisibility(View.VISIBLE);
             textErrorServiceStatus.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorServiceStatus.setVisibility(View.GONE);}
+        } else {
+            textErrorServiceStatus.setVisibility(View.GONE);
+        }
         if (editExperience.getText().toString().equalsIgnoreCase("") || editExperience.getText().toString().equalsIgnoreCase(null)) {
             textErrorExperience.setVisibility(View.VISIBLE);
             textErrorExperience.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorExperience.setVisibility(View.GONE);
         }
-        else {textErrorExperience.setVisibility(View.GONE);}
         if (editAnnualIncome.getText().toString().equalsIgnoreCase("") || editAnnualIncome.getText().toString().equalsIgnoreCase(null)) {
             textErrorAnuualIncome.setVisibility(View.VISIBLE);
             textErrorAnuualIncome.setText(getString(R.string.empty_field));
             return false;
-        }else {
+        } else {
             textErrorAnuualIncome.setVisibility(View.GONE);
         }
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
-        if(counter == 3) {
+    public void snackbar(View view, String errorMessage) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -271,9 +288,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

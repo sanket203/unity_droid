@@ -1,6 +1,8 @@
 package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
@@ -73,5 +75,7 @@ public interface BaseRepository {
     Observable<LoginUserResponseEntity> registerUser(RegisterUserEntity registerUserEntity);
 
     Observable<ContactDetailsResponseEntity> checkAndGetContactDetails(String candidateId, String profileId, Boolean isAddressExist);
+
+    Observable<PersonalDetailsResponseEntity> uploadImage(MultipartBody.Part part, RequestBody candidateId);
 }
 

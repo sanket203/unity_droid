@@ -26,6 +26,7 @@ public class ExpectationDetailsViewModelToDataModelMapper {
         dataModel.setPackageLimit(expectationDetailsViewModel.getPackageLimit());
         dataModel.setPatrikaMatching(expectationDetailsViewModel.getPatrikaMatching());
         dataModel.setOther(expectationDetailsViewModel.getOther());
+        dataModel.setId(expectationDetailsViewModel.getId());
         return dataModel;
     }
 }

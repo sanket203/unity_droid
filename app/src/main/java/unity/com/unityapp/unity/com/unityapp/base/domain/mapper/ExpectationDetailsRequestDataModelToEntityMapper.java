@@ -28,6 +28,7 @@ public class ExpectationDetailsRequestDataModelToEntityMapper {
         entity.setPackageLimit(expectationsDataModel.getPackageLimit());
         entity.setPatrikaMatching(expectationsDataModel.getPatrikaMatching());
         entity.setOther(expectationsDataModel.getOther());
+        entity.setId(expectationsDataModel.getId());
         return entity;
     }
 }

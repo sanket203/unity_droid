@@ -1,11 +1,11 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetServiceDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.SaveServiceDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.ServiceDetailsDataModelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.ServiceDetailsViewModelToDataModelMapper;
@@ -15,13 +15,16 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
 
     private final SaveServiceDetailsUseCase saveServiceDetailsUseCase;
 
+    private final GetServiceDetailsUseCase getServiceDetailsUseCase;
+
     private final ServiceDetailsDataModelToViewModelMapper serviceDetailsDataModelToViewModelMapper;
 
     private final ServiceDetailsViewModelToDataModelMapper serviceDetailsViewModelToDataModelMapper;
 
     @Inject
-    public EditServiceDetailsPresenter(SaveServiceDetailsUseCase saveServiceDetailsUseCase, ServiceDetailsDataModelToViewModelMapper serviceDetailsDataModelToViewModelMapper, ServiceDetailsViewModelToDataModelMapper serviceDetailsViewModelToDataModelMapper) {
+    public EditServiceDetailsPresenter(SaveServiceDetailsUseCase saveServiceDetailsUseCase, GetServiceDetailsUseCase getServiceDetailsUseCase, ServiceDetailsDataModelToViewModelMapper serviceDetailsDataModelToViewModelMapper, ServiceDetailsViewModelToDataModelMapper serviceDetailsViewModelToDataModelMapper) {
         this.saveServiceDetailsUseCase = saveServiceDetailsUseCase;
+        this.getServiceDetailsUseCase = getServiceDetailsUseCase;
         this.serviceDetailsDataModelToViewModelMapper = serviceDetailsDataModelToViewModelMapper;
         this.serviceDetailsViewModelToDataModelMapper = serviceDetailsViewModelToDataModelMapper;
     }
@@ -46,7 +49,7 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
                 if (view != null) {
                     view.showProgress(false);
                 }
-               // Log.d("ERROR", serviceDetailsResponseDataModel.getMessage());
+                // Log.d("ERROR", serviceDetailsResponseDataModel.getMessage());
                 view.showErrorMessage(serviceDetailsResponseDataModel.getMessage());
 
             }
@@ -55,6 +58,34 @@ public class EditServiceDetailsPresenter extends BasePresenter<EditServiceDetail
                 view.showProgress(false);
             }
             //Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
+        });
+    }
+
+    public void getServiceDetails() {
+        if (view != null) {
+            view.showProgress(true);
+        }
+        getServiceDetailsUseCase.execute(String.valueOf(UserInfo.getUserInfo().getCandidateId()))
+                .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
+            if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
+                ServiceDetailsViewModel viewModel = serviceDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
+                if (view != null) {
+                    view.showProgress(false);
+                    view.showServiceDetails(viewModel);
+                }
+            } else {
+                if (view != null) {
+                    view.showProgress(false);
+                }
+                // Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(personalDetailsResponseDataModel.getMessage());
+            }
+        }, error -> {
+            if (view != null) {
+                view.showProgress(false);
+            }
+            //  Log.d("ERROR", error.getMessage());
             view.showErrorMessage(error.getMessage());
         });
     }

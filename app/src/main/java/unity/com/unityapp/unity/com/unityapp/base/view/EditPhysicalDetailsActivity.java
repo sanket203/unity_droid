@@ -5,25 +5,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,10 +23,9 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
-import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PhysicalDetailsViewModel;
 
-public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhysicalDetailsView{
+public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhysicalDetailsView {
 
     @Inject
     EditPhysicalDetailsPresenter presenter;
@@ -113,7 +101,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     int pos;
     String feet = "", inches = "";
     private boolean isFromRegistration;
-    int counter=0;
+    int counter = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,13 +119,16 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         presenter.bind(this);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         physicalDetailsViewModel = (PhysicalDetailsViewModel) getIntent().getSerializableExtra("physicalDetailsViewModel");
-        setData();
+        if (physicalDetailsViewModel == null) {
+            presenter.getPhysicalDetails();
+        } else {
+            setData();
+        }
 
     }
 
     private void setData() {
         if (physicalDetailsViewModel != null) {
-
             editWeight.setText(physicalDetailsViewModel.getWeight());
             editComplexion.setText(physicalDetailsViewModel.getComplexion());
             editBodyForm.setText(physicalDetailsViewModel.getBodyform());
@@ -148,19 +139,20 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     private PhysicalDetailsViewModel getData() {
         PhysicalDetailsViewModel physicalDetailsViewModel = new PhysicalDetailsViewModel();
+        physicalDetailsViewModel.setId(this.physicalDetailsViewModel.getId());
         physicalDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
 
         if (editWeight.getText() != null) {
-            physicalDetailsViewModel.setFeet(editWeight.getText().toString());
+            physicalDetailsViewModel.setWeight(editWeight.getText().toString());
         }
         if (editComplexion.getText() != null) {
-            physicalDetailsViewModel.setFeet(editComplexion.getText().toString());
+            physicalDetailsViewModel.setComplexion(editComplexion.getText().toString());
         }
         if (editBodyForm.getText() != null) {
-            physicalDetailsViewModel.setFeet(editBodyForm.getText().toString());
+            physicalDetailsViewModel.setBodyfom(editBodyForm.getText().toString());
         }
         if (editOtherRemark.getText() != null) {
-            physicalDetailsViewModel.setFeet(editOtherRemark.getText().toString());
+            physicalDetailsViewModel.setOtherRemarks(editOtherRemark.getText().toString());
         }
 
         physicalDetailsViewModel.setSpects(spinnerSpectacle.getSelectedItem().toString());
@@ -182,7 +174,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @OnClick(R.id.btn_save)
     void onSaveClick() {
         if (validation() == true)
-           presenter.save(getData(), isFromRegistration);
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -196,7 +188,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -204,6 +196,12 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         Intent intent = new Intent(this, EditEducationDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    @Override
+    public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
+        physicalDetailsViewModel = viewModel;
+        setData();
     }
 
     public void setSpinnerValue() {
@@ -283,44 +281,55 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             textErrorHeight.setVisibility(View.VISIBLE);
             textErrorHeight.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorHeight.setVisibility(View.GONE);
         }
-        else {textErrorHeight.setVisibility(View.GONE);}
 
         if (spinnerInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
             textErrorHeight.setVisibility(View.VISIBLE);
             textErrorHeight.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorHeight.setVisibility(View.GONE);}
+        } else {
+            textErrorHeight.setVisibility(View.GONE);
+        }
 
         if (editWeight.getText().toString().equalsIgnoreCase("") || editWeight.getText().toString().equalsIgnoreCase(null)) {
             textErrorWeight.setVisibility(View.VISIBLE);
             textErrorWeight.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorWeight.setVisibility(View.GONE);}
+        } else {
+            textErrorWeight.setVisibility(View.GONE);
+        }
 
         if (editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("") || editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("Select Blood Group")) {
             textErrorBloodGroup.setVisibility(View.VISIBLE);
             textErrorBloodGroup.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBloodGroup.setVisibility(View.GONE);}
+        } else {
+            textErrorBloodGroup.setVisibility(View.GONE);
+        }
 
         if (spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMedicalSurgery.getSelectedItem().toString().equalsIgnoreCase("Medical Surgery")) {
             textErrorMedicalSurgery.setVisibility(View.VISIBLE);
             textErrorMedicalSurgery.setText(getString(R.string.empty_field));
             return false;
-        } else {textErrorMedicalSurgery.setVisibility(View.GONE);}
+        } else {
+            textErrorMedicalSurgery.setVisibility(View.GONE);
+        }
 
         if (spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("") || spinnerDisability.getSelectedItem().toString().equalsIgnoreCase("Disability")) {
             textErrorDisability.setVisibility(View.VISIBLE);
             textErrorDisability.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorDisability.setVisibility(View.GONE);}
+        } else {
+            textErrorDisability.setVisibility(View.GONE);
+        }
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -330,9 +339,7 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

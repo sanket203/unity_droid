@@ -5,6 +5,8 @@ import com.squareup.moshi.Json;
 public class ServiceDetailsDataModel {
 
 
+    private int id;
+
     private int candidateId;
 
 
@@ -123,5 +125,13 @@ public class ServiceDetailsDataModel {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

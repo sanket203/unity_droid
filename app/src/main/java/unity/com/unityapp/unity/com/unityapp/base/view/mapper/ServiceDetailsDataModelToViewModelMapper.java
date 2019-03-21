@@ -28,6 +28,7 @@ public class ServiceDetailsDataModelToViewModelMapper {
         serviceDetailsViewModel.setServiceStatus(serviceDetailsResponseDataModel.getServiceDetailsDataModel().getServiceStatus());
         serviceDetailsViewModel.setOrganizationType(serviceDetailsResponseDataModel.getServiceDetailsDataModel().getOrganizationType());
         serviceDetailsViewModel.setWorkingCity(serviceDetailsResponseDataModel.getServiceDetailsDataModel().getWorkingCity());
+        serviceDetailsViewModel.setId(serviceDetailsResponseDataModel.getServiceDetailsDataModel().getId());
         return serviceDetailsViewModel;
     }
 }

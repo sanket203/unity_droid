@@ -4,6 +4,7 @@ import com.squareup.moshi.Json;
 
 public class EducationalDetailsDataModel {
 
+    private int id;
 
     private int candidateId;
 
@@ -81,4 +82,11 @@ public class EducationalDetailsDataModel {
         this.remarks = remarks;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

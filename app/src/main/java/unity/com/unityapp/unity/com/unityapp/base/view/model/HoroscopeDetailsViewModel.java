@@ -6,6 +6,8 @@ import java.io.Serializable;
 public class HoroscopeDetailsViewModel implements Serializable {
 
 
+    private int id;
+
     private int candidateId;
 
 
@@ -149,6 +151,14 @@ public class HoroscopeDetailsViewModel implements Serializable {
         this.upshakha = upshakha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("HoroscopeDetailsViewModel{");
@@ -168,4 +178,6 @@ public class HoroscopeDetailsViewModel implements Serializable {
         sb.append('}');
         return sb.toString();
     }
+
+
 }

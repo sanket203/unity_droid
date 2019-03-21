@@ -43,20 +43,20 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         UserInfo.getUserInfo().setRegistered(loginUserResponseDataModel.getUserResponseDataModel().getRegistered());
                         if (view != null) {
                             view.showProgressBar(false);
-                           /* if (loginUserResponseDataModel.getUserResponseDataModel().getRegistered() == null || loginUserResponseDataModel.getUserResponseDataModel().getRegistered().equalsIgnoreCase("NOT_REGISTERED")) {
-                                //   view.navigateToRegistration();
-                            } else {*/
+                            if (loginUserResponseDataModel.getUserResponseDataModel().getRegistered() == null || loginUserResponseDataModel.getUserResponseDataModel().getRegistered().equalsIgnoreCase("unregistered")) {
+                                view.navigateToRegistration();
+                            } else {
                                 view.loginAndNavigateToHomeScreen();
-                          //  }
+                            }
                         }
                     } else {
                         view.showProgressBar(false);
-                        Log.d("ERROR", loginUserResponseDataModel.getMessage());
+                        view.showErrorMessage(loginUserResponseDataModel.getMessage());
                     }
 
                 }, error -> {
                     view.showProgressBar(false);
-                    Log.d("ERROR", error.getMessage());
+                    view.showErrorMessage(error.getMessage());
                 });
     }
 }

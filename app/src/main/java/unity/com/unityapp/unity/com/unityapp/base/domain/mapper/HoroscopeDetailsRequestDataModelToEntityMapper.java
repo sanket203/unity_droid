@@ -27,6 +27,7 @@ public class HoroscopeDetailsRequestDataModelToEntityMapper {
         entity.setGotra(horoscopeDetailsDataModel.getGotra());
         entity.setMangal(horoscopeDetailsDataModel.getMangal());
         entity.setRemarks(horoscopeDetailsDataModel.getRemarks());
+        entity.setId(horoscopeDetailsDataModel.getId());
 
         return entity;
     }

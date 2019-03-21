@@ -23,6 +23,7 @@ public class PhysicalDetailsViewModelToDataModelMapper {
         physicalDetailsDataModel.setMedicalSurgary(physicalDetailsViewModel.getMedicalSurgary());
         physicalDetailsDataModel.setDisability(physicalDetailsViewModel.getDisability());
         physicalDetailsDataModel.setOtherRemarks(physicalDetailsViewModel.getOtherRemarks());
+        physicalDetailsDataModel.setId(physicalDetailsViewModel.getId());
         return physicalDetailsDataModel;
     }
 }

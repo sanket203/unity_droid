@@ -140,6 +140,11 @@ public class SuccessStoriesPagerFragment extends BaseFragment implements Persona
     }
 
     @Override
+    public void showErrorMessage(String message) {
+
+    }
+
+    @Override
     public void showProgressBar(boolean isVisible) {
         if (isVisible) {
             progressBar.setVisibility(View.VISIBLE);

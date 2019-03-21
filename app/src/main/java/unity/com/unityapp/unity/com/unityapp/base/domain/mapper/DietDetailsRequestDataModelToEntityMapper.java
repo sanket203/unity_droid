@@ -20,6 +20,7 @@ public class DietDetailsRequestDataModelToEntityMapper {
         entity.setDietType(dietDetailsDataModel.getDietType());
         entity.setDrink(dietDetailsDataModel.getDrink());
         entity.setSmoke(dietDetailsDataModel.getSmoke());
+        entity.setId(dietDetailsDataModel.getId());
         return entity;
     }
 }

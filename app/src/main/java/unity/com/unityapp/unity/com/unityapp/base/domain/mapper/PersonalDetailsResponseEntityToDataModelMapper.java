@@ -18,18 +18,20 @@ public class PersonalDetailsResponseEntityToDataModelMapper {
         dataModel.setStatus(entity.getStatus());
         PersonalDetailsDataModel personalDetailsDataModel = new PersonalDetailsDataModel();
         if (entity.getPersonalDetailsEntity() != null) {
-            personalDetailsDataModel.setAboutMe(entity.getPersonalDetailsEntity().getAboutMe());
-            personalDetailsDataModel.setBirthDate(entity.getPersonalDetailsEntity().getBirthDate());
-            personalDetailsDataModel.setBirthPlace(entity.getPersonalDetailsEntity().getBirthPlace());
-            personalDetailsDataModel.setBirthTime(entity.getPersonalDetailsEntity().getBirthTime());
-            personalDetailsDataModel.setFirstName(entity.getPersonalDetailsEntity().getFirstName());
-            personalDetailsDataModel.setGender(entity.getPersonalDetailsEntity().getGender());
-            personalDetailsDataModel.setHobbies(entity.getPersonalDetailsEntity().getHobbies());
-            personalDetailsDataModel.setLastName(entity.getPersonalDetailsEntity().getLastName());
-            personalDetailsDataModel.setMailId(entity.getPersonalDetailsEntity().getMailId());
-            personalDetailsDataModel.setMaritalStatus(entity.getPersonalDetailsEntity().getMaritalStatus());
-            personalDetailsDataModel.setMiddleName(entity.getPersonalDetailsEntity().getMiddleName());
-            personalDetailsDataModel.setMotherTongue(entity.getPersonalDetailsEntity().getMotherTongue());
+            if (entity.getPersonalDetailsEntity() != null) {
+                personalDetailsDataModel.setAboutMe(entity.getPersonalDetailsEntity().getAboutMe());
+                personalDetailsDataModel.setBirthDate(entity.getPersonalDetailsEntity().getBirthDate());
+                personalDetailsDataModel.setBirthPlace(entity.getPersonalDetailsEntity().getBirthPlace());
+                personalDetailsDataModel.setBirthTime(entity.getPersonalDetailsEntity().getBirthTime());
+                personalDetailsDataModel.setFirstName(entity.getPersonalDetailsEntity().getFirstName());
+                personalDetailsDataModel.setGender(entity.getPersonalDetailsEntity().getGender());
+                personalDetailsDataModel.setHobbies(entity.getPersonalDetailsEntity().getHobbies());
+                personalDetailsDataModel.setLastName(entity.getPersonalDetailsEntity().getLastName());
+                personalDetailsDataModel.setMailId(entity.getPersonalDetailsEntity().getMailId());
+                personalDetailsDataModel.setMaritalStatus(entity.getPersonalDetailsEntity().getMaritalStatus());
+                personalDetailsDataModel.setMiddleName(entity.getPersonalDetailsEntity().getMiddleName());
+                personalDetailsDataModel.setMotherTongue(entity.getPersonalDetailsEntity().getMotherTongue());
+            }
         }
         dataModel.setPersonalDetailsDataModel(personalDetailsDataModel);
 

@@ -20,6 +20,7 @@ public class DietDetailsDataModelToViewModelMapper {
         viewModel.setDietType(dataModel.getDietDetailsDataModel().getDietType());
         viewModel.setDrink(dataModel.getDietDetailsDataModel().getDrink());
         viewModel.setSmoke(dataModel.getDietDetailsDataModel().getSmoke());
+        viewModel.setId(dataModel.getDietDetailsDataModel().getId());
         return viewModel;
     }
 }

@@ -24,7 +24,7 @@ public class PersonalDetailsViewModelToDataModelMapper {
         dataModel.setHobbies(viewModel.getHobbies());
         dataModel.setLastName(viewModel.getLastName());
         dataModel.setMailId(viewModel.getMailId());
-        dataModel.setMaritalStatus(dataModel.getMaritalStatus());
+        dataModel.setMaritalStatus(viewModel.getMaritalStatus());
         dataModel.setMiddleName(viewModel.getMiddleName());
         dataModel.setCandidateId(viewModel.getCandidateId());
         return dataModel;

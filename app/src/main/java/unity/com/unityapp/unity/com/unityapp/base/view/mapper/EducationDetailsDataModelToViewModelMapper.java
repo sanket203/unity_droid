@@ -22,6 +22,8 @@ public class EducationDetailsDataModelToViewModelMapper {
         viewModel.setPassYear(dataModel.getEducationalDetailsDataModel().getPassYear());
         viewModel.setStream(dataModel.getEducationalDetailsDataModel().getStream());
         viewModel.setUniversity(dataModel.getEducationalDetailsDataModel().getUniversity());
+        viewModel.setId(dataModel.getEducationalDetailsDataModel().getId());
+        viewModel.setRemarks(dataModel.getEducationalDetailsDataModel().getRemarks());
         return viewModel;
     }
 }

@@ -7,9 +7,7 @@ public class PersonalDetailsViewModel implements Serializable {
     private int candidateId;
     private String firstName;
 
-
     private String middleName;
-
 
     private String lastName;
 

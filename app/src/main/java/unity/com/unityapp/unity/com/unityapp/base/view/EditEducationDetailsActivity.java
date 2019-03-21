@@ -54,8 +54,8 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
     @BindView(R.id.editRemark)
     EditText editRemark;
 
-     @BindView(R.id.linearMain)
-     LinearLayout linearMain;
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
 
     private int candidateId;
 
@@ -77,7 +77,11 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
         presenter.bind(this);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         educationDetailsViewModel = (EducationalDetailsViewModel) getIntent().getSerializableExtra("educationalDetailsViewModel");
-        setData();
+        if (educationDetailsViewModel == null) {
+            presenter.getEducationDetails();
+        } else {
+            setData();
+        }
     }
 
     private void setData() {
@@ -94,24 +98,25 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     private EducationalDetailsViewModel getData() {
         EducationalDetailsViewModel educationDetailsViewModel = new EducationalDetailsViewModel();
+        educationDetailsViewModel.setId(this.educationDetailsViewModel.getId());
         educationDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editDegree.getText() != null) {
             educationDetailsViewModel.setDegree(editDegree.getText().toString());
         }
         if (editPassingYear.getText() != null) {
-            educationDetailsViewModel.setDegree(editPassingYear.getText().toString());
+            educationDetailsViewModel.setPassYear(editPassingYear.getText().toString());
         }
         if (editCollege.getText() != null) {
-            educationDetailsViewModel.setDegree(editCollege.getText().toString());
+            educationDetailsViewModel.setCollege(editCollege.getText().toString());
         }
         if (editUniversity.getText() != null) {
-            educationDetailsViewModel.setDegree(editUniversity.getText().toString());
+            educationDetailsViewModel.setUniversity(editUniversity.getText().toString());
         }
         if (editStream.getText() != null) {
-            educationDetailsViewModel.setDegree(editStream.getText().toString());
+            educationDetailsViewModel.setStream(editStream.getText().toString());
         }
         if (editRemark.getText() != null) {
-            educationDetailsViewModel.setDegree(editRemark.getText().toString());
+            educationDetailsViewModel.setRemarks(editRemark.getText().toString());
         }
         return educationDetailsViewModel;
     }
@@ -125,8 +130,8 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -145,36 +150,47 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
         startActivity(intent);
     }
 
+    @Override
+    public void showEducationDetails(EducationalDetailsViewModel viewModel) {
+        educationDetailsViewModel = viewModel;
+        setData();
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+
+    }
+
     private boolean validation() {
         if (editDegree.getText().toString().equalsIgnoreCase("") || editDegree.getText().toString().equalsIgnoreCase(null)) {
-          //  Toast.makeText(EditEducationDetailsActivity.this, "Please mention degree", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please enter degree");
+            //  Toast.makeText(EditEducationDetailsActivity.this, "Please mention degree", Toast.LENGTH_SHORT);
+            snackbar(linearMain, "Please enter degree");
             return false;
         }
         if (editPassingYear.getText().toString().equalsIgnoreCase("") || editPassingYear.getText().toString().equalsIgnoreCase("null")) {
-           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter passing year", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please enter passing year");
+            // Toast.makeText(EditEducationDetailsActivity.this, "Please enter passing year", Toast.LENGTH_SHORT);
+            snackbar(linearMain, "Please enter passing year");
             return false;
         }
         if (editCollege.getText().toString().equalsIgnoreCase("") || editCollege.getText().toString().equalsIgnoreCase("null")) {
-           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter college", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please enter college");
+            // Toast.makeText(EditEducationDetailsActivity.this, "Please enter college", Toast.LENGTH_SHORT);
+            snackbar(linearMain, "Please enter college");
             return false;
         }
         if (editUniversity.getText().toString().equalsIgnoreCase("") || editUniversity.getText().toString().equalsIgnoreCase("null")) {
-           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter university", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please enter university");
+            // Toast.makeText(EditEducationDetailsActivity.this, "Please enter university", Toast.LENGTH_SHORT);
+            snackbar(linearMain, "Please enter university");
             return false;
         }
         if (editStream.getText().toString().equalsIgnoreCase("") || editStream.getText().toString().equalsIgnoreCase("null")) {
-           // Toast.makeText(EditEducationDetailsActivity.this, "Please enter Stream", Toast.LENGTH_SHORT);
-            snackbar(linearMain,"Please enter Stream");
+            // Toast.makeText(EditEducationDetailsActivity.this, "Please enter Stream", Toast.LENGTH_SHORT);
+            snackbar(linearMain, "Please enter Stream");
             return false;
         }
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
+    public void snackbar(View view, String errorMessage) {
         Snackbar snackbar = Snackbar
                 .make(view, errorMessage, Snackbar.LENGTH_LONG)
                 .setAction("OK", new View.OnClickListener() {

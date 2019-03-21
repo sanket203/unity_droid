@@ -6,6 +6,7 @@ import com.squareup.moshi.Json;
 public class DietDetailsEntity {
 
 
+    @Json(name = "id")
     private int id;
 
     @Json(name = "candidateId")

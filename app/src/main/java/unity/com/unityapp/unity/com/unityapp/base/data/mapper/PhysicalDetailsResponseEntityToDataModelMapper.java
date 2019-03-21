@@ -30,6 +30,7 @@ public class PhysicalDetailsResponseEntityToDataModelMapper {
             physicalDetailsDataModel.setMedicalSurgary(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getMedicalSurgary());
             physicalDetailsDataModel.setDisability(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getDisability());
             physicalDetailsDataModel.setOtherRemarks(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getOtherRemarks());
+            physicalDetailsDataModel.setId(physicalDetailsResponseEntity.getPhysicalDetailsEntity().getId());
         }
         physicalDetailsResponseDataModel.setPhysicalDetailsDataModel(physicalDetailsDataModel);
 

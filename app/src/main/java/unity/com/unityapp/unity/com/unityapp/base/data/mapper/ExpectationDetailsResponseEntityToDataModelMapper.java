@@ -32,6 +32,7 @@ public class ExpectationDetailsResponseEntityToDataModelMapper {
             expectationsDataModel.setPackageLimit(expectationDetailsResponseEntity.getExpectationsEntity().getPackageLimit());
             expectationsDataModel.setPatrikaMatching(expectationDetailsResponseEntity.getExpectationsEntity().getPatrikaMatching());
             expectationsDataModel.setOther(expectationDetailsResponseEntity.getExpectationsEntity().getOther());
+            expectationsDataModel.setId(expectationDetailsResponseEntity.getExpectationsEntity().getId());
         }
         expectationDetailsResponseDataModel.setExpectationsDataModel(expectationsDataModel);
         return expectationDetailsResponseDataModel;

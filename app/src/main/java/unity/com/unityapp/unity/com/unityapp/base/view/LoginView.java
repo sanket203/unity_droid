@@ -12,4 +12,6 @@ public interface LoginView extends BaseView {
     void showProgressBar(boolean showProgress);
 
     void navigateToRegistration();
+
+    void showErrorMessage(String message);
 }

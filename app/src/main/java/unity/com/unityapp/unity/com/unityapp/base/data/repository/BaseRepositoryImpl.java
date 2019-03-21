@@ -1,6 +1,8 @@
 package unity.com.unityapp.unity.com.unityapp.base.data.repository;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
@@ -148,5 +150,11 @@ public class BaseRepositoryImpl implements BaseRepository {
     @Override
     public Observable<ContactDetailsResponseEntity> checkAndGetContactDetails(String candidateId, String profileId, Boolean isAddressExist) {
         return networkClient.create(BaseApi.class).checkAndGetContact(candidateId, profileId, isAddressExist);
+    }
+
+    @Override
+    public Observable<PersonalDetailsResponseEntity> uploadImage(MultipartBody.Part part , RequestBody candidateId) {
+        return networkClient.create(BaseApi.class).uploadImage(part,candidateId);
+
     }
 }

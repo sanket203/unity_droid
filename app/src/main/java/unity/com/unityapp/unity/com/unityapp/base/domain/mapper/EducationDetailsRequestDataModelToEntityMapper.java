@@ -22,6 +22,8 @@ public class EducationDetailsRequestDataModelToEntityMapper {
         entity.setPassYear(educationalDetailsDataModel.getPassYear());
         entity.setStream(educationalDetailsDataModel.getStream());
         entity.setUniversity(educationalDetailsDataModel.getUniversity());
+        entity.setRemarks(educationalDetailsDataModel.getRemarks());
+        entity.setId(educationalDetailsDataModel.getId());
         return entity;
     }
 }

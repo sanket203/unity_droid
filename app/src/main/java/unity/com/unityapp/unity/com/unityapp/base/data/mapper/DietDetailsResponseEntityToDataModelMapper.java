@@ -21,8 +21,9 @@ public class DietDetailsResponseEntityToDataModelMapper {
             dietDetailsDataModel.setDietType(dietDetailsResponseEntity.getDietDetailsEntity().getDietType());
             dietDetailsDataModel.setDrink(dietDetailsResponseEntity.getDietDetailsEntity().getDrink());
             dietDetailsDataModel.setSmoke(dietDetailsResponseEntity.getDietDetailsEntity().getSmoke());
+            dietDetailsDataModel.setId(dietDetailsResponseEntity.getDietDetailsEntity().getId());
         }
-            dietDetailsResponseDataModel.setDietDetailsDataModel(dietDetailsDataModel);
+        dietDetailsResponseDataModel.setDietDetailsDataModel(dietDetailsDataModel);
 
 
         return dietDetailsResponseDataModel;
