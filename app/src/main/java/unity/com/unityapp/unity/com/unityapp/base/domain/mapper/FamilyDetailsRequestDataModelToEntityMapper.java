@@ -24,6 +24,7 @@ public class FamilyDetailsRequestDataModelToEntityMapper {
         entity.setBrotherDescription(familyDetailsDataModel.getBrotherDescription());
         entity.setSisters(familyDetailsDataModel.getSisters());
         entity.setSisterDescription(familyDetailsDataModel.getSisterDescription());
+        entity.setId(familyDetailsDataModel.getId());
         return entity;
     }
 }

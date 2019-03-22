@@ -41,8 +41,9 @@ public class EditExpectationDetailsPresenter extends BasePresenter<EditExpectati
                     view.showProgress(false);
                     if (isFromRegistration) {
                         view.navigateToFamilyDetails();
+                    } else {
+                        view.close();
                     }
-                    view.close();
                 }
             } else {
                 if (view != null) {

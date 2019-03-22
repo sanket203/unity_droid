@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.ExpectationsViewModel;
 
@@ -149,7 +150,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     private ExpectationsViewModel getData() {
         ExpectationsViewModel expectationDetailsViewModel = new ExpectationsViewModel();
-        expectationDetailsViewModel.setCandidateId(candidateId);
+        expectationDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
+        if (this.expectationDetailsViewModel != null)
+            expectationDetailsViewModel.setId(this.expectationDetailsViewModel.getId());
         if (editEducation.getText() != null) {
             expectationDetailsViewModel.setDegree(editEducation.getText().toString());
         }

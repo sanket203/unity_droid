@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -20,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.FamilyDetailsViewModel;
 
@@ -88,6 +88,8 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     private int candidateId;
     int counter = 0;
     private FamilyDetailsViewModel familyDetailsViewModel;
+    private boolean isFromRegistration;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,13 +105,18 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         presenter.bind(this);
         candidateId = getIntent().getIntExtra("candidateId", 0);
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         familyDetailsViewModel = (FamilyDetailsViewModel) getIntent().getSerializableExtra("familyDetailsViewModel");
-        setData();
+        if (familyDetailsViewModel == null) {
+            presenter.getFamilyDetails();
+        } else {
+            setData();
+        }
+
     }
 
     private void setData() {
-        if(familyDetailsViewModel!=null)
-        {
+        if (familyDetailsViewModel != null) {
             editFatherName.setText(familyDetailsViewModel.getFather());
             editFatherDetail.setText(familyDetailsViewModel.getFatherDescription());
             editMotherName.setText(familyDetailsViewModel.getMother());
@@ -123,37 +130,31 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
 
     private FamilyDetailsViewModel getData() {
         FamilyDetailsViewModel familyDetailsViewModel = new FamilyDetailsViewModel();
-        familyDetailsViewModel.setCandidateId(candidateId);
-        if(editFatherName.getText()!=null)
-        {
+        familyDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
+        if (this.familyDetailsViewModel != null)
+            familyDetailsViewModel.setId(this.familyDetailsViewModel.getId());
+        if (editFatherName.getText() != null) {
             familyDetailsViewModel.setFather(editFatherName.getText().toString());
         }
-        if(editFatherDetail.getText()!=null)
-        {
+        if (editFatherDetail.getText() != null) {
             familyDetailsViewModel.setFatherDescription(editFatherDetail.getText().toString());
         }
-        if(editMotherName.getText()!=null)
-        {
+        if (editMotherName.getText() != null) {
             familyDetailsViewModel.setMother(editMotherName.getText().toString());
         }
-        if(editMotherDetail.getText()!=null)
-        {
+        if (editMotherDetail.getText() != null) {
             familyDetailsViewModel.setMotherDescription(editMotherDetail.getText().toString());
         }
-        if(editBrother.getText()!=null)
-        {
+        if (editBrother.getText() != null) {
             familyDetailsViewModel.setBrothers(editBrother.getText().toString());
         }
-        if(editBrotherDetail.getText()!=null)
-        {
+        if (editBrotherDetail.getText() != null) {
             familyDetailsViewModel.setBrotherDescription(editBrotherDetail.getText().toString());
         }
-        if(editSister.getText()!=null)
-        {
+        if (editSister.getText() != null) {
             familyDetailsViewModel.setSisters(editSister.getText().toString());
         }
-        if(editSisterDetail.getText()!=null)
-        {
+        if (editSisterDetail.getText() != null) {
             familyDetailsViewModel.setSisterDescription(editSisterDetail.getText().toString());
         }
         return familyDetailsViewModel;
@@ -168,8 +169,8 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData());
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -183,42 +184,50 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
-    private boolean validation()
-    {
-        if(editFatherName.getText().toString().equalsIgnoreCase("") || editFatherName.getText().toString().equalsIgnoreCase("null"))
-        {
+    @Override
+    public void showFamilyDetails(FamilyDetailsViewModel viewModel) {
+        familyDetailsViewModel = viewModel;
+        setData();
+    }
+
+    private boolean validation() {
+        if (editFatherName.getText().toString().equalsIgnoreCase("") || editFatherName.getText().toString().equalsIgnoreCase("null")) {
             textErrorFatherName.setVisibility(View.VISIBLE);
             textErrorFatherName.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorFatherName.setVisibility(View.GONE);}
-        if(editMotherName.getText().toString().equalsIgnoreCase("") || editMotherName.getText().toString().equalsIgnoreCase("null"))
-        {
+        } else {
+            textErrorFatherName.setVisibility(View.GONE);
+        }
+        if (editMotherName.getText().toString().equalsIgnoreCase("") || editMotherName.getText().toString().equalsIgnoreCase("null")) {
             textErrorMotherName.setVisibility(View.VISIBLE);
             textErrorMotherName.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorMotherName.setVisibility(View.GONE);}
-        if(editBrother.getText().toString().equalsIgnoreCase("") || editBrother.getText().toString().equalsIgnoreCase("null"))
-        {
+        } else {
+            textErrorMotherName.setVisibility(View.GONE);
+        }
+        if (editBrother.getText().toString().equalsIgnoreCase("") || editBrother.getText().toString().equalsIgnoreCase("null")) {
             textErrorBrother.setVisibility(View.VISIBLE);
             textErrorBrother.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBrother.setVisibility(View.GONE);}
-        if(editSister.getText().toString().equalsIgnoreCase("") || editSister.getText().toString().equalsIgnoreCase("null"))
-        {
+        } else {
+            textErrorBrother.setVisibility(View.GONE);
+        }
+        if (editSister.getText().toString().equalsIgnoreCase("") || editSister.getText().toString().equalsIgnoreCase("null")) {
             textErrorSister.setVisibility(View.VISIBLE);
             textErrorSister.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorSister.setVisibility(View.GONE);
         }
-        else {textErrorSister.setVisibility(View.GONE);}
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -228,16 +237,14 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             counter = counter + 1;
-                            presenter.save(getData());
+                            presenter.save(getData(), isFromRegistration);
                         }
                     });
             snackbar.setActionTextColor(Color.BLACK);
