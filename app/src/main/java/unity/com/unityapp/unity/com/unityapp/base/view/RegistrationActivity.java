@@ -99,6 +99,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         registerUserViewModel.setBirthDate(birthDate.getText().toString());
         registerUserViewModel.setFirstName(firstName.getText().toString());
         registerUserViewModel.setMiddleName(middleName.getText().toString());
+        registerUserViewModel.setLastName(surName.getText().toString());
         registerUserViewModel.setContact(Long.parseLong(mobileNumber.getText().toString()));
         registerUserViewModel.setPassword(password.getText().toString());
         presenter.register(registerUserViewModel);
