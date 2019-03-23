@@ -4,6 +4,9 @@ import com.squareup.moshi.Json;
 
 public class HoroscopeDetailsEntity {
 
+    @Json(name = "id")
+    private int id;
+
     @Json(name = "candidateId")
     private int candidateId;
 
@@ -148,5 +151,12 @@ public class HoroscopeDetailsEntity {
         this.upshakha = upshakha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
 

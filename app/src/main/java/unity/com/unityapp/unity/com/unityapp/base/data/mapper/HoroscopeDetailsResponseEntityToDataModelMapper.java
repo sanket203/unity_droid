@@ -31,6 +31,7 @@ public class HoroscopeDetailsResponseEntityToDataModelMapper {
             horoscopeDetailsDataModel.setGotra(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getGotra());
             horoscopeDetailsDataModel.setMangal(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getMangal());
             horoscopeDetailsDataModel.setRemarks(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getRemarks());
+            horoscopeDetailsDataModel.setId(horoscopeDetailsResponseEntity.getHoroscopeDetailsEntity().getId());
         }
         horoscopeDetailsResponseDataModel.setHoroscopeDetailsDataModel(horoscopeDetailsDataModel);
         return horoscopeDetailsResponseDataModel;

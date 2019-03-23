@@ -71,6 +71,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
                 editDrink.setSelection(0);
             if (dietDetailsViewModel.getDrink().equalsIgnoreCase("Yes"))
                 editSmoke.setSelection(0);*/
+
             setSpinnerValue();
         }
 
@@ -79,6 +80,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
     private DietDetailsViewModel getData() {
         DietDetailsViewModel dietDetailsViewModel = new DietDetailsViewModel();
         dietDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
+        dietDetailsViewModel.setId(this.dietDetailsViewModel.getId());
         if (editDietType.getSelectedItem() != null)
             dietDetailsViewModel.setDietType(editDietType.getSelectedItem().toString());
         if (editDrink.getSelectedItem() != null)
@@ -103,7 +105,12 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         presenter.bind(this);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         dietDetailsViewModel = (DietDetailsViewModel) getIntent().getSerializableExtra("dietDetailsViewModel");
-        setData();
+        if (dietDetailsViewModel == null) {
+            presenter.getDietDetails();
+        } else {
+            setData();
+        }
+
     }
 
 
@@ -115,8 +122,8 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -130,7 +137,7 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -138,6 +145,12 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         Intent intent = new Intent(this, EditExpectationDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    @Override
+    public void showDietDetails(DietDetailsViewModel viewModel) {
+        dietDetailsViewModel = viewModel;
+        setData();
     }
 
     public void setSpinnerValue() {
@@ -153,19 +166,16 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         for (int i = 0; i < getResources().getStringArray(R.array.spinner_drink).length; i++) {
             if (dietDetailsViewModel.getDrink().equals("")) {
                 pos = 0;
-            }
-            else if (getResources().getStringArray(R.array.spinner_drink)[i].equals(dietDetailsViewModel.getDrink())) {
+            } else if (getResources().getStringArray(R.array.spinner_drink)[i].equals(dietDetailsViewModel.getDrink())) {
                 pos = i;
 
             }
         }
         editDrink.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.spinner_smoke).length; i++) {
-            if (dietDetailsViewModel.getSmoke().equals(""))
-            {
+            if (dietDetailsViewModel.getSmoke().equals("")) {
                 pos = 0;
-            }
-            else if (getResources().getStringArray(R.array.spinner_smoke)[i].equals(dietDetailsViewModel.getSmoke())) {
+            } else if (getResources().getStringArray(R.array.spinner_smoke)[i].equals(dietDetailsViewModel.getSmoke())) {
                 pos = i;
 
             }
@@ -173,28 +183,32 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
         editSmoke.setSelection(pos);
     }
 
-    private boolean validation()
-    {
+    private boolean validation() {
         if (editDietType.getSelectedItem().toString().equalsIgnoreCase("") || editDietType.getSelectedItem().toString().equalsIgnoreCase("Diet Type")) {
             textErrorDietType.setVisibility(View.VISIBLE);
             textErrorDietType.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorDietType.setVisibility(View.GONE);}
+        } else {
+            textErrorDietType.setVisibility(View.GONE);
+        }
         if (editDrink.getSelectedItem().toString().equalsIgnoreCase("") || editDrink.getSelectedItem().toString().equalsIgnoreCase("Drink(Alcoholic)")) {
             textErrorDrink.setVisibility(View.VISIBLE);
             textErrorDrink.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorDrink.setVisibility(View.GONE);}
+        } else {
+            textErrorDrink.setVisibility(View.GONE);
+        }
         if (editSmoke.getSelectedItem().toString().equalsIgnoreCase("") || editSmoke.getSelectedItem().toString().equalsIgnoreCase("Smoke")) {
             textErrorSmoke.setVisibility(View.VISIBLE);
             textErrorSmoke.setText(getString(R.string.empty_field));
             return false;
+        } else {
+            textErrorSmoke.setVisibility(View.GONE);
         }
-        else {textErrorSmoke.setVisibility(View.GONE);}
         return true;
     }
 
-    public void snackbar(View view,String errorMessage) {
+    public void snackbar(View view, String errorMessage) {
         Snackbar snackbar = Snackbar
                 .make(view, errorMessage, Snackbar.LENGTH_LONG)
                 .setAction("OK", new View.OnClickListener() {

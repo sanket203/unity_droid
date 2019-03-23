@@ -1,16 +1,11 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
-import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
 import javax.inject.Inject;
 
-import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BasePresenter;
 import unity.com.unityapp.unity.com.unityapp.base.Constants;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
+import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.GetPhysicalDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.domain.usecase.SavePhysicalDetailsUseCase;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PhysicalDetailsDataModelToViewModelMapper;
 import unity.com.unityapp.unity.com.unityapp.base.view.mapper.PhysicalDetailsViewModelToDataModelMapper;
@@ -24,11 +19,14 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
 
     private final PhysicalDetailsViewModelToDataModelMapper physicalDetailsViewModelToDataModelMapper;
 
+    private final GetPhysicalDetailsUseCase getPhysicalDetailsUseCase;
+
     @Inject
-    public EditPhysicalDetailsPresenter(SavePhysicalDetailsUseCase savePhysicalDetailsUseCase, PhysicalDetailsDataModelToViewModelMapper physicalDetailsDataModelToViewModelMapper, PhysicalDetailsViewModelToDataModelMapper physicalDetailsViewModelToDataModelMapper) {
+    public EditPhysicalDetailsPresenter(SavePhysicalDetailsUseCase savePhysicalDetailsUseCase, PhysicalDetailsDataModelToViewModelMapper physicalDetailsDataModelToViewModelMapper, PhysicalDetailsViewModelToDataModelMapper physicalDetailsViewModelToDataModelMapper, GetPhysicalDetailsUseCase getPhysicalDetailsUseCase) {
         this.savePhysicalDetailsUseCase = savePhysicalDetailsUseCase;
         this.physicalDetailsDataModelToViewModelMapper = physicalDetailsDataModelToViewModelMapper;
         this.physicalDetailsViewModelToDataModelMapper = physicalDetailsViewModelToDataModelMapper;
+        this.getPhysicalDetailsUseCase = getPhysicalDetailsUseCase;
     }
 
 
@@ -53,7 +51,7 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
                     view.showProgress(false);
                 }
                 //Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
-                view.showErrorMessage( personalDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(personalDetailsResponseDataModel.getMessage());
 
 
             }
@@ -61,8 +59,37 @@ public class EditPhysicalDetailsPresenter extends BasePresenter<EditPhysicalDeta
             if (view != null) {
                 view.showProgress(false);
             }
-           // Log.d("ERROR", error.getMessage());
-            view.showErrorMessage( error.getMessage());
+            // Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
+        });
+    }
+
+    public void getPhysicalDetails() {
+        if (view != null) {
+            view.showProgress(true);
+        }
+        getPhysicalDetailsUseCase.execute(String.valueOf(UserInfo.getUserInfo().getCandidateId()))
+                .compose(bindToLifecycle()).subscribe(personalDetailsResponseDataModel -> {
+            if (personalDetailsResponseDataModel.getStatus().equals(Constants.STATUS_200)) {
+                PhysicalDetailsViewModel viewModel = physicalDetailsDataModelToViewModelMapper.mapToViewModel(personalDetailsResponseDataModel);
+                if (view != null) {
+                    view.showProgress(false);
+                    view.showPhysicalDetails(viewModel);
+                }
+            } else {
+                if (view != null) {
+                    view.showProgress(false);
+                }
+                //Log.d("ERROR", personalDetailsResponseDataModel.getMessage());
+                view.showErrorMessage(personalDetailsResponseDataModel.getMessage());
+            }
+        }, error -> {
+            if (view != null) {
+                view.showProgress(false);
+
+            }
+            // Log.d("ERROR", error.getMessage());
+            view.showErrorMessage(error.getMessage());
         });
     }
 }

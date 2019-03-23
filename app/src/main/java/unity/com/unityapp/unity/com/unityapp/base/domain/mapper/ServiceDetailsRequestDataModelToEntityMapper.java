@@ -25,6 +25,7 @@ public class ServiceDetailsRequestDataModelToEntityMapper {
         entity.setServiceStatus(serviceDetailsDataModel.getServiceStatus());
         entity.setOrganizationType(serviceDetailsDataModel.getOrganizationType());
         entity.setWorkingCity(serviceDetailsDataModel.getWorkingCity());
+        entity.setId(serviceDetailsDataModel.getId());
         return entity;
     }
 }

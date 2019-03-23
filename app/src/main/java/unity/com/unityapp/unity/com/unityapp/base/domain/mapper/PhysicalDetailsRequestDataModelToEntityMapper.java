@@ -23,6 +23,7 @@ public class PhysicalDetailsRequestDataModelToEntityMapper {
         entity.setMedicalSurgary(physicalDetailsDataModel.getMedicalSurgary());
         entity.setDisability(physicalDetailsDataModel.getDisability());
         entity.setOtherRemarks(physicalDetailsDataModel.getOtherRemarks());
+        entity.setId(physicalDetailsDataModel.getId());
 
         return entity;
     }

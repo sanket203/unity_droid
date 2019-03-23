@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.HoroscopeDetailsViewModel;
 
@@ -130,7 +131,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         candidateId = getIntent().getIntExtra("candidateId", 0);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         horoscopeDetailsViewModel = (HoroscopeDetailsViewModel) getIntent().getSerializableExtra("horoscopeDetailsViewModel");
-        setData();
+        if (horoscopeDetailsViewModel == null) {
+            presenter.getHoroscopeDetails();
+        } else {
+            setData();
+        }
     }
 
     private void setData() {
@@ -145,7 +150,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     private HoroscopeDetailsViewModel getData() {
         HoroscopeDetailsViewModel horoscopeDetailsViewModel = new HoroscopeDetailsViewModel();
-        horoscopeDetailsViewModel.setCandidateId(candidateId);
+        horoscopeDetailsViewModel.setId(this.horoscopeDetailsViewModel.getId());
+        horoscopeDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editNaadi.getText() != null) {
             horoscopeDetailsViewModel.setNaadi(editNaadi.getText().toString());
         }
@@ -193,8 +199,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if(validation()==true)
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -208,7 +214,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -216,6 +222,12 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         Intent intent = new Intent(this, EditDietDetailsActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
+    }
+
+    @Override
+    public void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel) {
+        horoscopeDetailsViewModel = viewModel;
+        setData();
     }
 
     public void setSpinnerValue() {
@@ -317,58 +329,78 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
             textErrorCaste.setVisibility(View.VISIBLE);
             textErrorCaste.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorCaste.setVisibility(View.GONE);}
+        } else {
+            textErrorCaste.setVisibility(View.GONE);
+        }
         if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
             textErrorSubCaste.setVisibility(View.VISIBLE);
             textErrorSubCaste.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorSubCaste.setVisibility(View.GONE);}
+        } else {
+            textErrorSubCaste.setVisibility(View.GONE);
+        }
         if (spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerShakha.getSelectedItem().toString().equalsIgnoreCase("Select Shakha")) {
             textErrorShakha.setVisibility(View.VISIBLE);
             textErrorShakha.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorShakha.setVisibility(View.GONE);}
+        } else {
+            textErrorShakha.setVisibility(View.GONE);
+        }
         if (spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("Select Upshakha")) {
             textErrorUpshakha.setVisibility(View.VISIBLE);
             textErrorUpshakha.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorUpshakha.setVisibility(View.GONE);}
+        } else {
+            textErrorUpshakha.setVisibility(View.GONE);
+        }
         if (spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("Select Gotra")) {
             textErrorGotra.setVisibility(View.VISIBLE);
             textErrorGotra.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorGotra.setVisibility(View.GONE);}
+        } else {
+            textErrorGotra.setVisibility(View.GONE);
+        }
         if (spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("") || spinnerRashi.getSelectedItem().toString().equalsIgnoreCase("Select Rashi")) {
             textErrorRashi.setVisibility(View.VISIBLE);
             textErrorRashi.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorRashi.setVisibility(View.GONE);}
+        } else {
+            textErrorRashi.setVisibility(View.GONE);
+        }
         if (spinnerGana.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGana.getSelectedItem().toString().equalsIgnoreCase("Select Gana")) {
             textErrorGana.setVisibility(View.VISIBLE);
             textErrorGana.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorGana.setVisibility(View.GONE);}
+        } else {
+            textErrorGana.setVisibility(View.GONE);
+        }
         if (spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerNakshatra.getSelectedItem().toString().equalsIgnoreCase("Select Nakshatra")) {
             textErrorNakshatra.setVisibility(View.VISIBLE);
             textErrorNakshatra.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorNakshatra.setVisibility(View.GONE);}
+        } else {
+            textErrorNakshatra.setVisibility(View.GONE);
+        }
         if (editNaadi.getText().toString().equalsIgnoreCase("") || editNaadi.getText().toString().equalsIgnoreCase(null)) {
             textErrorNaadi.setVisibility(View.VISIBLE);
             textErrorNaadi.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorNaadi.setVisibility(View.GONE);}
+        } else {
+            textErrorNaadi.setVisibility(View.GONE);
+        }
         if (editCharan.getText().toString().equalsIgnoreCase("") || editCharan.getText().toString().equalsIgnoreCase(null)) {
             textErrorCharan.setVisibility(View.VISIBLE);
             textErrorCharan.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorCharan.setVisibility(View.GONE);}
+        } else {
+            textErrorCharan.setVisibility(View.GONE);
+        }
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -378,9 +410,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

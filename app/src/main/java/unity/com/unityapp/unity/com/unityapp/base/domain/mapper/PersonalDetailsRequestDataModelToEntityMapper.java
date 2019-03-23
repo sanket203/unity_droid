@@ -24,6 +24,7 @@ public class PersonalDetailsRequestDataModelToEntityMapper {
         personalDetailsEntity.setLastName(personalDetailsDataModel.getLastName());
         personalDetailsEntity.setGender(personalDetailsDataModel.getGender());
         personalDetailsEntity.setMaritalStatus(personalDetailsDataModel.getMaritalStatus());
+        personalDetailsEntity.setHobbies(personalDetailsDataModel.getHobbies());
         return personalDetailsEntity;
     }
 }

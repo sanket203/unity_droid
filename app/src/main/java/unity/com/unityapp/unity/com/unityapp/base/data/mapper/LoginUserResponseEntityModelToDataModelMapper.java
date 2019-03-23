@@ -30,7 +30,6 @@ public class LoginUserResponseEntityModelToDataModelMapper {
         UserResponseDataModel userResponseDataModel = new UserResponseDataModel();
 
         if (entity != null) {
-
             userResponseDataModel.setAddressCount(entity.getAddressCount());
             userResponseDataModel.setBirthDate(entity.getBirthDate());
             userResponseDataModel.setCandidateId(entity.getCandidateId());

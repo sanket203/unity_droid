@@ -5,7 +5,7 @@ import com.squareup.moshi.Json;
 
 public class FamilyDetailsEntity {
 
-
+    @Json(name = "id")
     private int id;
 
     @Json(name = "candidateId")

@@ -27,6 +27,7 @@ public class HoroscopeDetailsViewModelToDataModelMapper {
         dataModel.setGotra(horoscopeDetailsViewModel.getGotra());
         dataModel.setMangal(horoscopeDetailsViewModel.getMangal());
         dataModel.setRemarks(horoscopeDetailsViewModel.getRemarks());
+        dataModel.setId(horoscopeDetailsViewModel.getId());
 
         return dataModel;
     }

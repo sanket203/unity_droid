@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
+import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.ExpectationsViewModel;
 
@@ -105,6 +106,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     int counter = 0;
     private ExpectationsViewModel expectationDetailsViewModel;
     String minFeet, minInches, maxFeet, maxInches;
+    private boolean isFromRegistration;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,7 +126,13 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         editWorkingLocation.setAdapter(adapter);
-        setData();
+        isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
+        if (expectationDetailsViewModel == null) {
+            presenter.getExpectationDetails();
+        } else {
+            setData();
+        }
+
     }
 
     private void setData() {
@@ -142,12 +150,11 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     private ExpectationsViewModel getData() {
         ExpectationsViewModel expectationDetailsViewModel = new ExpectationsViewModel();
-        expectationDetailsViewModel.setCandidateId(candidateId);
+        expectationDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
+        if (this.expectationDetailsViewModel != null)
+            expectationDetailsViewModel.setId(this.expectationDetailsViewModel.getId());
         if (editEducation.getText() != null) {
             expectationDetailsViewModel.setDegree(editEducation.getText().toString());
-            expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
-            expectationDetailsViewModel.setWorkingLocation(editWorkingLocation.getText().toString());
-            expectationDetailsViewModel.setOther(editOtherExp.getText().toString());
         }
         if (editIncome.getText() != null) {
             expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
@@ -183,7 +190,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @OnClick(R.id.btn_save)
     void onSaveClick() {
         if (validation() == true)
-            presenter.save(getData());
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
@@ -196,8 +203,21 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     }
 
     @Override
-    public void shoeErrorMessage(String message) {
-        snackbar(linearMain,message);
+    public void showErrorMessage(String message) {
+        snackbar(linearMain, message);
+    }
+
+    @Override
+    public void navigateToFamilyDetails() {
+        Intent intent = new Intent(this, EditFamilyDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
+    }
+
+    @Override
+    public void showExpectationDetails(ExpectationsViewModel viewModel) {
+        expectationDetailsViewModel = viewModel;
+        setData();
     }
 
     private static final String[] COUNTRIES = new String[]{
@@ -269,58 +289,86 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             textErrorMinHeight.setVisibility(View.VISIBLE);
             textErrorMinHeight.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorMinHeight.setVisibility(View.GONE);}
+        } else {
+            textErrorMinHeight.setVisibility(View.GONE);
+        }
         if (spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxFeet.getSelectedItem().toString().equalsIgnoreCase("Feet")) {
             textErrorMaxHeight.setVisibility(View.VISIBLE);
             textErrorMaxHeight.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorMaxHeight.setVisibility(View.GONE);}
+        }
+        {
+            textErrorMaxHeight.setVisibility(View.GONE);
+        }
         if (spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMinInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
             textErrorMinHeight.setVisibility(View.VISIBLE);
             textErrorMinHeight.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorMinHeight.setVisibility(View.GONE);}
+        } else {
+            textErrorMinHeight.setVisibility(View.GONE);
+        }
         if (spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMaxInches.getSelectedItem().toString().equalsIgnoreCase("Inches")) {
             textErrorMaxHeight.setVisibility(View.VISIBLE);
             textErrorMaxHeight.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorMaxHeight.setVisibility(View.GONE);}
+        }
+        {
+            textErrorMaxHeight.setVisibility(View.GONE);
+        }
         if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
             textErrorSubcaste.setVisibility(View.VISIBLE);
             textErrorSubcaste.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorSubcaste.setVisibility(View.GONE);}
+        }
+        {
+            textErrorSubcaste.setVisibility(View.GONE);
+        }
         if (editMinAge.getText().toString().equalsIgnoreCase("") || editMinAge.getText().toString().equalsIgnoreCase(null)) {
             textErrorMinAge.setVisibility(View.VISIBLE);
             textErrorMinAge.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorMinAge.setVisibility(View.GONE);}
+        }
+        {
+            textErrorMinAge.setVisibility(View.GONE);
+        }
         if (editMaxAge.getText().toString().equalsIgnoreCase("") || editMaxAge.getText().toString().equalsIgnoreCase(null)) {
             textErrorMaxAge.setVisibility(View.VISIBLE);
             textErrorMaxAge.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorMaxAge.setVisibility(View.GONE);}
+        }
+        {
+            textErrorMaxAge.setVisibility(View.GONE);
+        }
         if (editEducation.getText().toString().equalsIgnoreCase("") || editEducation.getText().toString().equalsIgnoreCase(null)) {
             textErrorEducation.setVisibility(View.VISIBLE);
             textErrorEducation.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorEducation.setVisibility(View.GONE);}
+        }
+        {
+            textErrorEducation.setVisibility(View.GONE);
+        }
         if (editIncome.getText().toString().equalsIgnoreCase("") || editIncome.getText().toString().equalsIgnoreCase(null)) {
             textErrorIncome.setVisibility(View.VISIBLE);
             textErrorIncome.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorIncome.setVisibility(View.GONE);}
+        }
+        {
+            textErrorIncome.setVisibility(View.GONE);
+        }
         if (editWorkingLocation.getText().toString().equalsIgnoreCase("") || editWorkingLocation.getText().toString().equalsIgnoreCase(null)) {
             textErrorLocation.setVisibility(View.VISIBLE);
             textErrorLocation.setText(getString(R.string.empty_field));
             return false;
-        }{textErrorLocation.setVisibility(View.GONE);}
+        }
+        {
+            textErrorLocation.setVisibility(View.GONE);
+        }
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -330,16 +378,14 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             counter = counter + 1;
-                            presenter.save(getData());
+                            presenter.save(getData(), isFromRegistration);
                         }
                     });
             snackbar.setActionTextColor(Color.BLACK);

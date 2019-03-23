@@ -26,6 +26,7 @@ public class PhysicalDetailsDataModelToViewModelMapper {
         physicalDetailsViewModel.setMedicalSurgary(physicalDetailsResponseDataModel.getPhysicalDetailsDataModel().getMedicalSurgary());
         physicalDetailsViewModel.setDisability(physicalDetailsResponseDataModel.getPhysicalDetailsDataModel().getDisability());
         physicalDetailsViewModel.setOtherRemarks(physicalDetailsResponseDataModel.getPhysicalDetailsDataModel().getOtherRemarks());
+        physicalDetailsViewModel.setId(physicalDetailsResponseDataModel.getPhysicalDetailsDataModel().getId());
 
         return physicalDetailsViewModel;
     }

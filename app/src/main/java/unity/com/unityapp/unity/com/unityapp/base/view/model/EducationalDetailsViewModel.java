@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class EducationalDetailsViewModel implements Serializable {
 
+    int id;
 
     private int candidateId;
 
@@ -79,6 +80,14 @@ public class EducationalDetailsViewModel implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

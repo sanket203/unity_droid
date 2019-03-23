@@ -1,9 +1,13 @@
 package unity.com.unityapp.unity.com.unityapp.base.networking;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
@@ -99,4 +103,10 @@ public interface BaseApi {
 
     @GET("getProfileAddress/{candidateId}/{profileId}/{isAddressTaken}")
     Observable<ContactDetailsResponseEntity> checkAndGetContact(@Path("candidateId") String candidateId, @Path("profileId") String profileId, @Path("isAddressTaken") Boolean isAddressExist);
+
+    @Multipart
+    @POST("uploadFiles/{candidateId}")
+    Observable<PersonalDetailsResponseEntity> uploadImage(@Part MultipartBody.Part part, @Part("candidateId") RequestBody candidateId);
+
+
 }

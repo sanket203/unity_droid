@@ -1,32 +1,50 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
@@ -55,6 +73,12 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @BindView(R.id.birth_time)
     EditText birthTime;
+
+    @BindView(R.id.birth_place)
+    EditText birthPlace;
+
+    @BindView(R.id.hobbies)
+    EditText hobbies;
 
     @BindView(R.id.marrital_status)
     Spinner marritalStatus;
@@ -92,6 +116,13 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
     @BindView(R.id.textErrorBirthMarritalStatus)
     TextView textErrorBirthMarritalStatus;
 
+    @BindView(R.id.textErrorBirthPlace)
+    TextView textErrorBirthPlace;
+
+    @BindView(R.id.textErrorHobbies)
+    TextView textErrorHobbies;
+
+
     private int candidateId;
     int counter = 0;
     private PersonalDetailsViewModel personalDetailsViewModel;
@@ -113,7 +144,11 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         presenter.bind(this);
         isFromRegistration = getIntent().getBooleanExtra("isFromRegistration", false);
         personalDetailsViewModel = (PersonalDetailsViewModel) getIntent().getSerializableExtra("personalDetailsViewModel");
-        setData();
+        if (personalDetailsViewModel == null) {
+            presenter.getPersonalDetails();
+        } else {
+            setData();
+        }
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -173,6 +208,34 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
             firstName.setText(personalDetailsViewModel.getFirstName());
             middleName.setText(personalDetailsViewModel.getMiddleName());
             surName.setText(personalDetailsViewModel.getLastName());
+            hobbies.setText(personalDetailsViewModel.getHobbies());
+            birthPlace.setText(personalDetailsViewModel.getBirthPlace());
+            setmarritalStatus(personalDetailsViewModel.getMaritalStatus());
+            setGender(personalDetailsViewModel.getGender());
+        }
+    }
+
+    private void setGender(String genderValue) {
+        for (int i = 0; i < getResources().getStringArray(R.array.gender).length; i++) {
+            if (genderValue == null || genderValue.equals("")) {
+                gender.setSelection(0);
+                break;
+            } else if (getResources().getStringArray(R.array.gender)[i].equalsIgnoreCase(genderValue)) {
+                gender.setSelection(i);
+                break;
+            }
+        }
+    }
+
+    private void setmarritalStatus(String maritalStatus) {
+        for (int i = 0; i < getResources().getStringArray(R.array.marital_status_list).length; i++) {
+            if (maritalStatus == null || maritalStatus.equals("")) {
+                marritalStatus.setSelection(0);
+                break;
+            } else if (getResources().getStringArray(R.array.marital_status_list)[i].equalsIgnoreCase(maritalStatus)) {
+                marritalStatus.setSelection(i);
+                break;
+            }
         }
     }
 
@@ -191,6 +254,10 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
             personalDetailsViewModel.setMiddleName(middleName.getText().toString());
         if (surName.getText() != null)
             personalDetailsViewModel.setLastName(surName.getText().toString());
+        if (birthPlace.getText() != null)
+            personalDetailsViewModel.setBirthPlace(birthPlace.getText().toString());
+        if (hobbies.getText() != null)
+            personalDetailsViewModel.setHobbies(hobbies.getText().toString());
         personalDetailsViewModel.setMaritalStatus(marritalStatus.getSelectedItem().toString());
         personalDetailsViewModel.setGender(gender.getSelectedItem().toString());
         return personalDetailsViewModel;
@@ -204,22 +271,25 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @OnClick(R.id.btn_save)
     void onSaveClick() {
-        if (validation()==true)
-        presenter.save(getData(), isFromRegistration);
+        if (validation() == true)
+            presenter.save(getData(), isFromRegistration);
     }
 
     @Override
     public void showProgress(boolean showProgress) {
         if (showProgress) {
             loader.setVisibility(View.VISIBLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         } else {
             loader.setVisibility(View.GONE);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         }
     }
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -229,51 +299,98 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
         startActivity(intent);
     }
 
+    @Override
+    public void showProgressBar(boolean b) {
+
+    }
+
+    @Override
+    public void showPersonalDetails(PersonalDetailsViewModel viewModel) {
+        this.personalDetailsViewModel = viewModel;
+        setData();
+    }
+
     private boolean validation() {
         if (firstName.getText().toString().equalsIgnoreCase("") || firstName.getText().toString().equalsIgnoreCase(null)) {
             textErrorFirstName.setVisibility(View.VISIBLE);
             textErrorFirstName.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorFirstName.setVisibility(View.GONE);}
+        } else {
+            textErrorFirstName.setVisibility(View.GONE);
+        }
         if (middleName.getText().toString().equalsIgnoreCase("") || middleName.getText().toString().equalsIgnoreCase(null)) {
             textErrorMiddleNAme.setVisibility(View.VISIBLE);
             textErrorMiddleNAme.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorMiddleNAme.setVisibility(View.GONE);}
+        } else {
+            textErrorMiddleNAme.setVisibility(View.GONE);
+        }
 
         if (surName.getText().toString().equalsIgnoreCase("") || surName.getText().toString().equalsIgnoreCase(null)) {
             textErrorSurname.setVisibility(View.VISIBLE);
             textErrorSurname.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorSurname.setVisibility(View.GONE);}
+        } else {
+            textErrorSurname.setVisibility(View.GONE);
+        }
         if (birthDate.getText().toString().equalsIgnoreCase("") || birthDate.getText().toString().equalsIgnoreCase(null)) {
             textErrorBirthdate.setVisibility(View.VISIBLE);
             textErrorBirthdate.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBirthdate.setVisibility(View.GONE);}
+        } else {
+            textErrorBirthdate.setVisibility(View.GONE);
+        }
         if (birthTime.getText().toString().equalsIgnoreCase("") || birthTime.getText().toString().equalsIgnoreCase(null)) {
             textErrorBirthTime.setVisibility(View.VISIBLE);
             textErrorBirthTime.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBirthTime.setVisibility(View.GONE);}
+        } else {
+            textErrorBirthTime.setVisibility(View.GONE);
+        }
         if (marritalStatus.getSelectedItem().toString().equalsIgnoreCase("") || marritalStatus.getSelectedItem().toString().equalsIgnoreCase("Select Marital Status")) {
             textErrorBirthMarritalStatus.setVisibility(View.VISIBLE);
             textErrorBirthMarritalStatus.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBirthMarritalStatus.setVisibility(View.GONE);}
+        } else {
+            textErrorBirthMarritalStatus.setVisibility(View.GONE);
+        }
         if (gender.getSelectedItem().toString().equalsIgnoreCase("") || gender.getSelectedItem().toString().equalsIgnoreCase("Select Gender")) {
             textErrorBirthGender.setVisibility(View.VISIBLE);
             textErrorBirthGender.setText(getString(R.string.empty_field));
             return false;
-        }else {textErrorBirthGender.setVisibility(View.GONE);}
+        } else {
+            textErrorBirthGender.setVisibility(View.GONE);
+        }
+
+        if (birthPlace.getText().toString().equalsIgnoreCase("") || birthPlace.getText().toString().equalsIgnoreCase(null)) {
+            textErrorBirthPlace.setVisibility(View.VISIBLE);
+            textErrorBirthPlace.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorBirthPlace.setVisibility(View.GONE);
+        }
+
+        if (hobbies.getText().toString().equalsIgnoreCase("") || hobbies.getText().toString().equalsIgnoreCase(null)) {
+            textErrorHobbies.setVisibility(View.VISIBLE);
+            textErrorHobbies.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorHobbies.setVisibility(View.GONE);
+        }
         return true;
     }
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
-                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
+                    .make(view, "Please Try After Some Time", Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("DISMISS", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    snackbar.dismiss();
+                }
+            });
             snackbar.setActionTextColor(Color.BLACK);
             View sbView = snackbar.getView();
             sbView.setBackgroundResource(R.drawable.error_message);
@@ -281,11 +398,9 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
-                    .make(view, errorMessage, Snackbar.LENGTH_LONG)
+                    .make(view, errorMessage, Snackbar.LENGTH_INDEFINITE)
                     .setAction("RETRY", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -300,6 +415,84 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
             textView.setTextColor(Color.WHITE);
             snackbar.show();
         }
+    }
+
+    @OnClick(R.id.profile_image)
+    public void uploadImage() {
+        requestAppPermissions();
+        final Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
+//to get image and videos, I used a */"
+        galleryIntent.setType("image/*");
+        startActivityForResult(galleryIntent, 1);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            MultipartBody.Part image = null;
+            Uri selectedImageUri = data.getData();
+            String imagepath = getPath(selectedImageUri);
+            File imageFile = new File(imagepath);
+            RequestBody requestFile =
+                    RequestBody.create(
+                            MediaType.parse(getContentResolver().getType(selectedImageUri)),
+                            imageFile
+
+                    );
+
+            RequestBody body = RequestBody.create(MediaType.parse("text/plain"), "12");
+
+            image = MultipartBody.Part.createFormData("files", imageFile.getName(), requestFile);
+            presenter.uploadImage(image, body);
+        }
+
+
+    }
+
+    public String getPath(Uri uri) {
+
+        String realPath;
+        // SDK < API11
+        if (Build.VERSION.SDK_INT < 11) {
+            realPath = RealPathUtil.getRealPathFromURI_BelowAPI11(this, uri);
+        }
+
+        // SDK >= 11 && SDK < 19
+        else if (Build.VERSION.SDK_INT < 19) {
+            realPath = RealPathUtil.getRealPathFromURI_API11to18(this, uri);
+        }
+
+        // SDK > 19 (Android 4.4)
+        else {
+            realPath = RealPathUtil.getRealPathFromURI_API19(this, uri);
+        }
+        System.out.println("Image Path : " + realPath);
+
+
+        return realPath;
+    }
+
+    private void requestAppPermissions() {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            return;
+        }
+
+        if (hasReadPermissions() && hasWritePermissions()) {
+            return;
+        }
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }, 0); // your request code
+    }
+
+    private boolean hasReadPermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+    }
+
+    private boolean hasWritePermissions() {
+        return (ContextCompat.checkSelfPermission(getBaseContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
     }
 }
 

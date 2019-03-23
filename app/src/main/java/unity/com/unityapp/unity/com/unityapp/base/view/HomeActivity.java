@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -46,6 +48,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     @BindView(R.id.nav_view)
     NavigationView navigationView;
     public static int navItemIndex = 0;
+    AlertDialog.Builder builder;
 
     private static final String TAG_HOME = "recent_profile";
     private static final String TAG_ADDRESS_TAKEN = "adress_taken";
@@ -71,12 +74,13 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.mipmap.menu_icon);
         actionbar.setTitle("Recent Profiles");
+        builder = new AlertDialog.Builder(this);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         mHandler = new Handler();
         setUpNavigationView();
         if (savedInstanceState == null) {
-            navItemIndex = 2;
-            CURRENT_TAG = TAG_HOME;
+            navItemIndex = 0;
+            CURRENT_TAG = TAG_HOME_FRAGMENT;
             loadHomeFragment();
         }
     }
@@ -126,6 +130,8 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
             case 4:
                 SettingsFragment settingsFragment = new SettingsFragment();
                 return settingsFragment;
+            case 5:
+                logout();
 
             default:
                 return new HomeFragment();
@@ -212,8 +218,12 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
                     CURRENT_TAG = TAG_SETTINGS;
                     toolbar.setTitle("Settings");
                     break;
+
+                case R.id.logout:
+                    logout();
+                    break;
                 default:
-                    navItemIndex = 2;
+                    navItemIndex = 0;
             }
             //Checking if the item is in checked state or not, if not make it in checked state
             if (menuItem.isChecked()) {
@@ -244,5 +254,36 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         Intent intent = new Intent(this, RecentProfileDetailsActivity.class);
         intent.putExtra("candidateID", profileResponseViewModel.getCandidateId());
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        navItemIndex = 0;
+        CURRENT_TAG = TAG_HOME_FRAGMENT;
+        loadHomeFragment();
+    }
+
+    private void logout() {
+        builder.setMessage("Do you want to logout.?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //  Action for 'NO' Button
+                        dialog.cancel();
+
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Logout?");
+        alert.show();
+
+
     }
 }

@@ -30,6 +30,7 @@ public class ServiceDetailsResponseEntityToDataModelMapper {
             serviceDetailsDataModel.setServiceStatus(serviceDetailsResponseEntity.getServiceDetailsEntity().getServiceStatus());
             serviceDetailsDataModel.setOrganizationType(serviceDetailsResponseEntity.getServiceDetailsEntity().getOrganizationType());
             serviceDetailsDataModel.setWorkingCity(serviceDetailsResponseEntity.getServiceDetailsEntity().getWorkingCity());
+            serviceDetailsDataModel.setId(serviceDetailsResponseEntity.getServiceDetailsEntity().getId());
         }
         serviceDetailsResponseDataModel.setServiceDetailsDataModel(serviceDetailsDataModel);
         return serviceDetailsResponseDataModel;

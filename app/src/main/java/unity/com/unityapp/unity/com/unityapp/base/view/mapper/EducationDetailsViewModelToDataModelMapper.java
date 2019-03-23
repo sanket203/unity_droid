@@ -20,6 +20,8 @@ public class EducationDetailsViewModelToDataModelMapper {
         dataModel.setPassYear(educationDetailsViewModel.getPassYear());
         dataModel.setStream(educationDetailsViewModel.getStream());
         dataModel.setUniversity(educationDetailsViewModel.getUniversity());
+        dataModel.setRemarks(educationDetailsViewModel.getRemarks());
+        dataModel.setId(educationDetailsViewModel.getId());
         return dataModel;
     }
 }

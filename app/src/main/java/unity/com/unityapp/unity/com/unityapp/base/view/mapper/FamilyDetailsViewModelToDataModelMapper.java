@@ -22,6 +22,7 @@ public class FamilyDetailsViewModelToDataModelMapper {
         dataModel.setBrotherDescription(familyDetailsViewModel.getBrotherDescription());
         dataModel.setSisters(familyDetailsViewModel.getSisters());
         dataModel.setSisterDescription(familyDetailsViewModel.getSisterDescription());
+        dataModel.setId(familyDetailsViewModel.getId());
         return dataModel;
     }
 }

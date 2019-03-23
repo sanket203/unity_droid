@@ -28,8 +28,9 @@ public class FamilyDetailsResponseEntityToDataModelMapper {
             familyDetailsDataModel.setBrotherDescription(familyDetailsResponseEntity.getFamilyDetailsEntity().getBrotherDescription());
             familyDetailsDataModel.setSisters(familyDetailsResponseEntity.getFamilyDetailsEntity().getSisters());
             familyDetailsDataModel.setSisterDescription(familyDetailsResponseEntity.getFamilyDetailsEntity().getSisterDescription());
+            familyDetailsDataModel.setId(familyDetailsResponseEntity.getFamilyDetailsEntity().getId());
         }
-            familyDetailsResponseDataModel.setFamilyDetailsDataModel(familyDetailsDataModel);
+        familyDetailsResponseDataModel.setFamilyDetailsDataModel(familyDetailsDataModel);
 
         return familyDetailsResponseDataModel;
     }

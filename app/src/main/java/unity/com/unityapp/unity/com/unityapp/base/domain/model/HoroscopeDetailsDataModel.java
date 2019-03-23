@@ -2,6 +2,7 @@ package unity.com.unityapp.unity.com.unityapp.base.domain.model;
 
 public class HoroscopeDetailsDataModel {
 
+    private int id;
 
     private int candidateId;
 
@@ -146,4 +147,11 @@ public class HoroscopeDetailsDataModel {
         this.upshakha = upshakha;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

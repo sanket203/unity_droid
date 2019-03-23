@@ -26,6 +26,7 @@ public class EducationDetailsResponseEntityToDataModelMapper {
             educationalDetailsDataModel.setRemarks(educationDetailsResponseEntity.getEducationalDetailsEntity().getRemarks());
             educationalDetailsDataModel.setStream(educationDetailsResponseEntity.getEducationalDetailsEntity().getStream());
             educationalDetailsDataModel.setUniversity(educationDetailsResponseEntity.getEducationalDetailsEntity().getUniversity());
+            educationalDetailsDataModel.setId(educationDetailsResponseEntity.getEducationalDetailsEntity().getId());
         }
         educationDetailsResponseDataModel.setEducationalDetailsDataModel(educationalDetailsDataModel);
 

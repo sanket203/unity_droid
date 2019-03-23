@@ -27,7 +27,6 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
     public RecentProfileResponseViewModel mapToViewModel(RecentProfileResponseDataModel dataModel) {
         RecentProfileResponseViewModel viewModel = new RecentProfileResponseViewModel();
         viewModel.setProfileResponseViewModelList(getListofViewModel(dataModel.getProfileResponseEntities()));
-
         return viewModel;
     }
 
@@ -35,9 +34,7 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
 
         List<ProfileResponseViewModel> profileResponseViewModels = new ArrayList<>();
         for (ProfileResponseDataModel dataModel : profileResponseEntities
-
         ) {
-
             ProfileResponseViewModel viewModel = new ProfileResponseViewModel();
             viewModel.setCandidateId(dataModel.getCandidateID());
             viewModel.setBirthDate(convertDate(dataModel.getBirthDate()));
