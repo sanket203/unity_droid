@@ -101,7 +101,7 @@ public class AddressTakenFragment extends BaseFragment implements AddressTakenVi
     public void onResume() {
         super.onResume();
         presenter.bind(this);
-        presenter.getAddresstakenProfiles(0);
+        onRefresh();
     }
 
     @Override
@@ -116,8 +116,8 @@ public class AddressTakenFragment extends BaseFragment implements AddressTakenVi
         if (currentPage != PAGE_START) adapter.removeLoading();
         adapter.addAll(viewModel.getProfileResponseViewModelList());
         swipeRefreshLayout.setRefreshing(false);
-        if (currentPage < totalPage) adapter.addLoading();
-        else isLastPage = true;
+       /* if (currentPage < totalPage) adapter.addLoading();
+        else isLastPage = true;*/
         isLoading = false;
     }
 

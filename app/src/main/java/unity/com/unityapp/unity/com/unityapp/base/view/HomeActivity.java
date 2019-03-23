@@ -18,7 +18,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -45,6 +48,9 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
+   /* @BindView(R.id.profile_image)
+    ImageView profileImage;
+*/
     @BindView(R.id.nav_view)
     NavigationView navigationView;
     public static int navItemIndex = 0;
@@ -235,6 +241,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
 
             loadHomeFragment();
 
+
             return true;
         });
 
@@ -246,6 +253,10 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         counter.setText(count);
         counter.setGravity(Gravity.CENTER_VERTICAL);
         counter.setTypeface(null, Typeface.BOLD);
+      /*  Picasso.get()
+                .load(UserInfo.getUserInfo().getImageUrl())
+                .fit()
+                .into(profileImage);*/
 
     }
 

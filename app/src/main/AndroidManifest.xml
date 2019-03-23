@@ -45,6 +45,12 @@
 
         <activity android:name=".unity.com.unityapp.base.view.EditHoroscopeDetailsActivity" />
 
+        <activity android:name=".unity.com.unityapp.base.view.EditContactDetailsActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.WelcomeActivity" />
+
+        <activity android:name=".unity.com.unityapp.base.view.RegistrationDoneActivity" />
+
     </application>
 
 

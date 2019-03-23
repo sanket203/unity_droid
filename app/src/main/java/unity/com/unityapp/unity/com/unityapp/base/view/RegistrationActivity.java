@@ -121,7 +121,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
 
     @Override
     public void navigateToWelcomeScreen() {
-        Intent intent = new Intent(this, EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         intent.putExtra("isFromRegistration", true);
         startActivity(intent);
     }

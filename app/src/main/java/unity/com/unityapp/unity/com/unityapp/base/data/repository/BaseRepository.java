@@ -5,6 +5,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
@@ -77,5 +79,11 @@ public interface BaseRepository {
     Observable<ContactDetailsResponseEntity> checkAndGetContactDetails(String candidateId, String profileId, Boolean isAddressExist);
 
     Observable<PersonalDetailsResponseEntity> uploadImage(MultipartBody.Part part, RequestBody candidateId);
+
+    Observable<AddressDetailsResponseEntity> saveAddressDetails(AddressEntity entity);
+
+    Observable<AddressDetailsResponseEntity> GetContactDetails(String candidateId);
+
+    Observable<LoginUserResponseEntity> registerDone(String candidateId, String isRegistered);
 }
 

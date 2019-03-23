@@ -38,6 +38,9 @@ public class ProfileResponseEntity {
     @Json(name = "addressCount")
     private int addressCount;
 
+    @Json(name = "imageUrl")
+    private String imageUrl;
+
     public int getId() {
         return id;
     }
@@ -116,5 +119,13 @@ public class ProfileResponseEntity {
 
     public void setAddressCount(int addressCount) {
         this.addressCount = addressCount;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

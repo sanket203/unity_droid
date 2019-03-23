@@ -33,35 +33,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_marginStart="52dp"
                 android:layout_marginEnd="52dp"
-                android:layout_marginStart="52dp">
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/edit_text_rounded_rectangle">
-
-                    <Spinner
-                        android:id="@+id/spinnerCaste"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/caste_spinner"
-                        android:padding="10dp"
-                        android:prompt="@string/caste_prompt" />
-
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/textErrorCaste"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Please enter in feet"
-                    android:textColor="@android:color/holo_red_light"
-                    android:visibility="gone" />
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,6 +53,7 @@
                         android:prompt="@string/subcaste_prompt" />
 
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/textErrorSubCaste"
                     android:layout_width="match_parent"
@@ -86,6 +61,7 @@
                     android:text="Please enter in feet"
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,6 +78,7 @@
                         android:prompt="@string/shakha_prompt" />
 
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/textErrorShakha"
                     android:layout_width="match_parent"
@@ -110,46 +87,34 @@
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/editUpshakha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/edit_text_rounded_rectangle">
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/upshakha"
+                    android:imeOptions="flagForceAscii"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
 
-                    <Spinner
-                        android:id="@+id/spinnerUpshakha"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/upshakha_spinner"
-                        android:padding="10dp"
-                        android:prompt="@string/shakha_prompt" />
-
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/textErrorUpshakha"
+                <EditText
+                    android:id="@+id/editGotra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please enter in feet"
-                    android:textColor="@android:color/holo_red_light"
-                    android:visibility="gone" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/edit_text_rounded_rectangle">
+                    android:background="@drawable/edit_text_rounded_rectangle"
+                    android:hint="@string/gotra"
+                    android:imeOptions="flagForceAscii"
+                    android:minHeight="35dp"
+                    android:padding="10dp"
+                    android:textColorHint="#b6b6b6"
+                    android:textSize="15sp" />
 
-                    <Spinner
-                        android:id="@+id/spinnerGotra"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/gotra_spinner"
-                        android:padding="10dp"
-                        android:prompt="@string/gotra_prompt" />
-
-                </LinearLayout>
                 <TextView
                     android:id="@+id/textErrorGotra"
                     android:layout_width="match_parent"
@@ -207,6 +172,7 @@
                     android:text="Please enter in feet"
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -223,6 +189,7 @@
                         android:prompt="@string/nakshatra_prompt" />
 
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/textErrorNakshatra"
                     android:layout_width="match_parent"
@@ -231,18 +198,22 @@
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
 
-                <EditText
-                    android:id="@+id/editNaadi"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_rounded_rectangle"
-                    android:hint="@string/naadi"
-                    android:minHeight="35dp"
-                    android:padding="10dp"
-                    android:textColorHint="#b6b6b6"
-                    android:textSize="15sp" />
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerNadi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/spinner_naadi"
+                        android:padding="10dp"
+                        android:prompt="@string/nadi_prompt" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/textErrorNaadi"
@@ -253,18 +224,23 @@
                     android:visibility="gone" />
 
 
-                <EditText
-                    android:id="@+id/editCharan"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_rounded_rectangle"
-                    android:hint="@string/charan"
-                    android:minHeight="35dp"
-                    android:padding="10dp"
-                    android:textColorHint="#b6b6b6"
-                    android:textSize="15sp" />
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerCharan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/charan_spinner"
+                        android:padding="10dp"
+                        android:prompt="@string/charan_prompt" />
+
+                </LinearLayout>
+
 
                 <TextView
                     android:id="@+id/textErrorCharan"
@@ -282,17 +258,17 @@
                     android:background="@drawable/edit_text_rounded_rectangle">
 
                     <Spinner
-                        android:id="@+id/spinnerSpectacle"
+                        android:id="@+id/spinnerMangal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:entries="@array/spectacle_spinner"
+                        android:entries="@array/mangal_spinner"
                         android:padding="10dp"
                         android:prompt="@string/mangalik" />
 
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textErrorSpectacles"
+                    android:id="@+id/textErrorMangal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Please enter in feet"
@@ -307,6 +283,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/edit_text_rounded_rectangle"
                     android:hint="@string/remarks"
+                    android:imeOptions="flagForceAscii"
                     android:minHeight="35dp"
                     android:padding="10dp"
                     android:textColorHint="#b6b6b6"
@@ -316,8 +293,8 @@
                     android:id="@+id/btn_save"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/login_btn_shape"
                     android:text="Save"
                     android:textColor="#ffffff"

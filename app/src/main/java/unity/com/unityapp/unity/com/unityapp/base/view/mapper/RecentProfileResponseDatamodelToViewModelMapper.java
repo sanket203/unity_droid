@@ -43,6 +43,7 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
             viewModel.setHeight(dataModel.getHeight());
             viewModel.setIncome(dataModel.getIncome());
             viewModel.setName(dataModel.getName());
+            viewModel.setImageUrl(dataModel.getImageUrl());
             profileResponseViewModels.add(viewModel);
 
         }

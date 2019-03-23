@@ -16,6 +16,7 @@ public class UserInfo {
     private int candidateId;
     private int addressCount;
     private String registered;
+    private String imageUrl;
 
 
 
@@ -92,5 +93,13 @@ public class UserInfo {
 
     public void setAddressCount(int addressCount) {
         this.addressCount = addressCount;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

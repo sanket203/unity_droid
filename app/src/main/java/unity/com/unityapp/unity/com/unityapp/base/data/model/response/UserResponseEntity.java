@@ -8,47 +8,50 @@ import com.squareup.moshi.Json;
 
 public class UserResponseEntity {
 
-    @Json(name="candidateId")
+    @Json(name = "candidateId")
     private int candidateId;
 
-    @Json(name="name")
+    @Json(name = "name")
     private String name;
 
-    @Json(name="gender")
+    @Json(name = "gender")
     private String gender;
 
-    @Json(name="birthDate")
+    @Json(name = "birthDate")
     private String birthDate;
 
-    @Json(name="height")
+    @Json(name = "height")
     private String height;
 
-    @Json(name="education")
+    @Json(name = "education")
     private String education;
 
-    @Json(name="income")
+    @Json(name = "income")
     private int income;
 
-    @Json(name="lastLogin")
+    @Json(name = "lastLogin")
     private String lastLogin;
 
-    @Json(name="addressCount")
+    @Json(name = "addressCount")
     private int addressCount;
 
-    @Json(name="subscriptionDate")
+    @Json(name = "subscriptionDate")
     private String subscriptionDate;
 
-    @Json(name="payment")
+    @Json(name = "payment")
     private String payment;
 
-    @Json(name="status")
+    @Json(name = "status")
     private String status;
 
-    @Json(name="transactionId")
+    @Json(name = "transactionId")
     private String transactionId;
 
-    @Json(name="registered")
+    @Json(name = "registered")
     private String registered;
+
+    @Json(name = "imageUrl")
+    private String imageUrl;
 
     public String isRegistered() {
         return registered;
@@ -163,6 +166,15 @@ public class UserResponseEntity {
         this.lastLogin = lastLogin;
     }
 
+    public String getRegistered() {
+        return registered;
+    }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

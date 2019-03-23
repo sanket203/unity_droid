@@ -44,7 +44,7 @@ public class EditFamilyDetailsPresenter extends BasePresenter<EditFamilyDetailsV
                 if (view != null) {
                     view.showProgress(false);
                     if (isFromRegistration) {
-                        //navigate to address details
+                        view.navigateToContactDetails();
                     } else {
                         view.close();
                     }

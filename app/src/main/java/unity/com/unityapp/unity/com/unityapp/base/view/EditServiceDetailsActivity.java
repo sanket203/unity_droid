@@ -143,7 +143,8 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     private ServiceDetailsViewModel getData() {
         ServiceDetailsViewModel serviceDetailsViewModel = new ServiceDetailsViewModel();
-        serviceDetailsViewModel.setId(this.serviceDetailsViewModel.getId());
+        if (this.serviceDetailsViewModel != null)
+            serviceDetailsViewModel.setId(this.serviceDetailsViewModel.getId());
         serviceDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editOccupation.getText() != null) {
             serviceDetailsViewModel.setOccupation(editOccupation.getText().toString());

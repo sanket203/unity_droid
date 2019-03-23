@@ -6,6 +6,7 @@ package unity.com.unityapp.unity.com.unityapp.base.di.components;
 
 import dagger.Subcomponent;
 import unity.com.unityapp.unity.com.unityapp.base.di.modules.ActivityModule;
+import unity.com.unityapp.unity.com.unityapp.base.view.EditContactDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditDietDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditEducationDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.EditExpectationDetailsActivity;
@@ -18,7 +19,9 @@ import unity.com.unityapp.unity.com.unityapp.base.view.HomeActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.LoginActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RegistrationActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.RegistrationDoneActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.SplashScreenActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.WelcomeActivity;
 
 @Subcomponent(modules = {ActivityModule.class})
 public interface ActivityComponent {
@@ -48,4 +51,10 @@ public interface ActivityComponent {
     void inject(EditHoroscopeDetailsActivity activity);
 
     void inject(EditServiceDetailsActivity activity);
+
+    void inject(EditContactDetailsActivity activity);
+
+    void inject(WelcomeActivity activity);
+
+    void inject(RegistrationDoneActivity activity);
 }

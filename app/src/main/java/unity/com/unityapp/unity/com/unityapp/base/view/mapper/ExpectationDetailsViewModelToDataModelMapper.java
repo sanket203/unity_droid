@@ -15,8 +15,8 @@ public class ExpectationDetailsViewModelToDataModelMapper {
         ExpectationsDataModel dataModel = new ExpectationsDataModel();
 
         dataModel.setCandidateId(expectationDetailsViewModel.getCandidateId());
-        dataModel.setMinHeight(expectationDetailsViewModel.getMinHeight());
-        dataModel.setMaxHeight(expectationDetailsViewModel.getMaxHeight());
+        dataModel.setMinHeight(getMinHeight(expectationDetailsViewModel));
+        dataModel.setMaxHeight(getMaxHeight(expectationDetailsViewModel));
         dataModel.setMinAge(expectationDetailsViewModel.getMinAge());
         dataModel.setMaxAge(expectationDetailsViewModel.getMaxAge());
         dataModel.setSubCaste(expectationDetailsViewModel.getSubCaste());
@@ -28,5 +28,17 @@ public class ExpectationDetailsViewModelToDataModelMapper {
         dataModel.setOther(expectationDetailsViewModel.getOther());
         dataModel.setId(expectationDetailsViewModel.getId());
         return dataModel;
+    }
+
+    private String getMaxHeight(ExpectationsViewModel expectationDetailsViewModel) {
+        String height = "";
+        height = expectationDetailsViewModel.getMaxFeet() + "\'" + expectationDetailsViewModel.getMaxInch() + "\"";
+        return height;
+    }
+
+    private String getMinHeight(ExpectationsViewModel expectationDetailsViewModel) {
+        String height = "";
+        height = expectationDetailsViewModel.getMinFeet() + "\'" + expectationDetailsViewModel.getMinInch() + "\"";
+        return height;
     }
 }

@@ -42,6 +42,8 @@ public class UserResponseDataModel {
 
     private String transactionId;
 
+    private String imageUrl;
+
 
     public String getSubscriptionDate() {
         return subscriptionDate;
@@ -164,5 +166,11 @@ public class UserResponseDataModel {
         this.lastLogin = lastLogin;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
