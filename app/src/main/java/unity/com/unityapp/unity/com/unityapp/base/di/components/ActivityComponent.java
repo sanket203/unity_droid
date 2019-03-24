@@ -20,6 +20,7 @@ import unity.com.unityapp.unity.com.unityapp.base.view.LoginActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RecentProfileDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RegistrationActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.RegistrationDoneActivity;
+import unity.com.unityapp.unity.com.unityapp.base.view.ShowContactDetailsActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.SplashScreenActivity;
 import unity.com.unityapp.unity.com.unityapp.base.view.WelcomeActivity;
 
@@ -57,4 +58,6 @@ public interface ActivityComponent {
     void inject(WelcomeActivity activity);
 
     void inject(RegistrationDoneActivity activity);
+
+    void inject(ShowContactDetailsActivity activity);
 }

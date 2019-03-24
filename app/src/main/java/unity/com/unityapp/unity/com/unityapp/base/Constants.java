@@ -7,4 +7,5 @@ package unity.com.unityapp.unity.com.unityapp.base;
 public class Constants {
 
     public static final String STATUS_200 = "200";
+    public static final String STATUS_400 = "400";
 }

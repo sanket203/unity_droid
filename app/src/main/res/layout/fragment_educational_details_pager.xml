@@ -41,19 +41,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:padding="15dp"
-                            android:text="Educational Details"
+                            android:text="@string/eucational_details"
                             android:textColor="#242926"
                             android:textSize="22sp" />
+
                         <TextView
                             android:id="@+id/btn_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
                             android:layout_marginRight="10dp"
                             android:drawableLeft="@drawable/ic_edit"
-                            android:layout_alignParentRight="true"
-                            android:text="EDIT"
                             android:gravity="center_vertical"
-                            android:layout_centerInParent="true"
+                            android:text="@string/btn_edit"
                             android:textColor="@color/colorAccent" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -68,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Degree :"
+                        android:text="@string/tv_degree"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -78,7 +79,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="B.E"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -94,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Passing year :"
+                        android:text="@string/tv_passing_year"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -103,7 +103,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="2014"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -119,7 +118,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="College :"
+                        android:text="@string/tv_college"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -128,7 +127,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="PVG college"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -144,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="University :"
+                        android:text="@string/tv_university"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -153,7 +151,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Pune university"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -169,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Stream :"
+                        android:text="@string/tv_stream"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -178,7 +175,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="IT"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -194,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Remarks :"
+                        android:text="@string/tv_remarks"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -203,7 +199,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="None"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 

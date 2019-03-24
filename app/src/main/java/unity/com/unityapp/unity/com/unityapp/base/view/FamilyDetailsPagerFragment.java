@@ -67,7 +67,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
     @BindView(R.id.linearMain)
     NestedScrollView linearMain;
 
-    private int counter = 0 ;
+    private int counter = 0;
     private String candidateId;
     private FamilyDetailsViewModel familyDetailsViewModel;
 
@@ -86,7 +86,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -104,6 +104,8 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getFamilyDetails(candidateId);
         // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
@@ -119,8 +121,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getFamilyDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -161,7 +162,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -171,9 +172,7 @@ public class FamilyDetailsPagerFragment extends BaseFragment implements FamilyDe
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

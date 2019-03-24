@@ -45,9 +45,6 @@ public class SuccessStoriesPagerFragment extends BaseFragment implements Persona
     @BindView(R.id.birth_place)
     TextView birthPlace;
 
-    @BindView(R.id.mothertongue)
-    TextView motherTongue;
-
     @BindView(R.id.tv_gender)
     TextView gender;
 
@@ -132,7 +129,6 @@ public class SuccessStoriesPagerFragment extends BaseFragment implements Persona
         birthDate.setText(viewModel.getBirthDate());
         birthTime.setText(viewModel.getBirthTime());
         birthPlace.setText(viewModel.getBirthPlace());
-        motherTongue.setText(viewModel.getMotherTongue());
         marritalStatus.setText(viewModel.getMaritalStatus());
         gender.setText(viewModel.getGender());
         aboutMe.setText(viewModel.getAboutMe());

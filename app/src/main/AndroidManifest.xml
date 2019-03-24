@@ -51,6 +51,8 @@
 
         <activity android:name=".unity.com.unityapp.base.view.RegistrationDoneActivity" />
 
+        <activity android:name=".unity.com.unityapp.base.view.ShowContactDetailsActivity" />
+
     </application>
 
 

@@ -7,10 +7,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class DetailsPagerAdapter extends FragmentPagerAdapter {
 
     private String candidateId;
+    boolean isFromRecentProfile;
 
-    public DetailsPagerAdapter(FragmentManager fm, String candidateId) {
+    public DetailsPagerAdapter(FragmentManager fm, String candidateId, boolean isFromRecentProfile) {
         super(fm);
         this.candidateId = candidateId;
+        this.isFromRecentProfile = isFromRecentProfile;
     }
 
     @Override
@@ -36,14 +38,21 @@ public class DetailsPagerAdapter extends FragmentPagerAdapter {
                 return ExpectationsDetailsPagerFragment.newInstance(candidateId);
 
             case 8:
-                return AddressDetailsPagerFragment.newInstance(candidateId);
+                if (!isFromRecentProfile) {
+                    return AddressDetailsPagerFragment.newInstance(candidateId);
+                }
             default:
                 return PersonalDetailsPagerFragment.newInstance(candidateId);
         }
     }
 
+
     @Override
     public int getCount() {
-        return 9;
+        if (!isFromRecentProfile) {
+            return 9;
+        }
+        return 8;
+
     }
 }

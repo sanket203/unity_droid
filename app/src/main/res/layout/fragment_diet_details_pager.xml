@@ -1,140 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-   android:id="@+id/scrollMain"
+    android:id="@+id/scrollMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details_background_rectangle"
-    android:scrollbars="vertical"
-    >
+    android:scrollbars="vertical">
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
+            <ProgressBar
+                android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="15dp"
-                    android:text="Diet Details"
-                    android:textColor="#242926"
-                    android:textSize="22sp" />
-                <TextView
-                    android:id="@+id/btn_edit"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:drawableLeft="@drawable/ic_edit"
-                    android:layout_alignParentRight="true"
-                    android:text="EDIT"
-                    android:gravity="center_vertical"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/colorAccent" />
-            </RelativeLayout>
-        </LinearLayout>
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            android:text="@string/diet_details"
+                            android:textColor="#242926"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/btn_edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="10dp"
+                            android:drawableLeft="@drawable/ic_edit"
+                            android:gravity="center_vertical"
+                            android:text="@string/btn_edit"
+                            android:textColor="@color/colorAccent" />
+                    </RelativeLayout>
+                </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Diet type :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_diet_type"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
 
-            <TextView
-                android:id="@+id/tv_diet_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="vegetarian"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_diet_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Drink :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_drink"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_drink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="No"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_drink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Smoke :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_smoke"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_smoke"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="No"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_smoke"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

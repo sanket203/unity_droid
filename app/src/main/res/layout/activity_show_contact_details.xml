@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme" />
+    </android.support.design.widget.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address :"
+            android:paddingEnd="10dp"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/address_label"
+            android:text="address 12222"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/label_contact1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:text="Contact 1 :"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/contact1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/label_contact1"
+
+            android:text="123456789"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/btn_call1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/ic_edit"
+            android:gravity="center_vertical"
+            android:text="@string/btn_edit"
+            android:textColor="@color/colorAccent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/label_contact2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingEnd="10dp"
+            android:text="Contact 2 :"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/contact2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/label_contact2"
+
+            android:text="123456789"
+            android:textColor="#242926"
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:id="@+id/btn_call2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/ic_edit"
+            android:gravity="center_vertical"
+            android:text="@string/btn_edit"
+            android:textColor="@color/colorAccent" />
+    </RelativeLayout>
+
+</LinearLayout>

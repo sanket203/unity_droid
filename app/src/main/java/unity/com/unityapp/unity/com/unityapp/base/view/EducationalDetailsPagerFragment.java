@@ -63,7 +63,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
 
     private EducationalDetailsViewModel educationalDetailsViewModel;
     private String candidateId;
-    private int counter =0;
+    private int counter = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,6 +80,8 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getEducationDetails(candidateId);
         return view;
     }
 
@@ -94,8 +96,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getEducationDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -137,7 +138,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -151,7 +152,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -161,9 +162,7 @@ public class EducationalDetailsPagerFragment extends BaseFragment implements Edu
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

@@ -13,4 +13,6 @@ public interface AddressDetailsPagerView extends BaseView {
     void showPopup();
 
     void showContactDetails(AddressViewModel viewModel);
+
+    void showError(String message);
 }

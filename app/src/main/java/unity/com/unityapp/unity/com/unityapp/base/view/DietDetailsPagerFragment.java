@@ -74,6 +74,8 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getDietDetails(candidateId);
         return view;
     }
 
@@ -88,8 +90,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getDietDetails(candidateId);
+
     }
 
     private void getCandidateId() {

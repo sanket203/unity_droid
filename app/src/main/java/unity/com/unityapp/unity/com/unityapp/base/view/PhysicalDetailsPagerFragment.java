@@ -78,7 +78,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     public void showPhysicalDetails(PhysicalDetailsViewModel viewModel) {
         physicalDetailsViewModel = viewModel;
         height.setText(viewModel.getHeight());
-        weight.setText(viewModel.getWeight());
+        weight.setText(viewModel.getWeight() + "Kg");
         complexion.setText(viewModel.getComplexion());
         bodyForm.setText(viewModel.getBodyform());
         spects.setText(viewModel.getSpects());
@@ -90,7 +90,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -108,6 +108,8 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getPhysicalDetails(candidateId);
         return view;
     }
 
@@ -122,8 +124,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getPhysicalDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -165,7 +166,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -175,9 +176,7 @@ public class PhysicalDetailsPagerFragment extends BaseFragment implements Physic
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

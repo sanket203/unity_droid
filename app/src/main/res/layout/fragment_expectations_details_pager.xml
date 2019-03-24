@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearMain"
     android:background="@drawable/details_background_rectangle"
     android:scrollbars="vertical">
 
@@ -14,275 +14,269 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="gone" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
+            <ProgressBar
+                android:id="@+id/progress_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="15dp"
-                    android:text="Expectation Details"
-                    android:textColor="#242926"
-                    android:textSize="22sp" />
-                <TextView
-                    android:id="@+id/btn_edit"
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:drawableLeft="@drawable/ic_edit"
-                    android:layout_alignParentRight="true"
-                    android:text="EDIT"
-                    android:gravity="center_vertical"
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/colorAccent" />
-            </RelativeLayout>
-        </LinearLayout>
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Minimum Height :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="15dp"
+                            android:text="@string/expectation_details"
+                            android:textColor="#242926"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/btn_edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
+                            android:layout_marginRight="10dp"
+                            android:drawableLeft="@drawable/ic_edit"
+                            android:gravity="center_vertical"
+                            android:text="@string/btn_edit"
+                            android:textColor="@color/colorAccent" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_minimum_height"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
 
-            <TextView
-                android:id="@+id/tv_min_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="5.6"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_min_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Maximum Height :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_maximum_height"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_max_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="6.0"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_max_height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Minimum Age :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_minimum_age"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_min_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="21"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_min_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Maximum Age :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_maximum_age"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_max_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="23"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_max_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Subcaste :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_subcaste"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_subcaste"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Deshastha"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_subcaste"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Education :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_education"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_education"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="B.E"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_education"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Income :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_income"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_income"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="1000000 per annum"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Working Location :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_working_location"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_working_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="Pune"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_working_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:padding="15dp"
-                android:text="Other expectations :"
-                android:textColor="#929292"
-                android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:padding="15dp"
+                        android:text="@string/tv_other_expectations"
+                        android:textColor="#929292"
+                        android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tv_other"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="34.3sp"
-                android:text="None"
-                android:textColor="#242926"
-                android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tv_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="34.3sp"
+                        android:textColor="#242926"
+                        android:textSize="14sp" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        </LinearLayout>
+            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

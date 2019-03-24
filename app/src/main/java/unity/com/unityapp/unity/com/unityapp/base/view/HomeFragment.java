@@ -23,6 +23,7 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.ImageResponseViewModel;
 
 public class HomeFragment extends BaseFragment implements MyProfileView {
 
@@ -99,6 +100,16 @@ public class HomeFragment extends BaseFragment implements MyProfileView {
     public void onPause() {
         super.onPause();
         presenter.unbind();
+    }
+
+    @Override
+    public void showProgressBar(boolean b) {
+
+    }
+
+    @Override
+    public void showImages(ImageResponseViewModel viewModel) {
+
     }
 
     public class CustomPagerAdapter extends PagerAdapter {

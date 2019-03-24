@@ -70,7 +70,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
-    private int counter = 0 ;
+    private int counter = 0;
     private String candidateId;
     private ServiceDetailsViewModel serviceDetailsViewModel;
 
@@ -90,7 +90,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -108,6 +108,8 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getServiceDetails(candidateId);
         return view;
     }
 
@@ -122,8 +124,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getServiceDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -165,7 +166,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -175,9 +176,7 @@ public class ServiceDetailsPagerFragment extends BaseFragment implements Service
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     android:id="@+id/profile_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp"
-    android:layout_marginEnd="20dp"
     android:layout_marginStart="20dp"
     android:layout_marginTop="15dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="15dp"
+    android:minHeight="150dp"
     app:cardBackgroundColor="#ffffff"
     app:cardCornerRadius="1dp"
     card_view:cardElevation="5dp">
@@ -20,11 +20,11 @@
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerVertical="true"
             android:layout_margin="15dp"
-            android:src="@mipmap/profile_image"
+            android:src="@drawable/no_image_icon"
             app:civ_border_color="#80ffffff"
             app:civ_border_width="3dp" />
 
@@ -32,6 +32,7 @@
             android:id="@+id/basic_details_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/profile_image"
             android:orientation="vertical">
 
@@ -43,7 +44,7 @@
                 android:lineSpacingExtra="28.6sp"
                 android:text="Adam Clane"
                 android:textColor="#242926"
-                android:textSize="15sp" />
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
                     android:paddingStart="5dp"
                     android:text="19 May 1994"
                     android:textColor="#929292"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -90,14 +91,14 @@
                     android:paddingStart="5dp"
                     android:text="50,000 Per Month"
                     android:textColor="#929292"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -111,11 +112,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
                     android:lineSpacingExtra="20sp"
+                    android:maxLines="1"
                     android:paddingStart="5dp"
                     android:text="Computer Engineer"
                     android:textColor="#929292"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
 
@@ -133,10 +136,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingBottom="6dp"
-                android:paddingEnd="4dp"
                 android:paddingStart="6dp"
                 android:paddingTop="6dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="6dp"
                 android:src="@mipmap/height_icon" />
 
             <TextView
@@ -147,25 +150,26 @@
                 android:gravity="end"
                 android:letterSpacing="0.05"
                 android:lineSpacingExtra="38.1sp"
-                android:paddingBottom="6dp"
-                android:paddingEnd="6dp"
                 android:paddingTop="6dp"
+                android:paddingEnd="6dp"
+                android:paddingBottom="6dp"
                 android:text="5’6”"
                 android:textColor="#ffffff"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_view_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/basic_details_layout"
+            android:layout_below="@+id/basic_details_layout"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
             android:text="View more"
             android:textColor="#ff9600"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

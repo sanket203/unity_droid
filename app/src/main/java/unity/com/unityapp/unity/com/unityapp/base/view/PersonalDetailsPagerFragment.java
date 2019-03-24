@@ -53,9 +53,6 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
     @BindView(R.id.birth_place)
     TextView birthPlace;
 
-    @BindView(R.id.mothertongue)
-    TextView motherTongue;
-
     @BindView(R.id.tv_gender)
     TextView gender;
 
@@ -68,8 +65,8 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
     @BindView(R.id.hobbies)
     TextView hobbies;
 
-     @BindView(R.id.linearMain)
-     LinearLayout linearMain;
+    @BindView(R.id.linearMain)
+    LinearLayout linearMain;
 
     private String candidateId;
     private int counter = 0;
@@ -90,6 +87,8 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getPersonalDetails(candidateId);
         return view;
     }
 
@@ -104,8 +103,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getPersonalDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -143,7 +141,6 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
         birthDate.setText(viewModel.getBirthDate());
         birthTime.setText(viewModel.getBirthTime());
         birthPlace.setText(viewModel.getBirthPlace());
-        motherTongue.setText(viewModel.getMotherTongue());
         marritalStatus.setText(viewModel.getMaritalStatus());
         gender.setText(viewModel.getGender());
         aboutMe.setText(viewModel.getAboutMe());
@@ -152,7 +149,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -164,10 +161,9 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
         }
     }
 
-    public void snackbar(View view, String errorMessage)
-    {
+    public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -177,9 +173,7 @@ public class PersonalDetailsPagerFragment extends BaseFragment implements Person
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

@@ -167,10 +167,12 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> 
             salaryTextView.setText(list.get(position).getIncome());
             educationTextView.setText(list.get(position).getEducation());
             birthDateTextView.setText(list.get(position).getBirthDate());
-            Picasso.get()
-                    .load(list.get(position).getImageUrl())
-                    .fit()
-                    .into(profileImageView);
+            if (list.get(position).getImageUrl() != null) {
+                Picasso.get()
+                        .load(list.get(position).getImageUrl())
+                        .fit()
+                        .into(profileImageView);
+            }
         }
 
         @Override

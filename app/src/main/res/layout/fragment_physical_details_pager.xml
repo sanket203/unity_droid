@@ -41,19 +41,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:padding="15dp"
-                            android:text="Physical Details"
+                            android:text="@string/physical_details"
                             android:textColor="#242926"
                             android:textSize="22sp" />
+
                         <TextView
                             android:id="@+id/btn_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
                             android:layout_marginRight="10dp"
                             android:drawableLeft="@drawable/ic_edit"
-                            android:layout_alignParentRight="true"
-                            android:text="EDIT"
                             android:gravity="center_vertical"
-                            android:layout_centerInParent="true"
+                            android:text="@string/btn_edit"
                             android:textColor="@color/colorAccent" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -68,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Height :"
+                        android:text="@string/tv_height"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -78,7 +79,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="5.6"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -94,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Weight :"
+                        android:text="@string/tv_weight"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -103,7 +103,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="60 Kg"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -119,7 +118,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Complexion :"
+                        android:text="@string/tv_complexion"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -128,7 +127,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Fair"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -144,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Bodyform :"
+                        android:text="@string/tv_bodyform"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -153,7 +151,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Slim"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -169,7 +166,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Spectacles :"
+                        android:text="@string/tv_spectacles"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -178,7 +175,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="yes"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -194,7 +190,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Bloog Group :"
+                        android:text="@string/blood_group"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -203,7 +199,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="O(+ve)"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -219,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Medical Surgery :"
+                        android:text="@string/medical_surgery"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -228,7 +223,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="no"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -244,7 +238,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Disability :"
+                        android:text="@string/tv_disability"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -253,7 +247,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="No"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -269,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Other remarks :"
+                        android:text="@string/tv_other_remarks"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -278,7 +271,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="none"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 

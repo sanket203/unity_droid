@@ -3,9 +3,12 @@ package unity.com.unityapp.unity.com.unityapp.base.view;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +53,9 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     @BindView(R.id.tv_alternate_contact)
     TextView alternateContaxt;
 
+    @BindView(R.id.mainLayout)
+    NestedScrollView mainLayout;
+
     AlertDialog.Builder builder;
 
 
@@ -82,6 +88,14 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        if (addressCommunicator != null)
+            isAddressTaken = addressCommunicator.sendData();
+        if (candidateId.equalsIgnoreCase(String.valueOf(UserInfo.getUserInfo().getCandidateId()))) {
+            presenter.getContactDetails();
+        } else {
+            presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, isAddressTaken);
+        }
         builder = new AlertDialog.Builder(getActivity());
         return view;
 
@@ -98,14 +112,7 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        if (addressCommunicator != null)
-            isAddressTaken = addressCommunicator.sendData();
-        if (candidateId.equalsIgnoreCase(String.valueOf(UserInfo.getUserInfo().getCandidateId()))) {
-            presenter.getContactDetails();
-        } else {
-            presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, isAddressTaken);
-        }
+
 
     }
 
@@ -124,7 +131,7 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     }
 
     void navigateToEditPersonalDetailsScreen() {
-        Intent intent = new Intent(getContext(), EditPersonalDetailsActivity.class);
+        Intent intent = new Intent(getContext(), EditContactDetailsActivity.class);
         startActivity(intent);
     }
 
@@ -179,6 +186,11 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
         alternateContaxt.setText(String.valueOf(viewModel.getAlternateNumber()));
     }
 
+    @Override
+    public void showError(String message) {
+        snackbar(mainLayout, message);
+    }
+
    /* @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -192,4 +204,24 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
             }
         }
     }*/
+
+    public void snackbar(View view, String errorMessage) {
+
+
+        Snackbar snackbar = Snackbar
+                .make(view, errorMessage, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction("DISMISS", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.setActionTextColor(Color.BLACK);
+        View sbView = snackbar.getView();
+        sbView.setBackgroundResource(R.drawable.error_message);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        snackbar.show();
+    }
 }
+

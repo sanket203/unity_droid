@@ -24,6 +24,7 @@ import unity.com.unityapp.unity.com.unityapp.base.data.model.response.FamilyDeta
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.FamilyDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.HoroscopeDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.HoroscopeDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ImageResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.LoginUserResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PersonalDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.PersonalDetailsResponseEntity;
@@ -119,4 +120,7 @@ public interface BaseApi {
 
     @POST("register/{candidateId}/{isRegistered}")
     Observable<LoginUserResponseEntity> registerDone(@Path("candidateId") String candidateId, @Path("isRegistered") String isRegistered);
+
+    @GET("getImages/{candidateId}")
+    Observable<ImageResponseEntity> getImages(@Path("candidateId") String candidateId);
 }

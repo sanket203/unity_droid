@@ -25,8 +25,9 @@ public class AddressDetailsResponseEntityToDataModelMapper {
         ContactDetailsDataModel contactDetailsDataModel = new ContactDetailsDataModel();
         if (addressDetailsResponseEntity.getContactDetailsEntitie() != null) {
             contactDetailsDataModel.setAddressDataModels(getAddressDataModels(addressDetailsResponseEntity.getContactDetailsEntitie().getAddressEntities()));
+            contactDetailsDataModel.setAddressExist(addressDetailsResponseEntity.getContactDetailsEntitie().isAddressTaken());
         }
-        contactDetailsDataModel.setAddressExist(addressDetailsResponseEntity.getContactDetailsEntitie().isAddressTaken());
+
         addressDetailsResponseDataModel.setContactDetailsDataModel(contactDetailsDataModel);
         return addressDetailsResponseDataModel;
     }

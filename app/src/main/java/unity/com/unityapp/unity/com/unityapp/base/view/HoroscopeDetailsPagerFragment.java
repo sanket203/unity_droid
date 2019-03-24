@@ -85,7 +85,6 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     @Override
     public void showHoroscopeDetails(HoroscopeDetailsViewModel viewModel) {
         horoscopeDetailsViewModel = viewModel;
-        cast.setText(viewModel.getCaste());
         subCast.setText(viewModel.getSubCaste());
         shakha.setText(viewModel.getShakha());
         upShakha.setText(viewModel.getUpshakha());
@@ -101,7 +100,7 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -109,6 +108,7 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
         super.onCreate(savedInstanceState);
         AppDi.getFragmentComponent(this).inject(this);
         presenter.bind(this);
+
     }
 
     @Nullable
@@ -119,6 +119,8 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
         if (getActivity() instanceof RecentProfileDetailsActivity) {
             editButton.setVisibility(View.GONE);
         }
+        getCandidateId();
+        presenter.getHoroscopeDetails(candidateId);
         // TODO: 02-02-2019  Write get call for Personal details
         return view;
     }
@@ -134,8 +136,7 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
     @Override
     public void onResume() {
         super.onResume();
-        getCandidateId();
-        presenter.getHoroscopeDetails(candidateId);
+
     }
 
     private void getCandidateId() {
@@ -175,10 +176,9 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
         }
     }
 
-    public void snackbar(View view, String errorMessage)
-    {
+    public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -188,9 +188,7 @@ public class HoroscopeDetailsPagerFragment extends BaseFragment implements Horos
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

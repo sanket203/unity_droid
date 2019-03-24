@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/details_background_rectangle"
@@ -43,19 +42,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:padding="15dp"
-                            android:text="Personal Details"
+                            android:text="@string/personal_details"
                             android:textColor="#242926"
                             android:textSize="22sp" />
+
                         <TextView
                             android:id="@+id/btn_edit"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerInParent="true"
                             android:layout_marginRight="10dp"
                             android:drawableLeft="@drawable/ic_edit"
-                            android:layout_alignParentRight="true"
-                            android:text="EDIT"
                             android:gravity="center_vertical"
-                           android:layout_centerInParent="true"
+                            android:text="@string/btn_edit"
                             android:textColor="@color/colorAccent" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Full Name :"
+                        android:text="@string/full_name"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -80,7 +80,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Diana Meyer"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -96,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Birth Date :"
+                        android:text="@string/birth_date"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -105,7 +104,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="19 May 1994"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -121,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Birth Time :"
+                        android:text="@string/birth_time"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -130,7 +128,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="10:00 AM"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -146,7 +143,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Birth City :"
+                        android:text="@string/birth_city"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -155,7 +152,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="New York"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -171,32 +167,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Mothertongue :"
-                        android:textColor="#929292"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/mothertongue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:text="Marathi"
-                        android:textColor="#242926"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
-                        android:text="Gender :"
+                        android:text="@string/tv_gender"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -205,7 +176,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Male"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -221,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Marrital status :"
+                        android:text="@string/tv_marrital_status"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -230,7 +200,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Single"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -246,7 +215,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="About Me :"
+                        android:text="@string/tv_about_me"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -254,8 +223,7 @@
                         android:id="@+id/about_me"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas feugiat justo ipsum, maximus rutrum turpis rutrum quis. Suspendisse ligula diam, sodales id est ac, pretium hendrerit mauris."
+                        android:paddingEnd="10dp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -271,7 +239,7 @@
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
                         android:padding="15dp"
-                        android:text="Hobbies :"
+                        android:text="@string/tv_hobbies"
                         android:textColor="#929292"
                         android:textSize="14sp" />
 
@@ -280,7 +248,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="34.3sp"
-                        android:text="Playing Game, Watch Moview, Traveling"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 

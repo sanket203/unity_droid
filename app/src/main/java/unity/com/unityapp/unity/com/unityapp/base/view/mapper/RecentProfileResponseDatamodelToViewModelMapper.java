@@ -52,7 +52,7 @@ public class RecentProfileResponseDatamodelToViewModelMapper {
 
     String convertDate(String date) {
         String finalDate = "";
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
+        DateFormat df = new SimpleDateFormat("dd-Mm-yyyy");
         Date date1;
         try {
             date1 = df.parse(date);
