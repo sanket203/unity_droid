@@ -45,11 +45,11 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     @BindView(R.id.editWeight)
     EditText editWeight;
 
-    @BindView(R.id.editComplexion)
-    EditText editComplexion;
+    @BindView(R.id.spinnerComplexion)
+    Spinner spinnerComplexion;
 
-    @BindView(R.id.editBodyForm)
-    EditText editBodyForm;
+    @BindView(R.id.spinnerBodyForm)
+    Spinner spinnerBodyForm;
 
     @BindView(R.id.spinnerSpectacle)
     Spinner spinnerSpectacle;
@@ -130,8 +130,8 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
     private void setData() {
         if (physicalDetailsViewModel != null) {
             editWeight.setText(physicalDetailsViewModel.getWeight());
-            editComplexion.setText(physicalDetailsViewModel.getComplexion());
-            editBodyForm.setText(physicalDetailsViewModel.getBodyform());
+           // editComplexion.setText(physicalDetailsViewModel.getComplexion());
+          //  editBodyForm.setText(physicalDetailsViewModel.getBodyform());
             editOtherRemark.setText(physicalDetailsViewModel.getOtherRemarks());
             setSpinnerValue();
         }
@@ -146,21 +146,18 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         if (editWeight.getText() != null) {
             physicalDetailsViewModel.setWeight(editWeight.getText().toString());
         }
-        if (editComplexion.getText() != null) {
-            physicalDetailsViewModel.setComplexion(editComplexion.getText().toString());
-        }
-        if (editBodyForm.getText() != null) {
-            physicalDetailsViewModel.setBodyfom(editBodyForm.getText().toString());
-        }
+
         if (editOtherRemark.getText() != null) {
             physicalDetailsViewModel.setOtherRemarks(editOtherRemark.getText().toString());
         }
 
+        physicalDetailsViewModel.setComplexion(spinnerComplexion.getSelectedItem().toString());
         physicalDetailsViewModel.setSpects(spinnerSpectacle.getSelectedItem().toString());
         physicalDetailsViewModel.setDisability(spinnerDisability.getSelectedItem().toString());
         physicalDetailsViewModel.setMedicalSurgary(spinnerMedicalSurgery.getSelectedItem().toString());
         physicalDetailsViewModel.setBloodGroup(editBloodGroup.getSelectedItem().toString());
         physicalDetailsViewModel.setHeight(spinnerFeet.getSelectedItem().toString() + "'" + spinnerInches.getSelectedItem() + "''");
+        physicalDetailsViewModel.setBodyform(spinnerBodyForm.getSelectedItem().toString());
 
         return physicalDetailsViewModel;
     }
@@ -256,6 +253,27 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
         }
         editBloodGroup.setSelection(pos);
 
+        for (int i = 0; i < getResources().getStringArray(R.array.bodyform_spinner).length; i++) {
+            if (physicalDetailsViewModel.getBodyform() == null || physicalDetailsViewModel.getBodyform().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.bodyform_spinner)[i].equals(physicalDetailsViewModel.getBodyform())) {
+                pos = i;
+
+            }
+        }
+        spinnerBodyForm.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.complexion_spinner).length; i++) {
+            if (physicalDetailsViewModel.getComplexion()== null || physicalDetailsViewModel.getComplexion().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.complexion_spinner)[i].equals(physicalDetailsViewModel.getComplexion())) {
+                pos = i;
+
+            }
+        }
+        spinnerComplexion.setSelection(pos);
+
+
         for (int i = 0; i < getResources().getStringArray(R.array.medical_surgery_spinner).length; i++) {
             if (physicalDetailsViewModel.getSpects() == null || physicalDetailsViewModel.getMedicalSurgary().equals("")) {
                 pos = 0;
@@ -300,6 +318,22 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
             return false;
         } else {
             textErrorWeight.setVisibility(View.GONE);
+        }
+
+        if (spinnerComplexion.getSelectedItem().toString().equalsIgnoreCase("") || spinnerComplexion.getSelectedItem().toString().equalsIgnoreCase(null)|| spinnerComplexion.getSelectedItem().toString().equalsIgnoreCase("Select Complexion") ){
+            textErrorComplexion.setVisibility(View.VISIBLE);
+            textErrorComplexion.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorComplexion.setVisibility(View.GONE);
+        }
+
+        if (spinnerBodyForm.getSelectedItem().toString().equalsIgnoreCase("") || spinnerBodyForm.getSelectedItem().toString().equalsIgnoreCase(null)|| spinnerBodyForm.getSelectedItem().toString().equalsIgnoreCase("Select Body Form")) {
+            textErrorBodyform.setVisibility(View.VISIBLE);
+            textErrorBodyform.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorBodyform.setVisibility(View.GONE);
         }
 
         if (editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("") || editBloodGroup.getSelectedItem().toString().equalsIgnoreCase("Select Blood Group")) {

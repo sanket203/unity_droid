@@ -17,6 +17,11 @@
     <string name="rashi_prompt">Rashi</string>
     <string name="gana_prompt">Gana</string>
     <string name="nakshatra_prompt">Nakshatra</string>
+    <string name="complexion_prompt">Complexion</string>
+    <string name="bodyform_prompt">Body Form</string>
+    <string name="occupation_prompt">Occupation</string>
+    <string name="organization_type_prompt">Organization Type</string>
+    <string name="service_status_prompt">Service Status</string>
 
 
     <string-array name="marital_status_list">
@@ -70,6 +75,30 @@
         <item>No</item>
     </string-array>
 
+    <string-array name="complexion_spinner">
+        <item>Select Complexion</item>
+        <item>Fair</item>
+        <item>Wheatish</item>
+        <item>Brown</item>
+        <item>Dark</item>
+    </string-array>
+
+     <string-array name="bodyform_spinner">
+        <item>Select Body Form</item>
+        <item>Slim</item>
+        <item>Athletic</item>
+        <item>Medium</item>
+        <item>Fat</item>
+    </string-array>
+
+   <string-array name="service_status_spinner">
+        <item>Select Service Status</item>
+        <item>Permenant</item>
+        <item>Temporary</item>
+        <item>Contract</item>
+
+    </string-array>
+
     <string-array name="feet_spinner">
         <item>Feet</item>
         <item>1</item>
@@ -102,6 +131,18 @@
         <item>Diet Type</item>
         <item>Veg</item>
         <item>Non-Veg</item>
+    </string-array>
+
+     <string-array name="occupation_spinner">
+        <item>Select Occupation</item>
+        <item>Service</item>
+        <item>Self Occupied</item>
+    </string-array>
+
+   <string-array name="organization_type_spinner">
+        <item>Select Organization Type</item>
+        <item>Private</item>
+        <item>Governmentt</item>
     </string-array>
 
     <string-array name="shakha_spinner">

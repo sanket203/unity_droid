@@ -111,18 +111,22 @@
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
 
-                <EditText
-                    android:id="@+id/editComplexion"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_rounded_rectangle"
-                    android:hint="Complexion"
-                    android:minHeight="35dp"
-                    android:padding="10dp"
-                    android:textColorHint="#b6b6b6"
-                    android:textSize="15sp" />
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerComplexion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/complexion_spinner"
+                        android:padding="10dp"
+                        android:prompt="@string/blood_group_prompt" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/textErrorComplexion"
@@ -133,19 +137,22 @@
                     android:visibility="gone" />
 
 
-                <EditText
-                    android:id="@+id/editBodyForm"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_rounded_rectangle"
-                    android:clickable="true"
-                    android:hint="Body Form"
-                    android:minHeight="35dp"
-                    android:padding="10dp"
-                    android:textColorHint="#b6b6b6"
-                    android:textSize="15sp" />
+                    android:layout_weight="0.5"
+                    android:background="@drawable/edit_text_rounded_rectangle">
+
+                    <Spinner
+                        android:id="@+id/spinnerBodyForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/bodyform_spinner"
+                        android:padding="10dp"
+                        android:prompt="@string/bodyform_prompt" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/textErrorBodyform"
@@ -261,6 +268,8 @@
                     android:text="Please enter in feet"
                     android:textColor="@android:color/holo_red_light"
                     android:visibility="gone" />
+
+
 
                 <EditText
                     android:id="@+id/editOtherRemark"

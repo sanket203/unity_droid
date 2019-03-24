@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,14 +40,14 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
-    @BindView(R.id.editOccupation)
-    EditText editOccupation;
+    @BindView(R.id.spinnerOccupation)
+    Spinner spinnerOccupation;
 
     @BindView(R.id.editOrganization)
     EditText editOrganization;
 
-    @BindView(R.id.editOrganizationType)
-    EditText editOrganizationType;
+    @BindView(R.id.spinnerOrganizationType)
+    Spinner spinnerOrganizationType;
 
     @BindView(R.id.editSector)
     EditText editSector;
@@ -54,8 +55,8 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     @BindView(R.id.editDesignation)
     EditText editDesignation;
 
-    @BindView(R.id.editServiceStatus)
-    EditText editServiceStatus;
+    @BindView(R.id.spinnerServiceStatus)
+    Spinner spinnerServiceStatus;
 
     @BindView(R.id.editExperience)
     EditText editExperience;
@@ -99,7 +100,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     private int candidateId;
     private ServiceDetailsViewModel serviceDetailsViewModel;
     private boolean isFromRegistration;
-    int counter = 0;
+    int counter = 0, pos;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,15 +130,17 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
 
     private void setData() {
         if (serviceDetailsViewModel != null) {
-            editOccupation.setText(serviceDetailsViewModel.getOccupation());
+            // editOccupation.setText(serviceDetailsViewModel.getOccupation());
             editOrganization.setText(serviceDetailsViewModel.getOrganization());
-            editOrganizationType.setText(serviceDetailsViewModel.getOrganizationType());
+            //editOrganizationType.setText(serviceDetailsViewModel.getOrganizationType());
             editSector.setText(serviceDetailsViewModel.getSector());
             editWorkingCity.setText(serviceDetailsViewModel.getWorkingCity());
             editDesignation.setText(serviceDetailsViewModel.getDesignation());
-            editServiceStatus.setText(serviceDetailsViewModel.getServiceStatus());
+            //  editServiceStatus.setText(serviceDetailsViewModel.getServiceStatus());
             editExperience.setText(serviceDetailsViewModel.getExperience());
             editAnnualIncome.setText(String.valueOf(serviceDetailsViewModel.getAnnualIncome()));
+
+            setSpinner();
         }
     }
 
@@ -146,15 +149,16 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         if (this.serviceDetailsViewModel != null)
             serviceDetailsViewModel.setId(this.serviceDetailsViewModel.getId());
         serviceDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
-        if (editOccupation.getText() != null) {
-            serviceDetailsViewModel.setOccupation(editOccupation.getText().toString());
-        }
+        serviceDetailsViewModel.setOccupation(spinnerOccupation.getSelectedItem().toString());
+        serviceDetailsViewModel.setServiceStatus(spinnerServiceStatus.getSelectedItem().toString());
+        serviceDetailsViewModel.setOrganizationType(spinnerOrganizationType.getSelectedItem().toString());
+
         if (editOrganization.getText() != null) {
             serviceDetailsViewModel.setOrganization(editOrganization.getText().toString());
         }
-        if (editOrganizationType.getText() != null) {
+       /* if (editOrganizationType.getText() != null) {
             serviceDetailsViewModel.setOrganizationType(editOrganizationType.getText().toString());
-        }
+        }*/
         if (editSector.getText() != null) {
             serviceDetailsViewModel.setSector(editSector.getText().toString());
         }
@@ -164,9 +168,9 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         if (editDesignation.getText() != null) {
             serviceDetailsViewModel.setDesignation(editDesignation.getText().toString());
         }
-        if (editServiceStatus.getText() != null) {
+       /* if (editServiceStatus.getText() != null) {
             serviceDetailsViewModel.setServiceStatus(editServiceStatus.getText().toString());
-        }
+        }*/
         if (editExperience.getText() != null) {
             serviceDetailsViewModel.setExperience(editExperience.getText().toString());
         }
@@ -225,7 +229,7 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
     };
 
     private boolean validation() {
-        if (editOccupation.getText().toString().equalsIgnoreCase("") || editOccupation.getText().toString().equalsIgnoreCase(null)) {
+        if (spinnerOccupation.getSelectedItem().toString().equalsIgnoreCase("") || spinnerOccupation.getSelectedItem().toString().equalsIgnoreCase(null) || spinnerOccupation.getSelectedItem().toString().equalsIgnoreCase("Select Occupation")) {
             textErrorOccupation.setVisibility(View.VISIBLE);
             textErrorOccupation.setText(getString(R.string.empty_field));
             return false;
@@ -240,6 +244,14 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         } else {
             textErrorOrganization.setVisibility(View.GONE);
         }
+        if (spinnerOrganizationType.getSelectedItem().toString().equalsIgnoreCase("") || spinnerOrganizationType.getSelectedItem().toString().equalsIgnoreCase(null)|| spinnerOrganizationType.getSelectedItem().toString().equalsIgnoreCase("Select Organization Type")) {
+            textErrorOrganizationType.setVisibility(View.VISIBLE);
+            textErrorOrganizationType.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorOrganizationType.setVisibility(View.GONE);
+        }
+
         if (editWorkingCity.getText().toString().equalsIgnoreCase("") || editWorkingCity.getText().toString().equalsIgnoreCase(null)) {
             textErrorWorkingCity.setVisibility(View.VISIBLE);
             textErrorWorkingCity.setText(getString(R.string.empty_field));
@@ -254,13 +266,15 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
         } else {
             textErrorDesignation.setVisibility(View.GONE);
         }
-        if (editServiceStatus.getText().toString().equalsIgnoreCase("") || editServiceStatus.getText().toString().equalsIgnoreCase(null)) {
+
+        if (spinnerServiceStatus.getSelectedItem().toString().equalsIgnoreCase("") || spinnerServiceStatus.getSelectedItem().toString().equalsIgnoreCase(null)|| spinnerServiceStatus.getSelectedItem().toString().equalsIgnoreCase("Select Service Status")) {
             textErrorServiceStatus.setVisibility(View.VISIBLE);
             textErrorServiceStatus.setText(getString(R.string.empty_field));
             return false;
         } else {
             textErrorServiceStatus.setVisibility(View.GONE);
         }
+
         if (editExperience.getText().toString().equalsIgnoreCase("") || editExperience.getText().toString().equalsIgnoreCase(null)) {
             textErrorExperience.setVisibility(View.VISIBLE);
             textErrorExperience.setText(getString(R.string.empty_field));
@@ -306,6 +320,38 @@ public class EditServiceDetailsActivity extends BaseActivity implements EditServ
             textView.setTextColor(Color.WHITE);
             snackbar.show();
         }
+    }
+
+    public void setSpinner() {
+        for (int i = 0; i < getResources().getStringArray(R.array.occupation_spinner).length; i++) {
+            if (serviceDetailsViewModel.getOccupation() == null || serviceDetailsViewModel.getOccupation().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.occupation_spinner)[i].equals(serviceDetailsViewModel.getOccupation())) {
+                pos = i;
+
+            }
+        }
+        spinnerOccupation.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.service_status_spinner).length; i++) {
+            if (serviceDetailsViewModel.getServiceStatus() == null || serviceDetailsViewModel.getServiceStatus().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.service_status_spinner)[i].equals(serviceDetailsViewModel.getServiceStatus())) {
+                pos = i;
+
+            }
+        }
+        spinnerServiceStatus.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.organization_type_spinner).length; i++) {
+            if (serviceDetailsViewModel.getOrganizationType() == null || serviceDetailsViewModel.getOrganizationType().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.organization_type_spinner)[i].equals(serviceDetailsViewModel.getOrganizationType())) {
+                pos = i;
+
+            }
+        }
+        spinnerOrganizationType.setSelection(pos);
     }
 }
 
