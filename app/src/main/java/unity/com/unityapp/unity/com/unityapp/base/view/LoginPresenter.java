@@ -41,6 +41,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         UserInfo.getUserInfo().setGender(loginUserResponseDataModel.getUserResponseDataModel().getGender());
                         UserInfo.getUserInfo().setAddressCount(loginUserResponseDataModel.getUserResponseDataModel().getAddressCount());
                         UserInfo.getUserInfo().setRegistered(loginUserResponseDataModel.getUserResponseDataModel().getRegistered());
+                        UserInfo.getUserInfo().setImageUrl(loginUserResponseDataModel.getUserResponseDataModel().getImageUrl());
                         if (view != null) {
                             view.showProgressBar(false);
                             if (loginUserResponseDataModel.getUserResponseDataModel().getRegistered() == null || loginUserResponseDataModel.getUserResponseDataModel().getRegistered().equalsIgnoreCase("unregistered")) {

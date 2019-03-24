@@ -107,6 +107,8 @@
         android:layout_marginEnd="52dp"
         android:background="@drawable/login_text_rounded_rectangle"
         android:hint="Mobile Number"
+        android:inputType="number"
+        android:maxLength="10"
         android:minHeight="35dp"
         android:padding="10dp"
         android:textColorHint="#b6b6b6"

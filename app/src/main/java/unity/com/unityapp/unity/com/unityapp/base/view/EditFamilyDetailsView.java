@@ -9,4 +9,7 @@ public interface EditFamilyDetailsView extends BaseView {
 
     void showFamilyDetails(FamilyDetailsViewModel viewModel);
 
+    void navigateToContactDetails();
+
+
 }

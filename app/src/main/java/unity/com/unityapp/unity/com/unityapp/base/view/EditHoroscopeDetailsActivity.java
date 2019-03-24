@@ -37,20 +37,17 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.progress_bar)
     ProgressBar loader;
 
-    @BindView(R.id.spinnerCaste)
-    Spinner spinnerCaste;
-
     @BindView(R.id.spinnerSubcaste)
     Spinner spinnerSubcaste;
 
     @BindView(R.id.spinnerShakha)
     Spinner spinnerShakha;
 
-    @BindView(R.id.spinnerUpshakha)
-    Spinner spinnerUpshakha;
+    @BindView(R.id.editUpshakha)
+    EditText editUpshakha;
 
-    @BindView(R.id.spinnerGotra)
-    Spinner spinnerGotra;
+    @BindView(R.id.editGotra)
+    EditText editGotra;
 
     @BindView(R.id.spinnerRashi)
     Spinner spinnerRashi;
@@ -61,14 +58,14 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.spinnerNakshatra)
     Spinner spinnerNakshatra;
 
-    @BindView(R.id.spinnerSpectacle)
-    Spinner spinnerSpectacle;
+    @BindView(R.id.spinnerMangal)
+    Spinner spinnerMangal;
 
-    @BindView(R.id.editNaadi)
-    EditText editNaadi;
+    @BindView(R.id.spinnerNadi)
+    Spinner spinnerNaadi;
 
-    @BindView(R.id.editCharan)
-    EditText editCharan;
+    @BindView(R.id.spinnerCharan)
+    Spinner spinnerCharan;
 
     @BindView(R.id.editRemark)
     EditText editRemark;
@@ -76,17 +73,11 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.linearMain)
     LinearLayout linearMain;
 
-    @BindView(R.id.textErrorCaste)
-    TextView textErrorCaste;
-
     @BindView(R.id.textErrorSubCaste)
     TextView textErrorSubCaste;
 
     @BindView(R.id.textErrorShakha)
     TextView textErrorShakha;
-
-    @BindView(R.id.textErrorUpshakha)
-    TextView textErrorUpshakha;
 
     @BindView(R.id.textErrorGotra)
     TextView textErrorGotra;
@@ -106,8 +97,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     @BindView(R.id.textErrorCharan)
     TextView textErrorCharan;
 
-    @BindView(R.id.textErrorSpectacles)
-    TextView textErrorSpectacles;
+    @BindView(R.id.textErrorMangal)
+    TextView textErrorMangal;
 
     private int candidateId;
     int counter = 0;
@@ -140,9 +131,9 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     private void setData() {
         if (horoscopeDetailsViewModel != null) {
-            editCharan.setText(horoscopeDetailsViewModel.getCharan());
-            editNaadi.setText(horoscopeDetailsViewModel.getNaadi());
+            editUpshakha.setText(horoscopeDetailsViewModel.getUpshakha());
             editRemark.setText(horoscopeDetailsViewModel.getRemarks());
+            editGotra.setText(horoscopeDetailsViewModel.getGotra());
             setSpinnerValue();
         }
 
@@ -150,42 +141,41 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
 
     private HoroscopeDetailsViewModel getData() {
         HoroscopeDetailsViewModel horoscopeDetailsViewModel = new HoroscopeDetailsViewModel();
-        horoscopeDetailsViewModel.setId(this.horoscopeDetailsViewModel.getId());
+        if (this.horoscopeDetailsViewModel != null)
+            horoscopeDetailsViewModel.setId(this.horoscopeDetailsViewModel.getId());
         horoscopeDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
-        if (editNaadi.getText() != null) {
-            horoscopeDetailsViewModel.setNaadi(editNaadi.getText().toString());
+        if (spinnerNaadi.getSelectedItem() != null) {
+            horoscopeDetailsViewModel.setNaadi(spinnerNaadi.getSelectedItem().toString().split("\\(")[0]);
         }
-        if (editCharan.getText() != null) {
-            horoscopeDetailsViewModel.setCharan(editCharan.getText().toString());
+        if (spinnerCharan.getSelectedItem() != null) {
+            horoscopeDetailsViewModel.setCharan(spinnerCharan.getSelectedItem().toString());
         }
         if (editRemark.getText() != null) {
-            horoscopeDetailsViewModel.setCharan(editRemark.getText().toString());
+            horoscopeDetailsViewModel.setRemarks(editRemark.getText().toString());
         }
-        /*if (spinnerSpectacle.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setSpects(spinnerSpectacle.getSelectedItem().toString());*/
-        if (spinnerCaste.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setCaste(spinnerSpectacle.getSelectedItem().toString());
-
         if (spinnerSubcaste.getSelectedItem() != null)
             horoscopeDetailsViewModel.setSubCaste(spinnerSubcaste.getSelectedItem().toString());
 
         if (spinnerShakha.getSelectedItem() != null)
             horoscopeDetailsViewModel.setShakha(spinnerShakha.getSelectedItem().toString());
 
-        if (spinnerUpshakha.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setUpshakha(spinnerUpshakha.getSelectedItem().toString());
+        if (editUpshakha.getText() != null)
+            horoscopeDetailsViewModel.setUpshakha(editUpshakha.getText().toString());
 
-        if (spinnerGotra.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setGotra(spinnerGotra.getSelectedItem().toString());
+        if (editGotra.getText() != null)
+            horoscopeDetailsViewModel.setGotra(editGotra.getText().toString());
 
         if (spinnerRashi.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setRashi(spinnerRashi.getSelectedItem().toString());
+            horoscopeDetailsViewModel.setRashi(spinnerRashi.getSelectedItem().toString().split("\\(")[0]);
 
         if (spinnerGana.getSelectedItem() != null)
             horoscopeDetailsViewModel.setGana(spinnerGana.getSelectedItem().toString());
 
         if (spinnerNakshatra.getSelectedItem() != null)
-            horoscopeDetailsViewModel.setNakshatra(spinnerNakshatra.getSelectedItem().toString());
+            horoscopeDetailsViewModel.setNakshatra(spinnerNakshatra.getSelectedItem().toString().split("\\(")[0]);
+
+        if (spinnerMangal.getSelectedItem() != null)
+            horoscopeDetailsViewModel.setMangal(spinnerMangal.getSelectedItem().toString().split("\\(")[0]);
 
         return horoscopeDetailsViewModel;
     }
@@ -231,20 +221,12 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
     }
 
     public void setSpinnerValue() {
-        for (int i = 0; i < getResources().getStringArray(R.array.caste_spinner).length; i++) {
-            if (horoscopeDetailsViewModel.getCaste().equals("")) {
-                pos = 0;
-            } else if (getResources().getStringArray(R.array.caste_spinner)[i].equals(horoscopeDetailsViewModel.getCaste())) {
-                pos = i;
-            }
-        }
-        spinnerCaste.setSelection(pos);
+
         for (int i = 0; i < getResources().getStringArray(R.array.subcaste_spinner).length; i++) {
             if (horoscopeDetailsViewModel.getSubCaste().equals("")) {
                 pos = 0;
             } else if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals(horoscopeDetailsViewModel.getSubCaste())) {
                 pos = i;
-
             }
         }
         spinnerSubcaste.setSelection(pos);
@@ -259,27 +241,6 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
             }
         }
         spinnerShakha.setSelection(pos);
-
-        for (int i = 0; i < getResources().getStringArray(R.array.upshakha_spinner).length; i++) {
-            if (horoscopeDetailsViewModel.getUpshakha().equals("")) {
-                pos = 0;
-            } else if (getResources().getStringArray(R.array.upshakha_spinner)[i].equals(horoscopeDetailsViewModel.getUpshakha())) {
-                pos = i;
-
-            }
-        }
-        spinnerUpshakha.setSelection(pos);
-
-        for (int i = 0; i < getResources().getStringArray(R.array.gotra_spinner).length; i++) {
-            if (horoscopeDetailsViewModel.getGotra().equals("")) {
-                pos = 0;
-            }
-            if (getResources().getStringArray(R.array.gotra_spinner)[i].equals(horoscopeDetailsViewModel.getGotra())) {
-                pos = i;
-
-            }
-        }
-        spinnerGotra.setSelection(pos);
 
         for (int i = 0; i < getResources().getStringArray(R.array.gana_spinner).length; i++) {
             if (horoscopeDetailsViewModel.getGana().equals("")) {
@@ -296,7 +257,7 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
             if (horoscopeDetailsViewModel.getNakshatra().equals("")) {
                 pos = 0;
             }
-            if (getResources().getStringArray(R.array.nakshatra_spinner)[i].equals(horoscopeDetailsViewModel.getNakshatra())) {
+            if (getResources().getStringArray(R.array.nakshatra_spinner)[i].contains(horoscopeDetailsViewModel.getNakshatra())) {
                 pos = i;
 
             }
@@ -306,32 +267,47 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         for (int i = 0; i < getResources().getStringArray(R.array.rashi_spinner).length; i++) {
             if (horoscopeDetailsViewModel.getRashi().equals("")) {
                 pos = 0;
-            } else if (getResources().getStringArray(R.array.rashi_spinner)[i].equals(horoscopeDetailsViewModel.getRashi())) {
+            } else if (getResources().getStringArray(R.array.rashi_spinner)[i].contains(horoscopeDetailsViewModel.getRashi())) {
                 pos = i;
 
             }
         }
         spinnerRashi.setSelection(pos);
 
-        for (int i = 0; i < getResources().getStringArray(R.array.spectacle_spinner).length; i++) {
-
-            if (getResources().getStringArray(R.array.spectacle_spinner)[i].equals("Yes")) {
+        for (int i = 0; i < getResources().getStringArray(R.array.mangal_spinner).length; i++) {
+            if (horoscopeDetailsViewModel.getRashi().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.mangal_spinner)[i].contains(horoscopeDetailsViewModel.getMangal())) {
                 pos = i;
 
             }
         }
-        spinnerSpectacle.setSelection(pos);
+        spinnerMangal.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.spinner_naadi).length; i++) {
+            if (horoscopeDetailsViewModel.getRashi().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.spinner_naadi)[i].contains(horoscopeDetailsViewModel.getNaadi())) {
+                pos = i;
+
+            }
+        }
+        spinnerNaadi.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.charan_spinner).length; i++) {
+            if (horoscopeDetailsViewModel.getRashi().equals("")) {
+                pos = 0;
+            } else if (getResources().getStringArray(R.array.charan_spinner)[i].equals(horoscopeDetailsViewModel.getCharan())) {
+                pos = i;
+
+            }
+        }
+        spinnerCharan.setSelection(pos);
+
 
     }
 
     private boolean validation() {
-        if (spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerCaste.getSelectedItem().toString().equalsIgnoreCase("Select Caste")) {
-            textErrorCaste.setVisibility(View.VISIBLE);
-            textErrorCaste.setText(getString(R.string.empty_field));
-            return false;
-        } else {
-            textErrorCaste.setVisibility(View.GONE);
-        }
         if (spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("") || spinnerSubcaste.getSelectedItem().toString().equalsIgnoreCase("Select Subcaste")) {
             textErrorSubCaste.setVisibility(View.VISIBLE);
             textErrorSubCaste.setText(getString(R.string.empty_field));
@@ -346,14 +322,8 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         } else {
             textErrorShakha.setVisibility(View.GONE);
         }
-        if (spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("") || spinnerUpshakha.getSelectedItem().toString().equalsIgnoreCase("Select Upshakha")) {
-            textErrorUpshakha.setVisibility(View.VISIBLE);
-            textErrorUpshakha.setText(getString(R.string.empty_field));
-            return false;
-        } else {
-            textErrorUpshakha.setVisibility(View.GONE);
-        }
-        if (spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("") || spinnerGotra.getSelectedItem().toString().equalsIgnoreCase("Select Gotra")) {
+
+        if (editGotra.getText().toString().equalsIgnoreCase("")) {
             textErrorGotra.setVisibility(View.VISIBLE);
             textErrorGotra.setText(getString(R.string.empty_field));
             return false;
@@ -381,19 +351,27 @@ public class EditHoroscopeDetailsActivity extends BaseActivity implements EditHo
         } else {
             textErrorNakshatra.setVisibility(View.GONE);
         }
-        if (editNaadi.getText().toString().equalsIgnoreCase("") || editNaadi.getText().toString().equalsIgnoreCase(null)) {
+        if (spinnerNaadi.getSelectedItem().toString().equalsIgnoreCase("") || spinnerNaadi.getSelectedItem().toString().equalsIgnoreCase("Select Naadi")) {
             textErrorNaadi.setVisibility(View.VISIBLE);
             textErrorNaadi.setText(getString(R.string.empty_field));
             return false;
         } else {
             textErrorNaadi.setVisibility(View.GONE);
         }
-        if (editCharan.getText().toString().equalsIgnoreCase("") || editCharan.getText().toString().equalsIgnoreCase(null)) {
+        if (spinnerCharan.getSelectedItem().toString().equalsIgnoreCase("") || spinnerCharan.getSelectedItem().toString().equalsIgnoreCase("Select Charan")) {
             textErrorCharan.setVisibility(View.VISIBLE);
             textErrorCharan.setText(getString(R.string.empty_field));
             return false;
         } else {
             textErrorCharan.setVisibility(View.GONE);
+        }
+
+        if (spinnerMangal.getSelectedItem().toString().equalsIgnoreCase("") || spinnerMangal.getSelectedItem().toString().equalsIgnoreCase("Select Mangal")) {
+            textErrorMangal.setVisibility(View.VISIBLE);
+            textErrorMangal.setText(getString(R.string.empty_field));
+            return false;
+        } else {
+            textErrorMangal.setVisibility(View.GONE);
         }
         return true;
     }

@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -165,6 +167,10 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> 
             salaryTextView.setText(list.get(position).getIncome());
             educationTextView.setText(list.get(position).getEducation());
             birthDateTextView.setText(list.get(position).getBirthDate());
+            Picasso.get()
+                    .load(list.get(position).getImageUrl())
+                    .fit()
+                    .into(profileImageView);
         }
 
         @Override

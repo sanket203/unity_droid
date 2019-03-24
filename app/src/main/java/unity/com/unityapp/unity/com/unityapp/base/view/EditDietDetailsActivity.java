@@ -66,12 +66,6 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
 
     private void setData() {
         if (dietDetailsViewModel != null) {
-            //  editDietType.setText(dietDetailsViewModel.getDietType());
-           /* if (dietDetailsViewModel.getDrink().equalsIgnoreCase("Yes"))
-                editDrink.setSelection(0);
-            if (dietDetailsViewModel.getDrink().equalsIgnoreCase("Yes"))
-                editSmoke.setSelection(0);*/
-
             setSpinnerValue();
         }
 
@@ -80,7 +74,8 @@ public class EditDietDetailsActivity extends BaseActivity implements EditDietDet
     private DietDetailsViewModel getData() {
         DietDetailsViewModel dietDetailsViewModel = new DietDetailsViewModel();
         dietDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
-        dietDetailsViewModel.setId(this.dietDetailsViewModel.getId());
+        if (this.dietDetailsViewModel != null)
+            dietDetailsViewModel.setId(this.dietDetailsViewModel.getId());
         if (editDietType.getSelectedItem() != null)
             dietDetailsViewModel.setDietType(editDietType.getSelectedItem().toString());
         if (editDrink.getSelectedItem() != null)

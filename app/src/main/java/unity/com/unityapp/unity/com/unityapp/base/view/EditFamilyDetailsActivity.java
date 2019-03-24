@@ -1,5 +1,6 @@
 package unity.com.unityapp.unity.com.unityapp.base.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -79,12 +80,6 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     @BindView(R.id.textErrorSister)
     TextView textErrorSister;
 
-    @BindView(R.id.textErrorBrotherDetail)
-    TextView textErrorBrotherDetail;
-
-    @BindView(R.id.textErrorSisterDetail)
-    TextView textErrorSisterDetail;
-
     private int candidateId;
     int counter = 0;
     private FamilyDetailsViewModel familyDetailsViewModel;
@@ -120,7 +115,7 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
             editFatherName.setText(familyDetailsViewModel.getFather());
             editFatherDetail.setText(familyDetailsViewModel.getFatherDescription());
             editMotherName.setText(familyDetailsViewModel.getMother());
-            editMotherName.setText(familyDetailsViewModel.getMotherDescription());
+            editMotherDetail.setText(familyDetailsViewModel.getMotherDescription());
             editBrother.setText(familyDetailsViewModel.getBrothers());
             editSister.setText(familyDetailsViewModel.getSisters());
             editBrotherDetail.setText(familyDetailsViewModel.getBrotherDescription());
@@ -191,6 +186,13 @@ public class EditFamilyDetailsActivity extends BaseActivity implements EditFamil
     public void showFamilyDetails(FamilyDetailsViewModel viewModel) {
         familyDetailsViewModel = viewModel;
         setData();
+    }
+
+    @Override
+    public void navigateToContactDetails() {
+        Intent intent = new Intent(this, EditContactDetailsActivity.class);
+        intent.putExtra("isFromRegistration", true);
+        startActivity(intent);
     }
 
     private boolean validation() {

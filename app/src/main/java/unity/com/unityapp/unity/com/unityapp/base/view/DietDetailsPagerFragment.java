@@ -50,12 +50,12 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
     TextView smoke;
 
 
-    @BindView(R.id.linearMain)
+    @BindView(R.id.scrollMain)
     NestedScrollView linearMain;
 
 
     private String candidateId;
-    private int counter = 0 ;
+    private int counter = 0;
     private DietDetailsViewModel dietDetailsViewModel;
 
     @Override
@@ -128,7 +128,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     @Override
     public void showErrorMessage(String message) {
-        snackbar(linearMain,message);
+        snackbar(linearMain, message);
     }
 
     @Override
@@ -142,7 +142,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
 
     public void snackbar(View view, String errorMessage) {
 
-        if(counter == 3) {
+        if (counter == 3) {
             Snackbar snackbar = Snackbar
                     .make(view, "Please Try After Some Time", Snackbar.LENGTH_LONG);
             snackbar.setActionTextColor(Color.BLACK);
@@ -152,9 +152,7 @@ public class DietDetailsPagerFragment extends BaseFragment implements DietDetail
             textView.setTextColor(Color.WHITE);
             snackbar.show();
 
-        }
-        else
-        {
+        } else {
             Snackbar snackbar = Snackbar
                     .make(view, errorMessage, Snackbar.LENGTH_LONG)
                     .setAction("RETRY", new View.OnClickListener() {

@@ -99,7 +99,7 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
     public void onResume() {
         super.onResume();
         presenter.bind(this);
-        presenter.getRecentProfiles(0);
+        onRefresh();
     }
 
     @Override
@@ -113,8 +113,8 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
         if (currentPage != PAGE_START) adapter.removeLoading();
         adapter.addAll(viewModel.getProfileResponseViewModelList());
         swipeRefreshLayout.setRefreshing(false);
-        if (currentPage < totalPage) adapter.addLoading();
-        else isLastPage = true;
+       /* if (currentPage < totalPage) adapter.addLoading();
+        else isLastPage = true;*/
         isLoading = false;
     }
 

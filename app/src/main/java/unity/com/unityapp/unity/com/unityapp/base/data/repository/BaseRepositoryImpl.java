@@ -5,6 +5,8 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
@@ -153,8 +155,23 @@ public class BaseRepositoryImpl implements BaseRepository {
     }
 
     @Override
-    public Observable<PersonalDetailsResponseEntity> uploadImage(MultipartBody.Part part , RequestBody candidateId) {
-        return networkClient.create(BaseApi.class).uploadImage(part,candidateId);
+    public Observable<PersonalDetailsResponseEntity> uploadImage(MultipartBody.Part part, RequestBody candidateId) {
+        return networkClient.create(BaseApi.class).uploadImage(part, candidateId);
 
+    }
+
+    @Override
+    public Observable<AddressDetailsResponseEntity> saveAddressDetails(AddressEntity entity) {
+        return networkClient.create(BaseApi.class).saveAddress(entity);
+    }
+
+    @Override
+    public Observable<AddressDetailsResponseEntity> GetContactDetails(String candidateId) {
+        return networkClient.create(BaseApi.class).GetContactDetails(candidateId);
+    }
+
+    @Override
+    public Observable<LoginUserResponseEntity> registerDone(String candidateId, String isRegistered) {
+        return networkClient.create(BaseApi.class).registerDone(candidateId, isRegistered);
     }
 }

@@ -105,7 +105,6 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     int pos;
     int counter = 0;
     private ExpectationsViewModel expectationDetailsViewModel;
-    String minFeet, minInches, maxFeet, maxInches;
     private boolean isFromRegistration;
 
     @Override
@@ -156,6 +155,13 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         if (editEducation.getText() != null) {
             expectationDetailsViewModel.setDegree(editEducation.getText().toString());
         }
+        if (editMinAge.getText() != null) {
+            expectationDetailsViewModel.setMinAge(editMinAge.getText().toString());
+        }
+
+        if (editMaxAge.getText() != null) {
+            expectationDetailsViewModel.setMaxAge(editMaxAge.getText().toString());
+        }
         if (editIncome.getText() != null) {
             expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
         }
@@ -176,6 +182,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         }
         if (spinnerMaxInches.getSelectedItem() != null) {
             expectationDetailsViewModel.setMaxInch(spinnerMaxInches.getSelectedItem().toString());
+        }
+        if (spinnerSubcaste.getSelectedItem() != null) {
+            expectationDetailsViewModel.setSubCaste(spinnerSubcaste.getSelectedItem().toString());
         }
         return expectationDetailsViewModel;
     }
@@ -226,62 +235,62 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
 
     public void setSpinnerValue() {
 
-
-        String minHeight = expectationDetailsViewModel.getMinHeight();
-        String[] parts = minHeight.split("'");
-        minFeet = parts[0];
-        String inches_ = parts[1];
-        String[] parts_ = inches_.split("''");
-        minInches = parts_[0];
-
-        String maxHeight = expectationDetailsViewModel.getMaxHeight();
-        String[] partsMax = minHeight.split("'");
-        maxFeet = partsMax[0];
-        String inchesMax_ = partsMax[1];
-        String[] partsMax_ = inchesMax_.split("''");
-        maxInches = partsMax_[0];
-
-        if (maxHeight.equals("")) {
-            spinnerMaxFeet.setSelection(0);
-            spinnerMaxInches.setSelection(0);
-        }
-        if (minHeight.equals("")) {
-            spinnerMinFeet.setSelection(0);
-            spinnerMinInches.setSelection(0);
-        }
-
-
         for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
-            if (getResources().getStringArray(R.array.feet_spinner)[i].equals(maxFeet)) {
+            if (expectationDetailsViewModel.getMaxFeet().equals("")) {
+                pos = 0;
+                break;
+            } else if (getResources().getStringArray(R.array.feet_spinner)[i].equals(expectationDetailsViewModel.getMaxFeet())) {
                 pos = i;
+                break;
 
             }
         }
         spinnerMaxFeet.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.feet_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.feet_spinner)[i].equals(minFeet)) {
+            if (expectationDetailsViewModel.getMinFeet().equals("")) {
+                pos = 0;
+                break;
+            } else if (getResources().getStringArray(R.array.feet_spinner)[i].equals(expectationDetailsViewModel.getMinFeet())) {
                 pos = i;
+                break;
 
             }
         }
         spinnerMinFeet.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.inches_spinner)[i].equals(minInches)) {
+            if (expectationDetailsViewModel.getMinInch().equals("")) {
+                pos = 0;
+                break;
+            } else if (getResources().getStringArray(R.array.feet_spinner)[i].equals(expectationDetailsViewModel.getMinInch())) {
                 pos = i;
+                break;
 
             }
         }
         spinnerMinInches.setSelection(pos);
         for (int i = 0; i < getResources().getStringArray(R.array.inches_spinner).length; i++) {
-            //if(getResources().getStringArray(R.array.feet_spinner)[i].equals(physicalDetailsViewModel.getFeet()))
-            if (getResources().getStringArray(R.array.inches_spinner)[i].equals(maxInches)) {
+            if (expectationDetailsViewModel.getMaxInch().equals("")) {
+                pos = 0;
+                break;
+            } else if (getResources().getStringArray(R.array.feet_spinner)[i].equals(expectationDetailsViewModel.getMaxInch())) {
                 pos = i;
+                break;
 
             }
         }
         spinnerMaxInches.setSelection(pos);
+
+        for (int i = 0; i < getResources().getStringArray(R.array.subcaste_spinner).length; i++) {
+            if (expectationDetailsViewModel.getSubCaste().equals("")) {
+                pos = 0;
+                break;
+            } else if (getResources().getStringArray(R.array.subcaste_spinner)[i].equals(expectationDetailsViewModel.getSubCaste())) {
+                pos = i;
+                break;
+
+            }
+        }
+        spinnerSubcaste.setSelection(pos);
     }
 
     private boolean validation() {

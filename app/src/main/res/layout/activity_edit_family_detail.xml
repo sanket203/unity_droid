@@ -29,9 +29,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp">
+            android:orientation="vertical">
 
             <ProgressBar
                 android:id="@+id/progress_bar"
@@ -129,34 +129,14 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_rounded_rectangle"
                 android:hint="Number of Brother"
-                android:minHeight="35dp"
-                android:padding="10dp"
-                android:textColorHint="#b6b6b6"
-                android:textSize="15sp"
-                android:inputType="number"/>
-
-            <TextView
-                android:id="@+id/textErrorBrother"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_red_light"
-                android:visibility="gone" />
-
-            <EditText
-                android:id="@+id/editSister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/edit_text_rounded_rectangle"
-                android:hint="Number of Sister"
+                android:inputType="number"
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textErrorSister"
+                android:id="@+id/textErrorBrother"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_light"
@@ -173,15 +153,29 @@
                 android:minHeight="35dp"
                 android:padding="10dp"
                 android:textColorHint="#b6b6b6"
-                android:textSize="15sp"
-                android:inputType="number"/>
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/editSister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edit_text_rounded_rectangle"
+                android:hint="Number of Sister"
+                android:inputType="number"
+                android:minHeight="35dp"
+                android:padding="10dp"
+                android:textColorHint="#b6b6b6"
+                android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/textErrorBrotherDetail"
+                android:id="@+id/textErrorSister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_light"
                 android:visibility="gone" />
+
 
             <EditText
                 android:id="@+id/editSisterDetail"
@@ -196,19 +190,12 @@
                 android:textColorHint="#b6b6b6"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/textErrorSisterDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/holo_red_light"
-                android:visibility="gone" />
-
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/login_btn_shape"
                 android:text="Save"
                 android:textColor="#ffffff"

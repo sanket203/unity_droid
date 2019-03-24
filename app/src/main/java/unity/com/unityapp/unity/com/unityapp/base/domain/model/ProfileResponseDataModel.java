@@ -36,6 +36,8 @@ public class ProfileResponseDataModel {
 
     private int addressCount;
 
+    private String imageUrl;
+
     public int getId() {
         return id;
     }
@@ -114,5 +116,13 @@ public class ProfileResponseDataModel {
 
     public void setAddressCount(int addressCount) {
         this.addressCount = addressCount;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

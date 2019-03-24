@@ -43,6 +43,7 @@ public class LoginUserResponseEntityModelToDataModelMapper {
             userResponseDataModel.setStatus(entity.getStatus());
             userResponseDataModel.setTransactionId(entity.getTransactionId());
             userResponseDataModel.setRegistered(entity.isRegistered());
+            userResponseDataModel.setImageUrl(entity.getImageUrl());
         }
         return userResponseDataModel;
 

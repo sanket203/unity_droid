@@ -22,6 +22,7 @@ import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseFragment;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
 import unity.com.unityapp.unity.com.unityapp.base.di.AppDi;
+import unity.com.unityapp.unity.com.unityapp.base.view.model.AddressViewModel;
 import unity.com.unityapp.unity.com.unityapp.base.view.model.PersonalDetailsViewModel;
 
 /**
@@ -39,6 +40,15 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
 
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
+
+    @BindView(R.id.tv_address)
+    TextView address;
+
+    @BindView(R.id.tv_contact_no)
+    TextView contactNo;
+
+    @BindView(R.id.tv_alternate_contact)
+    TextView alternateContaxt;
 
     AlertDialog.Builder builder;
 
@@ -89,9 +99,10 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
     public void onResume() {
         super.onResume();
         getCandidateId();
-        isAddressTaken = addressCommunicator.sendData();
+        if (addressCommunicator != null)
+            isAddressTaken = addressCommunicator.sendData();
         if (candidateId.equalsIgnoreCase(String.valueOf(UserInfo.getUserInfo().getCandidateId()))) {
-
+            presenter.getContactDetails();
         } else {
             presenter.getContactDetails(String.valueOf(UserInfo.getUserInfo().getCandidateId()), candidateId, isAddressTaken);
         }
@@ -159,6 +170,13 @@ public class AddressDetailsPagerFragment extends BaseFragment implements Address
         alert.setTitle("View Contact");
         alert.show();
 
+    }
+
+    @Override
+    public void showContactDetails(AddressViewModel viewModel) {
+        address.setText(viewModel.getAddress());
+        contactNo.setText(String.valueOf(viewModel.getContactNumber()));
+        alternateContaxt.setText(String.valueOf(viewModel.getAlternateNumber()));
     }
 
    /* @Override

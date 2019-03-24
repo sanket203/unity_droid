@@ -40,25 +40,25 @@
         <item>No</item>
     </string-array>
 
-   <string-array name="spinner_smoke">
+    <string-array name="spinner_smoke">
         <item>Smoke</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
 
-   <string-array name="spinner_drink">
+    <string-array name="spinner_drink">
         <item>Drink(Alcoholic)</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
 
-   <string-array name="disability_spinner">
+    <string-array name="disability_spinner">
         <item>Disability</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
 
-   <string-array name="medical_surgery_spinner">
+    <string-array name="medical_surgery_spinner">
         <item>Medical Surgery</item>
         <item>Yes</item>
         <item>No</item>
@@ -104,25 +104,24 @@
         <item>Non-Veg</item>
     </string-array>
 
-
-    <string-array name="caste_spinner">
-        <item>Select Caste</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
+    <string-array name="shakha_spinner">
+        <item>Select Shakha</item>
+        <item>Rugvedi</item>
+        <item>Yajurvedi</item>
     </string-array>
 
 
     <string-array name="subcaste_spinner">
         <item>Select Subcaste</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
-    </string-array>
-
-
-    <string-array name="shakha_spinner">
-        <item>Select Shakha</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
+        <item>Gaud Saraswat</item>
+        <item>Gaud</item>
+        <item>Karhade</item>
+        <item>Deshastha</item>
+        <item>Kudaldeshkar</item>
+        <item>Devrukhe</item>
+        <item>Daivadnya</item>
+        <item>Chitpavan</item>
+        <item>Kokanastha</item>
     </string-array>
 
 
@@ -132,43 +131,59 @@
         <item>Deshasta Rugvedi</item>
     </string-array>
 
-
-    <string-array name="gotra_spinner">
-        <item>Select Gotra</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
-    </string-array>
-
-
     <string-array name="rashi_spinner">
         <item>Select Rashi</item>
-        <item>Aries</item>
-        <item>Taurus</item>
-        <item>Gemini</item>
-        <item>Gemini</item>
-        <item>Cancer</item>
-        <item>Leo</item>
-        <item>Virgo</item>
-        <item>Libra</item>
-        <item>Scorpio</item>
-        <item>Sagittarius</item>
-        <item>Capricon</item>
-        <item>Aquirius</item>
-        <item>Pisces</item>
+        <item>Aries(मेष)</item>
+        <item>Taurus(वृषभ)</item>
+        <item>Gemini(मिथुन)</item>
+        <item>Cancer(कर्क)</item>
+        <item>Leo(सिंह)</item>
+        <item>Virgo(कन्या)</item>
+        <item>Libra(तूळ)</item>
+        <item>Scorpio(वृश्चिक)</item>
+        <item>Sagittarius(धनु)</item>
+        <item>Capricon(मकर)</item>
+        <item>Aquirius(कुंभ)</item>
+        <item>Pisces(मीन)</item>
     </string-array>
 
 
     <string-array name="gana_spinner">
         <item>Select Gana</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
+        <item>Manushya</item>
+        <item>Rakshas</item>
+        <item>Dev</item>
     </string-array>
 
 
     <string-array name="nakshatra_spinner">
         <item>Select Nakshatra</item>
-        <item>Deshsta</item>
-        <item>Deshasta Rugvedi</item>
+        <item>Ashwini(अश्विनि)</item>
+        <item>Bharani(भरणी)</item>
+        <item>Krittika(कृत्तिका)</item>
+        <item>Rohini(रोहिणी)</item>
+        <item>Mrigashīrsha(म्रृगशीर्षा)</item>
+        <item>Ardra(आर्द्रा)</item>
+        <item>Punarvasu(पुनर्वसु)</item>
+        <item>Pushya(पुष्य)</item>
+        <item>Ashlesha(आश्लेषा)</item>
+        <item>Magha(मघा)</item>
+        <item> Purva Phalguni(पूर्व फल्गुनी)</item>
+        <item> Uttara Phalguni(उत्तर फल्गुनी)</item>
+        <item>Hasta(हस्त)</item>
+        <item>Chitra(चित्रा)</item>
+        <item>Svati(स्वाति)</item>
+        <item>Visakha(विशाखा)</item>
+        <item>Anuradha(अनुराधा)</item>
+        <item>Jyeshtha(ज्येष्ठा)</item>
+        <item>Mula(मूल)</item>
+        <item>Uttara Aṣaḍha(उत्तराषाढ़ा)</item>
+        <item>Śrāvaṇa(श्र‌वण)</item>
+        <item> Dhanishta</item>
+        <item>Shatabhisha(शतभिषा)</item>
+        <item>Pūrva Bhadrapada(पूर्वभाद्रपदा)</item>
+        <item>Uttara Bhadrapada(उत्तरभाद्रपदा)</item>
+        <item>Revati(रेवती)</item>
     </string-array>
 
 
@@ -182,6 +197,29 @@
         <item>AB(-ve)</item>
         <item>O(+ve)</item>
         <item>O(-ve)</item>
+    </string-array>
+
+    <string-array name="mangal_spinner">
+        <item>Select Mangal</item>
+        <item>Weak(सौम्य)</item>
+        <item>Nirdosh(निर्दोष)</item>
+        <item>Strong(तीव्र)</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="charan_spinner">
+        <item>Select Charan</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="spinner_naadi">
+        <item>Select Naadi</item>
+        <item>Aadya(आद्य)</item>
+        <item>Madhya(मध्य)</item>
+        <item>Antya(अंत्य)</item>
     </string-array>
 
 
@@ -220,6 +258,8 @@
     <string name="view_more">VIEW MORE</string>
     <string name="matching_profile">Matching Profile</string>
     <string name="empty_field">This field can not be empty </string>
+    <string name="nadi_prompt">Naadi</string>
+    <string name="charan_prompt">charan</string>
 
 
 </resources>

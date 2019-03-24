@@ -1,10 +1,12 @@
-package unity.com.unityapp.unity.com.unityapp.base.domain.model;
+package unity.com.unityapp.unity.com.unityapp.base.view.model;
 
 import com.squareup.moshi.Json;
 
-public class AddressDataModel {
+public class AddressViewModel {
 
     private int id;
+
+
 
     @Json(name = "candidateId")
     private int candidateId;

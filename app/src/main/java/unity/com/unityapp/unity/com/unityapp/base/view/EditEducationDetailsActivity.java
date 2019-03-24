@@ -98,7 +98,8 @@ public class EditEducationDetailsActivity extends BaseActivity implements EditEd
 
     private EducationalDetailsViewModel getData() {
         EducationalDetailsViewModel educationDetailsViewModel = new EducationalDetailsViewModel();
-        educationDetailsViewModel.setId(this.educationDetailsViewModel.getId());
+        if (this.educationDetailsViewModel != null)
+            educationDetailsViewModel.setId(this.educationDetailsViewModel.getId());
         educationDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
         if (editDegree.getText() != null) {
             educationDetailsViewModel.setDegree(editDegree.getText().toString());

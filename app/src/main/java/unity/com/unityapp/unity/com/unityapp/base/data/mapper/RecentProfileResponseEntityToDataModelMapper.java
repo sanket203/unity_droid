@@ -45,6 +45,7 @@ public class RecentProfileResponseEntityToDataModelMapper {
                 dataModel.setIncome(entity.getIncome());
                 dataModel.setLastLogin(entity.getLastLogin());
                 dataModel.setName(entity.getName());
+                dataModel.setImageUrl(entity.getImageUrl());
                 profileResponseDataModelList.add(dataModel);
 
             }

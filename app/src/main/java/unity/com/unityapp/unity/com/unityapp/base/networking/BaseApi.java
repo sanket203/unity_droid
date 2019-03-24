@@ -11,6 +11,8 @@ import retrofit2.http.Part;
 import retrofit2.http.Path;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.LoginUserRequestEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.request.RegisterUserEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressDetailsResponseEntity;
+import unity.com.unityapp.unity.com.unityapp.base.data.model.response.AddressEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.ContactDetailsResponseEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsEntity;
 import unity.com.unityapp.unity.com.unityapp.base.data.model.response.DietDetailsResponseEntity;
@@ -109,4 +111,12 @@ public interface BaseApi {
     Observable<PersonalDetailsResponseEntity> uploadImage(@Part MultipartBody.Part part, @Part("candidateId") RequestBody candidateId);
 
 
+    @POST("saveAddressDetails")
+    Observable<AddressDetailsResponseEntity> saveAddress(@Body AddressEntity entity);
+
+    @GET("getAddressDetails/{candidateId}")
+    Observable<AddressDetailsResponseEntity> GetContactDetails(@Path("candidateId") String candidateId);
+
+    @POST("register/{candidateId}/{isRegistered}")
+    Observable<LoginUserResponseEntity> registerDone(@Path("candidateId") String candidateId, @Path("isRegistered") String isRegistered);
 }

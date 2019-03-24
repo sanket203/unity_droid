@@ -139,7 +139,8 @@ public class EditPhysicalDetailsActivity extends BaseActivity implements EditPhy
 
     private PhysicalDetailsViewModel getData() {
         PhysicalDetailsViewModel physicalDetailsViewModel = new PhysicalDetailsViewModel();
-        physicalDetailsViewModel.setId(this.physicalDetailsViewModel.getId());
+        if (this.physicalDetailsViewModel != null)
+            physicalDetailsViewModel.setId(this.physicalDetailsViewModel.getId());
         physicalDetailsViewModel.setCandidateId(UserInfo.getUserInfo().getCandidateId());
 
         if (editWeight.getText() != null) {
