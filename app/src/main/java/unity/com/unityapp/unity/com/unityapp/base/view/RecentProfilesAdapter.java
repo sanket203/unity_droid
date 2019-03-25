@@ -170,8 +170,13 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> 
             if (list.get(position).getImageUrl() != null) {
                 Picasso.get()
                         .load(list.get(position).getImageUrl())
+                        .placeholder(R.drawable.no_image_icon)
+                        .error(R.drawable.no_image_icon)
                         .fit()
                         .into(profileImageView);
+            }
+            else {
+                profileImageView.setImageResource(R.drawable.no_image_icon);
             }
         }
 
