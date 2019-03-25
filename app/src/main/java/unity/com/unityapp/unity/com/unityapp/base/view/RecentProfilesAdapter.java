@@ -69,6 +69,12 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> 
     }
 
     @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.onBind(position);
     }
@@ -213,5 +219,6 @@ public class RecentProfilesAdapter extends RecyclerView.Adapter<BaseViewHolder> 
         }
 
     }
+
 
 }
