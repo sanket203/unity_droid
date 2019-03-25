@@ -63,13 +63,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/full_name"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -79,7 +80,6 @@
                         android:id="@+id/full_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -88,13 +88,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/birth_date"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -103,7 +104,6 @@
                         android:id="@+id/birth_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -112,13 +112,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/birth_time"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -127,7 +128,6 @@
                         android:id="@+id/birth_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -136,13 +136,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/birth_city"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -151,7 +152,6 @@
                         android:id="@+id/birth_place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -160,13 +160,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/tv_gender"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -175,7 +176,6 @@
                         android:id="@+id/tv_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -184,13 +184,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/tv_marrital_status"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -199,7 +200,6 @@
                         android:id="@+id/marrital_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -208,13 +208,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/tv_about_me"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -223,7 +224,8 @@
                         android:id="@+id/about_me"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                         android:textColor="#242926"
                         android:textSize="14sp" />
 
@@ -232,13 +234,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp"
+                    android:paddingBottom="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
-                        android:padding="15dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:text="@string/tv_hobbies"
                         android:textColor="#929292"
                         android:textSize="14sp" />
@@ -247,7 +251,6 @@
                         android:id="@+id/hobbies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:lineSpacingExtra="34.3sp"
                         android:textColor="#242926"
                         android:textSize="14sp" />
 

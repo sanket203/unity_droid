@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import unity.com.unityapp.R;
 import unity.com.unityapp.unity.com.unityapp.base.BaseActivity;
 import unity.com.unityapp.unity.com.unityapp.base.UserInfo;
@@ -48,9 +50,12 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
-   /* @BindView(R.id.profile_image)
-    ImageView profileImage;
-*/
+   // @BindView(R.id.profile_image)
+    CircleImageView profileImage;
+
+  //  @BindView(R.id.textName)
+    TextView textName;
+
     @BindView(R.id.nav_view)
     NavigationView navigationView;
     public static int navItemIndex = 0;
@@ -74,6 +79,7 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
         AppDi.getActivityComponent(this).inject(this);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
@@ -194,6 +200,10 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         // This method will trigger on item Click of navigation menu
 
+        View hView =  navigationView.getHeaderView(0);
+       textName = (TextView)hView.findViewById(R.id.textName);
+         profileImage = (CircleImageView) hView.findViewById(R.id.profile_image);
+
         navigationView.setNavigationItemSelectedListener(menuItem -> {
 
             //Check to see which item was being clicked and perform appropriate action
@@ -253,10 +263,11 @@ public class HomeActivity extends BaseActivity implements HomeView, ProfileItemC
         counter.setText(count);
         counter.setGravity(Gravity.CENTER_VERTICAL);
         counter.setTypeface(null, Typeface.BOLD);
-      /*  Picasso.get()
+        Picasso.get()
                 .load(UserInfo.getUserInfo().getImageUrl())
                 .fit()
-                .into(profileImage);*/
+                .into(profileImage);
+        textName.setText(UserInfo.getUserInfo().getFirstName());
 
     }
 

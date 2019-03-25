@@ -165,6 +165,21 @@
         <item>Kokanastha</item>
     </string-array>
 
+    <string-array name="income_spinner">
+        <item>Select income</item>
+        <item>Upto INR 1 Lakh</item>
+        <item>INR 1 Lakh to 2 Lakh</item>
+        <item>INR 2 Lakh to 4 Lakh</item>
+        <item>INR 4 Lakh to 7 Lakh</item>
+        <item>INR 7 Lakh to 10 Lakh</item>
+        <item>INR 10 Lakh to 15 Lakh</item>
+        <item>INR 15 Lakh to 20 Lakh</item>
+        <item>INR 20 Lakh to 30 Lakh</item>
+        <item>INR 30 Lakh to 50 Lakh</item>
+        <item>INR 50 Lakh and above</item>
+
+    </string-array>
+
 
     <string-array name="upshakha_spinner">
         <item>Select Upshakha</item>

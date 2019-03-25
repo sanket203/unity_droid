@@ -47,8 +47,8 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.editEducation)
     EditText editEducation;
 
-    @BindView(R.id.editIncome)
-    EditText editIncome;
+   /* @BindView(R.id.editIncome)
+    EditText editIncome;*/
 
     @BindView(R.id.editWorkingLocation)
     AutoCompleteTextView editWorkingLocation;
@@ -101,6 +101,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
     @BindView(R.id.textErrorOtherExp)
     TextView textErrorOtherExp;
 
+   @BindView(R.id.spinnerIncome)
+    Spinner spinnerIncome;
+
     private int candidateId;
     int pos;
     int counter = 0;
@@ -138,7 +141,7 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         if (expectationDetailsViewModel != null) {
             editMinAge.setText(expectationDetailsViewModel.getMinAge());
             editMaxAge.setText(expectationDetailsViewModel.getMaxAge());
-            editIncome.setText(expectationDetailsViewModel.getPackageLimit());
+          //  editIncome.setText(expectationDetailsViewModel.getPackageLimit());
             editEducation.setText(expectationDetailsViewModel.getDegree());
             editWorkingLocation.setText(expectationDetailsViewModel.getWorkingLocation());
             editOtherExp.setText(expectationDetailsViewModel.getOther());
@@ -162,9 +165,9 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         if (editMaxAge.getText() != null) {
             expectationDetailsViewModel.setMaxAge(editMaxAge.getText().toString());
         }
-        if (editIncome.getText() != null) {
+       /* if (editIncome.getText() != null) {
             expectationDetailsViewModel.setPackageLimit(editIncome.getText().toString());
-        }
+        }*/
         if (editWorkingLocation.getText() != null) {
             expectationDetailsViewModel.setWorkingLocation(editWorkingLocation.getText().toString());
         }
@@ -356,11 +359,11 @@ public class EditExpectationDetailsActivity extends BaseActivity implements Edit
         {
             textErrorEducation.setVisibility(View.GONE);
         }
-        if (editIncome.getText().toString().equalsIgnoreCase("") || editIncome.getText().toString().equalsIgnoreCase(null)) {
+        /*if (editIncome.getText().toString().equalsIgnoreCase("") || editIncome.getText().toString().equalsIgnoreCase(null)) {
             textErrorIncome.setVisibility(View.VISIBLE);
             textErrorIncome.setText(getString(R.string.empty_field));
             return false;
-        }
+        }*/
         {
             textErrorIncome.setVisibility(View.GONE);
         }

@@ -76,7 +76,7 @@
             android:textColor="#242926"
             android:textSize="22sp" />
 
-        <TextView
+        <ImageView
             android:id="@+id/btn_call1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,7 +84,8 @@
             android:layout_marginRight="10dp"
             android:drawableLeft="@drawable/ic_edit"
             android:gravity="center_vertical"
-            android:text="@string/btn_edit"
+            android:src="@drawable/call"
+            android:padding="5dp"
             android:textColor="@color/colorAccent" />
     </RelativeLayout>
 
@@ -110,12 +111,12 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/label_contact2"
 
-            android:text="123456789"
+            android:text="666656789"
             android:textColor="#242926"
             android:textSize="22sp" />
 
 
-        <TextView
+        <ImageView
             android:id="@+id/btn_call2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,7 +124,8 @@
             android:layout_marginRight="10dp"
             android:drawableLeft="@drawable/ic_edit"
             android:gravity="center_vertical"
-            android:text="@string/btn_edit"
+            android:src="@drawable/call"
+            android:padding="5dp"
             android:textColor="@color/colorAccent" />
     </RelativeLayout>
 

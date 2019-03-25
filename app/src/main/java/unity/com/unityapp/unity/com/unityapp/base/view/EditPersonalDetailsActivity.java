@@ -30,6 +30,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -42,6 +44,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -121,6 +124,9 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 
     @BindView(R.id.textErrorHobbies)
     TextView textErrorHobbies;
+
+    @BindView(R.id.profile_image)
+    CircleImageView profileImage;
 
 
     private int candidateId;
@@ -212,7 +218,13 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
             birthPlace.setText(personalDetailsViewModel.getBirthPlace());
             setmarritalStatus(personalDetailsViewModel.getMaritalStatus());
             setGender(personalDetailsViewModel.getGender());
+
+            Picasso.get()
+                    .load(UserInfo.getUserInfo().getImageUrl())
+                    .fit()
+                    .into(profileImage);
         }
+
     }
 
     private void setGender(String genderValue) {
@@ -424,6 +436,9 @@ public class EditPersonalDetailsActivity extends BaseActivity implements EditPer
 //to get image and videos, I used a */"
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, 1);
+
+
+        //userinfo.getInfo.getUserInfo
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
