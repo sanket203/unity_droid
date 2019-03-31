@@ -34,7 +34,7 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
 
     private RecentProfilesAdapter adapter;
     private List<ProfileResponseViewModel> list = new ArrayList<>();
-
+    
     @BindView(R.id.recent_profile_rv)
     RecyclerView recyclerView;
 
@@ -73,7 +73,8 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecentProfilesAdapter(list, getActivity(), itemClickListner);
         recyclerView.setAdapter(adapter);
-        recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
+      presenter.getRecentProfiles(0);
+      /*  recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
             @Override
             protected void loadMoreItems() {
                 isLoading = true;
@@ -91,7 +92,21 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
                 return isLoading;
             }
         });
-        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setOnRefreshListener(this);*/
+
+
+
+        recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount) {
+               // swipeRefreshLayout.setRefreshing(true);
+                Log.e("Page Count",":"+page);
+                presenter.getRecentProfiles(page);
+               // swipeRefreshLayout.setEnabled(true);
+
+            }
+        });
+
         return view;
     }
 
@@ -110,30 +125,37 @@ public class RecentProfileFragment extends BaseFragment implements RecentProfile
 
     @Override
     public void showRecentProfiles(RecentProfileResponseViewModel viewModel) {
-        if (currentPage != PAGE_START) adapter.removeLoading();
-        adapter.addAll(viewModel.getProfileResponseViewModelList());
-        swipeRefreshLayout.setRefreshing(false);
+       // if (currentPage != PAGE_START) adapter.removeLoading();
+
+      //  arrayList = data.getData();
+
+        Log.e("List",":"+viewModel.getProfileResponseViewModelList().size());
+        list.addAll(viewModel.getProfileResponseViewModelList());
+        adapter.notifyDataSetChanged();
+
+       // adapter.addAll(viewModel.getProfileResponseViewModelList());
+       // swipeRefreshLayout.setRefreshing(false);
        /* if (currentPage < totalPage) adapter.addLoading();
         else isLastPage = true;*/
-        isLoading = false;
+       // isLoading = false;
     }
 
     @Override
     public void showError(String message) {
         Log.d("ERROR", message);
-        isLastPage = true;
-        isLoading = false;
-        adapter.removeLoading();
+      //  isLastPage = true;
+     //   isLoading = false;
+      //  adapter.removeLoading();
     }
 
 
     @Override
     public void onRefresh() {
-        itemCount = 0;
-        currentPage = PAGE_START;
-        isLastPage = false;
-        adapter.clear();
-        presenter.getRecentProfiles(0);
+      //  itemCount = 0;
+       // currentPage = PAGE_START;
+        //isLastPage = false;
+        //adapter.clear();
+       // presenter.getRecentProfiles(0);
 
     }
 }
